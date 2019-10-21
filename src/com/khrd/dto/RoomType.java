@@ -4,7 +4,7 @@ public class RoomType {
 	private String rtNo; // 객실 타입 번호
 	private String rcNo; // 객실 분류 번호
 	private String vtNo; // 전망 타입 번호
-	private String btNo; // 침대 타입 번호   
+	private String btNo; // 침대 타입 번호
 	private String rsNo; // 객실 크기 번호
 
 	public RoomType() {

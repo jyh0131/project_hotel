@@ -5,7 +5,7 @@ public class Room {
 	private int roomPrice; // 방 가격
 	private RoomType roomType; // 객실 타입
 
-	public Room() {   
+	public Room() {
 		// TODO Auto-generated constructor stub
 	}
 

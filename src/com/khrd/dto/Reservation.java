@@ -5,7 +5,7 @@ import java.util.Date;
 public class Reservation {
 	private int rNo; // 예약 번호
 	private Member member; // 회원 번호
-	private RoomType room; // 방 호수
+	private Room room; // 방 호수
 	private Date rIn; // 체크인 날짜
 	private Date rOut; // 체크아웃 날짜
 	private int rTotalPrice; // 최종금액
@@ -18,7 +18,7 @@ public class Reservation {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reservation(int rNo, Member member, RoomType room, Date rIn, Date rOut, int rTotalPrice, String rRequest,
+	public Reservation(int rNo, Member member, Room room, Date rIn, Date rOut, int rTotalPrice, String rRequest,
 			int rPersonnel, Date rPayDate, int opNo) {
 		this.rNo = rNo;
 		this.member = member;
@@ -48,11 +48,11 @@ public class Reservation {
 		this.member = member;
 	}
 
-	public RoomType getRoom() {
+	public Room getRoom() {
 		return room;
 	}
 
-	public void setRoom(RoomType room) {
+	public void setRoom(Room room) {
 		this.room = room;
 	}
 
