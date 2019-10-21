@@ -307,19 +307,28 @@
           </partition>
         </physicalProperties>
         <columns UUID="Column_tQZP7_AVEemabKU1RCR6CA" logicalName="결제 번호" physicalName="p_no" dataType="INT">
+          <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_4Vk8oPPbEemvf_1tywZ0FQ" autoIncrement="true"/>
           <memberships UUID="MEntry_tQZP8PAVEemabKU1RCR6CA" key="PKCGroup_tQZ29fAVEemabKU1RCR6CA">
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_tQZP8fAVEemabKU1RCR6CA" group="PKCGroup_tQZ29fAVEemabKU1RCR6CA" entryIndex="0"/>
           </memberships>
         </columns>
-        <columns UUID="Column_tQZP8vAVEemabKU1RCR6CA" logicalName="환불 은행명" physicalName="p_bank_name" dataType="VARCHAR(10)"/>
-        <columns UUID="Column_tQZ28PAVEemabKU1RCR6CA" logicalName="환불 계좌번호" physicalName="p_bank_no" dataType="VARCHAR(40)"/>
-        <columns UUID="Column_tQZ28fAVEemabKU1RCR6CA" logicalName="환불 예금주" physicalName="p_bank_sername" dataType="VARCHAR(10)"/>
+        <columns UUID="Column_tQZP8vAVEemabKU1RCR6CA" logicalName="환불 은행명" physicalName="p_bank_name" dataType="VARCHAR(10)">
+          <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_4VljsPPbEemvf_1tywZ0FQ"/>
+        </columns>
+        <columns UUID="Column_tQZ28PAVEemabKU1RCR6CA" logicalName="환불 계좌번호" physicalName="p_bank_no" dataType="VARCHAR(40)">
+          <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_4VljsfPbEemvf_1tywZ0FQ"/>
+        </columns>
+        <columns UUID="Column_tQZ28fAVEemabKU1RCR6CA" logicalName="환불 예금주" physicalName="p_bank_sername" dataType="VARCHAR(10)">
+          <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_4VljsvPbEemvf_1tywZ0FQ"/>
+        </columns>
         <columns UUID="Column_tQZ28vAVEemabKU1RCR6CA" logicalName="예약 번호" physicalName="r_no" derivedPhysicalName="true" derivedLogicalName="true" dataType="INT" notNull="TRUE">
+          <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_4Vljs_PbEemvf_1tywZ0FQ"/>
           <memberships UUID="MEntry_tQZ28_AVEemabKU1RCR6CA" key="FKCGroup_tQZ29_AVEemabKU1RCR6CA">
             <value xsi:type="e:ColumnReference" UUID="CReference_tQZ29PAVEemabKU1RCR6CA" group="FKCGroup_tQZ29_AVEemabKU1RCR6CA" parentColumn="Column_tQYBw_AVEemabKU1RCR6CA"/>
           </memberships>
         </columns>
         <columns UUID="Column_DWuhovGGEemdQ9oAyuk8fQ" logicalName="회원 번호" physicalName="m_no" derivedPhysicalName="true" derivedLogicalName="true" dataType="INT">
+          <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_4VmKwPPbEemvf_1tywZ0FQ"/>
           <memberships UUID="MEntry_DWuho_GGEemdQ9oAyuk8fQ" key="FKCGroup_DWuhoPGGEemdQ9oAyuk8fQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_DWuhpPGGEemdQ9oAyuk8fQ" group="FKCGroup_DWuhoPGGEemdQ9oAyuk8fQ" parentColumn="Column_J3x9kvAKEemabKU1RCR6CA"/>
           </memberships>
