@@ -2,9 +2,10 @@
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
 <link href="${pageContext.request.contextPath}/css/rsv_form.css" rel="stylesheet" type="text/css">
-
+<!-- 예약 1단계 -->
 <div class="rsv-step-wrap">
-	<span> <!-- background로 step 넣기 -->
+	<span> 
+		<!-- background로 step 넣기 -->
 	</span>
 </div>
 
