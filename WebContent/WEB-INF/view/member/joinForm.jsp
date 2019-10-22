@@ -34,6 +34,10 @@
 				<input type="tel" name="tel">
 			</p>
 			<p>
+				<label>우편번호</label>
+				<input type="text" name="zip">
+			</p>
+			<p>
 				<label>자택주소</label>
 				<input type="text" name="addr1">
 				<input type="text" name="addr2">

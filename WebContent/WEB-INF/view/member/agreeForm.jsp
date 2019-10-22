@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
+<script>
+  $(function(){
+	$("form").submit(function(){
+		 if($("#n").prop("checked")||$("#n1").prop("checked")){		 
+			 alert("호텔 이용약관에 대한 동의는 필수 선택 사항입니다."); 
+			return false;
+			 }
+		})
+	})   
+ 
+</script>
 	<form action="agree.do" method="post">
 		<h2>약관동의</h2>
 		<h3>호텔 이용약관에 대한 동의 (필수)</h3>
@@ -28,7 +39,7 @@
 			12. 본 약관은 대한민국 법률이 적용되며, 멤버십 프로그램과 관련한 분쟁에 대한 소송은 서울중앙지방법원을 전속관할법원으로
 			합니다.</div>
 		<br> <input type="radio" name="agree" value="yes">동의함 <input
-			type="radio" name="agree" value="no">동의하지않음
+			type="radio" name="agree" value="no" id="n">동의하지않음
 
 		<h3>개인정보 수집, 이용에 대한 동의 (필수)</h3>
 		<div style="overflow: auto; width: 500px; height: 150px;">1. 수집
@@ -37,7 +48,7 @@
 			동의일로부터 회원 탈퇴 시 까지 ※위 사항에 대한 동의를 거부할 수 있으나, 이에 대한 동의가 없을 경우 신라리워즈 회원
 			가입 및 서비스 이용이 불가합니다.</div>
 		 <input type="radio" name="agree1" value="yes1">동의함 <input
-			type="radio" name="agree1" value="no1">동의하지않음
+			type="radio" name="agree1" value="no1" id="n1">동의하지않음
 		
 		<br><br>
 		<input type="submit" value="다음"> <input type="reset" value="취소">

@@ -8,6 +8,7 @@
 </head>
 <body>
 	index.jsp
-	<a href="agree.do">[회원가입]</a>
+	<a href="member/agree.do">[회원가입]</a>
+	<a href="member/login.do">[로그인]</a>
 </body>
 </html>

@@ -9,6 +9,7 @@
 <title>PROJECT HOTEL</title>
 <link href="${pageContext.request.contextPath}/css/common.css" rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/common.js"></script>
 </head>
 <body>
 	<div id="container">
@@ -19,10 +20,10 @@
 				</div>
 				<ul id="top-menu">
 					<li>
-						<a href="#">로그인</a>
+						<a href="${pageContext.request.contextPath }/member/login.do">로그인</a>
 					</li>
 					<li>
-						<a href="#">신라리워즈 가입</a>
+						<a href="${pageContext.request.contextPath }/member/agree.do">신라리워즈 가입</a>
 					</li>
 					<li>
 						<a href="#">예약확인</a>
