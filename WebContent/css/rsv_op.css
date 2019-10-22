@@ -1,0 +1,232 @@
+@charset "UTF-8";
+
+div.rsv-step-wrap {
+	width: 100%;
+	height: 48px;
+	background: url("../images/rsv-img/resvStep2On.gif") no-repeat center;
+	padding: 65px 0 0 0;
+}
+
+
+div.rsv-op-content {
+	overflow: hidden;
+}
+/*옵션 왼쪽*/
+div.rsv-op-left {
+	float: left;
+	width: 75%;
+}
+div.rsv-left-wrap {
+	width: 95%;
+}
+div.rsv-op-choice {
+	width: 100%;
+}
+div.op-choice-title > p {
+	width: 100%;
+	height: 50px;
+	background: skyblue;
+	line-height: 50px;	
+	font-size: 18px;
+}
+div.op-choice-title > p > span {
+	font-size: 14px;
+	font-weight: normal;
+	float: right;
+	margin-right: 10px;
+}
+div.op-choice-list {
+	width: 100%;
+}
+div.op-choice-list > table {
+	width: 95%;
+	border-collapse: collapse;
+	margin: 5px auto;
+}
+div.op-choice-list > table td {
+	padding: 15px;
+}
+div.op-choice-list > table td:nth-child(1) {
+	width: 50%;
+	font-size: 18px;
+}
+div.op-choice-list > table td:nth-child(1) > span {
+	font-size: 14px;
+}
+div.op-choice-list > table td:nth-child(2) {
+	width: 9%;
+}
+div.op-choice-list > table td:nth-child(3) {
+	width: 9%;
+	text-align: center;
+}
+div.op-choice-list > table td:nth-child(3) > span {
+	font-size: 18px;
+}
+div.op-choice-list > table td:nth-child(4) {
+	width: 15%;
+	text-align: center;
+}
+div.op-choice-list > table td:nth-child(5) {
+	width: 20%;
+	text-align: center;
+}
+div.op-choice-list > table td:nth-child(5) > span {
+	font-size: 19px;
+}
+span.op-btnPlus {
+	width: 34px;
+	height: 20px;
+	display: inline-block;
+	background: url("../images/rsv-img/plus_ico2.gif") no-repeat center;
+	background-size: 17px;
+}
+span.op-btnMinus {
+	width: 34px;
+	height: 20px;
+	display: inline-block;
+	background: url("../images/rsv-img/minus_ico2.gif") no-repeat center;
+	background-size: 17px;
+}
+
+/*요청사항*/
+div.rsv-op-request {
+	width: 100%;
+}
+div.op-request-main > p {
+	width: 100%;
+	height: 50px;
+	background: skyblue;
+	line-height: 50px;	
+	font-size: 18px;
+	position: relative;
+	cursor: pointer;
+}
+div.op-request-main > p > span {
+	display: inline-block;
+	width: 13px;
+	height: 7px;
+	position: absolute;
+	top: 21.5px;
+	right: 15px;
+	background: url("../images/rsv-img/icoArrow.gif") no-repeat 0 0;
+}
+
+div.op-request-sub {
+	width: 100%;
+	text-align: center;
+	padding: 20px 0;
+}
+div.op-request-sub > textarea {
+	width: 90%;
+	height: 70px;
+	padding: 10px;
+	margin: 10px;
+}
+div.op-request-sub > ul {
+	width: 80%;
+	text-align: left;
+	margin: 10px 0 0px 40px;
+	font-size: 14px;
+}
+
+/*유의사항*/
+div.rsv-op-notice {
+	width: 100%;
+}
+div.op-notice-main > p {
+	width: 100%;
+	height: 50px;
+	background: skyblue;
+	line-height: 50px;	
+	font-size: 18px;
+	position: relative;
+	cursor: pointer;
+}
+div.op-notice-content {
+	width: 100%;
+}
+div.op-notice-content > img {
+	width: 90%;
+	margin: 20px auto;
+	display: block;
+}
+
+div.btn-area {
+	width: 100%;
+	margin-bottom: 100px;
+}
+span.btnBack {
+	background: url("../images/rsv-img/btnStep1.gif") no-repeat 0 0;
+	width: 140px;
+	height: 44px;
+	display: inline-block;
+	float: left;
+	cursor: pointer;
+}
+span.btnRsv {
+	background: url("../images/rsv-img/btnStepMem.gif") no-repeat 0 0;
+	width: 140px;
+	height: 44px;
+	display: inline-block;
+	float: right;
+}
+
+
+/*옵션 오른쪽*/
+div.rsv-op-right {
+	float: right;
+	width: 25%;
+}
+div.rsv-info-wrap {
+	width: 95%;
+	border: 1px solid black;
+	padding: 5px;
+}
+div.rsv-info {
+	width: 83%;
+	padding: 30px 25px;
+}
+div.rsv-info > p {
+	font-size: 16px;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+div.rsv-info ul {
+	width: 100%;
+}
+div.rsv-info li {
+	width: 100%;
+	font-size: 14px;
+	padding: 5px 0;
+}
+div.rsv-info span {
+	float: right;
+	font-size: 13px;
+}
+div.rsv-info li img {
+	width: 100%;
+}
+div.info-content, div.rsv-room-info {
+	border-bottom: 1px dotted #ccc;
+}
+ul.rsv-total-price {
+	border-top: 2px solid black;
+	margin-top: 5px;
+}
+ul.rsv-total-price > li, ul.rsv-total-price > li > span {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+

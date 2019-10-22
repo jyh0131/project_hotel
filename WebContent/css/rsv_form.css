@@ -1,0 +1,259 @@
+@charset "UTF-8";
+
+/*날짜설정 파트*/
+div.rsv-step-wrap {
+	width: 100%;
+	height: 48px;
+	background: url("../images/rsv-img/resvStep1On.gif") no-repeat center;
+	padding: 65px 0 0 0;
+}
+div.rsv-date-wrap {
+	width: 100%;
+	height: 142px;
+	background: #D1B2FF;
+}
+div.rsv-date-inner {
+	width: 1150px;
+	margin: 0 auto;
+	padding: 35px 20px;
+}
+div#rsv-hotel {
+	width: 225px;
+	text-align: center;
+}
+div.rsv-date {
+	float: left;
+	margin-right: 45px;
+}
+div.rsv-date > span.ck-title {
+	display: block;
+	font-size: 13px;
+	color: #727272;
+	text-align: center;
+}
+div.ck-date > span.left-side {
+	float: left;
+	width: 45px;
+	color: #555;
+	margin: 4px 0 0 0;
+}
+span.rsv-year {
+	font-size: 13px;
+}
+span.rsv-month {
+	font-size: 20px;
+}
+span.rsv-date {
+	font-size: 40px;
+}
+span.rsv-num {
+	font-size: 40px;
+	color: #000;
+}
+div.rsv-person > span.left-side {
+	float: left;
+	width: 45px;
+}
+div.rsv-person > span.right-side {
+	float: right;
+	width: 34px;
+	margin: 4px 0 0;
+}
+span.right-side > span.rsv-button-minus {
+	display: block;
+	height: 26px;
+	overflow: hidden;
+	line-height: 999;
+	background: url("../images/rsv-img/btnControl.gif") no-repeat scroll 0 bottom transparent;
+	margin-top: -1px;
+	cursor: pointer;
+	background-position: 0 bottom;
+}
+span.right-side > span.rsv-button-plus {
+	display: block;
+	height: 26px;
+	overflow: hidden;
+	line-height: 999;
+	background: url("../images/rsv-img/btnControl.gif") no-repeat scroll 0 bottom transparent;
+	margin-top: -1px;
+	cursor: pointer;
+	background-position: 0 0;
+}
+a.btn-Search {
+	background: url("../images/rsv-img/reserveStepSrch.gif") no-repeat;
+	width: 160px;
+	height: 50px;
+	display: inline-block;
+	float: right;
+	margin-top: 20px;
+}
+
+/*객실 리스트 파트*/
+div.rsv-result-wrap {
+	width: 100%;
+}
+
+div.rsv-result-title {
+	width: 100%;
+	height: 50px;
+	background: white;
+	text-align: center;
+	margin: 25px 0;
+}
+div.rsv-result-title > span {
+	font-size: 20px;
+	font-weight: lighter;
+	line-height: 50px;
+	letter-spacing: 0.5em;
+}
+
+div.rsv-result-list-wrap {
+	width: 100%;
+}
+
+/*객실 리스트*/
+ul.rsv-result-list {
+	width: 100%;
+	background: pink;
+}
+ul.rsv-result-list > li {
+	height: 150px;
+	margin-top: 50px;
+	border-bottom: 1px solid #eceae1;
+	position: relative;
+}
+div.rsv-detail-left {
+	float: left;
+	width: 68%;
+}
+div.rsv-detail-img, div.rsv-detail-name {
+	float: left;
+}
+div.rsv-detail-img {
+	width: 25%;
+}
+div.rsv-detail-img > img {
+	width: 212px;
+	height: 118px;
+}
+
+div.rsv-detail-name {
+	width: 70%;
+	margin-left: 10px;
+}
+dl.rsv-name-list > dt {
+	font-size: 20px;
+	margin-bottom: 13px;
+}
+dl.rsv-name-list > dd {
+	margin-bottom: 5px;
+	font-size: 13px;
+}
+
+
+div.rsv-detail-right {
+	float: right;
+	width: 18%;
+}
+div.rsv-detail-price {
+	float: left;
+	text-align: right;
+}
+span.rsv-price-price {
+	font-size: 26px;
+	display: block;
+}
+div.rsv-detail-price > span:last-child {
+	font-size: 13px;
+}
+
+div.rsv-detail-btn {
+	float: right;
+}
+div.rsv-detail-right > div.rsv-detail-btn > a > span{
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+	oveflow: hidden;
+	background: url("../images/rsv-img/btnRsv.gif") no-repeat 0 0 transparent;
+}
+
+/*detail-btn 클릭시 나오는 tab-menu*/
+div.rsv-detail-tab {
+	clear: both;
+	position: absolute;
+	top: 150px;
+	left: 0;
+	width: 100%;
+	border: 1px solid #cdcbbe;
+}
+div.rsv-tab-list {
+	float: left;
+	width: 80%;
+}
+div.rsv-tab-list > ul {
+	width: 100%;
+	border-right: 1px dotted #ccc;
+}
+div.rsv-tab-list > ul > li {
+	position: relative;
+	height: 30px;
+	padding: 10px;
+	border-bottom: 1px dotted #ccc;
+}
+div.rsv-tab-list > ul > li > span {
+	line-height: 40px;
+}
+span.tab-list-left {
+	position: absolute;
+	top: 0;
+	left: 30px;
+}
+span.tab-list-price {
+	font-size: 18px;
+}
+span.tab-list-right {
+	position: absolute;
+	top: 0;
+	right: 30px;
+}
+
+
+div.rsv-tab-btn {
+	float: right;
+	width: 20%;
+	background: pink;
+	position: relative;
+}
+div.rsv-tab-btn > a {
+	width: 100%;
+	
+}
+div.rsv-tab-btn > a > span {
+	width: 100px;
+	height: 44px;
+	display: block;
+	margin: 0 auto;
+	vertical-align: middle;
+	background: url("../images/rsv-img/btnSel.gif") no-repeat 0 0 transparent;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
