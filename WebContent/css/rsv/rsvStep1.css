@@ -7,15 +7,14 @@ div.rsv-step-wrap {
 	background: url("../../images/rsv-img/resvStep1On.gif") no-repeat center;
 	padding: 65px 0 0 0;
 }
-div.rsv-date-wrap {
-	width: 100%;
-	height: 142px;
+div.rsv-date-top {
+	height: 82px;
 	background: #D1B2FF;
+	padding: 50px 80px;
 }
 div.rsv-date-inner {
-	width: 1150px;
 	margin: 0 auto;
-	padding: 35px 20px;
+	height: 800px;
 }
 div#rsv-hotel {
 	width: 225px;
@@ -23,7 +22,7 @@ div#rsv-hotel {
 }
 div.rsv-date {
 	float: left;
-	margin-right: 45px;
+	margin-right: 60px;
 }
 div.rsv-date > span.ck-title {
 	display: block;
@@ -80,7 +79,7 @@ span.right-side > span.rsv-button-plus {
 	background-position: 0 0;
 }
 a.btn-Search {
-	background: url("../images/rsv-img/reserveStepSrch.gif") no-repeat;
+	background: url("../../images/rsv-img/reserveStepSrch.gif") no-repeat;
 	width: 160px;
 	height: 50px;
 	display: inline-block;
@@ -89,14 +88,18 @@ a.btn-Search {
 }
 
 /*객실 리스트 파트*/
+div.rsv-date-bottom {
+	height: 380px;
+}
 div.rsv-result-wrap {
 	width: 100%;
+	clear: both;
 }
 
 div.rsv-result-title {
 	width: 100%;
 	height: 50px;
-	background: white;
+	background: lightgreen;
 	text-align: center;
 	margin: 25px 0;
 }
@@ -114,7 +117,6 @@ div.rsv-result-list-wrap {
 /*객실 리스트*/
 ul.rsv-result-list {
 	width: 100%;
-	background: pink;
 }
 ul.rsv-result-list > li {
 	height: 150px;
@@ -184,7 +186,7 @@ div.rsv-detail-tab {
 	position: absolute;
 	top: 150px;
 	left: 0;
-	width: 100%;
+	width: 99.9%;
 	border: 1px solid #cdcbbe;
 }
 div.rsv-tab-list {
@@ -192,17 +194,16 @@ div.rsv-tab-list {
 	width: 80%;
 }
 div.rsv-tab-list > ul {
-	width: 100%;
 	border-right: 1px dotted #ccc;
 }
 div.rsv-tab-list > ul > li {
 	position: relative;
 	height: 30px;
-	padding: 10px;
+	padding: 20px;
 	border-bottom: 1px dotted #ccc;
 }
 div.rsv-tab-list > ul > li > span {
-	line-height: 40px;
+	line-height: 70px;
 }
 span.tab-list-left {
 	position: absolute;
@@ -217,12 +218,16 @@ span.tab-list-right {
 	top: 0;
 	right: 30px;
 }
+span.tab-list-right > input.tab-room {
+	width: 18px;
+	height: 18px;
+	line-height: 70px;
+}
 
 
 div.rsv-tab-btn {
 	float: right;
 	width: 20%;
-	background: pink;
 	position: relative;
 }
 div.rsv-tab-btn > a {
@@ -233,8 +238,7 @@ div.rsv-tab-btn > a > span {
 	width: 100px;
 	height: 44px;
 	display: block;
-	margin: 0 auto;
-	vertical-align: middle;
+	margin: 11.5px auto 0;
 	background: url("../../images/rsv-img/btnSel.gif") no-repeat 0 0 transparent;
 }
 
