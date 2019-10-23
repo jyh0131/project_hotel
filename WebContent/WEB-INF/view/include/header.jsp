@@ -29,6 +29,9 @@
 					<li>
 						<a href="${pageContext.request.contextPath }/member/change.do">비밀번호 변경</a>
 					</li>
+					<li>
+						<a href="${pageContext.request.contextPath }/member/secession.do">탈퇴</a>
+					</li>
 					</c:if>
 					<c:if test="${Auth == null }">
 					<li>
