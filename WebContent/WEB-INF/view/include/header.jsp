@@ -9,7 +9,7 @@
 <title>PROJECT HOTEL</title>
 <link href="${pageContext.request.contextPath}/css/common.css" rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="js/common.js"></script>
+<script src="${pageContext.request.contextPath}/js/common.js"></script>
 </head>
 <body>
 	<div id="container">
@@ -28,6 +28,9 @@
 					</li>
 					<li>
 						<a href="${pageContext.request.contextPath }/member/change.do">비밀번호 변경</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath }/member/secession.do">탈퇴</a>
 					</li>
 					</c:if>
 					<c:if test="${Auth == null }">

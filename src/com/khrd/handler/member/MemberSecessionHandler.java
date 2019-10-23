@@ -1,7 +1,6 @@
 package com.khrd.handler.member;
 
 import java.sql.Connection;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,31 +11,31 @@ import com.khrd.dto.Member;
 import com.khrd.jdbc.ConnectionProvider;
 import com.khrd.jdbc.JDBCUtil;
 
-public class MemberChangePwdHandler implements CommandHandler {
+public class MemberSecessionHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if(request.getMethod().equalsIgnoreCase("get")) {
-			return "/WEB-INF/view/member/changePwdForm.jsp";
+			return "/WEB-INF/view/member/secessionForm.jsp";
 		}else if(request.getMethod().equalsIgnoreCase("post")) {
 			String id = request.getParameter("id");
-			String name = request.getParameter("name");
 			String password = request.getParameter("password");
-			String confirmPassword = request.getParameter("confirmPassword");
+			String dId = request.getParameter("did");
 			Connection conn = null;
-			try { 
+			try {
 				conn = ConnectionProvider.getConnection();
 				MemberDAO dao = MemberDAO.getInstance();
-				Member member = new Member(0, name, null, null, null, null,
-						null, null, null, id, confirmPassword, null, null, 0);
 				Member dbmember = dao.selectById(conn, id);
-				if(password.equals(dbmember.getmPwd())==true) {
-					int result = dao.update(conn, member);
+				if(id.equals(dId)==false) {
+					request.setAttribute("notIdMatch",true );
+					return "/WEB-INF/view/member/secessionForm.jsp";
+				}else if(password.equals(dbmember.getmPwd())==false) {
+					request.setAttribute("notPwdMatch",true );
+					return "/WEB-INF/view/member/secessionForm.jsp";
+				}else if(password.equals(dbmember.getmPwd())==true) {
+					int result = dao.delete(conn, dbmember.getmNo());
 					request.setAttribute("result", result);
-					return "/WEB-INF/view/member/changePwdSuccess.jsp";
-				}else {
-					request.setAttribute("notMatch",true );
-					return "/WEB-INF/view/member/changePwdForm.jsp";
+					return "/WEB-INF/view/member/secessionSuccess.jsp";
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
