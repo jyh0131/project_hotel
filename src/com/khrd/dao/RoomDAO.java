@@ -73,4 +73,45 @@ public class RoomDAO {
 		}
 		return -1;
 	}
+	
+	public int delete(Connection conn, int room_no) {
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "delete from room where room_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, room_no);
+			
+			return pstmt.executeUpdate(); 
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(pstmt);
+		}
+		return -1;
+	}
+	
+	public int update(Connection conn, Room room) {
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "update room set room_price=?, rc_no=?, vt_no=?, bt_no=?, rs_no=? where room_no=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, room.getRoomPrice());
+			pstmt.setInt(2, room.getRcNo());
+			pstmt.setInt(3, room.getVtNo());
+			pstmt.setInt(4, room.getBtNo());
+			pstmt.setInt(5, room.getRsNo());
+			pstmt.setInt(6, room.getRoomNo());
+			
+			return pstmt.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(pstmt);
+		}
+		return -1;
+	}
 }

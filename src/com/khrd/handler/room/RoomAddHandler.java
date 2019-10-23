@@ -14,12 +14,12 @@ import com.khrd.jdbc.JDBCUtil;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class RoomInsertHandler implements CommandHandler {
+public class RoomAddHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if(request.getMethod().equalsIgnoreCase("get")) {
-			return "/WEB-INF/view/room/r_addForm.jsp";
+			return "/WEB-INF/view/room/roomAddForm.jsp";
 		}else if(request.getMethod().equalsIgnoreCase("post")) {
 			
 			int rcNo = Integer.parseInt(request.getParameter("rc_no")); // 객실분류 : 스탠다드...
@@ -59,6 +59,7 @@ public class RoomInsertHandler implements CommandHandler {
 				Room room = new Room(roomNo, roomPrice, rcNo, vtNo, btNo, rsNo);
 				dao.insert(conn, room);
 				
+				request.setAttribute("room", room);
 				response.sendRedirect(request.getContextPath() + "/room/list.do");
 //				response.sendRedirect("index.jsp");
 				return null;
