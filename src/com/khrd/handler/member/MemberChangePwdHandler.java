@@ -24,7 +24,7 @@ public class MemberChangePwdHandler implements CommandHandler {
 			String password = request.getParameter("password");
 			String confirmPassword = request.getParameter("confirmPassword");
 			Connection conn = null;
-			try {
+			try { 
 				conn = ConnectionProvider.getConnection();
 				MemberDAO dao = MemberDAO.getInstance();
 				Member member = new Member(0, name, null, null, null, null,
