@@ -113,10 +113,16 @@ div.rsv-result-title > span {
 div.rsv-result-list-wrap {
 	width: 100%;
 }
+div.rsv-result-list-wrap > h2 {
+	text-align: center;
+	font-weight: normal;
+	margin-top: 50px;
+}
 
 /*객실 리스트*/
 ul.rsv-result-list {
 	width: 100%;
+	display: none;
 }
 ul.rsv-result-list > li {
 	height: 150px;
@@ -188,6 +194,7 @@ div.rsv-detail-tab {
 	left: 0;
 	width: 99.9%;
 	border: 1px solid #cdcbbe;
+	display: none;
 }
 div.rsv-tab-list {
 	float: left;

@@ -1,25 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
-<link href="${pageContext.request.contextPath}/css/rsv/rsvStep1.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<!-- <link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<link href="${pageContext.request.contextPath}/css/rsv/rsvStep1.css" rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
-<script>
-	$(function() {
-/* 	    $("#ckOut-info").datepicker({
-	      numberOfMonths: 2,
-	      showButtonPanel: true
-	    }); */
-	    
-	    $("#rsv-button-plus").click(function(){
-	    	$("")
-	    	
-	    });//인원 플러스 버튼 눌렀을 때
-	    
-	  });
-</script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="${pageContext.request.contextPath}/js/rsv/rsvStep1.js"></script>
 
 <!-- 예약 1단계 -->
 <div class="rsv-step-wrap">
@@ -51,7 +38,7 @@
 			</div>
 	
 			<div class="rsv-date">
-				<span class="ck-title">체크인</span>
+				<span class="ck-title">체크아웃</span>
 	
 				<div class="ck-date" id="ckOut-info">
 					<span class="left-side"> 
@@ -72,10 +59,10 @@
 					</span> 
 					<span class="right-side"> 
 						<span class="rsv-button-plus" id="adtAdd"> 
-							<!-- background로 버튼 넣기  -->
+							<!-- 성인 인원 증가 background로 버튼 넣기  -->
 						</span> 
 						<span class="rsv-button-minus" id="adtSub"> 
-							<!-- background로 버튼 넣기  -->
+							<!-- 성인 인원 감소 background로 버튼 넣기  -->
 						</span>
 					</span>
 				</div>
@@ -89,16 +76,17 @@
 					</span> 
 					<span class="right-side"> 
 						<span class="rsv-button-plus" id="chdAdd"> 
-							<!-- background로 버튼 넣기  -->
+							<!-- 어린이 인원 증가 background로 버튼 넣기  -->
 						</span> 
 						<span class="rsv-button-minus" id="chdSub"> 
-						<!-- background로 버튼 넣기  -->
+							<!-- 어린이 인원 감소 background로 버튼 넣기  -->
 						</span>
 					</span>
 				</div>
 			</div>
 	
-			<a href="#" class="btn-Search"> <!-- background로 버튼 넣기 -->
+			<a href="#" class="btn-Search"> 
+				<!-- 검색버튼 background -->
 			</a>
 		</div>
 		<!-- 날짜설정 영역 끝 -->
@@ -112,6 +100,7 @@
 					</div>
 					
 					<div class="rsv-result-list-wrap">
+						<h2>예약을 원하시는 날짜, 인원을 선택 후 검색 버튼을 눌러주세요.</h2>
 						<ul class="rsv-result-list"> <!-- 이 ul에 li가 추가되는 형식으로 -->
 							<li>
 								<div class="rsv-detail">
