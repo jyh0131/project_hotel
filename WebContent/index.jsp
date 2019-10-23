@@ -8,7 +8,7 @@
 </head>
 <body>
 	index.jsp
-	<a href="member/agree.do">[회원가입]</a>
-	<a href="member/login.do">[로그인]</a>
+	<a href="${pageContext.request.contextPath }/member/agree.do">[회원가입]</a>
+	<a href="${pageContext.request.contextPath }/member/login.do">[로그인]</a>
 </body>
 </html>

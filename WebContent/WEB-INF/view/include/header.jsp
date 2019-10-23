@@ -19,12 +19,25 @@
 					<h1>PROJECT HOTEL</h1>
 				</div>
 				<ul id="top-menu">
+					<c:if test="${Auth != null }">
+					<li>
+						<a href="#">${Auth }님</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath }/member/logout.do">로그아웃</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath }/member/change.do">비밀번호 변경</a>
+					</li>
+					</c:if>
+					<c:if test="${Auth == null }">
 					<li>
 						<a href="${pageContext.request.contextPath }/member/login.do">로그인</a>
 					</li>
 					<li>
 						<a href="${pageContext.request.contextPath }/member/agree.do">신라리워즈 가입</a>
 					</li>
+					</c:if>
 					<li>
 						<a href="#">예약확인</a>
 					</li>
