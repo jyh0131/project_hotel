@@ -7,14 +7,13 @@ public class Room {
 	private int vtNo; // 전망 타입 번호
 	private int btNo; // 침대 타입 번호
 	private int rsNo; // 객실 크기 번호
-	private int picNo; // 파일 번호
-	
+
 	public Room() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Room(int roomNo, int roomPrice, int rcNo, int vtNo, int btNo, int rsNo, int picNo) {
+	public Room(int roomNo, int roomPrice, int rcNo, int vtNo, int btNo, int rsNo) {
 		super();
 		this.roomNo = roomNo;
 		this.roomPrice = roomPrice;
@@ -22,7 +21,6 @@ public class Room {
 		this.vtNo = vtNo;
 		this.btNo = btNo;
 		this.rsNo = rsNo;
-		this.picNo = picNo;
 	}
 
 	public int getRoomNo() {
@@ -73,18 +71,10 @@ public class Room {
 		this.rsNo = rsNo;
 	}
 
-	public int getPicNo() {
-		return picNo;
-	}
-
-	public void setPicNo(int picNo) {
-		this.picNo = picNo;
-	}
-
 	@Override
 	public String toString() {
 		return "Room [roomNo=" + roomNo + ", roomPrice=" + roomPrice + ", rcNo=" + rcNo + ", vtNo=" + vtNo + ", btNo="
-				+ btNo + ", rsNo=" + rsNo + ", picNo=" + picNo + "]";
+				+ btNo + ", rsNo=" + rsNo + "]";
 	}
 	
 }// Room
