@@ -1,7 +1,6 @@
 package com.khrd.handler.member;
 
 import java.sql.Connection;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,42 +12,39 @@ import com.khrd.dto.Member;
 import com.khrd.jdbc.ConnectionProvider;
 import com.khrd.jdbc.JDBCUtil;
 
-public class MemberJoinHandler implements CommandHandler {
+public class MemberChangePwdHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if(request.getMethod().equalsIgnoreCase("get")) {
-			return "/WEB-INF/view/member/joinForm.jsp";
+			return "/WEB-INF/view/member/changePwdForm.jsp";
 		}else if(request.getMethod().equalsIgnoreCase("post")) {
-			String name = request.getParameter("name");
-			String date = request.getParameter("date");
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			Date regDate = sdf.parse(date);
-			String email = request.getParameter("email");
-			String phone = request.getParameter("phone");
-			String tel = request.getParameter("tel");
-			String zip = request.getParameter("zip");
-			String addr1 = request.getParameter("addr1");
-			String addr2 = request.getParameter("addr2");
 			String id = request.getParameter("id");
+			String name = request.getParameter("name");
 			String password = request.getParameter("password");
+			String confirmPassword = request.getParameter("confirmPassword");
 			Connection conn = null;
-			
 			try {
 				conn = ConnectionProvider.getConnection();
 				MemberDAO dao = MemberDAO.getInstance();
-				Member member = new Member(0, name, regDate, email, phone, tel,
-						zip, addr1, addr2, id, password, null, null, 0);
-				int result = dao.insert(conn, member);
-				request.setAttribute("result", result);
-				 return "/WEB-INF/view/member/joinResult.jsp";
+				Member member = new Member(0, name, null, null, null, null,
+						null, null, null, id, confirmPassword, null, null, 0);
+				Member dbmember = dao.selectById(conn, id);
+				if(password.equals(dbmember.getmPwd())==true) {
+					int result = dao.update(conn, member);
+					request.setAttribute("result", result);
+					return "/WEB-INF/view/member/changePwdSuccess.jsp";
+				}else {
+					request.setAttribute("notMatch",true );
+					return "/WEB-INF/view/member/changePwdForm.jsp";
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally {
 				JDBCUtil.close(conn);
 			}
-				
 		}
+		
 		return null;
 	}
 

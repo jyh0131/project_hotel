@@ -1,0 +1,160 @@
+@charset "UTF-8";
+
+div.rsv-step-wrap {
+	width: 100%;
+	height: 48px;
+	background: url("../../images/rsv-img/resvStep3On.gif") no-repeat center;
+	padding: 65px 0 0 0;	
+}
+div.rsv-spl-wrap {
+	width: 100%;
+}
+
+
+/*위쪽*/
+div.rsv-cpl-top {
+	border: 10px solid skyblue;
+	padding: 70px;
+}
+div.rsv-cpl-top span, div.rsv-cpl-top a {
+	float: right;
+}
+div.rsv-cpl-top > p {
+	font-size: 14px;
+	margin: 0 0 40px 0;
+}
+div.rsv-cpl-top > h1 {
+	font-weight: normal;
+	margin: 10px 0;
+}
+div.rsv-cpl-top > h1 > span > small {
+	font-size: 15px;
+}
+div.rsv-cpl-top > ul {
+	width: 100%;
+	overflow: hidden;
+}
+div.rsv-cpl-top > ul > li {
+	float: left;
+	width: 30%;
+}
+div.rsv-cpl-top > ul > li > label {
+	font-weight: bold;
+	float: left;
+	width: 60px;
+}
+div.rsv-cpl-top > ul > li > span {
+	float: none;
+	/*나중에 내용물 넣고 수정하고 싶으면 수정하기*/
+}
+
+
+/*아래쪽*/
+div.rsv-cpl-bottom {
+	width: 100%;
+	margin: 40px 0;
+}
+div.rsv-cpl-bottom span {
+	float: right;
+	font-size: 13px;
+}
+div.cpl-bottom-content-wrap {
+	overflow: hidden;
+	border: 1px solid grey;
+	padding: 40px;
+}
+div.cpl-bottom-content {
+	float: left;
+	width: 30%;
+	padding: 20px;
+	border-right: 1px solid grey;
+}
+div.cpl-bottom-content:nth-child(3) {
+	border: none;
+}
+div.cpl-bottom-content h3 {
+	text-align: right;
+}
+div.cpl-bottom-content > p {
+	font-weight: bold;
+	margin: 10px 0;
+}
+div.cpl-bottom-content > ul > li {
+	font-size: 14px;
+	padding: 5px 0;
+}
+div.cpl-bottom-content h3:last-child {
+	margin-top: 20px;
+}
+
+/*버튼*/
+div.btn-area {
+	width: 100%;
+	margin-bottom: 200px;
+}
+span.btnHome {
+	width: 140px;
+	height: 44px;
+	display: inline-block;
+	float: left;
+	cursor: pointer;
+	background: red;
+	color: white;
+}
+span.btnMod {
+	width: 140px;
+	height: 44px;
+	display: inline-block;
+	float: right;
+	background: red;
+	color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

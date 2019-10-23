@@ -101,7 +101,6 @@ ul#main-menu > li > a:before {
 	left: 5px;
 }
 
-/*서브메뉴 쫌따가 다시 하기*/
 ul.sub-nav {
 	display: none;
 	overflow: hidden;
@@ -111,6 +110,7 @@ ul.sub-nav {
 	position: absolute;
 	left: 0;
 	top: 52px;
+	z-index: 100000;
 }
 ul.sub-nav > li {
 	height: 40px;
@@ -120,6 +120,10 @@ ul.sub-nav > li > a {
 	font-size: 13px;
 	line-height: 40px;
 	color: white;
+	display: block;
+}
+ul.sub-nav > li > a:hover {
+	background: rgba(255,255,255,0.3);
 }
 
 /*예약 메뉴*/
