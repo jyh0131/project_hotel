@@ -1,16 +1,15 @@
-package com.khrd.handler.room;
+package com.khrd.handler.member;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.khrd.controller.CommandHandler;
 
-public class RoomUpdateHanlder implements CommandHandler {
+public class MemberMyPageHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		return null;
+		return "/WEB-INF/view/member/myPage.jsp";
 	}
 
 }

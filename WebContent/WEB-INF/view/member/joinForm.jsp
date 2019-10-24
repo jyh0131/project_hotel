@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
+<link href="${pageContext.request.contextPath}/css/member/memberCheck.css" type="text/css" rel="stylesheet">
+<script src="${pageContext.request.contextPath}/js/member/memberCheck.js"></script> 
 <section>
 	<form action="join.do" method="post">
 		<fieldset>
@@ -18,9 +20,9 @@
 			</p>
 			<p>
 				<label>*이메일</label>
-				<input type="text" name="email" id="check">
-				<span class="error">email(영어,숫자 6~15)를 입력하세요.</span>
-				<input type="button" id="btn" name="check" value="이메일중복확인">
+				<input type="text" name="email" id="echeck">
+				<span class="error">email(영어,숫자 xxxx@xxxxx.xxx)를 입력하세요.</span>
+				<input type="button" id="ebtn" name="echeck" value="이메일중복확인">
 				<span class="error">중복됩니다.</span>
 				<span class="error">사용할수있습니다.</span>
 			</p>
@@ -53,11 +55,11 @@
 			<p>
 				<label>*비밀번호</label>
 				<input type="password" name="password">
-				<span class="error">비밀번호(영어,숫자 8~20)를 입력하세요</span>
+				<span class="error">비밀번호(영어,숫자 6~20)를 입력하세요</span>
 			</p>
 			<p>
 				<label>*비밀번호확인</label>
-				<input type="password" name=" onfirmPassword">
+				<input type="password" name="confirmPassword">
 				<span class="error">비밀번호확인을 입력하세요</span>
 				<span class="error">비밀번호가 일치하지 않습니다.</span>
 			</p>

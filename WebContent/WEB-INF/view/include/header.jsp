@@ -27,10 +27,7 @@
 						<a href="${pageContext.request.contextPath }/member/logout.do">로그아웃</a>
 					</li>
 					<li>
-						<a href="${pageContext.request.contextPath }/member/change.do">비밀번호 변경</a>
-					</li>
-					<li>
-						<a href="${pageContext.request.contextPath }/member/secession.do">탈퇴</a>
+						<a href="${pageContext.request.contextPath }/member/mypage.do">마이페이지</a>
 					</li>
 					</c:if>
 					<c:if test="${Auth == null }">

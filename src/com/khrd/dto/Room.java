@@ -3,24 +3,25 @@ package com.khrd.dto;
 public class Room {
 	private int roomNo; // 객실 호수
 	private int roomPrice; // 객실 가격
-	private int rcNo; // 객실 분류 번호
-	private int vtNo; // 전망 타입 번호
-	private int btNo; // 침대 타입 번호
-	private int rsNo; // 객실 크기 번호
-
+	private RoomCategory roomCategory; // 객실 분류
+	private ViewType viewType; // 전망 타입
+	private BedType bedType; // 침대 타입
+	private RoomSize roomSize; // 객실 크기
+	
 	public Room() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Room(int roomNo, int roomPrice, int rcNo, int vtNo, int btNo, int rsNo) {
+	public Room(int roomNo, int roomPrice, RoomCategory roomCategory, ViewType viewType, BedType bedType,
+			RoomSize roomSize) {
 		super();
 		this.roomNo = roomNo;
 		this.roomPrice = roomPrice;
-		this.rcNo = rcNo;
-		this.vtNo = vtNo;
-		this.btNo = btNo;
-		this.rsNo = rsNo;
+		this.roomCategory = roomCategory;
+		this.viewType = viewType;
+		this.bedType = bedType;
+		this.roomSize = roomSize;
 	}
 
 	public int getRoomNo() {
@@ -39,42 +40,42 @@ public class Room {
 		this.roomPrice = roomPrice;
 	}
 
-	public int getRcNo() {
-		return rcNo;
+	public RoomCategory getRoomCategory() {
+		return roomCategory;
 	}
 
-	public void setRcNo(int rcNo) {
-		this.rcNo = rcNo;
+	public void setRoomCategory(RoomCategory roomCategory) {
+		this.roomCategory = roomCategory;
 	}
 
-	public int getVtNo() {
-		return vtNo;
+	public ViewType getViewType() {
+		return viewType;
 	}
 
-	public void setVtNo(int vtNo) {
-		this.vtNo = vtNo;
+	public void setViewType(ViewType viewType) {
+		this.viewType = viewType;
 	}
 
-	public int getBtNo() {
-		return btNo;
+	public BedType getBedType() {
+		return bedType;
 	}
 
-	public void setBtNo(int btNo) {
-		this.btNo = btNo;
+	public void setBedType(BedType bedType) {
+		this.bedType = bedType;
 	}
 
-	public int getRsNo() {
-		return rsNo;
+	public RoomSize getRoomSize() {
+		return roomSize;
 	}
 
-	public void setRsNo(int rsNo) {
-		this.rsNo = rsNo;
+	public void setRoomSize(RoomSize roomSize) {
+		this.roomSize = roomSize;
 	}
 
 	@Override
 	public String toString() {
-		return "Room [roomNo=" + roomNo + ", roomPrice=" + roomPrice + ", rcNo=" + rcNo + ", vtNo=" + vtNo + ", btNo="
-				+ btNo + ", rsNo=" + rsNo + "]";
+		return "Room [roomNo=" + roomNo + ", roomPrice=" + roomPrice + ", roomCategory=" + roomCategory + ", viewType="
+				+ viewType + ", bedType=" + bedType + ", roomSize=" + roomSize + "]";
 	}
-	
+
 }// Room
