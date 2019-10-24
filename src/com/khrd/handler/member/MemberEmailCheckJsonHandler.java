@@ -16,21 +16,20 @@ import com.khrd.dto.Member;
 import com.khrd.jdbc.ConnectionProvider;
 import com.khrd.jdbc.JDBCUtil;
 
-public class MemberCheckJsonHandler implements CommandHandler {
+public class MemberEmailCheckJsonHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if(request.getMethod().equalsIgnoreCase("get")) {
-			String userId = request.getParameter("check");
-			
+			String email = request.getParameter("echeck");
 			Connection conn = null;	
 			try {
 				conn = ConnectionProvider.getConnection();
 				MemberDAO dao = MemberDAO.getInstance();
-				Member member = dao.selectById(conn, userId);
-				
+				Member member = dao.selectByEmail(conn, email);
+
 				Map<String, Object> map = new HashMap<String, Object>();
-				
+
 				map.put("member", member);
 				if(member == null) {
 					map.put("result", "fail");

@@ -78,6 +78,41 @@ public class MemberDAO {
 		}
 		return null;
 	}
+	public Member selectByEmail(Connection conn, String email) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select * from member where m_mail = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				Member member = new Member(rs.getInt("m_no"),
+						rs.getString("m_name"),
+						rs.getDate("m_birth"),
+						rs.getString("m_mail"), 
+						rs.getString("m_phone"),
+						rs.getString("m_tel"),
+						rs.getString("m_zipcode"),
+						rs.getString("m_addr1"),
+						rs.getString("m_addr2"),
+						rs.getString("m_id"),
+						rs.getString("m_pwd"),
+						rs.getDate("m_regdate"),
+						rs.getDate("m_quitdate"),
+						rs.getInt("m_isAdmin"));
+					return member;  
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(pstmt);
+			JDBCUtil.close(rs);
+		}
+		return null;
+	}
 	public Member selectById(Connection conn, String id) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
