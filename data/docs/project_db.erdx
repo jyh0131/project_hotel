@@ -158,7 +158,7 @@
         <columns UUID="Column_du92IPGFEemdQ9oAyuk8fQ" logicalName="탈퇴일" physicalName="m_quitdate" dataType="DATE">
           <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_oW2mMPPHEemlfe-8G4TsnA"/>
         </columns>
-        <columns UUID="Column_OIrdwPGFEemdQ9oAyuk8fQ" logicalName="관리자여부" physicalName="m_isAdmin" comment="관리자:0&#xD;&#xA;일반회원:1&#xD;&#xA;디폴트:1" dataType="INT(1)" defaultValue="1">
+        <columns UUID="Column_OIrdwPGFEemdQ9oAyuk8fQ" logicalName="관리자여부" physicalName="m_isAdmin" comment="일반회원:0&#xD;&#xA;디폴트:0&#xD;&#xA;관리자:1&#xD;&#xA;" dataType="INT(1)" defaultValue="0">
           <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_oW3NQPPHEemlfe-8G4TsnA"/>
         </columns>
         <columnGroups xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_J37uhvAKEemabKU1RCR6CA" logicalName="회원정보 기본키" physicalName="PK_member" derivedPhysicalName="true" derivedLogicalName="true">
@@ -220,6 +220,7 @@
             <value xsi:type="e:ColumnReference" UUID="CReference_tQYo0_AVEemabKU1RCR6CA" group="FKCGroup_tQYo2fAVEemabKU1RCR6CA" parentColumn="Column_tQZ2_vAVEemabKU1RCR6CA"/>
           </memberships>
         </columns>
+        <columns UUID="Column_g9soUPYtEemt_KqaJQQsoQ" logicalName="예약 상태" physicalName="r_state" dataType="VARCHAR(10)" notNull="TRUE"/>
         <columnGroups xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_tQYo1PAVEemabKU1RCR6CA" logicalName="예약 기본키" physicalName="PK_reservation" derivedPhysicalName="true" derivedLogicalName="true">
           <physicalProperties xsi:type="mysql:IndexProperties" UUID="IProperties_tQYo1fAVEemabKU1RCR6CA"/>
           <primaryKeyConstraint UUID="PKConstraint_tQYo1vAVEemabKU1RCR6CA" logicalName="예약 기본키" physicalName="PK_reservation" derivedPhysicalName="true" derivedLogicalName="true"/>

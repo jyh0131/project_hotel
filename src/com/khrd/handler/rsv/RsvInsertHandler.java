@@ -14,6 +14,11 @@ public class RsvInsertHandler implements CommandHandler {
 			
 		} else if(request.getMethod().equalsIgnoreCase("post")) {
 			
+			String date = request.getParameter("rsvDate");
+			int adult = Integer.parseInt(request.getParameter("cntAdt"));
+			int child = Integer.parseInt(request.getParameter("cntChd"));
+			
+			
 			return "/WEB-INF/view/rsv/rsvStep2.jsp"; //예약2단계(옵션선택)
 		}
 		
