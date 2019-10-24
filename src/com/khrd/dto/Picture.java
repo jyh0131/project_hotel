@@ -3,7 +3,7 @@ package com.khrd.dto;
 public class Picture {
 	private int picNo; // 파일번호
 	private String picFile; // 파일명
-	private int gNo; // 분류번호
+	private GType gType; // 갤러리 타입 테이블
 	private int rcNo; // 객실분류 번호
 	
 	public Picture() {
@@ -11,11 +11,11 @@ public class Picture {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Picture(int picNo, String picFile, int gNo, int rcNo) {
+	public Picture(int picNo, String picFile, GType gType, int rcNo) {
 		super();
 		this.picNo = picNo;
 		this.picFile = picFile;
-		this.gNo = gNo;
+		this.gType = gType;
 		this.rcNo = rcNo;
 	}
 
@@ -35,12 +35,12 @@ public class Picture {
 		this.picFile = picFile;
 	}
 
-	public int getgNo() {
-		return gNo;
+	public GType getgType() {
+		return gType;
 	}
 
-	public void setgNo(int gNo) {
-		this.gNo = gNo;
+	public void setgType(GType gType) {
+		this.gType = gType;
 	}
 
 	public int getRcNo() {
@@ -53,7 +53,7 @@ public class Picture {
 
 	@Override
 	public String toString() {
-		return "Picture [picNo=" + picNo + ", picFile=" + picFile + ", gNo=" + gNo + ", rcNo=" + rcNo + "]";
+		return "Picture [picNo=" + picNo + ", picFile=" + picFile + ", gType=" + gType + ", rcNo=" + rcNo + "]";
 	}
 
 }// Picture

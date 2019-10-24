@@ -1,6 +1,5 @@
 package com.khrd.handler.room;
 
-import java.io.File;
 import java.sql.Connection;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,11 +7,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.khrd.controller.CommandHandler;
 import com.khrd.dao.RoomDAO;
+import com.khrd.dto.BedType;
 import com.khrd.dto.Room;
+import com.khrd.dto.RoomCategory;
+import com.khrd.dto.RoomSize;
+import com.khrd.dto.ViewType;
 import com.khrd.jdbc.ConnectionProvider;
 import com.khrd.jdbc.JDBCUtil;
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class RoomAddHandler implements CommandHandler {
 
@@ -56,7 +57,25 @@ public class RoomAddHandler implements CommandHandler {
 			try {
 				conn = ConnectionProvider.getConnection();
 				RoomDAO dao = RoomDAO.getInstance();
-				Room room = new Room(roomNo, roomPrice, rcNo, vtNo, btNo, rsNo);
+				
+//				RoomCategory rc = new RoomCategory();
+//				rc.setRcNo(rcNo);
+//				ViewType vt = new ViewType();
+//				vt.setVtNo(vtNo);
+//				BedType bt = new BedType();
+//				bt.setBtNo(btNo);
+//				RoomSize rSize = new RoomSize();
+//				rSize.setRsNo(rsNo);
+//				
+//				Room room = new Room(roomNo, roomPrice, rc, vt, bt, rSize);
+				
+				Room room = new Room(roomNo, 
+									 roomPrice, 
+									 new RoomCategory(rcNo, null),
+									 new ViewType(vtNo, null),
+									 new BedType(btNo, null),
+									 new RoomSize(rsNo, 0));
+				
 				dao.insert(conn, room);
 				
 				request.setAttribute("room", room);

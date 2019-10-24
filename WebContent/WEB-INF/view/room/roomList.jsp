@@ -65,10 +65,10 @@
 		<c:forEach var="room" items="${list }">
 			<tr>
 				<td>${room.roomNo }</td>
-				<td>${room.rcNo }</td>
-				<td>${room.vtNo }</td>
-				<td>${room.btNo }</td>
-				<td>${room.rsNo }</td>
+				<td>${room.roomCategory.rcName }</td>
+				<td>${room.viewType.vtName }</td>
+				<td>${room.bedType.btName }</td>
+				<td>${room.roomSize.rsName }</td>
 				<td>${room.roomPrice }</td>  
 				<td>
 					<a href="${pageContext.request.contextPath }/room/update.do?rNo=${room.roomNo}"  class="r_btn_update">수정</a>

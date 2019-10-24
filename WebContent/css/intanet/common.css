@@ -1,0 +1,174 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+li {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+}
+div#container {
+	width: 100%;
+}
+div#head {
+	width: 100%;
+	background: pink;
+	height: 90px;
+}
+
+/*header*/
+div#header {
+	width: 70%;
+	height: 100%;
+	background: skyblue;
+	margin: 0 auto;
+	position: relative;
+}
+div#logo-wrap {
+	width: 100%;
+	text-align: center;
+}
+ul#top-menu {
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+ul#top-menu > li {
+	float: left;
+	position: relative;
+}
+ul#top-menu > li > a {
+	font-size: 12px;
+	margin-right: 20px;
+	color: black;
+}
+ul#top-menu > li > a:before {
+	content: '';
+	width: 1px;
+	height: 10px;
+	background: black;
+	position: absolute;
+	top: 7px;
+	left: -10px;
+}
+
+/*nav*/
+div#gnb-nav {
+	width: 100%;
+	background: yellow;
+}
+div#nav-wrap {
+	width: 70%;
+	height: 52px;
+	margin: 0 auto;
+	position: relative;
+}
+ul#main-menu {
+	width: 70%;
+	height: 52px;
+	background: magenta;
+}
+ul#main-menu > li {
+	float: left;
+	width: 16.6%;
+	text-align: center;
+	position: relative;
+}
+/* ul#main-menu:hover > li > ul.sub-nav { 나중에 제이쿼리로 다시 처리하기
+	display: block;
+} */
+ul#main-menu > li > a {
+	display: block;
+	color: white;
+	font-size: 16.5px;
+	letter-spacing: 0.05em;
+	line-height: 52px;
+}
+ul#main-menu > li:first-child > a:before {
+	display: none;
+}
+ul#main-menu > li > a:before {
+	content: '';
+	width: 1px;
+	height: 15px;
+	background: white;
+	position: absolute;
+	top: 20px;
+	left: 5px;
+}
+
+ul.sub-nav {
+	display: none;
+	overflow: hidden;
+	width: 100%;
+	height: 320px;
+	background: blue;
+	position: absolute;
+	left: 0;
+	top: 52px;
+	z-index: 100000;
+}
+ul.sub-nav > li {
+	height: 40px;
+	background: blue;
+}
+ul.sub-nav > li > a {
+	font-size: 13px;
+	line-height: 40px;
+	color: white;
+	display: block;
+}
+ul.sub-nav > li > a:hover {
+	background: rgba(255,255,255,0.3);
+}
+
+/*예약 메뉴*/
+div#rsv-menu {
+	width: 200px;
+	height: 53px;
+	text-align: center;
+	position: absolute;
+	right: 0; 
+	top:0;	
+}
+div#rsv-menu > a {
+	width: 100%;
+	height: 100%;
+	display: block;
+	color: white;
+	line-height: 53px;
+	background: lightgreen;
+	font-size: 18px;
+	letter-spacing: 0.15em;
+}
+
+/*section*/
+div#section {
+	clear: both;
+	width: 100%;
+}
+div#section-wrap {
+	width: 70%;
+	margin: 0 auto;
+	background: orange;
+}
+
+
+/*footer*/
+div#footer {
+	width: 100%;
+	height: 150px;
+	background: green;
+}
+div#footer-wrap {
+	width: 70%;
+	height: 100%;
+	background: red;
+	margin: 0 auto;
+	text-align: center;
+}
+

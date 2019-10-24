@@ -10,7 +10,7 @@ import java.util.List;
 
 import com.khrd.dto.Member;
 import com.khrd.dto.Reservation;
-import com.khrd.dto.Room;
+import com.khrd.dto.Room2;
 import com.khrd.jdbc.JDBCUtil;
 
 public class RsvDAO {
@@ -66,7 +66,7 @@ public class RsvDAO {
 			while(rs.next()) {
 				Member m = memConstructor(rs);
 				
-				Room r = roomConstructor(rs);
+				Room2 r = roomConstructor(rs);
 				
 				Reservation rsv = new Reservation(rs.getInt("r_no"), 
 												m, //회원번호

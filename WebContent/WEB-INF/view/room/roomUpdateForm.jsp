@@ -9,17 +9,17 @@
 				<td>객실 이름</td>
 				<td>
 					<select name="rc_no">
-						<%-- <c:forEach>
-							<!-- 이걸 하나하나 if문으로 option해야하는건지..*********** -->
+						<%-- <c:forEach var="r" items="room">
+							<option></option>
 						</c:forEach> --%>
-						<option value=1>스탠다드</option>
-						<option value=2>디럭스</option>
-						<option value=3>테라스</option>
-						<option value=4>프리미어</option>
-						<option value=5>프리미어 테라스</option>
-						<option value=6>퍼시픽 디럭스</option>
-						<option value=7>로열 스위트</option>
-						<option value=8>프레지덴셜 스위트</option>
+						<option value=1 ${(room.roomCategory.rcName)=="스탠다드"?'selected="selected"':''}>스탠다드</option>
+						<option value=2 ${(room.roomCategory.rcName)=="디럭스"?'selected="selected"':''}>디럭스</option>
+						<option value=3 ${(room.roomCategory.rcName)=="테라스"?'selected="selected"':''}>테라스</option>
+						<option value=4 ${(room.roomCategory.rcName)=="프리미어"?'selected="selected"':''}>프리미어</option>
+						<option value=5 ${(room.roomCategory.rcName)=="프리미어 테라스"?'selected="selected"':''}>프리미어 테라스</option>
+						<option value=6 ${(room.roomCategory.rcName)=="퍼시픽 디럭스"?'selected="selected"':''}>퍼시픽 디럭스</option>
+						<option value=7 ${(room.roomCategory.rcName)=="로열 스위트"?'selected="selected"':''}>로열 스위트</option>
+						<option value=8 ${(room.roomCategory.rcName)=="프레지덴셜 스위트"?'selected="selected"':''}>프레지덴셜 스위트</option>
 					</select>
 				</td>
 			</tr>
@@ -30,38 +30,38 @@
 			<tr>
 				<td>전망 타입</td>
 				<td>
-					<input type="radio" name="vt_no" value=1 id="mountain"><label for="mountain">산</label>
-					<input type="radio" name="vt_no" value=2 id="ocean"><label for="ocean">바다</label>
-					<input type="radio" name="vt_no" value=3 id="garden"><label for="garden">정원</label>
+					<input type="radio" name="vt_no" value=1 id="mountain" ${(room.viewType.vtName)=="산"?'checked="checked"':''}><label for="mountain">산</label>
+					<input type="radio" name="vt_no" value=2 id="ocean" ${(room.viewType.vtName)=="바다"?'checked="checked"':''}><label for="ocean">바다</label>
+					<input type="radio" name="vt_no" value=3 id="garden" ${(room.viewType.vtName)=="정원"?'checked="checked"':''}><label for="garden">정원</label>
 				</td>
 			</tr>
 			<tr>
 				<td>침대 타입</td>
 				<td>
-					<label>더블</label><input type="radio" name="bed_no" value=1>
-					<label>트윈</label><input type="radio" name="bed_no" value=2>
-					<label>온돌</label><input type="radio" name="bed_no" value=3>
+					<input type="radio" name="bt_no" value=1 id="double" ${(room.bedType.btName)=="더블"?'checked="checked"':''}><label for="double">더블</label>
+					<input type="radio" name="bt_no" value=2 id="twin" ${(room.bedType.btName)=="트윈"?'checked="checked"':''}><label for="twin">트윈</label>
+					<input type="radio" name="bt_no" value=3 id="ondol" ${(room.bedType.btName)=="온돌"?'checked="checked"':''}><label for="ondol">온돌</label>
 				</td>
 			</tr>
 			<tr>
 				<td>객실 크기</td>
 				<td>
 					<select name="rs_no">
-						<option value=1>40</option>
-						<option value=2>46</option>
-						<option value=3>72</option>
-						<option value=4>158</option>
-						<option value=5>277</option>
+						<option value=1 ${(room.roomSize.rsName)=="40"?'selected="selected"':''}>40</option>
+						<option value=2 ${(room.roomSize.rsName)=="46"?'selected="selected"':''}>46</option>
+						<option value=3 ${(room.roomSize.rsName)=="72"?'selected="selected"':''}>72</option>
+						<option value=4 ${(room.roomSize.rsName)=="158"?'selected="selected"':''}>158</option>
+						<option value=5 ${(room.roomSize.rsName)=="277"?'selected="selected"':''}>277</option>
 					</select>
 				</td>
 			</tr>
 			<tr>
 				<td>호수</td>
-				<td><input type="text" name="room_no"></td>
+				<td><input type="text" name="room_no" value="${room.roomNo }"></td>
 			</tr>
 			<tr>
 				<td>가격</td>
-				<td><input type="text" name="room_price"></td>
+				<td><input type="text" name="room_price" value="${room.roomPrice }"></td>
 			</tr>
 			<!-- <tr>
 				<td>이미지</td>

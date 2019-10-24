@@ -25,7 +25,7 @@ public class PictureDAO {
 			String sql = "insert into picture values(null, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, picture.getPicFile()); // 파일명
-			pstmt.setInt(2, picture.getgNo()); // g_type no
+			pstmt.setInt(2, picture.getgType().getgNo()); // g_type no
 			pstmt.setInt(3, picture.getRcNo()); // room_category no
 			
 			return pstmt.executeUpdate();
