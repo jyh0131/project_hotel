@@ -52,8 +52,29 @@ public class RsvDAO {
 		return m;
 	}
 	
-	//selectList
-	public List<Reservation> selectList(Connection conn){
+	//Reservation 객체생성 메소드
+	private Reservation RsvConstructor(ResultSet rs) throws SQLException {
+		Member m = memConstructor(rs);
+		Room r = roomConstructor(rs);
+		
+		Reservation rsv = new Reservation(rs.getInt("r_no"), 
+										m, //회원번호
+										r, //방호수
+										rs.getTimestamp("r_in"), 
+										rs.getTimestamp("r_out"), 
+										rs.getInt("r_total_price"), 
+										rs.getString("r_request"), 
+										rs.getInt("r_personnel"), 
+										rs.getTimestamp("r_pay_date"), 
+										rs.getInt("op_no"),
+										rs.getString("r_state"));
+		return rsv;
+	}
+	
+/*----------------------------------------------------------------------------------------*/	
+	
+	//selectListAll -> 전체 예약 보기 (취소예약 포함)
+	public List<Reservation> selectListAll(Connection conn){
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
@@ -64,6 +85,9 @@ public class RsvDAO {
 			List<Reservation> list = new ArrayList<>();
 			
 			while(rs.next()) {
+<<<<<<< HEAD
+				Reservation rsv = RsvConstructor(rs);
+=======
 				Member m = memConstructor(rs);
 				
 				Room r = roomConstructor(rs);
@@ -78,6 +102,7 @@ public class RsvDAO {
 												rs.getInt("r_personnel"), 
 												rs.getTimestamp("r_pay_date"), 
 												rs.getInt("op_no"));
+>>>>>>> branch 'master' of https://github.com/jyh0131/project_hotel.git
 				list.add(rsv);
 			}
 			
@@ -94,16 +119,55 @@ public class RsvDAO {
 		return null;
 		
 	}/*/selectList*/
+
 	
-	//selectByRNo
+	//selectListByState -> 예약 상태에 따른 리스트 검색
+	public List<Reservation> selectListByState(Connection conn, String state){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select * from reservation where r_state=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, state);
+			rs = pstmt.executeQuery();
+			List<Reservation> list = new ArrayList<>();
+			
+			while(rs.next()) {
+				Reservation rsv = RsvConstructor(rs);
+				list.add(rsv);
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+		
+		return null;
+		
+	}/*/selectListByState*/
+	
+	
+	//selectByRNo -> 예약번호로 예약정보 한건 조회하기
 	public Reservation selectByRNo(Connection conn, int rNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
-			String sql = "";
+			String sql = "select * from reservation where r_no=?";
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,rNo);
+			rs = pstmt.executeQuery();
 			
+			if(rs.next()) {
+				Reservation rsv = RsvConstructor(rs);
+				return rsv;
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -117,13 +181,55 @@ public class RsvDAO {
 		
 	}/*/selectByRNo*/
 	
-	//insert
+	//selectEmptyRoomList -> 빈 방 찾기
+	public List<Room> selectEmptyRoomList(Connection conn){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select rm.room_no, rm.room_price, rm.rc_no, rm.vt_no, rm.bt_no, rm.rs_no "
+						+"from reservation rsv right join room rm on rsv.room_no=rm.room_no "
+						+"where rsv.r_in is null and rsv.r_out is null";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			List<Room> list = new ArrayList<>();
+			
+			while(rs.next()) {
+				Room r = roomConstructor(rs);
+				
+				list.add(r);
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+		
+		return null;
+		
+	}/*/selectEmptyRoomList*/
+	
+	
+	
+	
+	
+	
+	
+	
+	//insert -> 예약 추가
 	public int insert(Connection conn, Reservation rsv) {
 		PreparedStatement pstmt = null;
 		
 		try {
-			String sql = "insert into reservation values (0, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-			//insert into reservation values (r_no, m_no, room_no, r_in, r_out, r_total_price, r_request, r_personnel, r_pay_date, op_no);
+			String sql = "insert into reservation values (0, ?, ?, ?, ?, ?, ?, ?, now(), ?, ?)";
+			//insert into reservation values (r_no, m_no, room_no, r_in, r_out, r_total_price, r_request, r_personnel, r_pay_date, op_no, r_state);
+			//insert into reservation values (null, 1, 301, "2019-11-22", "2019-11-23", 1300000, null, 1, now(), 2, "결제완료");
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, rsv.getMember().getmNo());
 			pstmt.setInt(2, rsv.getRoom().getRoomNo());
@@ -132,8 +238,8 @@ public class RsvDAO {
 			pstmt.setInt(5, rsv.getrTotalPrice());
 			pstmt.setString(6, rsv.getrRequest());
 			pstmt.setInt(7, rsv.getrPersonnel());
-			pstmt.setTimestamp(8, new Timestamp(rsv.getrPayDate().getTime()));
-			pstmt.setInt(10, rsv.getOpNo());
+			pstmt.setInt(8, rsv.getOpNo());
+			pstmt.setString(9, rsv.getrState());
 			
 			return pstmt.executeUpdate();
 			
@@ -148,7 +254,37 @@ public class RsvDAO {
 		
 	}/*/insert*/
 	
-	//delete
+	//updateRState -> 예약 상태 변경(예약 논리 삭제)
+	public int updateRState(Connection conn, String rState, int rNo) {
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "update reservation set r_state=? where r_no=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, rState);
+			pstmt.setInt(2, rNo);
+			
+			return pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			JDBCUtil.close(pstmt);
+		}
+		
+		return -1;
+		
+	}/*/updateRState*/
+	
+	
+	
+	
+	
+	
+	
+	
+	//delete -> 예약 내역 완전 삭제(근데 안쓰는 방향으로)
 	public int delete(Connection conn, int rNo) {
 		PreparedStatement pstmt = null;
 		
