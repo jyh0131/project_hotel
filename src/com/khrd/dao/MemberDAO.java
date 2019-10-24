@@ -150,14 +150,33 @@ public class MemberDAO {
 		return null;
 		
 	}
-	public int update(Connection conn, Member member) {
+	public int PwdUpdate(Connection conn, Member member) {
 		PreparedStatement pstmt = null;
-		System.out.println(member);
 		try {
 			String sql = "update member set m_pwd=? where m_id =?";
 			pstmt = conn.prepareStatement(sql);			
 			pstmt.setString(1, member.getmPwd());
 			pstmt.setString(2, member.getmId());
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(pstmt);
+		}
+		return -1;
+	}
+	public int MemberUpdate(Connection conn, Member member) {
+		PreparedStatement pstmt = null;
+		try {
+			String sql = "update member set m_mail=?,m_phone=?,m_tel=?,m_zipcode=?,m_addr1=?,m_addr2=? where m_id =?";
+			pstmt = conn.prepareStatement(sql);			
+			pstmt.setString(1, member.getmMail());
+			pstmt.setString(2, member.getmPhone());
+			pstmt.setString(3, member.getmTel());
+			pstmt.setString(4, member.getmZipcode());
+			pstmt.setString(5, member.getmAddr1());
+			pstmt.setString(6, member.getmAddr2());
+			pstmt.setString(7, member.getmId());
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
