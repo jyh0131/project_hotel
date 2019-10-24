@@ -1,63 +1,91 @@
 
 (function(win, $){
 	$(function(){
-		$("#ckIn-info").click(function(){
- 	    	$(this).datepicker();	
- 	    }); 
-	    
+		
+		$(".datepicker-here").datepicker({
+			toggleSelected: false,
+			onSelect: function(formattedDate, date, inst){
+				
+				var dateArr = formattedDate.split("/");
+				
+				$("#ckIn-info .rsv-year").text(dateArr[2]);
+				$("#ckIn-info .rsv-month").text(dateArr[0]);
+				$("#ckIn-info .rsv-date").text(dateArr[1]);
+				
+				$("#ckOut-info .rsv-year").text(dateArr[5]);
+				$("#ckOut-info .rsv-month").text(dateArr[3]);
+				$("#ckOut-info .rsv-date").text(dateArr[4]);
+			}
+		});
+		
+		
+
 	    var cntAdt = parseInt($(".rsv-button-plus").eq(0).closest("div").find(".rsv-num").text() || 0);
 	    var cntCdl = parseInt($(".rsv-button-plus").eq(1).closest("div").find(".rsv-num").text() || 0);
 	    
-	    $(".rsv-button-plus").click(function(){
+	    //어른 추가
+	    $("#adtAdd").click(function(){
 			if((cntAdt+cntCdl) == 4){
 				alert("객실 1실 당 성인 3인까지, 성인+소인 4인까지만 투숙 가능합니다.");
+				$("#adtAdd").css("background-position", "0 -50px");
 	    		return;
 	    	} else if(cntAdt == 3) {
+	    		$("#adtAdd").css("background-position", "0 -50px");
 	    		alert("성인 3인 이상 예약 불가");
 	    		return;
 	    	}
-			
-	    	switch($(this).attr("id")) {
-	    		case "adtAdd":         
-	    			$("#adtAdd").closest("div").find(".rsv-num").text(++cntAdt);
-	    			break;
-	    		case "chdAdd":
-	    			$("#chdAdd").closest("div").find(".rsv-num").text(++cntCdl);
-	    			break;
-	    		}
+			$("#adtSub").css("background-position", "0 -25px");
+			$("#adtAdd").closest("div").find(".rsv-num").text(++cntAdt);
 	    	
-	    });//인원 플러스 버튼 눌렀을 때
+	    });
 	    
-	    $(".rsv-button-minus").click(function(){
-	    	if(cntCdl == 2) {
-	    		alert("아이 2명 이상 예약 불가");
-	    		return;
-	    	} else if ((cntAdt+cntCdl) == 4) {
-	    		alert("객실 1실 당 성인 3인까지, 성인+소인 4인까지만 투숙 가능합니다.");
-	    		return;
-	    	} else if (cntAdt == 1) {
+	    //어른 감소
+	    $("#adtSub").click(function(){
+			if(cntAdt == 1){
+				$("#adtSub").css("background-position", "0 bottom");
 	    		return;
 	    	}
+			$("#adtAdd").css("background-position", "0 0");
+			$("#adtSub").closest("div").find(".rsv-num").text(--cntAdt);
 	    	
-			switch($(this).attr("id")) {
-	    		case "adtSub":         
-	    			$("#adtSub").closest("div").find(".rsv-num").text(--cntAdt);
-	    			break;
-	    		case "chdSub":
-	    			$("#chdSub").closest("div").find(".rsv-num").text(--cntCdl);
-	    			break;
-	    	}
-	    	
-	    });//인원 플러스 버튼 눌렀을 때
+	    });
 	    
+	    //어린이 증가
+	    $("#chdAdd").click(function(){
+	    	if((cntAdt+cntCdl) == 4){
+				alert("객실 1실 당 성인 3인까지, 성인+소인 4인까지만 투숙 가능합니다.");
+	    		return;
+	    	}
+	    	$("#chdSub").css("background-position", "0 -25px");
+	    	$("#chdAdd").closest("div").find(".rsv-num").text(++cntCdl);
+	    	
+	    });
+	    
+	    //어린이 감소
+	    $("#chdSub").click(function(){
+			if(cntCdl == 0){
+				$("#chdSub").css("background-position", "0 bottom");
+	    		return;
+	    	}
+	    	$("#chdSub").closest("div").find(".rsv-num").text(--cntCdl);
+	    	
+	    });
+
+	    
+	    //검색 버튼 누르면 리스트 show
 	    $(".btn-Search").click(function(){
 	    	$(".rsv-result-list").show();
 	    	$("div.rsv-result-list-wrap > h2").hide();
-	    });//검색 버튼 누르면 리스트 show
+	    });
 	    
+	    //방보기 버튼
 	    $("div.rsv-detail-btn").click(function(){
 	    	$("div.rsv-detail-tab").show();
-	    });//방보기 버튼
+	    });
+	    
+	    
+	    
+	    
 	})
 })(window, jQuery);
    

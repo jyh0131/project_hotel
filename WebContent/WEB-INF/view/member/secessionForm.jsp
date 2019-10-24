@@ -11,7 +11,7 @@
     			아이디가 일치하지 않습니다.
     		</c:if>
     		<br>
-			 현재 암호	: <input type="password" name="password">
+			 암호	: <input type="password" name="password">
 			<c:if test="${notPwdMatch == true }">
     			현재 암호가 일치하지 않습니다.
     		</c:if>

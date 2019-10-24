@@ -78,6 +78,41 @@ public class MemberDAO {
 		}
 		return null;
 	}
+	public Member selectByEmail(Connection conn, String email) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select * from member where m_mail = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				Member member = new Member(rs.getInt("m_no"),
+						rs.getString("m_name"),
+						rs.getDate("m_birth"),
+						rs.getString("m_mail"), 
+						rs.getString("m_phone"),
+						rs.getString("m_tel"),
+						rs.getString("m_zipcode"),
+						rs.getString("m_addr1"),
+						rs.getString("m_addr2"),
+						rs.getString("m_id"),
+						rs.getString("m_pwd"),
+						rs.getDate("m_regdate"),
+						rs.getDate("m_quitdate"),
+						rs.getInt("m_isAdmin"));
+					return member;  
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(pstmt);
+			JDBCUtil.close(rs);
+		}
+		return null;
+	}
 	public Member selectById(Connection conn, String id) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -150,14 +185,33 @@ public class MemberDAO {
 		return null;
 		
 	}
-	public int update(Connection conn, Member member) {
+	public int PwdUpdate(Connection conn, Member member) {
 		PreparedStatement pstmt = null;
-		System.out.println(member);
 		try {
 			String sql = "update member set m_pwd=? where m_id =?";
 			pstmt = conn.prepareStatement(sql);			
 			pstmt.setString(1, member.getmPwd());
 			pstmt.setString(2, member.getmId());
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(pstmt);
+		}
+		return -1;
+	}
+	public int MemberUpdate(Connection conn, Member member) {
+		PreparedStatement pstmt = null;
+		try {
+			String sql = "update member set m_mail=?,m_phone=?,m_tel=?,m_zipcode=?,m_addr1=?,m_addr2=? where m_id =?";
+			pstmt = conn.prepareStatement(sql);			
+			pstmt.setString(1, member.getmMail());
+			pstmt.setString(2, member.getmPhone());
+			pstmt.setString(3, member.getmTel());
+			pstmt.setString(4, member.getmZipcode());
+			pstmt.setString(5, member.getmAddr1());
+			pstmt.setString(6, member.getmAddr2());
+			pstmt.setString(7, member.getmId());
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

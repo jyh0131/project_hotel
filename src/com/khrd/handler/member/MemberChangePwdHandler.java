@@ -31,7 +31,7 @@ public class MemberChangePwdHandler implements CommandHandler {
 						null, null, null, id, confirmPassword, null, null, 0);
 				Member dbmember = dao.selectById(conn, id);
 				if(password.equals(dbmember.getmPwd())==true) {
-					int result = dao.update(conn, member);
+					int result = dao.PwdUpdate(conn, member);
 					request.setAttribute("result", result);
 					return "/WEB-INF/view/member/changePwdSuccess.jsp";
 				}else {
