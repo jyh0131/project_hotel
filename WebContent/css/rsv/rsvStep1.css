@@ -11,6 +11,7 @@ div.rsv-date-top {
 	height: 82px;
 	background: #D1B2FF;
 	padding: 50px 80px;
+	
 }
 div.rsv-date-inner {
 	margin: 0 auto;
@@ -23,12 +24,33 @@ div#rsv-hotel {
 div.rsv-date {
 	float: left;
 	margin-right: 60px;
+	position: relative;
 }
+div.rsv-date > input.datepicker-here {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 280%;
+	height: 82px;
+	border: none;
+	background: #D1B2FF;
+	outline: none;
+	z-index: 1053529;
+	opacity: 0.0;
+	cursor: pointer;
+}
+
+
 div.rsv-date > span.ck-title {
 	display: block;
 	font-size: 13px;
 	color: #727272;
 	text-align: center;
+}
+
+
+div.ck-date {
+	cursor: pointer;
 }
 div.ck-date > span.left-side {
 	float: left;

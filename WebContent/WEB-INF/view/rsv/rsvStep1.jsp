@@ -2,12 +2,23 @@
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
+<link href="${pageContext.request.contextPath}/css/datepicker.min.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/css/rsv/rsvStep1.css" rel="stylesheet" type="text/css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="${pageContext.request.contextPath}/js/datepicker.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/datepicker.en.js"></script>
 <script src="${pageContext.request.contextPath}/js/rsv/rsvStep1.js"></script>
 
+<!--  <style>
+	#ckIn-info {
+		position: relative;
+	}
+	.datepicker-inline{
+		position: absolute;
+		top: 54px;
+		left: 0;
+	}
+	 
+</style> -->
 <!-- 예약 1단계 -->
 <div class="rsv-step-wrap">
 	<span> 
@@ -24,6 +35,8 @@
 			</div>
 	
 			<div class="rsv-date">
+				<input type="text" readonly="readonly" class="datepicker-here" data-position="bottom left" 
+				data-language="en" data-range="true" data-multiple-dates-separator="/" data-language="en"/>
 				<span class="ck-title">체크인</span>
 	
 				<div class="ck-date" id="ckIn-info">
