@@ -2,8 +2,9 @@
 (function(win, $){
 	$(function(){
 		
-		$(".datepicker-here").datepicker({
+/*		$(".datepicker-here").datepicker({
 			toggleSelected: false,
+			minDate: new Date(),
 			onSelect: function(formattedDate, date, inst){
 				
 				var dateArr = formattedDate.split("/");
@@ -16,7 +17,7 @@
 				$("#ckOut-info .rsv-month").val(dateArr[3]);
 				$("#ckOut-info .rsv-date").val(dateArr[4]);
 			}
-		});
+		});*/
 		
 		
 
@@ -67,133 +68,108 @@
 	    	}
 	    	$("#chdSub").closest("div").find(".rsv-num").val(--cntCdl);
 	    });
-
 	    
-	    //검색 버튼 누르면 리스트 show
+	    //검색 버튼 누르면 방 리스트 나오게
 	    $(".btn-Search").click(function(){
-			$.ajax({
-				url:"findRoom.do",
-				type:"get",
-				dataType:"json",
-				success:function(res){
-					console.log(res);
-					
-			    	$(".rsv-result-list").show();
-			    	$("div.rsv-result-list-wrap > h2").hide();
-			    	
-			    	$(res.list).each(function(i, obj){
-			    		var roomPrice = obj.roomPrice;
-			    		
-			    		//tree
-			    		$li = $("<li>");
-			    		
-			    		$divDetail = $("<div>").addClass("rsv-detail");
-			    		
-			    		$divLeft = $("<div>").addClass("rsv-detail-left");
-			    		$divImg = $("<div>").addClass("rsv-detail-img").append("<img src='${pageContext.request.contextPath}/images/rsv-img/test.jpg'");
-			    		$divName = $("<div>").addClass("rsv-detail-Name");
-			    		$dl = $("<dl>").addClass("rsv-name-list").append("<dt>Standard</dt>").append("<dd>크기: <span>40</span>㎡</dd>").append("<dd>전망: <span>산, 정원</span></dd>");
-			    	
-			    		$divName.append($dl);
-			    		$divLeft.append($divImg).append($divName);
-			    		
-			    		$divRight = $("<div>").addClass("rsv-detail-right");
-			    		$divPrice = $("<div>").addClass("rsv-detail-price").append("<span class='rsv-price-price'>"+roomPrice+"~</span>").append("<span>원/1박</span>");
-			    		$divBtn = $("<div>").addClass("rsv-detail-btn").append("<a href='#'><span></span></a>");
-			    	
-			    		$divRight.append($divPrice).append($divBtn);
-			    		
-			    		$divTab = $("<div>").addClass("rsv-detail-tab");
-			    		$divTabList = $("<div>").addClass("rsv-tab-list");
-			    		$tabUl = $("<ul>");
-			    		$tabLi = $("<li>");
-			    		$spanLeft = $("<span>").addClass("tab-list-left").append("<span class='tab-list-view'>Mountain</span>").append("<span class='tab-list-room-type'>Double</span>");
-			    		$spanRight = $("<span>").addClass("tab-list-right").append("<span><span class='tab-list-price'>280,000</span> 원~</span>").append("<input type='radio' class='tab-room' name='tab-room'>");
-			    		$divTabBtn = $("<div>").addClass("rsv-tab-btn").append("<a href='#'><input type='submit' value=''></a>");
+	    	$("h2").hide();
+	    	$("div.rsv-result-list-wrap").show();
+	    })
+	    
+	    
+	    //객실 사진 클릭하면 옵션 창 나오게 (위)
+	    $("ul.rsv-result-list-top > li > a").click(function(){
+	    	$("div#choice-bottom").removeClass("show");
+	    	var roomType = $(this).next().text();
+	    	$selView = $("<select>").attr("name", "viewType");
+	    	$selBed = $("<select>").attr("name", "bedType");
+	    	$("ul.result-sub-list").text("");
+	
+    		switch(roomType) {
+    		case "스탠다드":
+    			$selView.append("<option>산</option>").append("<option>정원</option>");
+    			$selBed.append("<option>더블</option>").append("<option>트윈</option>");
+    			
+    			break;
+    		case "디럭스":
+    			$selView.append("<option>산</option>").append("<option>바다</option>");
+    			$selBed.append("<option>더블</option>").append("<option>트윈</option>");
+    			
+    			break;
+    		case "테라스":
+    			$selView.append("<option>정원</option>");
+    			$selBed.append("<option>더블</option>").append("<option>트윈</option>").append("<option>온돌</option>");
+    			
+    			break;
+    		case "프리미어":
+    			$selView.append("<option>산</option>").append("<option>바다</option>");
+    			$selBed.append("<option>더블</option>").append("<option>트윈</option>");
+    			
+    			break;
 
-			    		$tabUl.append($tabLi).append($spanLeft).append($spanRight);
-			    		$divTabList.append($tabUl);
-			    		$divTab.append($divTabList).append($divTabBtn);
-			    		
-			    		$divDetail.append($divLeft).append($divRight).append($divTab);
-			    		$li.append($divDetail);
-			    		
-			    		$("ul.rsv-result-list").append($li);
-			    		
-			    		
-			    	})
-			    	
-			    	
-			    	
-/*			    <li>
-					<div class="rsv-detail">
-						<div class="rsv-detail-left">
-							<div class="rsv-detail-img">
-								<img src="${pageContext.request.contextPath}/images/rsv-img/test.jpg">
-							</div>
-									
-							<div class="rsv-detail-name">
-								<dl class="rsv-name-list">
-									<dt>Standard</dt>
-									<dd>크기: <span>40</span>㎡</dd>
-									<dd>전망: <span>산, 정원</span></dd>
-								</dl>
-							</div>
-						</div>
-								
-						<div class="rsv-detail-right">
-							<div class="rsv-detail-price">
-								<span class="rsv-price-price">280,000~</span>
-								<span>원/1박</span>
-							</div>
-									
-							<div class="rsv-detail-btn">
-								<a href="#">
-									<span>
-									<!-- background로 버튼 넣기 -->
-									</span>
-								</a>
-							</div>
-						</div>
-								
-						<div class="rsv-detail-tab">
-							<div class="rsv-tab-list">
-								<ul>
-									<li>
-										<span class="tab-list-left">
-											<span class="tab-list-view">Mountain</span> /
-											<span class="tab-list-room-type">Double</span>
-										</span>
-										<span class="tab-list-right">
-											<span><span class="tab-list-price">280,000</span> 원~</span>
-											<input type="radio" class="tab-room" name="tab-room">
-										</span>
-									</li>
-								</ul>
-							</div>
-									
-							<div class="rsv-tab-btn">
-								<a href="#">
-									<input type="submit" value="">
-										<!-- background로 버튼 넣기 -->
-								</a>
-							</div>
-						</div>
-					</div>
-				</li>*/
-			    	
-			    	
-				},
-				error:function(e){
-					console.log(e);
-				}
-			});
+    		default:
+    			$("div#choice-top").removeClass("show");
+    			break;
+    		}
+    		
+    		$liBtn = $("<li>").append("<input type='submit' value='예약'>");
+        	$liView = $("<li>").append("<label>전망</label>").append($selView);
+	    	$liBed = $("<li>").append("<label>침대 타입</label>").append($selBed);
+	    	
+	    	$("ul.result-sub-list").append($liView).append($liBed).append($liBtn);
+	    	$("div#choice-top").toggleClass("show");
 	    });
+	    
+	    //객실 사진 클릭하면 옵션 창 나오게 (아래)
+	    $("ul.rsv-result-list-bottom > li > a").click(function(){
+	    	$("div#choice-top").removeClass("show");
+	    	var roomType = $(this).next().text();
+	    	$selView = $("<select>").attr("name", "viewType");
+	    	$selBed = $("<select>").attr("name", "bedType");
+	    	$("ul.result-sub-list").text("");
+	    	
+	    	switch(roomType) {
+    		case "프리미어 테라스":
+       			$selView.append("<option>정원</option>");
+    			$selBed.append("<option>더블</option>");
+
+    			break;
+	    	case "퍼시픽 디럭스":
+	    		$selView.append("<option>바다</option>").append("<option>정원</option>");
+	    		$selBed.append("<option>더블</option>").append("<option>트윈</option>");
+	    		
+	    		break;
+	    	case "로열 스위트":
+	    		$selView.append("<option>바다</option>");
+	    		$selBed.append("<option>더블</option>");
+	    		
+	    		break;
+	    	case "프레지덴셜 스위트":
+	    		$selView.append("<option>바다</option>");
+	    		$selBed.append("<option>더블</option>");
+	    		
+	    		break;
+    		default:
+    			$("div#choice-bottom").removeClass("show");
+    			break;
+	    	}
+			$liBtn = $("<li>").append("<input type='submit' value='예약'>");
+	    	$liView = $("<li>").append("<label>전망</label>").append($selView);
+	    	$liBed = $("<li>").append("<label>침대 타입</label>").append($selBed);
+	    	
+	    	$("ul.result-sub-list").append($liView).append($liBed).append($liBtn);
+	    	$("div#choice-bottom").toggleClass("show");
+	    });
+	    
+	    
+	    
 	    
 	    //방보기 버튼
-	    $("div.rsv-detail-btn").click(function(){
+	    $(document).on("click", "div.rsv-detail-btn", function(){
 	    	$("div.rsv-detail-tab").show();
 	    });
+/*	    $("div.rsv-detail-btn").click(function(){
+	    	$("div.rsv-detail-tab").show();
+	    });*/
 	    
 
 	    

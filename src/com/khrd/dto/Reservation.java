@@ -13,14 +13,13 @@ public class Reservation {
 	private int rPersonnel; // 투숙인원
 	private Date rPayDate; // 결제날짜
 	private int opNo; // 옵션번호
-	private String rState; // 예약상태
 
 	public Reservation() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Reservation(int rNo, Member member, Room room, Date rIn, Date rOut, int rTotalPrice, String rRequest,
-			int rPersonnel, Date rPayDate, int opNo, String rState) {
+			int rPersonnel, Date rPayDate, int opNo) {
 		this.rNo = rNo;
 		this.member = member;
 		this.room = room;
@@ -31,7 +30,6 @@ public class Reservation {
 		this.rPersonnel = rPersonnel;
 		this.rPayDate = rPayDate;
 		this.opNo = opNo;
-		this.rState = rState;
 	}
 
 	public int getrNo() {
@@ -114,19 +112,11 @@ public class Reservation {
 		this.opNo = opNo;
 	}
 
-	public String getrState() {
-		return rState;
-	}
-
-	public void setrState(String rState) {
-		this.rState = rState;
-	}
-
 	@Override
 	public String toString() {
 		return "Reservation [rNo=" + rNo + ", member=" + member + ", room=" + room + ", rIn=" + rIn + ", rOut=" + rOut
 				+ ", rTotalPrice=" + rTotalPrice + ", rRequest=" + rRequest + ", rPersonnel=" + rPersonnel
-				+ ", rPayDate=" + rPayDate + ", opNo=" + opNo + ", rState=" + rState + "]";
+				+ ", rPayDate=" + rPayDate + ", opNo=" + opNo + "]";
 	}
 
 }// Reservation

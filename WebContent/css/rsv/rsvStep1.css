@@ -14,7 +14,6 @@ div.rsv-date-top {
 }
 div.rsv-date-inner {
 	margin: 0 auto;
-	height: 800px;
 }
 div#rsv-hotel {
 	width: 225px;
@@ -121,7 +120,6 @@ span.btn-Search {
 
 /*객실 리스트 파트*/
 div.rsv-date-bottom {
-	height: 380px;
 }
 div.rsv-result-wrap {
 	width: 100%;
@@ -144,149 +142,76 @@ div.rsv-result-title > span {
 
 div.rsv-result-list-wrap {
 	width: 100%;
-	display: block;
 }
-div.rsv-result-list-wrap > h2 {
+h2 {
 	text-align: center;
 	font-weight: normal;
-	margin-top: 50px;
+	padding: 50px 0;
 }
 
 /*객실 리스트*/
-ul.rsv-result-list {
-	width: 100%;
+div.rsv-result-list-wrap {
 	display: none;
 }
-ul.rsv-result-list > li {
-	height: 150px;
-	margin-top: 50px;
-	border-bottom: 1px solid #eceae1;
-	position: relative;
-}
-div.rsv-detail-left {
-	float: left;
-	width: 68%;
-}
-div.rsv-detail-img, div.rsv-detail-name {
-	float: left;
-}
-div.rsv-detail-img {
-	width: 25%;
-}
-div.rsv-detail-img > img {
-	width: 212px;
-	height: 118px;
-}
-
-div.rsv-detail-name {
-	width: 70%;
-	margin-left: 10px;
-}
-dl.rsv-name-list > dt {
-	font-size: 20px;
-	margin-bottom: 13px;
-}
-dl.rsv-name-list > dd {
-	margin-bottom: 5px;
-	font-size: 13px;
-}
-
-
-div.rsv-detail-right {
-	float: right;
-	width: 18%;
-}
-div.rsv-detail-price {
-	float: left;
-	text-align: right;
-}
-span.rsv-price-price {
-	font-size: 26px;
-	display: block;
-}
-div.rsv-detail-price > span:last-child {
-	font-size: 13px;
-}
-
-div.rsv-detail-btn {
-	float: right;
-}
-div.rsv-detail-right > div.rsv-detail-btn > a > span{
-	width: 100px;
-	height: 100px;
-	display: inline-block;
-	oveflow: hidden;
-	background: url("../../images/rsv-img/btnRsv.gif") no-repeat 0 0 transparent;
-}
-
-/*detail-btn 클릭시 나오는 tab-menu*/
-div.rsv-detail-tab {
-	clear: both;
-	position: absolute;
-	top: 150px;
-	left: 0;
-	width: 99.9%;
-	border: 1px solid #cdcbbe;
-	display: none;
-}
-div.rsv-tab-list {
-	float: left;
+div.rsv-result-list-wrap ul {
 	width: 80%;
+	margin: 50px auto;
+	overflow: hidden;
 }
-div.rsv-tab-list > ul {
-	border-right: 1px dotted #ccc;
+div.rsv-result-list-wrap > ul > li {
+	float: left;
+	width: 22%;
+	margin: 15px;
+	text-align: center;
+	font-size: 13px;
 }
-div.rsv-tab-list > ul > li {
-	position: relative;
-	height: 30px;
-	padding: 20px;
-	border-bottom: 1px dotted #ccc;
-}
-div.rsv-tab-list > ul > li > span {
-	line-height: 70px;
-}
-span.tab-list-left {
-	position: absolute;
-	top: 0;
-	left: 30px;
-}
-span.tab-list-price {
-	font-size: 18px;
-}
-span.tab-list-right {
-	position: absolute;
-	top: 0;
-	right: 30px;
-}
-span.tab-list-right > input.tab-room {
-	width: 18px;
-	height: 18px;
-	display: inline;
-	vertical-align: middle;
-}
-
-
-div.rsv-tab-btn {
-	float: right;
-	width: 20%;
-	position: relative;
-}
-div.rsv-tab-btn > a {
+div.rsv-result-list-wrap > ul > li > a > img {
 	width: 100%;
-	
-}
-div.rsv-tab-btn > a > input[type='submit'] {
-	width: 100px;
-	height: 44px;
+	height: 118px;
 	display: block;
-	margin: 11.5px auto 0;
-	background: url("../../images/rsv-img/btnSel.gif") no-repeat 0 0 transparent;
+	margin: 0 auto;
+	cursor: pointer;
 }
-
-
-
-
-
+div.option-choice-wrap {
+	width: 80%;
+	margin: 0 auto;
+	height: 150px;
+	background: lightgreen;
+	position: relative;
+	display: none;
+}
+div.show{
+	display: block;
+} 
+ul.result-sub-list {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+ul.result-sub-list > li {
+	vertical-align: middle;
+	height: 40px;
+	float: left;
+	width: 33%;
+}
+ul.result-sub-list > li > label {
+	float: left;
+	width: 90px;
+	font-size: 14px;
+	line-height: 40px;
+}
+ul.result-sub-list > li > select {
+	padding: 10px 20px 10px 10px;
+	outline: none;
+}
+input[type='submit'] {
+	width: 80px;
+	height: 80px;
+	background: skyblue;
+	border-radius: 80px;
+	color: navy;
+	box-shadow: 1px 2px 3px grey;
+}
 
 
 
