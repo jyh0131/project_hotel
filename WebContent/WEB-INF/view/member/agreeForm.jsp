@@ -10,10 +10,9 @@
 			 }
 		})
 	})   
- 
 </script>
 	<form action="agree.do" method="post">
-		<h2>약관동의</h2>
+		<h2>약관동의</h2><br>
 		<h3>호텔 이용약관에 대한 동의 (필수)</h3>
 		<div style="overflow: auto; width: 500px; height: 150px;">제1조
 			멤버십 규정 일반 1. 본 약관은 주식회사 호텔신라(이하 “회사”)의 호텔 멤버십 프로그램인 Shilla Rewards(이하
@@ -38,17 +37,26 @@
 			계정명세 등을 회원에게 통지할 수 있고, 우편에 의한 통지의 경우 그 분실 또는 전달의 지연에 대한 책임을 지지 않습니다.
 			12. 본 약관은 대한민국 법률이 적용되며, 멤버십 프로그램과 관련한 분쟁에 대한 소송은 서울중앙지방법원을 전속관할법원으로
 			합니다.</div>
-		<br> <input type="radio" name="agree" value="yes">동의함 <input
-			type="radio" name="agree" value="no" id="n">동의하지않음
+		<br><input type="radio" name="agree" value="yes">동의함 
+			<input type="radio" name="agree" value="no" id="n">동의하지않음
+			<br><br>
 
 		<h3>개인정보 수집, 이용에 대한 동의 (필수)</h3>
 		<div style="overflow: auto; width: 500px; height: 150px;">1. 수집
 			이용 항목 성명(국문·영문), 생년월일, 성별, 이메일, 휴대전화, 구매 및 예약내역, 투숙기간, 아이디, 비밀번호,
 			신라리워즈 번호 2. 수집 이용 목적 본인 식별, 신라리워즈 서비스 제공 및 민원처리 3. 보유 이용 기간 수집·시용
 			동의일로부터 회원 탈퇴 시 까지 ※위 사항에 대한 동의를 거부할 수 있으나, 이에 대한 동의가 없을 경우 신라리워즈 회원
+			가입 및 서비스 이용이 불가합니다.
+			이용 항목 성명(국문·영문), 생년월일, 성별, 이메일, 휴대전화, 구매 및 예약내역, 투숙기간, 아이디, 비밀번호,
+			신라리워즈 번호 2. 수집 이용 목적 본인 식별, 신라리워즈 서비스 제공 및 민원처리 3. 보유 이용 기간 수집·시용
+			동의일로부터 회원 탈퇴 시 까지 ※위 사항에 대한 동의를 거부할 수 있으나, 이에 대한 동의가 없을 경우 신라리워즈 회원
+			가입 및 서비스 이용이 불가합니다.
+			이용 항목 성명(국문·영문), 생년월일, 성별, 이메일, 휴대전화, 구매 및 예약내역, 투숙기간, 아이디, 비밀번호,
+			신라리워즈 번호 2. 수집 이용 목적 본인 식별, 신라리워즈 서비스 제공 및 민원처리 3. 보유 이용 기간 수집·시용
+			동의일로부터 회원 탈퇴 시 까지 ※위 사항에 대한 동의를 거부할 수 있으나, 이에 대한 동의가 없을 경우 신라리워즈 회원
 			가입 및 서비스 이용이 불가합니다.</div>
-		 <input type="radio" name="agree1" value="yes1">동의함 <input
-			type="radio" name="agree1" value="no1" id="n1">동의하지않음
+	   <br><input type="radio" name="agree1" value="yes1">동의함 
+		   <input type="radio" name="agree1" value="no1" id="n1">동의하지않음
 		
 		<br><br>
 		<input type="submit" value="다음"> <input type="reset" value="취소">

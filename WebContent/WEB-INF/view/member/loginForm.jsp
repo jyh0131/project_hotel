@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
 <link href="${pageContext.request.contextPath}/css/member/memberCheck.css" type="text/css" rel="stylesheet">
+
 <script>
 	$(function(){
 		$("form").submit(function(){
@@ -35,8 +36,9 @@
 							일치!	
 				</c:if>
 				<c:if test="${notMatch == true }">
-				----------잘못입력하셨습니다----------
+					<span class="error" style="display: inline">잘못입력하셨습니다</span>
 				</c:if>
+				
 			</p>
 			<p>
 				<input type="submit" value="로그인">

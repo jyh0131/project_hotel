@@ -21,21 +21,30 @@
 <section>
 	<form action="change.do" method="post">
 		<fieldset>
+			<legend>비밀번호 변경</legend>
 			<input type="hidden" name="id" value="${Auth }">
-			 현재 암호	: <input type="password" name="password">
-			 <span class="error">비밀번호(영어,숫자 6~20)를 입력하세요</span>
-			<c:if test="${notMatch == true }">
-    			현재 암호가 일치하지 않습니다.
-    		</c:if>
-			<br> 새 암호 : <input type="password" name="confirmPassword">
-			<br>
-			새 암호 확인 : <input type="password" name="confirmPassword2">
-				<span class="error">비밀번호확인을 입력하세요</span>
-				<span class="error">비밀번호가 일치하지 않습니다.</span>
-			<br>
-			<input type="submit" value="암호 변경">
+				<p>
+					<label>현재 암호</label>
+					<input type="password" name="password">
+			 		<span class="error">비밀번호(영어,숫자 6~20)를 입력하세요</span>
+					<c:if test="${notMatch == true }">
+		    			<span class="error" style="display: inline">현재 암호가 일치하지 않습니다.</span>
+		    		</c:if>
+		    	</p>
+		    	<p>
+		    		<label>새 암호</label>
+		    		<input type="password" name="confirmPassword">
+		    	</p>
+				<p>
+					<label>새 암호 확인</label>
+					<input type="password" name="confirmPassword2">
+					<span class="error">비밀번호확인을 입력하세요</span>
+					<span class="error">비밀번호가 일치하지 않습니다.</span>
+				</p>
+				<p>
+					<input type="submit" value="암호 변경">
+				</p>	
 		</fieldset>
 	</form>
-
 </section>
 <%@ include file="/WEB-INF/view/include/footer.jsp"%>

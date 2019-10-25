@@ -45,6 +45,10 @@
 				<input type="text" name="addr2">
 			</p>
 			<p>
+				<label>*신라리워즈번호</label>
+				<input type="text" placeholder="자동으로 생성됩니다." readonly="readonly">
+			</p>
+			<p>
 				<label>*아이디</label>
 				<input type="text" name="id" id="check">
 				<span class="error">ID(영어,숫자 6~15)를 입력하세요.</span>
@@ -64,7 +68,8 @@
 				<span class="error">비밀번호가 일치하지 않습니다.</span>
 			</p>
 			<p>			
-				<input type="submit" value="가입"><input type="reset" value="취소">
+				<input type="submit" value="*가입">
+				<input type="reset" value="취소">
 			</p>
 		</fieldset>
 	</form>
