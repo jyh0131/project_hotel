@@ -1,6 +1,3 @@
-/**
- * 
- */
 
 	$(function(){
 		$("#btn").click(function(){
