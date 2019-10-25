@@ -21,7 +21,7 @@
 				<ul id="top-menu">
 					<c:if test="${Auth != null }">
 					<li>
-						<a href="#">${Auth }님</a>
+						<a href="${pageContext.request.contextPath }">${Auth }님</a>
 					</li>
 					<li>
 						<a href="${pageContext.request.contextPath }/member/logout.do">로그아웃</a>

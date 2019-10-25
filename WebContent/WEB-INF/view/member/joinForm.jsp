@@ -40,7 +40,7 @@
 				<input type="text" name="zip">
 			</p>
 			<p>
-				<label>자택주소</label>
+				<label>자택주소(상세)</label>
 				<input type="text" name="addr1">
 				<input type="text" name="addr2">
 			</p>
