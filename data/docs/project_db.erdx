@@ -220,7 +220,6 @@
             <value xsi:type="e:ColumnReference" UUID="CReference_tQYo0_AVEemabKU1RCR6CA" group="FKCGroup_tQYo2fAVEemabKU1RCR6CA" parentColumn="Column_tQZ2_vAVEemabKU1RCR6CA"/>
           </memberships>
         </columns>
-        <columns UUID="Column_g9soUPYtEemt_KqaJQQsoQ" logicalName="예약 상태" physicalName="r_state" dataType="VARCHAR(10)" notNull="TRUE"/>
         <columnGroups xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_tQYo1PAVEemabKU1RCR6CA" logicalName="예약 기본키" physicalName="PK_reservation" derivedPhysicalName="true" derivedLogicalName="true">
           <physicalProperties xsi:type="mysql:IndexProperties" UUID="IProperties_tQYo1fAVEemabKU1RCR6CA"/>
           <primaryKeyConstraint UUID="PKConstraint_tQYo1vAVEemabKU1RCR6CA" logicalName="예약 기본키" physicalName="PK_reservation" derivedPhysicalName="true" derivedLogicalName="true"/>

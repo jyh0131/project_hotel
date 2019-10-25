@@ -303,8 +303,6 @@ public class RsvDAO {
 	
 	
 	
-	
-	
 	//delete -> 예약 내역 완전 삭제(근데 안쓰는 방향으로)
 	public int delete(Connection conn, int rNo) {
 		PreparedStatement pstmt = null;
