@@ -8,9 +8,13 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.khrd.dto.BedType;
 import com.khrd.dto.Member;
 import com.khrd.dto.Reservation;
 import com.khrd.dto.Room;
+import com.khrd.dto.RoomCategory;
+import com.khrd.dto.RoomSize;
+import com.khrd.dto.ViewType;
 import com.khrd.jdbc.JDBCUtil;
 
 public class RsvDAO {
@@ -23,15 +27,48 @@ public class RsvDAO {
 		return dao;
 	}
 
-	//Room 객체 생성 메소드
+	// RoomCategory 객체 생성 메소드
+	private RoomCategory rcConstructor(ResultSet rs) throws SQLException {
+		RoomCategory rc = new RoomCategory(rs.getInt("rc_no"), 
+										   rs.getString("rc_name"));
+		return rc;
+	}
+		
+	// ViewType 객체 생성 메소드
+	private ViewType vtConstructor(ResultSet rs) throws SQLException {
+		ViewType vt = new ViewType(rs.getInt("vt_no"), 
+								   rs.getString("vt_name"));
+		return vt;
+	}
+		
+	// BedType 객체 생성 메소드
+	private BedType btConstructor(ResultSet rs) throws SQLException {
+			BedType bt = new BedType(rs.getInt("bt_no"), 
+								 rs.getString("bt_name"));
+		return bt;
+	}	
+	
+	// RoomSize 객체 생성 메소드
+	private RoomSize rsConstructor(ResultSet rs) throws SQLException {
+		RoomSize rSize = new RoomSize(rs.getInt("rs_no"), 
+									  rs.getInt("rs_name"));
+		return rSize;
+	}	
+	
+	// Room 객체 생성 메소드
 	private Room roomConstructor(ResultSet rs) throws SQLException {
-		Room r = new Room(rs.getInt("room_no"), 
-						  rs.getInt("room_price"), 
-						  rs.getInt("rc_no"), 
-						  rs.getInt("vt_no"), 
-						  rs.getInt("bt_no"), 
-						  rs.getInt("rs_no"));
-		return r;
+		RoomCategory rc = rcConstructor(rs);
+		ViewType vt = vtConstructor(rs);
+		BedType bt = btConstructor(rs);
+		RoomSize rSize = rsConstructor(rs);
+		
+		Room room = new Room(rs.getInt("room_no"),
+							 rs.getInt("room_price"),
+							 rc, // RoomCategory
+							 vt, // ViewType
+							 bt, // BedType
+							 rSize); // RoomSize
+		return room;
 	}
 	//Member 객체 생성 메소드
 	private Member memConstructor(ResultSet rs) throws SQLException {
@@ -85,24 +122,8 @@ public class RsvDAO {
 			List<Reservation> list = new ArrayList<>();
 			
 			while(rs.next()) {
-<<<<<<< HEAD
 				Reservation rsv = RsvConstructor(rs);
-=======
-				Member m = memConstructor(rs);
 				
-				Room r = roomConstructor(rs);
-				
-				Reservation rsv = new Reservation(rs.getInt("r_no"), 
-												m, //회원번호
-												r, //방호수
-												rs.getTimestamp("r_in"), 
-												rs.getTimestamp("r_out"), 
-												rs.getInt("r_total_price"), 
-												rs.getString("r_request"), 
-												rs.getInt("r_personnel"), 
-												rs.getTimestamp("r_pay_date"), 
-												rs.getInt("op_no"));
->>>>>>> branch 'master' of https://github.com/jyh0131/project_hotel.git
 				list.add(rsv);
 			}
 			
