@@ -61,11 +61,11 @@ public class RoomDAO {
 		RoomSize rSize = rsConstructor(rs);
 		
 		Room room = new Room(rs.getInt("room_no"),
-					 rs.getInt("room_price"),
-					 rc, // RoomCategory
-					 vt, // ViewType
-					 bt, // BedType
-					 rSize); // RoomSize
+							 rs.getInt("room_price"),
+							 rc, // RoomCategory
+							 vt, // ViewType
+							 bt, // BedType
+							 rSize); // RoomSize
 		return room;
 	}
 	
@@ -124,7 +124,6 @@ public class RoomDAO {
 	}
 	
 	public int delete(Connection conn, int room_no) {
-		
 		PreparedStatement pstmt = null;
 		
 		try {

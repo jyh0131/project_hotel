@@ -3,20 +3,20 @@ package com.khrd.dto;
 public class Picture {
 	private int picNo; // 파일번호
 	private String picFile; // 파일명
-	private GType gType; // 갤러리 타입 테이블
-	private int rcNo; // 객실분류 번호
+	private GType gType; // 갤러리 타입
+	private RoomCategory roomCategory; // 객실분류 번호
 	
 	public Picture() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Picture(int picNo, String picFile, GType gType, int rcNo) {
+	public Picture(int picNo, String picFile, GType gType, RoomCategory roomCategory) {
 		super();
 		this.picNo = picNo;
 		this.picFile = picFile;
 		this.gType = gType;
-		this.rcNo = rcNo;
+		this.roomCategory = roomCategory;
 	}
 
 	public int getPicNo() {
@@ -43,17 +43,18 @@ public class Picture {
 		this.gType = gType;
 	}
 
-	public int getRcNo() {
-		return rcNo;
+	public RoomCategory getRoomCategory() {
+		return roomCategory;
 	}
 
-	public void setRcNo(int rcNo) {
-		this.rcNo = rcNo;
+	public void setRoomCategory(RoomCategory roomCategory) {
+		this.roomCategory = roomCategory;
 	}
 
 	@Override
 	public String toString() {
-		return "Picture [picNo=" + picNo + ", picFile=" + picFile + ", gType=" + gType + ", rcNo=" + rcNo + "]";
+		return "Picture [picNo=" + picNo + ", picFile=" + picFile + ", gType=" + gType + ", roomCategory="
+				+ roomCategory + "]";
 	}
 
 }// Picture

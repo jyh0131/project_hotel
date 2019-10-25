@@ -44,7 +44,6 @@
 		})//.r_btn_update
 	})
 </script>
-<!-- ********현재 숫자로 나오는데 해당 이름이 나오도록 해야함. 1 -> 스탠다드 이런식으로 나와야함. -->
 <style>
 	table, td{
 		border:1px solid black;
@@ -61,6 +60,7 @@
 			<td>객실 크기</td>
 			<td>가격</td>
 			<td></td>
+			<td></td>
 		</tr>
 		<c:forEach var="room" items="${list }">
 			<tr>
@@ -69,14 +69,21 @@
 				<td>${room.viewType.vtName }</td>
 				<td>${room.bedType.btName }</td>
 				<td>${room.roomSize.rsName }</td>
-				<td>${room.roomPrice }</td>  
+				<td>${room.roomPrice }</td>
+					<%-- <c:forEach var="pic" items="${picture }">
+						<img src="${pageContext.request.contextPath }/upload/${pic.picture.file }">
+						<td><p>${pic.picture.file }</p></td> 
+					</c:forEach> --%>
+				
 				<td>
-					<a href="${pageContext.request.contextPath }/room/update.do?rNo=${room.roomNo}"  class="r_btn_update">수정</a>
+					<a href="${pageContext.request.contextPath }/room/update.do?rNo=${room.roomNo}" class="r_btn_update">수정</a>
 					<button class="r_btn_delete" data-rNo="${room.roomNo }">삭제</button>
 				</td>			
 			</tr>
 		</c:forEach>
 	</table>
+	<a href="${pageContext.request.contextPath }/picture/list.do">사진관리하기</a>
+	<!-- <a href="${pageContext.request.contextPath }/picture/list.do?rNo=${room.roomNo}" class="picture_view">사진관리하기</a> -->
 </div>
 
 

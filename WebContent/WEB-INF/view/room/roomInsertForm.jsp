@@ -8,7 +8,7 @@
 	})
 </script>
 <div>
-	<form action="add.do" method="post" ><!-- enctype="mulitpart/form-data" -->
+	<form action="insert.do" method="post"><!-- enctype="mulitpart/form-data" -->
 		<table><!-- name 임시로 지정 -->
 			<tr>
 				<td>객실 이름</td>
@@ -67,7 +67,7 @@
 			</tr>
 			<!-- <tr>
 				<td>이미지</td>
-				<td><input type="file" name="file"></td>
+				<td><input type="file" name="pic_file"></td>
 			</tr> -->
 			<tr>
 				<td colspan="2">

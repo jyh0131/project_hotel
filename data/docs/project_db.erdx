@@ -89,12 +89,6 @@
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_9_MKIPPTEemvf_1tywZ0FQ" location="Point(994, 475)" table="Table_9_KU8PPTEemvf_1tywZ0FQ" theme="coffie"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_XPZqIPPUEemvf_1tywZ0FQ" location="Point(998, 610)" table="Table_XPX08PPUEemvf_1tywZ0FQ" theme="coffie"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_4mkDIPPUEemvf_1tywZ0FQ" location="Point(994, 725)" table="Table_4mhm4PPUEemvf_1tywZ0FQ" theme="coffie"/>
-      <diagramEntry xsi:type="e:Note" UUID="Note_0d7gMPPcEemlfe-8G4TsnA" location="Point(1350, 343)" text="DB에 입력 O&#xD;&#xA;자바에 클래스 생성X" backgroundColor="RGB {255, 255, 255}" baloonPoint="Point(99, 99)"/>
-      <diagramEntry xsi:type="e:Note" UUID="Note_0yYGMPPcEemlfe-8G4TsnA" location="Point(1349, 474)" text="DB에 입력 O&#xD;&#xA;자바에 클래스 생성X" backgroundColor="RGB {255, 255, 255}" baloonPoint="Point(99, 99)"/>
-      <diagramEntry xsi:type="e:Note" UUID="Note_1OFKwPPcEemlfe-8G4TsnA" location="Point(1351, 608)" text="DB에 입력 O&#xD;&#xA;자바에 클래스 생성X" backgroundColor="RGB {255, 255, 255}" baloonPoint="Point(99, 99)"/>
-      <diagramEntry xsi:type="e:Note" UUID="Note_1kzosPPcEemlfe-8G4TsnA" location="Point(1334, 725)" text="DB에 입력 O&#xD;&#xA;자바에 클래스 생성X" backgroundColor="RGB {255, 255, 255}" baloonPoint="Point(99, 99)"/>
-      <diagramEntry xsi:type="e:Note" UUID="Note__31XsPPcEemlfe-8G4TsnA" location="Point(411, 688)" text="DB에 입력 O&#xD;&#xA;자바에 클래스 생성X" backgroundColor="RGB {255, 255, 255}" baloonPoint="Point(99, 99)"/>
-      <diagramEntry xsi:type="e:Note" UUID="Note_xxCmsPPdEemlfe-8G4TsnA" location="Point(1336, 43)" text="DB에 입력 O&#xD;&#xA;자바에 클래스 생성X" backgroundColor="RGB {255, 255, 255}" baloonPoint="Point(99, 99)"/>
       <viewSettings showColumnHeader="true">
         <cellsToShow>name</cellsToShow>
         <cellsToShow>oppositeModeName</cellsToShow>
@@ -158,7 +152,7 @@
         <columns UUID="Column_du92IPGFEemdQ9oAyuk8fQ" logicalName="탈퇴일" physicalName="m_quitdate" dataType="DATE">
           <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_oW2mMPPHEemlfe-8G4TsnA"/>
         </columns>
-        <columns UUID="Column_OIrdwPGFEemdQ9oAyuk8fQ" logicalName="관리자여부" physicalName="m_isAdmin" comment="일반회원:0&#xD;&#xA;디폴트:0&#xD;&#xA;관리자:1&#xD;&#xA;" dataType="INT(1)" defaultValue="0">
+        <columns UUID="Column_OIrdwPGFEemdQ9oAyuk8fQ" logicalName="관리자여부" physicalName="m_isAdmin" comment="관리자:0&#xD;&#xA;일반회원:1&#xD;&#xA;디폴트:1" dataType="INT(1)" defaultValue="0">
           <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_oW3NQPPHEemlfe-8G4TsnA"/>
         </columns>
         <columnGroups xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_J37uhvAKEemabKU1RCR6CA" logicalName="회원정보 기본키" physicalName="PK_member" derivedPhysicalName="true" derivedLogicalName="true">
@@ -382,14 +376,11 @@
             <subpartitionAlgorithm UUID="PAlgorithm_27iBx_DAEemqrpvplCsJEw"/>
           </partition>
         </physicalProperties>
-        <columns UUID="Column_txuowPF9EemdQ9oAyuk8fQ" logicalName="파일번호" physicalName="pic_no" dataType="INT">
-          <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_0epzwfF9EemdQ9oAyuk8fQ" autoIncrement="true"/>
-          <memberships UUID="MEntry_3E75gPF9EemdQ9oAyuk8fQ" key="PKCGroup_2dk-kPF9EemdQ9oAyuk8fQ">
-            <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_3E75gfF9EemdQ9oAyuk8fQ" group="PKCGroup_2dk-kPF9EemdQ9oAyuk8fQ"/>
-          </memberships>
-        </columns>
         <columns UUID="Column_gqnPUPC-EemqrpvplCsJEw" logicalName="파일명" physicalName="pic_file" dataType="VARCHAR(50)" notNull="TRUE">
           <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_0epzwPF9EemdQ9oAyuk8fQ"/>
+          <memberships UUID="MEntry_F805kPcKEemwmKqvDTmnLw" key="PKCGroup_2dk-kPF9EemdQ9oAyuk8fQ">
+            <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_F805kfcKEemwmKqvDTmnLw" group="PKCGroup_2dk-kPF9EemdQ9oAyuk8fQ" entryIndex="1"/>
+          </memberships>
         </columns>
         <columns UUID="Column_ieN68vC-EemqrpvplCsJEw" logicalName="분류번호" physicalName="g_no" derivedPhysicalName="true" derivedLogicalName="true" dataType="INT" notNull="TRUE">
           <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_0epzwvF9EemdQ9oAyuk8fQ"/>
@@ -398,6 +389,7 @@
           </memberships>
         </columns>
         <columns UUID="Column_LAywoPTDEemBn4OsauZAlg" logicalName="객실 분류 번호" physicalName="rc_no" derivedPhysicalName="true" derivedLogicalName="true" dataType="INT">
+          <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_FiOoQPcKEemwmKqvDTmnLw"/>
           <memberships UUID="MEntry_LAywofTDEemBn4OsauZAlg" key="FKCGroup_LAxigPTDEemBn4OsauZAlg">
             <value xsi:type="e:ColumnReference" UUID="CReference_LAywovTDEemBn4OsauZAlg" group="FKCGroup_LAxigPTDEemBn4OsauZAlg" parentColumn="Column_ozqAgPPTEemvf_1tywZ0FQ"/>
           </memberships>
