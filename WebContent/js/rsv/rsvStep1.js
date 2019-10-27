@@ -2,7 +2,7 @@
 (function(win, $){
 	$(function(){
 		
-/*		$(".datepicker-here").datepicker({
+		$(".datepicker-here").datepicker({
 			toggleSelected: false,
 			minDate: new Date(),
 			onSelect: function(formattedDate, date, inst){
@@ -17,7 +17,7 @@
 				$("#ckOut-info .rsv-month").val(dateArr[3]);
 				$("#ckOut-info .rsv-date").val(dateArr[4]);
 			}
-		});*/
+		});
 		
 		
 
@@ -83,6 +83,8 @@
 	    	$selView = $("<select>").attr("name", "viewType");
 	    	$selBed = $("<select>").attr("name", "bedType");
 	    	$("ul.result-sub-list").text("");
+	    	$("span.available-room-amount").text("");
+	    	$("input[name='roomCate']").val(roomType);
 	
     		switch(roomType) {
     		case "스탠다드":
@@ -111,7 +113,7 @@
     			break;
     		}
     		
-    		$liBtn = $("<li>").append("<input type='submit' value='예약'>");
+    		$liBtn = $("<li>").append("<button type='button' class='roomCkBtn'>빈방체크</button>");
         	$liView = $("<li>").append("<label>전망</label>").append($selView);
 	    	$liBed = $("<li>").append("<label>침대 타입</label>").append($selBed);
 	    	
@@ -126,6 +128,8 @@
 	    	$selView = $("<select>").attr("name", "viewType");
 	    	$selBed = $("<select>").attr("name", "bedType");
 	    	$("ul.result-sub-list").text("");
+	      	$("span.available-room-amount").text("");
+	    	$("input[name='roomCate']").val(roomType);
 	    	
 	    	switch(roomType) {
     		case "프리미어 테라스":
@@ -152,7 +156,8 @@
     			$("div#choice-bottom").removeClass("show");
     			break;
 	    	}
-			$liBtn = $("<li>").append("<input type='submit' value='예약'>");
+	    	
+			$liBtn = $("<li>").append("<button type='button' class='roomCkBtn'>빈방체크</button>");
 	    	$liView = $("<li>").append("<label>전망</label>").append($selView);
 	    	$liBed = $("<li>").append("<label>침대 타입</label>").append($selBed);
 	    	
@@ -160,6 +165,31 @@
 	    	$("div#choice-bottom").toggleClass("show");
 	    });
 	    
+	    $(document).on("click", ".roomCkBtn", function(){
+	    	var btnObj = $(this);
+	    
+	    	$.ajax({
+	    		url: "findRoom.do",
+	    		type: "get",
+	    		data: {"rsvDate": $("input[name='rsvDate']").val(), 
+	    			   "roomCate": $("input[name='roomCate']").val(), 
+	    			   "viewType": $("select[name='viewType']").val(), 
+	    			   "bedType": $("select[name='bedType']").val()},
+	    		dataType: "json",
+	    		success: function(res){
+	    			console.log(res);
+	    			
+	    			if(res == null) {
+	    				var res_length = res.list.length;
+	    				$(btnObj).closest("ul.result-sub-list").next().find(".available-room-amount").text("예약 가능 객실 : " + res_length + "개");
+	    			} else {
+	    				var res_length = res.list.length;
+	    				$(btnObj).closest("ul.result-sub-list").next().find(".available-room-amount").text("예약 가능 객실 : " + res_length + "개");
+	    				$("input[name='roomNum']").val(res.list[0].roomNo);
+	    			}
+	    		}
+	    	});
+	    });
 	    
 	    
 	    
@@ -167,10 +197,6 @@
 	    $(document).on("click", "div.rsv-detail-btn", function(){
 	    	$("div.rsv-detail-tab").show();
 	    });
-/*	    $("div.rsv-detail-btn").click(function(){
-	    	$("div.rsv-detail-tab").show();
-	    });*/
-	    
 
 	    
 	    

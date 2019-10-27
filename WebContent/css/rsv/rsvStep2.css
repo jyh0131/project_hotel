@@ -10,6 +10,13 @@ div.rsv-step-wrap {
 div.rsv-op-content {
 	overflow: hidden;
 }
+input[readonly='readonly'] {
+	border: none;
+	background: none;
+	outline: none;
+	cursor: default;
+	text-align: right;
+}
 /*옵션 왼쪽*/
 div.rsv-op-left {
 	float: left;
@@ -46,46 +53,27 @@ div.op-choice-list > table td {
 	padding: 15px;
 }
 div.op-choice-list > table td:nth-child(1) {
-	width: 50%;
-	font-size: 18px;
-}
-div.op-choice-list > table td:nth-child(1) > span {
-	font-size: 14px;
+	width: 35%;
+	font-size: 17px;
 }
 div.op-choice-list > table td:nth-child(2) {
-	width: 9%;
+	width: 13%;
+	font-size: 14px;
 }
 div.op-choice-list > table td:nth-child(3) {
 	width: 9%;
 	text-align: center;
 }
 div.op-choice-list > table td:nth-child(3) > span {
-	font-size: 18px;
+	font-size: 17px;
 }
 div.op-choice-list > table td:nth-child(4) {
-	width: 15%;
-	text-align: center;
-}
-div.op-choice-list > table td:nth-child(5) {
 	width: 20%;
 	text-align: center;
 }
-div.op-choice-list > table td:nth-child(5) > span {
-	font-size: 19px;
-}
-span.op-btnPlus {
-	width: 34px;
+input.op-ck {
+	width: 20px;
 	height: 20px;
-	display: inline-block;
-	background: url("../../images/rsv-img/plus_ico2.gif") no-repeat center;
-	background-size: 17px;
-}
-span.op-btnMinus {
-	width: 34px;
-	height: 20px;
-	display: inline-block;
-	background: url("../../images/rsv-img/minus_ico2.gif") no-repeat center;
-	background-size: 17px;
 }
 
 /*요청사항*/
@@ -99,18 +87,7 @@ div.op-request-main > p {
 	line-height: 50px;	
 	font-size: 18px;
 	position: relative;
-	cursor: pointer;
 }
-div.op-request-main > p > span {
-	display: inline-block;
-	width: 13px;
-	height: 7px;
-	position: absolute;
-	top: 21.5px;
-	right: 15px;
-	background: url("../../images/rsv-img/icoArrow.gif") no-repeat 0 0;
-}
-
 div.op-request-sub {
 	width: 100%;
 	text-align: center;
@@ -129,9 +106,105 @@ div.op-request-sub > ul {
 	font-size: 14px;
 }
 
+/*정보입력*/
+div.rsv-input-info {
+	width: 100%;
+	overflow: hidden;
+}
+div.rsv-input-info span.required_field {
+	color: red;
+}
+div.input-info-title > p {
+	width: 100%;
+	height: 50px;
+	background: skyblue;
+	line-height: 50px;	
+	font-size: 18px;
+	position: relative;
+	cursor: pointer;
+	z-indx: 1;
+}
+div.input-info-title > p > span {
+	font-size: 14px;
+	font-weight: normal;
+	float: right;
+	margin-right: 10px;
+}
+
+div.input-info-content {
+	width: 100%;
+}
+div.input-info-content > table.ip-info-tb {
+	float: left;
+	width: 50%;
+	overflow: hidden;
+	margin: 10px 0;
+	font-size: 14px;
+	overflow: hidden;
+}
+td {
+	padding: 10px 0px 10px 7px;
+}
+table.ip-info-tb > tbody > tr:first-child > td > p {
+	font-weight: bold;
+}
+table.ip-info-tb > tbody > tr:first-child > td {
+	width: 100%;
+}
+table.ip-info-tb > tbody > tr > td:first-child {
+	width: 23%;
+}
+table.ip-info-tb input, table.ip-info-tb select {
+	float: left;
+	padding: 3px;
+	margin-right: 2px;
+	outline: #ccc;
+}
+input[name='nameKor'],input[name='mail']  {
+	width: 85%;
+}
+input[name='firstNameEng'] {
+	width: 50%;
+}
+input[name='lastNameEng'] {
+	width: 30%;
+}
+input[name='tel'] {
+	width: 50%;
+}
+input.cardNum {
+	width: 15%;
+}
+p.cau {
+	font-size: 12px;
+}
+
+/*예약 유의사항*/
+div.rsv-input-notice {
+	width: 90%;
+	padding: 30px 35px;
+	border: 5px solid green;
+	margin: 30px auto;
+}
+div.input-notice {
+	font-size: 13px;
+}
+div.input-notice > p:first-child {
+	font-weight: bold;
+	font-size: 15px;
+	margin-bottom: 20px;
+}
+div.input-notice > dl {
+	margin-bottom: 20px;
+}
+div.input-notice > p:last-child {
+	font-size: 12px;
+}
+
 /*유의사항*/
 div.rsv-notice {
 	width: 100%;
+	clear: both;
 }
 div.notice-main > p {
 	width: 100%;
@@ -140,7 +213,6 @@ div.notice-main > p {
 	line-height: 50px;	
 	font-size: 18px;
 	position: relative;
-	cursor: pointer;
 }
 div.notice-content {
 	width: 100%;
@@ -154,6 +226,7 @@ div.notice-content > img {
 div.btn-area {
 	width: 100%;
 	margin-bottom: 100px;
+	position: relative;
 }
 span.btnBack {
 	background: url("../../images/rsv-img/btnStep1.gif") no-repeat 0 0;
@@ -169,6 +242,19 @@ span.btnRsv {
 	height: 44px;
 	display: inline-block;
 	float: right;
+	cursor: pointer;
+}
+input[type='submit'] {
+	width: 140px;
+	height: 44px;
+	border: none;
+	outline: none;
+	display: inline-block;
+	background: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
 }
 
 
@@ -186,6 +272,9 @@ div.rsv-info {
 	width: 83%;
 	padding: 30px 25px;
 }
+div.rsv-info a.aReset {
+	cursor: pointer;
+}
 div.rsv-info > p {
 	font-size: 16px;
 	font-weight: 700;
@@ -198,25 +287,39 @@ div.rsv-info li {
 	width: 100%;
 	font-size: 14px;
 	padding: 5px 0;
+	overflow: hidden;
 }
-div.rsv-info span {
+div.rsv-info input {
 	float: right;
 	font-size: 13px;
+}
+div.rsv-info input.rm-info:nth-child(1) {
+	width: 65%;
+	text-align: center;
+}
+div.rsv-info input.rm-info:nth-child(2) {
+	width: 15%;
+	text-align: center;
+}
+div.rsv-info input.rm-info:nth-child(3) {
+	width: 15%;
+	text-align: center;
 }
 div.rsv-info li img {
 	width: 100%;
 }
-div.info-content, div.rsv-room-info {
+div.info-content, div.rsv-room-info, div.rsv-op-total {
 	border-bottom: 1px dotted #ccc;
 }
 ul.rsv-total-price {
 	border-top: 2px solid black;
 	margin-top: 5px;
 }
-ul.rsv-total-price > li, ul.rsv-total-price > li > span {
+ul.rsv-total-price > li, ul.rsv-total-price > li > input {
 	font-size: 18px;
 	font-weight: bold;
 }
+
 
 
 

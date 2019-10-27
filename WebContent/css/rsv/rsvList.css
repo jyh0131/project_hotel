@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+div.rsv-list-wrap {
+	width: 100%;
+	padding: 30px 0;
+}
+div.rsv-list > table {
+	width: 90%;
+	margin: 0 auto;
+	background: skyblue;
+	border-collapse: collapse;
+	text-align: center;
+}
+th, td {
+	padding: 10px;
+	border-top: 1px solid #FFE08C;
+	border-bottom: 1px solid #FFE08C;
+}

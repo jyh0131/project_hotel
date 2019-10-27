@@ -10,7 +10,7 @@ div.rsv-step-wrap {
 div.rsv-date-top {
 	height: 82px;
 	background: #D1B2FF;
-	padding: 50px 80px;
+	padding: 50px 20px;
 }
 div.rsv-date-inner {
 	margin: 0 auto;
@@ -20,7 +20,7 @@ div#rsv-hotel {
 	text-align: center;
 }
 div.rsv-date {
-	width: 130px;
+	width: 19%;
 	float: left;
 	position: relative;
 }
@@ -49,7 +49,7 @@ div.ck-date {
 }
 div.ck-date > span.left-side {
 	float: left;
-	width: 45px;
+	width: 50%;
 	color: #555;
 	margin: 4px 0 0 0;
 }
@@ -81,11 +81,11 @@ input.rsv-num {
 }
 div.rsv-person > span.left-side {
 	float: left;
-	width: 45px;
+	width: 50%;
 }
 div.rsv-person > span.right-side {
 	float: right;
-	width: 34px;
+	width: 50%;
 	margin: 4px 0 0;
 }
 span.right-side > span.rsv-button-minus {
@@ -108,14 +108,19 @@ span.right-side > span.rsv-button-plus {
 	cursor: pointer;
 	background-position: 0 0;
 }
-span.btn-Search {
-	background: url("../../images/rsv-img/reserveStepSrch.gif") no-repeat;
-	width: 160px;
-	height: 50px;
-	display: inline-block;
-	float: right;
-	margin-top: 20px;
+div.rsv-date:last-child{
+	text-align: right;
+}
+button.btn-Search {
+	width: 80px;
+	height: 80px;
+	border: none;
+	background: skyblue;
+	border-radius: 80px;
+	color: navy;
+	box-shadow: 1px 2px 3px grey;
 	cursor: pointer;
+	outline: none;
 }
 
 /*객실 리스트 파트*/
@@ -155,13 +160,13 @@ div.rsv-result-list-wrap {
 }
 div.rsv-result-list-wrap ul {
 	width: 80%;
-	margin: 50px auto;
+	margin: 50px auto 30px;
 	overflow: hidden;
 }
 div.rsv-result-list-wrap > ul > li {
 	float: left;
 	width: 22%;
-	margin: 15px;
+	margin: 10px;
 	text-align: center;
 	font-size: 13px;
 }
@@ -175,6 +180,7 @@ div.rsv-result-list-wrap > ul > li > a > img {
 div.option-choice-wrap {
 	width: 80%;
 	margin: 0 auto;
+	padding: 10px 0 20px;
 	height: 150px;
 	background: lightgreen;
 	position: relative;
@@ -185,7 +191,6 @@ div.show{
 } 
 ul.result-sub-list {
 	width: 100%;
-	height: 100%;
 	overflow: hidden;
 }
 ul.result-sub-list > li {
@@ -193,6 +198,7 @@ ul.result-sub-list > li {
 	height: 40px;
 	float: left;
 	width: 33%;
+	text-align: center;
 }
 ul.result-sub-list > li > label {
 	float: left;
@@ -204,13 +210,34 @@ ul.result-sub-list > li > select {
 	padding: 10px 20px 10px 10px;
 	outline: none;
 }
+button.roomCkBtn {
+	width: 60px;
+	height: 100%;
+	background: red;
+	color: navy;
+	box-shadow: 1px 2px 3px grey;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+div.available-result {
+	text-align: right;
+	overflow: hidden;
+	margin: 50px;
+}
+span.available-room-amount {
+	font-size: 12px;
+	color: #666;
+}
 input[type='submit'] {
-	width: 80px;
-	height: 80px;
+	width: 60px;
+	height: 60px;
 	background: skyblue;
 	border-radius: 80px;
 	color: navy;
 	box-shadow: 1px 2px 3px grey;
+	cursor: pointer;
+	display: inline;
 }
 
 

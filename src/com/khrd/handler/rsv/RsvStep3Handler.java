@@ -5,12 +5,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.khrd.controller.CommandHandler;
 
-public class RsvListHandler implements CommandHandler {
+public class RsvStep3Handler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		return null;
+		return "/WEB-INF/view/rsv/rsvStep3.jsp";
 	}//process
 
-}//RsvListHandler
+}//RsvStep3Handler

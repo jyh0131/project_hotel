@@ -39,7 +39,7 @@
 					</li>
 					</c:if>
 					<li>
-						<a href="#">예약확인</a>
+						<a href="${pageContext.request.contextPath}/rsv/rsvListMember.do">예약확인</a>
 					</li>
 				</ul>	
 			</div>
@@ -166,7 +166,7 @@
 					</ul>
 					
 					<div id="rsv-menu">
-						<a href="#">예약</a>
+						<a href="${pageContext.request.contextPath}/rsv/rsvStep1.do">예약</a>
 					</div>
 				</div>
 			</div>
