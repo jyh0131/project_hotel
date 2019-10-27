@@ -9,7 +9,6 @@
 <script src="${pageContext.request.contextPath}/js/rsv/rsvStep1.js"></script>
 
 
-<!-- 예약 1단계 -->
 <div class="rsv-step-wrap">
 	<span> 
 		<!-- background로 step 넣기 -->
@@ -20,11 +19,6 @@
 	<div class="rsv-date-wrap">
 		<div class="rsv-date-inner">
 			<div class="rsv-date-top">
-				<div class="rsv-date" id="rsv-hotel">
-					<span class="ck-title">호텔</span>
-					<div>호호호호호텔</div>
-				</div>
-		
 				<div class="rsv-date">
 					<input type="text" name="rsvDate" readonly="readonly" class="datepicker-here" data-position="bottom left" 
 					data-language="en" data-range="true" data-multiple-dates-separator="/" data-language="en"/>
@@ -59,7 +53,7 @@
 					<span class="ck-title">성인</span>
 					<div class="rsv-person">
 						<span class="left-side"> 
-							<input type="text" value="1" readonly="readonly" class="rsv-num">
+							<input type="text" value="1" readonly="readonly" class="rsv-num" name="adtNum">
 						</span> 
 						<span class="right-side"> 
 							<span class="rsv-button-plus" id="adtAdd"> 
@@ -76,7 +70,7 @@
 					<span class="ck-title">어린이</span>
 					<div class="rsv-person">
 						<span class="left-side"> 
-							<input type="text" value="1" readonly="readonly" class="rsv-num">
+							<input type="text" value="0" readonly="readonly" class="rsv-num" name="chdNum">
 						</span> 
 						<span class="right-side"> 
 							<span class="rsv-button-plus" id="chdAdd"> 
@@ -89,9 +83,9 @@
 					</div>
 				</div>
 		
-				<span href="#" class="btn-Search"> 
-					<!-- 검색버튼 background -->
-				</span>
+				<div class="rsv-date">
+					<button class="btn-Search" type="button">검색</button>
+				</div>
 			</div>
 			<!-- 날짜설정 영역 끝 -->
 			
@@ -101,13 +95,89 @@
 					<div class="rsv-result">
 						<div class="rsv-result-title">
 							<span>ROOM LIST</span>
+							
 						</div>
 						
+						<h2>예약을 원하시는 호텔, 날짜, 인원을 선택 후 검색 버튼을 눌러주세요.</h2>
+						
 						<div class="rsv-result-list-wrap">
-							<h2>예약을 원하시는 날짜, 인원을 선택 후 검색 버튼을 눌러주세요.</h2>
-							<ul class="rsv-result-list"> <!-- 이 ul에 li가 추가되는 형식으로 -->
-								
-							</ul>			
+							<h2>원하시는 방과 옵션을 선택해주세요.</h2>
+							<input type="hidden" name="roomCate">
+							<input type="hidden" name="roomNum">
+							<ul class="rsv-result-list-top">
+								<li>
+									<a>
+										<img src="images/rsv-img/test.jpg">
+									</a>
+									<span>스탠다드</span>
+								</li>
+		
+								<li>
+									<a>
+										<img src="images/rsv-img/test.jpg">
+									</a>
+									<span>디럭스</span>
+								</li>
+								<li>
+									<a>
+										<img src="images/rsv-img/test.jpg">
+									</a>
+									<span>테라스</span>
+								</li>
+								<li>
+									<a>
+										<img src="images/rsv-img/test.jpg">
+									</a>
+									<span>프리미어</span>
+								</li>
+							</ul>
+							
+							<div class="option-choice-wrap" id="choice-top">
+								<ul class="result-sub-list">
+
+								</ul>
+								<div class="available-result">
+									<span class='available-room-amount'></span>
+									<input type='submit' value='예약'>
+								</div>
+							</div>
+							
+							<ul class="rsv-result-list-bottom">
+								<li>
+									<a>
+										<img src="images/rsv-img/test.jpg">
+									</a>
+									<span>프리미어 테라스</span>
+								</li>
+								<li>
+									<a>
+										<img src="images/rsv-img/test.jpg">
+									</a>
+									<span>퍼시픽 디럭스</span>
+								</li>
+								<li>
+									<a>
+										<img src="images/rsv-img/test.jpg">
+									</a>
+									<span>로열 스위트</span>
+								</li>
+								<li>
+									<a>
+										<img src="images/rsv-img/test.jpg">
+									</a>
+									<span>프레지덴셜 스위트</span>
+								</li>
+							</ul>		
+							
+							<div class="option-choice-wrap" id="choice-bottom">
+								<ul class="result-sub-list">
+
+								</ul>
+								<div class="available-result">
+									<span class='available-room-amount'></span>
+									<input type='submit' value='예약'>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

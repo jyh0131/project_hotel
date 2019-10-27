@@ -166,7 +166,7 @@
 					</ul>
 					
 					<div id="rsv-menu">
-						<a href="#">예약</a>
+						<a href="${pageContext.request.contextPath}/rsv/rsvStep1.do">예약</a>
 					</div>
 				</div>
 			</div>

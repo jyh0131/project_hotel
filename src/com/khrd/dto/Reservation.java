@@ -8,26 +8,32 @@ public class Reservation {
 	private Room room; // 방 호수
 	private Date rIn; // 체크인 날짜
 	private Date rOut; // 체크아웃 날짜
+	private int rStay; // 숙박일수
 	private int rTotalPrice; // 최종금액
 	private String rRequest; // 요청사항
-	private int rPersonnel; // 투숙인원
+	private int rPsnAdt; // 투숙인원(성인)
+	private int rPsnCdr; // 투숙인원(어린이)
 	private Date rPayDate; // 결제날짜
 	private int opNo; // 옵션번호
 
 	public Reservation() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reservation(int rNo, Member member, Room room, Date rIn, Date rOut, int rTotalPrice, String rRequest,
-			int rPersonnel, Date rPayDate, int opNo) {
+	public Reservation(int rNo, Member member, Room room, Date rIn, Date rOut, int rStay, int rTotalPrice,
+			String rRequest, int rPsnAdt, int rPsnCdr, Date rPayDate, int opNo) {
+		super();
 		this.rNo = rNo;
 		this.member = member;
 		this.room = room;
 		this.rIn = rIn;
 		this.rOut = rOut;
+		this.rStay = rStay;
 		this.rTotalPrice = rTotalPrice;
 		this.rRequest = rRequest;
-		this.rPersonnel = rPersonnel;
+		this.rPsnAdt = rPsnAdt;
+		this.rPsnCdr = rPsnCdr;
 		this.rPayDate = rPayDate;
 		this.opNo = opNo;
 	}
@@ -72,6 +78,14 @@ public class Reservation {
 		this.rOut = rOut;
 	}
 
+	public int getrStay() {
+		return rStay;
+	}
+
+	public void setrStay(int rStay) {
+		this.rStay = rStay;
+	}
+
 	public int getrTotalPrice() {
 		return rTotalPrice;
 	}
@@ -88,12 +102,20 @@ public class Reservation {
 		this.rRequest = rRequest;
 	}
 
-	public int getrPersonnel() {
-		return rPersonnel;
+	public int getrPsnAdt() {
+		return rPsnAdt;
 	}
 
-	public void setrPersonnel(int rPersonnel) {
-		this.rPersonnel = rPersonnel;
+	public void setrPsnAdt(int rPsnAdt) {
+		this.rPsnAdt = rPsnAdt;
+	}
+
+	public int getrPsnCdr() {
+		return rPsnCdr;
+	}
+
+	public void setrPsnCdr(int rPsnCdr) {
+		this.rPsnCdr = rPsnCdr;
 	}
 
 	public Date getrPayDate() {
@@ -115,8 +137,8 @@ public class Reservation {
 	@Override
 	public String toString() {
 		return "Reservation [rNo=" + rNo + ", member=" + member + ", room=" + room + ", rIn=" + rIn + ", rOut=" + rOut
-				+ ", rTotalPrice=" + rTotalPrice + ", rRequest=" + rRequest + ", rPersonnel=" + rPersonnel
-				+ ", rPayDate=" + rPayDate + ", opNo=" + opNo + "]";
+				+ ", rStay=" + rStay + ", rTotalPrice=" + rTotalPrice + ", rRequest=" + rRequest + ", rPsnAdt="
+				+ rPsnAdt + ", rPsnCdr=" + rPsnCdr + ", rPayDate=" + rPayDate + ", opNo=" + opNo + "]";
 	}
 
 }// Reservation
