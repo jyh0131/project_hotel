@@ -1,14 +1,11 @@
 <?xml version="1.1" encoding="UTF-8"?>
-<e:Document xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:e="http://exerd.tomato.com/model" xmlns:mysql="http://exerd.tomato.com/mysql/model" UUID="Document_CFTKkPAIEemabKU1RCR6CA" activeBusinessArea="BArea_CFTKn_AIEemabKU1RCR6CA" activeSchema="Schema_CFTKovAIEemabKU1RCR6CA" version="2.5.1.20180515-1801" productId="com.tomato.db.mysql" openedDiagrams="Diagram_CFTKoPAIEemabKU1RCR6CA">
+<e:Document xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:e="http://exerd.tomato.com/model" xmlns:mysql="http://exerd.tomato.com/mysql/model" UUID="Document_CFTKkPAIEemabKU1RCR6CA" activeBusinessArea="BArea_CFTKn_AIEemabKU1RCR6CA" activeSchema="Schema_CFTKovAIEemabKU1RCR6CA" version="3.1.0.20190218-1817" modelVersion="3.0.0.20190111-1604" productId="com.tomato.db.mysql" openedDiagrams="Diagram_CFTKoPAIEemabKU1RCR6CA">
   <relationManager>
     <relation key="FKCGroup_tQYo1_AVEemabKU1RCR6CA">
       <value foreignKeyColumnGroup="FKCGroup_tQYo1_AVEemabKU1RCR6CA"/>
     </relation>
     <relation key="FKCGroup_tQZ29_AVEemabKU1RCR6CA">
       <value foreignKeyColumnGroup="FKCGroup_tQZ29_AVEemabKU1RCR6CA"/>
-    </relation>
-    <relation key="FKCGroup_tQYo2fAVEemabKU1RCR6CA">
-      <value foreignKeyColumnGroup="FKCGroup_tQYo2fAVEemabKU1RCR6CA"/>
     </relation>
     <relation key="FKCGroup_cwsz8PC9EemqrpvplCsJEw">
       <value foreignKeyColumnGroup="FKCGroup_cwsz8PC9EemqrpvplCsJEw"/>
@@ -79,9 +76,9 @@
   <businessAreas UUID="BArea_CFTKn_AIEemabKU1RCR6CA" logicalName="기본 업무영역" physicalName="DEFAULT_AREA" tables="Table_J3x9jfAKEemabKU1RCR6CA Table_wGebQ_AMEemabKU1RCR6CA Table_tQXatPAVEemabKU1RCR6CA Table_tQYo2_AVEemabKU1RCR6CA Table_tQZP6vAVEemabKU1RCR6CA Table_tQZ2-fAVEemabKU1RCR6CA Table_CNjP8PC-EemqrpvplCsJEw Table_f0rs4PC-EemqrpvplCsJEw Table_HxwF0PPTEemvf_1tywZ0FQ Table_9_KU8PPTEemvf_1tywZ0FQ Table_XPX08PPUEemvf_1tywZ0FQ Table_4mhm4PPUEemvf_1tywZ0FQ">
     <diagrams UUID="Diagram_CFTKoPAIEemabKU1RCR6CA" logicalName="다이어그램" physicalName="diagram">
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_J3x9hvAKEemabKU1RCR6CA" location="Point(52, 39)" table="Table_J3x9jfAKEemabKU1RCR6CA" theme="nightSky"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_tQU-cPAVEemabKU1RCR6CA" location="Point(549, 375)" table="Table_tQXatPAVEemabKU1RCR6CA" theme="nightSky"/>
+      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_tQU-cPAVEemabKU1RCR6CA" location="Point(530, 321)" table="Table_tQXatPAVEemabKU1RCR6CA" theme="nightSky"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_tQU-cfAVEemabKU1RCR6CA" location="Point(538, 54)" table="Table_tQYo2_AVEemabKU1RCR6CA" theme="nightSky"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_tQU-cvAVEemabKU1RCR6CA" location="Point(64, 505)" table="Table_tQZP6vAVEemabKU1RCR6CA" theme="nightSky"/>
+      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_tQU-cvAVEemabKU1RCR6CA" location="Point(-12, 524)" table="Table_tQZP6vAVEemabKU1RCR6CA" theme="nightSky"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_tQU-c_AVEemabKU1RCR6CA" location="Point(546, 684)" table="Table_tQZ2-fAVEemabKU1RCR6CA" theme="nightSky"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_CNjP8fC-EemqrpvplCsJEw" location="Point(1008, 42)" table="Table_CNjP8PC-EemqrpvplCsJEw"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_f0rs4fC-EemqrpvplCsJEw" location="Point(1008, 166)" table="Table_f0rs4PC-EemqrpvplCsJEw"/>
@@ -201,28 +198,23 @@
         <columns UUID="Column_tQYBzfAVEemabKU1RCR6CA" logicalName="체크아웃" physicalName="r_out" dataType="DATE" notNull="TRUE">
           <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_tQYBzvAVEemabKU1RCR6CA"/>
         </columns>
+        <columns UUID="Column_T3LScPioEemynqbRacjw-w" logicalName="숙박일수" physicalName="r_stay" dataType="INT" notNull="TRUE"/>
         <columns UUID="Column_tQYB0fAVEemabKU1RCR6CA" logicalName="최종금액" physicalName="r_total_price" dataType="INT(11)" notNull="TRUE">
           <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_tQYB0vAVEemabKU1RCR6CA"/>
         </columns>
         <columns UUID="Column_tQYB0_AVEemabKU1RCR6CA" logicalName="요청사항" physicalName="r_request" dataType="TEXT">
           <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_tQYB1PAVEemabKU1RCR6CA"/>
         </columns>
-        <columns UUID="Column_tQYB1fAVEemabKU1RCR6CA" logicalName="투숙인원" physicalName="r_personnel" dataType="INT(11)" notNull="FALSE"/>
+        <columns UUID="Column_QI5p4fioEemynqbRacjw-w" logicalName="투숙인원(성인)" physicalName="r_psnAdt" dataType="INT(1)" defaultValue="1" notNull="TRUE"/>
+        <columns UUID="Column_QI5p4PioEemynqbRacjw-w" logicalName="투숙인원(어린이)" physicalName="r_psnCdr" dataType="INT(1)" defaultValue="0"/>
         <columns UUID="Column_tQYo0PAVEemabKU1RCR6CA" logicalName="결제날짜" physicalName="r_pay_date" dataType="DATETIME"/>
-        <columns UUID="Column_tQYo0fAVEemabKU1RCR6CA" logicalName="옵션 번호" physicalName="op_no" derivedPhysicalName="true" derivedLogicalName="true" dataType="INT" notNull="TRUE">
-          <memberships UUID="MEntry_tQYo0vAVEemabKU1RCR6CA" key="FKCGroup_tQYo2fAVEemabKU1RCR6CA">
-            <value xsi:type="e:ColumnReference" UUID="CReference_tQYo0_AVEemabKU1RCR6CA" group="FKCGroup_tQYo2fAVEemabKU1RCR6CA" parentColumn="Column_tQZ2_vAVEemabKU1RCR6CA"/>
-          </memberships>
-        </columns>
+        <columns UUID="Column_tQYo0fAVEemabKU1RCR6CA" logicalName="옵션 번호" physicalName="op_no" derivedPhysicalName="true" derivedLogicalName="true" dataType="INT" notNull="FALSE"/>
         <columnGroups xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_tQYo1PAVEemabKU1RCR6CA" logicalName="예약 기본키" physicalName="PK_reservation" derivedPhysicalName="true" derivedLogicalName="true">
           <physicalProperties xsi:type="mysql:IndexProperties" UUID="IProperties_tQYo1fAVEemabKU1RCR6CA"/>
           <primaryKeyConstraint UUID="PKConstraint_tQYo1vAVEemabKU1RCR6CA" logicalName="예약 기본키" physicalName="PK_reservation" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroups>
         <columnGroups xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_tQYo1_AVEemabKU1RCR6CA" logicalName="객실 -> 예약" physicalName="FK_room_TO_reservation" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_tQZP6PAVEemabKU1RCR6CA">
           <foreignKeyConstraint UUID="FKConstraint_tQYo2PAVEemabKU1RCR6CA" logicalName="객실 -> 예약" physicalName="FK_room_TO_reservation" derivedPhysicalName="true" derivedLogicalName="true"/>
-        </columnGroups>
-        <columnGroups xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_tQYo2fAVEemabKU1RCR6CA" logicalName="옵션 -> 예약" physicalName="FK_r_option_TO_reservation" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_tQZ3BPAVEemabKU1RCR6CA">
-          <foreignKeyConstraint UUID="FKConstraint_tQYo2vAVEemabKU1RCR6CA" logicalName="옵션 -> 예약" physicalName="FK_r_option_TO_reservation" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroups>
         <columnGroups xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_cwsz8PC9EemqrpvplCsJEw" logicalName="회원정보 -> 예약" physicalName="FK_member_TO_reservation" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_J37uhvAKEemabKU1RCR6CA">
           <foreignKeyConstraint UUID="FKConstraint_cwsz8fC9EemqrpvplCsJEw" logicalName="회원정보 -> 예약" physicalName="FK_member_TO_reservation" derivedPhysicalName="true" derivedLogicalName="true"/>
@@ -293,6 +285,10 @@
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_tQZP8fAVEemabKU1RCR6CA" group="PKCGroup_tQZ29fAVEemabKU1RCR6CA" entryIndex="0"/>
           </memberships>
         </columns>
+        <columns UUID="Column_-MxwoPipEemynqbRacjw-w" logicalName="카드종류" physicalName="p_cardType" dataType="VARCHAR(40)" notNull="TRUE"/>
+        <columns UUID="Column_FRM1oPiqEemynqbRacjw-w" logicalName="카드번호" physicalName="p_cardNum" dataType="VARCHAR(40)" notNull="TRUE"/>
+        <columns UUID="Column_Kb4x0PiqEemynqbRacjw-w" logicalName="유효기간(달)" physicalName="p_validMonth" dataType="VARCHAR(2)" notNull="TRUE"/>
+        <columns UUID="Column_R4uW0PiqEemynqbRacjw-w" logicalName="유효기간(년)" physicalName="p_validYear" dataType="VARCHAR(4)" notNull="TRUE"/>
         <columns UUID="Column_tQZP8vAVEemabKU1RCR6CA" logicalName="환불 은행명" physicalName="p_bank_name" dataType="VARCHAR(10)">
           <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_3soGQfPbEemlfe-8G4TsnA"/>
         </columns>
@@ -308,7 +304,7 @@
             <value xsi:type="e:ColumnReference" UUID="CReference_tQZ29PAVEemabKU1RCR6CA" group="FKCGroup_tQZ29_AVEemabKU1RCR6CA" parentColumn="Column_tQYBw_AVEemabKU1RCR6CA"/>
           </memberships>
         </columns>
-        <columns UUID="Column_DWuhovGGEemdQ9oAyuk8fQ" logicalName="회원 번호" physicalName="m_no" derivedPhysicalName="true" derivedLogicalName="true" dataType="INT">
+        <columns UUID="Column_DWuhovGGEemdQ9oAyuk8fQ" logicalName="회원 번호" physicalName="m_no" derivedPhysicalName="true" derivedLogicalName="true" dataType="INT" notNull="TRUE">
           <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_3soGRfPbEemlfe-8G4TsnA"/>
           <memberships UUID="MEntry_DWuho_GGEemdQ9oAyuk8fQ" key="FKCGroup_DWuhoPGGEemdQ9oAyuk8fQ">
             <value xsi:type="e:ColumnReference" UUID="CReference_DWuhpPGGEemdQ9oAyuk8fQ" group="FKCGroup_DWuhoPGGEemdQ9oAyuk8fQ" parentColumn="Column_J3x9kvAKEemabKU1RCR6CA"/>
