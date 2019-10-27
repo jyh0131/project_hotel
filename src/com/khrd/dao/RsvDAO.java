@@ -324,15 +324,23 @@ public class RsvDAO {
 		
 	}/*/selectEmptyRoomByCondition*/
 	
-	//selectByMId -> 멤버 별 예약 확인
-	public List<Reservation> selectByMId(Connection conn, String mId) {
+	//selectByMNo -> 멤버 별 예약 확인
+	public List<Reservation> selectByMNo(Connection conn, int mNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
-			String sql = "select * from reservation where m_id = ?";
+			String sql = "select * from room r "
+						+"join bed_type b using(bt_no) "
+						+"join view_type v using(vt_no) "
+						+"join room_category rc using(rc_no) "
+						+"join room_size rs using(rs_no) "
+						+"join reservation rsv using(room_no) "
+						+"join member m using(m_no)"
+						+"where m_no = ?";
+			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, mId);
+			pstmt.setInt(1, mNo);
 			
 			rs = pstmt.executeQuery();
 			List<Reservation> list = new ArrayList<>();

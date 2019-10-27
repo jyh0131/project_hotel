@@ -35,8 +35,10 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>LoginCheckFilter</filter-name>
-		<url-pattern>/cart/list.do</url-pattern>
-		<url-pattern>/changePwd.do</url-pattern>
+		<url-pattern>/rsv/rsvStep1.do</url-pattern>
+		<url-pattern>/rsv/findRoom.do</url-pattern>
+		<url-pattern>/rsv/rsvStep2.do</url-pattern>
+		<url-pattern>/rsv/rsvStep3.do</url-pattern>
 	</filter-mapping>
   
   

@@ -75,10 +75,15 @@ public class RsvStep2Handler implements CommandHandler {
 				
 				//옵션값
 				String op = "";
-				for(String o : options) {
-					op += o;
+				int opNo = 4;
+				if(options != null) {
+					for(String o : options) {
+						op += o;
+					}
+					opNo = Integer.parseInt(op);
 				}
-				int opNo = Integer.parseInt(op);
+				
+				
 				
 				Reservation rsv = new Reservation(0, 
 												  m, 
