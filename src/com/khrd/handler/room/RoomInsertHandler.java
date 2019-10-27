@@ -72,8 +72,7 @@ public class RoomInsertHandler implements CommandHandler {
 									 new BedType(btNo, null),
 									 new RoomSize(rsNo, 0));
 				
-				Picture picture = new Picture(0, 
-											  null, 
+				Picture picture = new Picture(null, 
 											  null, 
 											  new RoomCategory(rcNo, null));
 				

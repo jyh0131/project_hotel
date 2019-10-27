@@ -77,7 +77,11 @@ public class RoomDAO {
 		ResultSet rs = null;
 		
 		try {
-			String sql = "select * from room r, bed_type b, view_type v, room_category rc, room_size rs where r.bt_no = b.bt_no and r.vt_no = v.vt_no and r.rc_no = rc.rc_no and r.rs_no = rs.rs_no;";
+			String sql = "select * from room r join bed_type b on r.bt_no = b.bt_no \r\n"  
+											+ "join view_type v on r.vt_no = v.vt_no \r\n" 
+											+ "join room_category rc using(rc_no)\r\n" 
+											+ "join room_size rs on r.rs_no = rs.rs_no\r\n" 
+										+ "order by room_no";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			List<Room> list = new ArrayList<Room>();
@@ -140,7 +144,7 @@ public class RoomDAO {
 		return -1;
 	}
 	
-	public Room selectListByRoomNo(Connection conn, int roomNo){
+	public Room selectedByRoomNo(Connection conn, int roomNo){
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		

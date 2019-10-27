@@ -3,7 +3,7 @@
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
 <link href="${pageContext.request.contextPath}/css/rsv_form.css" rel="stylesheet" type="text/css">
 <div>
-	<form action="update.do" method="post" ><!-- enctype="mulitpart/form-data" -->
+	<form action="update.do" method="post" ><!-- enctype="multipart/form-data" -->
 		<table><!-- name 임시로 지정 -->
 			<tr>
 				<td>객실 이름</td>
@@ -57,7 +57,7 @@
 			</tr>
 			<tr>
 				<td>호수</td>
-				<td><input type="text" name="room_no" value="${room.roomNo }"></td>
+				<td><input type="text" name="room_no" value="${room.roomNo }" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<td>가격</td>
@@ -69,7 +69,7 @@
 			</tr> -->
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="등록">
+					<input type="submit" value="수정">
 					<input type="reset" value="처음부터">
 				</td>
 			</tr>

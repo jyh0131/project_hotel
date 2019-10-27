@@ -7,9 +7,30 @@
 		border-collapse: collapse;
 	}
 	#p_table img{
-		width:250px;
+		width:150px;
 	}
 </style>
+<script>
+	$(function(){
+		$(".p_btn_delete").click(function(){
+			var picFile = $(this).attr("data-picFile"); 
+			
+			$.ajax({
+				url:"${pageContext.request.contextPath }/picture/delete.do",
+				type:"get",
+				data:{"pic_file" : picFile},
+				dataType:"json",
+				success:function(res){
+					console.log(res);
+				},
+				error:function(e){
+					console.log(e);
+				}
+			})//ajax
+			$(this).parent().parent().remove();
+		})//.p_btn_delete
+	})
+</script>
 <div>
 	<div id="p_menu">
 		<ul>
@@ -28,14 +49,13 @@
 		</tr>
 		<c:forEach var="pic" items="${list }">
 			<tr>
-				<p style="display:none;">${pic.picNo }</p>
 				<td><img src="${pageContext.request.contextPath }/upload/${pic.picFile }"></td>
 				<td>${pic.picFile }</td>
 				<td>${pic.gType.gName }</td>
 				<td>${pic.roomCategory.rcName }</td>
 				<td>
-					<a href="${pageContext.request.contextPath }/room/update.do?rNo=${room.roomNo}" class="r_btn_update">수정</a>
-					<button class="r_btn_delete" data-rNo="${room.roomNo }">삭제</button>
+					<a href="${pageContext.request.contextPath }/picture/update.do?picFile=${pic.picFile}">수정</a>
+					<button class="p_btn_delete" data-picFile="${pic.picFile }">삭제</button>
 				</td>	
 			</tr>
 		</c:forEach>	

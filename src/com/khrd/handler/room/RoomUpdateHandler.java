@@ -28,7 +28,7 @@ public class RoomUpdateHandler implements CommandHandler {
 			try {
 				conn = ConnectionProvider.getConnection();
 				RoomDAO dao = RoomDAO.getInstance();
-				Room room = dao.selectListByRoomNo(conn, roomNo);
+				Room room = dao.selectedByRoomNo(conn, roomNo);
 	
 				request.setAttribute("room", room);
 				
@@ -38,7 +38,6 @@ public class RoomUpdateHandler implements CommandHandler {
 			}finally {
 				JDBCUtil.close(conn);
 			}
-			return "/WEB-INF/view/room/roomUpdateForm.jsp";
 		}else if(request.getMethod().equalsIgnoreCase("post")) {
 			int rcNo = Integer.parseInt(request.getParameter("rc_no"));
 			int vtNo = Integer.parseInt(request.getParameter("vt_no"));

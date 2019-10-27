@@ -24,24 +24,6 @@
 			
 		})//.r_btn_delete
 		
-		$(".r_btn_update").click(function(){
-			var rNo = $(this).attr("data-rNo");
-
-			$.ajax({
-				url:"${pageContext.request.contextPath }/room/delete.do", 
-				type:"get",
-				data:{"rNo":rNo},
-				dataType:"json",
-				success:function(res){
-					console.log(res);
-				},
-				error:function(e){
-					console.log(e);
-				}
-			})//ajax
-			
-			
-		})//.r_btn_update
 	})
 </script>
 <style>
@@ -51,6 +33,12 @@
 	}
 </style>
 <div> 
+	<div id="r_menu">
+		<ul>
+			<li><a href="${pageContext.request.contextPath }/room/insert.do">객실 등록하기</a></li>
+		</ul> 	
+	</div>
+	
 	<table>
 		<tr>
 			<td>호수</td>
@@ -76,7 +64,7 @@
 					</c:forEach> --%>
 				
 				<td>
-					<a href="${pageContext.request.contextPath }/room/update.do?rNo=${room.roomNo}" class="r_btn_update">수정</a>
+					<a href="${pageContext.request.contextPath }/room/update.do?rNo=${room.roomNo}">수정</a>
 					<button class="r_btn_delete" data-rNo="${room.roomNo }">삭제</button>
 				</td>			
 			</tr>

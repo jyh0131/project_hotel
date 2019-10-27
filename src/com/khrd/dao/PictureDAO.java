@@ -44,10 +44,9 @@ public class PictureDAO {
 		GType gt = gtConstructor(rs);
 		RoomCategory rc = rcConstructor(rs);
 		
-		Picture picture = new Picture(rs.getInt("pic_no"), 
-				rs.getString("pic_file"), 
-				gt, // 갤러리 타입
-				rc); // 객실 분류 타입
+		Picture picture = new Picture(rs.getString("pic_file"), 
+									  gt, // 갤러리 타입
+									  rc); // 객실 분류 타입
 		
 		return picture;
 	}
@@ -60,7 +59,7 @@ public class PictureDAO {
 		 
 		try {
 //			insert into picture values(null, "sample.jpg", 5, null);
-			String sql = "insert into picture values(null, ?, ?, ?)";
+			String sql = "insert into picture values(?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, picture.getPicFile()); // 파일명
 			pstmt.setInt(2, picture.getgType().getgNo()); // g_type no
@@ -76,27 +75,15 @@ public class PictureDAO {
 		return -1;
 		
 	}
-//	public Picture selectedByNo(Connection conn, int roomNo) {
-//		PreparedStatement pstmt = null;
-//		
-//		try {
-//			String sql = ""
-//			pstmt = conn.prepareStatement(sql);
-//		}catch (Exception e) {
-//			e.printStackTrace();
-//		}finally {
-//			JDBCUtil.close(pstmt);
-//		}
-//		
-//		return null;
-//	}
 	
 	public List<Picture> selectList(Connection conn){
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
-			String sql = "select * from picture p join room_category rc on p.rc_no = rc.rc_no join g_type g on p.g_no = g.g_no";
+			String sql = "select * from picture p join room_category rc on p.rc_no = rc.rc_no\r\n"
+											   + "join g_type g on p.g_no = g.g_no\r\n" 
+								+ "order by pic_file;";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			List<Picture> list = new ArrayList<Picture>();
@@ -113,5 +100,68 @@ public class PictureDAO {
 			JDBCUtil.close(pstmt);
 		}
 		return null;  
+	}
+	
+	public int delete(Connection conn, String pic_file) {
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "delete from picture where pic_file = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pic_file);
+			
+			return pstmt.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(pstmt);
+		}
+		return -1;
+	}
+	
+	public Picture selectedByNo(Connection conn, String picFile) {
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	try {
+		String sql = "select * from picture p join room_category rc on p.rc_no = rc.rc_no\r\n" 
+										   + "join g_type g on p.g_no = g.g_no\r\n" 
+							+ "where pic_file=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, picFile);
+		rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			Picture picture = picture(rs);
+			return picture;
+		}
+	}catch (Exception e) {
+		e.printStackTrace();
+	}finally {
+		JDBCUtil.close(rs);
+		JDBCUtil.close(pstmt);
+	}
+	
+	return null;
+	}
+	
+	public int update(Connection conn, Picture picture) {
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "update picture set g_no = ?, rc_no = ? where pic_file= ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, picture.getgType().getgNo());
+			pstmt.setInt(2, picture.getRoomCategory().getRcNo());
+			pstmt.setString(3, picture.getPicFile());
+			
+			return pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(pstmt);
+		}
+		return -1;
 	}
 }

@@ -1,4 +1,5 @@
-op_name	op_price
-Daily Extra Bed	40000
-"Daily Breakfast for Adult	"	32000
-"Daily Breakfast for Child	"	23000
+﻿op_name,op_price
+Daily Extra Bed,40000
+"Daily Breakfast for Adult	",32000
+"Daily Breakfast for Child	",23000
+옵션 없음,0

@@ -160,6 +160,7 @@ div#section-wrap {
 
 /*footer*/
 div#footer {
+	clear:both;
 	width: 100%;
 	height: 150px;
 	background: green;

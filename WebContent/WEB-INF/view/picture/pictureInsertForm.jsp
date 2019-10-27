@@ -19,7 +19,7 @@
 		</ul> 	
 	</div>
 	<form action="insert.do" method="post" enctype="multipart/form-data"><!--  -->
-		<table><!-- name 임시로 지정 -->
+		<table>
 			<tr>
 				<td>이미지</td>
 				<td><input type="file" name="pic_file"></td>
