@@ -71,8 +71,19 @@
 	    
 	    //검색 버튼 누르면 방 리스트 나오게
 	    $(".btn-Search").click(function(){
-	    	$("h2").hide();
-	    	$("div.rsv-result-list-wrap").show();
+	    	if(($("#ckIn-info .rsv-year").val() == "YYYY" || 
+	    	   $("#ckIn-info .rsv-month").val() == "MM" ||
+	    	   $("#ckIn-info .rsv-date").val() == "DD") ||
+	    	   ($("#ckIn-info .rsv-year").val() == "YYYY" ||  $("#ckIn-info .rsv-year").val() == "" ||
+	    	    $("#ckIn-info .rsv-month").val() == "MM" || $("#ckIn-info .rsv-month").val() == "" ||
+	    	    $("#ckIn-info .rsv-date").val() == "DD" || $("#ckIn-info .rsv-date").val() == "")) {
+	    		
+	    		alert("날짜를 입력하시오");
+	    		return false;
+	    	} else {
+	    		$("h2").hide();
+	    		$("div.rsv-result-list-wrap").show();
+	    	}
 	    })
 	    
 	    

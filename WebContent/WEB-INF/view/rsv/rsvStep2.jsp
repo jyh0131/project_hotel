@@ -2,7 +2,6 @@
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
 <link href="${pageContext.request.contextPath}/css/rsv/rsvStep2.css" rel="stylesheet" type="text/css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/rsv/rsvStep2.js"></script> 
 <!-- 예약 2단계 -->
 <div class="rsv-step-wrap">

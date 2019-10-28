@@ -15,10 +15,6 @@ div.rsv-date-top {
 div.rsv-date-inner {
 	margin: 0 auto;
 }
-div#rsv-hotel {
-	width: 225px;
-	text-align: center;
-}
 div.rsv-date {
 	width: 19%;
 	float: left;
@@ -28,10 +24,9 @@ div.rsv-date > input.datepicker-here {
 	position: absolute;
 	top: 0;
 	left: 0;
+	width: 200%;
 	height: 82px;
 	border: none;
-	width: 300px;
-	background: #D1B2FF;
 	outline: none;
 	z-index: 1053529;
 	opacity: 0.0;

@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+div.rsv-detail-wrap  {
+	width: 100%;
+}
+div.rsv-detail {
+	padding: 10px;
+}
+div.rsv-detail > h3 {
+	font-weight: normal;
+	letter-spacing: 0.05em;
+	margin: 20px 0 5px 33px;
+}
+div.rsv-detail > table {
+	width: 95%;
+	margin: 0 auto;
+	border-collapse: collapse;
+}
+caption {
+	caption-side: bottom;
+	text-align: right;
+}
+th, td {
+	border: 1px solid #5CD1E5;
+	padding: 15px 0;
+}
+div.rsv-detail-btn-wrap {
+	width: 95%;
+	margin: 0 auto;
+	overflow: hidden;
+}
+div.rsv-detail-btn-wrap > a:first-child {
+	float: left;
+}
+div.rsv-detail-btn-wrap > div {
+	float: right;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

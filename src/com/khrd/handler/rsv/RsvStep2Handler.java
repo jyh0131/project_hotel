@@ -83,8 +83,7 @@ public class RsvStep2Handler implements CommandHandler {
 					opNo = Integer.parseInt(op);
 				}
 				
-				
-				
+				//예약 객체 생성
 				Reservation rsv = new Reservation(0, 
 												  m, 
 												  r, 
@@ -98,30 +97,33 @@ public class RsvStep2Handler implements CommandHandler {
 												  new Date(), 
 												  opNo);
 				
-				//다음 페이지에서 내용 뿌리려고 저장함
-				request.getSession().setAttribute("rsv", rsv);
-				request.getSession().setAttribute("mem", m);
-				request.getSession().setAttribute("room", r);
+				//예약 insert
+				int resultRsv = rDao.insertRsv(conn, rsv);
 				
-				//페이인포 집어넣기~!
-				int resultRsv = rDao.insert(conn, rsv);
-				PayInfo pi = new PayInfo(0, cardType, cardNum, validMonth, validYear, null, null, null, rsv, m);
-				int resultPi = piDao.insert(conn, pi);
-				conn.commit(); 
+				//가장 마지막에 들어간 예약번호 검색 후 그 객체 불러옴
+				int rNo = rDao.selectRsvLastInsertId(conn);
+				Reservation rsvForPi = rDao.selectRsvByRNo(conn, rNo);
+				
+				//예약정보 객체 생성후 insert
+				PayInfo pi = new PayInfo(0, cardType, cardNum, validMonth, validYear, null, null, null, rsvForPi, m);
+				int resultPi = piDao.insertPayInfo(conn, pi);
+
+				//다음 페이지에서 내용 뿌리려고 저장함
+				request.getSession().setAttribute("rsv", rsvForPi);
+				
+				conn.commit();  //쿼리 실행 후 커밋
 
 				if(resultPi > 0 && resultRsv > 0) {
 					response.sendRedirect("rsvStep3.do"); //예약 완료 페이지로.
 				} else {
-					return request.getContextPath()+"/index.jsp"; //에러 메세지 송출
+					return "/index.jsp"; //에러 메세지 송출(에러페이지 만들 예정)
 				}
-				   
-				
 				
 			} catch (Exception e) {
 				e.printStackTrace();
 				conn.rollback();
 				
-			} finally {
+			} finally {  
 				JDBCUtil.close(conn);
 			}
 		}

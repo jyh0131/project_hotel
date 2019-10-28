@@ -16,17 +16,17 @@ public class RsvListAllHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+		//관리자 페이지에서 쓸 핸들러임
 		Connection conn = null;
 		
 		try {
 			conn = ConnectionProvider.getConnection();
 			RsvDAO dao = RsvDAO.getInstance();
-			List<Reservation> list = dao.selectListAll(conn);
+			List<Reservation> list = dao.selectRsvListAll(conn);
 			
 			request.setAttribute("list", list);
 
-			return "/WEB-INF/view/rsv/rsvStep2.jsp";
+			return null;
 			
 		} catch (Exception e) {
 			e.printStackTrace();
