@@ -47,8 +47,8 @@ public class PictureUpdateHandler implements CommandHandler {
 				conn = ConnectionProvider.getConnection();
 				PictureDAO dao = PictureDAO.getInstance();
 				Picture picture = new Picture(picFile,
-											  new GType(gNo, null), 
-											  new RoomCategory(rcNo, null));
+											  new GType(gNo, null, null), 
+											  new RoomCategory(rcNo, null, null));
 				dao.update(conn, picture);
 				
 				response.sendRedirect(request.getContextPath() + "/picture/list.do");

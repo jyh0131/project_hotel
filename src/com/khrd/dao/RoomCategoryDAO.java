@@ -30,7 +30,8 @@ public class RoomCategoryDAO {
 			rs = pstmt.executeQuery();
 			List<RoomCategory> list = new ArrayList<RoomCategory>();
 			while(rs.next()) {
-				RoomCategory rc = new RoomCategory(rs.getInt("rc_no"), rs.getString("rc_name"));
+				RoomCategory rc = new RoomCategory(rs.getInt("rc_no"), rs.getString("rc_name"), rs.getString("rc_eng_name"));
+				
 				list.add(rc);
 			}   
 			return list;
@@ -53,7 +54,7 @@ public class RoomCategoryDAO {
 			pstmt.setInt(1, rcNo);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				RoomCategory rc = new RoomCategory(rs.getInt("rc_no"), rs.getString("rc_name"));
+				RoomCategory rc = new RoomCategory(rs.getInt("rc_no"), rs.getString("rc_name"), rs.getString("rc_eng_name"));
 				return rc;
 			}
 		}catch (Exception e) {

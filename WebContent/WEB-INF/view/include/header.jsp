@@ -60,19 +60,19 @@
 						</li>
 						
 						<li>
-							<a href="#">객실</a>
+							<a href="http://localhost:8080/project_hotel/room/main.do?rcNo=1">객실</a>
 							<ul class="sub-nav">
 								<li>
-									<a href="#">스탠다드</a>
+									<a href="http://localhost:8080/project_hotel/room/main.do?rcNo=1">스탠다드</a>
 								</li>
 								<li>
-									<a href="#">프리미어</a>
+									<a href="http://localhost:8080/project_hotel/room/main.do?rcNo=2">프리미어</a>
 								</li>
 								<li>
-									<a href="#">스위트</a>
+									<a href="http://localhost:8080/project_hotel/room/main.do?rcNo=3">스위트</a>
 								</li>
 								<li>
-									<a href="#">전체 객실 보기</a>
+									<a href="http://localhost:8080/project_hotel/room/main.do?rcNo=4">전체 객실 보기</a>
 								</li>
 							</ul>
 						</li>

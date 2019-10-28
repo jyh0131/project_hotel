@@ -28,7 +28,8 @@ public class RoomDAO {
 	// RoomCategory 객체 생성 메소드
 	private RoomCategory rcConstructor(ResultSet rs) throws SQLException {
 		RoomCategory rc = new RoomCategory(rs.getInt("rc_no"), 
-										   rs.getString("rc_name"));
+										   rs.getString("rc_name"),
+										   rs.getString("rc_eng_name"));
 		return rc;
 	}
 	
@@ -165,7 +166,6 @@ public class RoomDAO {
 			JDBCUtil.close(rs);
 			JDBCUtil.close(pstmt);
 		}
-		
 		
 		return null;
 	}

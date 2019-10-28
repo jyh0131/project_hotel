@@ -54,7 +54,7 @@ public class RoomUpdateHandler implements CommandHandler {
 				RoomDAO dao = RoomDAO.getInstance();
 				Room room = new Room(roomNo, 
 									 roomPrice, 
-									 new RoomCategory(rcNo, null), 
+									 new RoomCategory(rcNo, null, null), 
 									 new ViewType(vtNo, null),
 									 new BedType(btNo, null),
 									 new RoomSize(rsNo, 0));

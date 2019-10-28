@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ include file="/WEB-INF/view/include/header.jsp"%>
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath }/css/flexslider.css" type="text/css">
+<script src="${pageContext.request.contextPath }/js/jquery.flexslider-min.js"></script> --%>
+<script src="http://stephenpontes.com/misc/permanent/jquery.flexslider-min.js" type="text/javascript"></script>
 <style>
 	div#container {
 		width: 100%;
@@ -61,11 +65,37 @@
 		margin-right:20px;
 	}
 /* --------- 객실 이미지 슬라이드 --------- */
-	#roomImg{
-		margin-bottom:50px;
+	.slides>li>img{
+		width:100%;
 	}
-	#roomImg img{
-		width:700px;
+	.flexslider{
+		position: relative;
+		margin-bottom: 130px;
+	}
+	.flex-control-thumbs img{
+		width:24.2%;
+		float: left;
+		margin:3px;
+	}
+	.flex-prev, .flex-next{
+		color:white;
+		font-size: 30px;
+		font-weight:bold;
+		position: absolute;
+	}
+	.flex-prev{
+		left:10px;
+		top:40%;
+		background: url("../images/room_img/slidePrev.png") -10px -15px no-repeat;
+		width:30px;
+		height:60px;
+	}
+	.flex-next{
+		right:10px;
+		top:40%;
+		background: url("../images/room_img/slideNext.png") -20px -20px no-repeat;
+		width:30px;
+		height:60px;
 	}
 /* --------- 객실 설명 --------- */
 	#rm_contentLeft{
@@ -126,14 +156,27 @@
 	}
 	#rm_tableBox li{
 		line-height: 25px;
-		background: url(bgDot.gif) 0 8px no-repeat;
+		background: url("../images/room_img/bgDot.gif") 0 8px no-repeat;
 		padding-left:8px;
 	}
 	#rm_tableBox th, td{
 		border-top:1px solid #EAEAEA;
 	}
 </style>
-<%@ include file="/WEB-INF/view/include/header.jsp"%>
+
+<script>
+	//Can also be used with $(document).ready()
+	$(window).load(function() {
+		$(".flexslider").flexslider({
+			animation: "slide",
+	    	controlNav: "thumbnails"
+	  	});   
+		
+		$(".flex-prev").html("");
+	  	$(".flex-next").html("");
+	  	
+	});
+</script>
 <div>
 	<div id="rm_left_menu">
 		<h3>객실</h3>
@@ -149,19 +192,36 @@
 		<div id="rm_roomTitle">
 			<h2>${rc.rcName }</h2>
 			<p>
-				<img src="location.gif">
-				> 객실 > 
-				<strong>${rc.rcName }</strong>
+				<img src="../images/room_img/location.gif">
+				> 객실 > <strong>${rc.rcName }</strong>dd${pictureRoom.roomCategory.rcEngName}
 			</p>
 		</div><!-- #rm_roomTitle -->
 		
-		<div id="roomImg">
-			<img src="room.jpg">
+		<!-- -------------- 슬라이더 이미지 --------------------  -->
+		<!-- Place somewhere in the <body> of your page -->
+		<div class="flexslider">
+			<ul class="slides">
+				<li data-thumb="../images/room_img/s_terrace1.jpg">
+		      		<img src="${pageContext.request.contextPath }/upload/${pictureRoom.rcEngName}1.jpg">
+		    	</li>
+		    	<li data-thumb="../images/room_img/s_terrace2.jpg">
+		      		<img src="../images/room_img/terrace2.jpg">
+		    	</li>
+		    	<li data-thumb="../images/room_img/s_terrace3.jpg">
+		      		<img src="../images/room_img/terrace3.jpg">
+		    	</li>
+		    	<li data-thumb="../images/room_img/s_terrace4.jpg">
+		      		<img src="../images/room_img/terrace4.jpg">
+		    	</li>
+			</ul>
 		</div>
+		<!-- <div id="roomImg">
+			<img src="room.jpg">
+		</div> -->
 		
 		<div id="rm_contentBox">
 			<div id="rm_contentLeft">
-				<img src="content.jpg">
+				<img src="${pageContext.request.contextPath }/upload/${picture.picFile}">
 			</div>
 			
 			<div id="rm_contentRight">

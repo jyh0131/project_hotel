@@ -45,8 +45,8 @@ public class PictureInsertHandler implements CommandHandler {
 				conn = ConnectionProvider.getConnection();
 				PictureDAO dao = PictureDAO.getInstance();
 				Picture picture = new Picture(file, 
-											  new GType(gNo, null), 
-											  new RoomCategory(rcNo, null));
+											  new GType(gNo, null, null), 
+											  new RoomCategory(rcNo, null, null));
 				dao.insert(conn, picture);
 				
 				response.sendRedirect(request.getContextPath() + "/picture/list.do");

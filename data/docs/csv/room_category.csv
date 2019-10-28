@@ -1,9 +1,9 @@
-﻿rc_name
-스탠다드
-디럭스
-테라스
-프리미어
-프리미어 테라스
-퍼시픽 디럭스
-로열 스위트
-프레지덴셜 스위트
+﻿rc_name,rc_eng_name
+스탠다드,standard
+디럭스,deluxe
+테라스,terrace
+프리미어,premier
+프리미어 테라스,premier_terrace
+퍼시픽 디럭스,pacific_deluxe
+로열 스위트,royal_suite
+프레지덴셜 스위트,presidentia_suite

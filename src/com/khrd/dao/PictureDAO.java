@@ -27,20 +27,22 @@ public class PictureDAO {
 	// RoomCategory 객체 생성 메소드
 	private RoomCategory rcConstructor(ResultSet rs) throws SQLException {
 		RoomCategory rc = new RoomCategory(rs.getInt("rc_no"), 
-										   rs.getString("rc_name"));
+										   rs.getString("rc_name"),
+										   rs.getString("rc_eng_name"));
 		return rc;
 	}
 
 	// GType 객체 생성 메소드
 	private GType gtConstructor(ResultSet rs) throws SQLException {
 		GType gt = new GType(rs.getInt("g_no"), 
-							 rs.getString("g_name"));
+							 rs.getString("g_name"),
+							 rs.getString("g_path"));
 		return gt;
 	} 
 
 	
 	// Picture 객체 생성 메소드
-	private Picture picture(ResultSet rs) throws SQLException{
+	private Picture picConstruct(ResultSet rs) throws SQLException{
 		GType gt = gtConstructor(rs);
 		RoomCategory rc = rcConstructor(rs);
 		
@@ -89,7 +91,7 @@ public class PictureDAO {
 			List<Picture> list = new ArrayList<Picture>();
 			
 			while(rs.next()) {
-				Picture picture = picture(rs);
+				Picture picture = picConstruct(rs);
 				list.add(picture);
 			}
 			return list;
@@ -133,7 +135,7 @@ public class PictureDAO {
 		rs = pstmt.executeQuery();
 		
 		if(rs.next()) {
-			Picture picture = picture(rs);
+			Picture picture = picConstruct(rs);
 			return picture;
 		}
 	}catch (Exception e) {
@@ -164,4 +166,53 @@ public class PictureDAO {
 		}
 		return -1;
 	}
+	
+	public Picture selectedByContent(Connection conn, int rcNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select * from picture p join g_type g using(g_no) join room_category rc using(rc_no) where rc_no=? and pic_file like '%content%'";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rcNo);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				Picture picture = picConstruct(rs);
+				return picture;
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+		return null;
+	}// selectedByContent
+	
+	public Picture selectedByRoom(Connection conn, int rcNo, String rcEngName) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select * from picture p join g_type g using(g_no) join room_category rc using(rc_no) where rc_no=? and pic_file like %'?'%";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rcNo);
+			pstmt.setString(2, rcEngName); /*이부분 안됨@@@@@@@@@@@@@@@@@@@@@@*/
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				Picture picture = picConstruct(rs);
+				return picture;
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+		return null;
+	}// selectedByRoom
 }

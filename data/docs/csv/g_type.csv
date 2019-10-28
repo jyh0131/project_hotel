@@ -1,6 +1,6 @@
-﻿g_name
-객실
-다이닝
-액티비티
-부대시설
-기타
+﻿g_name,g_path
+객실,room
+다이닝,dining
+액티비티,activity
+부대시설,sub_facilities
+기타,etc

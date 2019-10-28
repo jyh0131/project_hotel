@@ -1,5 +1,5 @@
 <?xml version="1.1" encoding="UTF-8"?>
-<e:Document xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:e="http://exerd.tomato.com/model" xmlns:mysql="http://exerd.tomato.com/mysql/model" UUID="Document_CFTKkPAIEemabKU1RCR6CA" activeBusinessArea="BArea_CFTKn_AIEemabKU1RCR6CA" activeSchema="Schema_CFTKovAIEemabKU1RCR6CA" version="2.5.1.20180515-1801" modelVersion="3.0.0.20190111-1604" productId="com.tomato.db.mysql" openedDiagrams="Diagram_CFTKoPAIEemabKU1RCR6CA">
+<e:Document xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:e="http://exerd.tomato.com/model" xmlns:mysql="http://exerd.tomato.com/mysql/model" UUID="Document_CFTKkPAIEemabKU1RCR6CA" activeBusinessArea="BArea_CFTKn_AIEemabKU1RCR6CA" activeSchema="Schema_CFTKovAIEemabKU1RCR6CA" version="2.5.1.20180515-1801" productId="com.tomato.db.mysql" openedDiagrams="Diagram_CFTKoPAIEemabKU1RCR6CA">
   <relationManager>
     <relation key="FKCGroup_tQYo1_AVEemabKU1RCR6CA">
       <value foreignKeyColumnGroup="FKCGroup_tQYo1_AVEemabKU1RCR6CA"/>
@@ -415,9 +415,10 @@
             <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_wbZN8fPTEemvf_1tywZ0FQ" group="PKCGroup_qjsawPPTEemvf_1tywZ0FQ"/>
           </memberships>
         </columns>
-        <columns UUID="Column_inFJgPPTEemvf_1tywZ0FQ" logicalName="객실 분류명" physicalName="rc_name" dataType="VARCHAR(20)" notNull="TRUE">
+        <columns UUID="Column_inFJgPPTEemvf_1tywZ0FQ" logicalName="객실 분류명(한글)" physicalName="rc_name" dataType="VARCHAR(20)" notNull="TRUE">
           <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_qBpdoPPTEemvf_1tywZ0FQ"/>
         </columns>
+        <columns UUID="Column_T9x8kPlfEemFhqYiMO9xpA" logicalName="객실 분류명(영어)" physicalName="rc_eng_name" dataType="VARCHAR(50)" notNull="TRUE"/>
         <columnGroups xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_qjsawPPTEemvf_1tywZ0FQ" logicalName="객실 분류 타입 기본키" physicalName="PK_room_category" derivedPhysicalName="true" derivedLogicalName="true">
           <primaryKeyConstraint UUID="PKConstraint_qjsawfPTEemvf_1tywZ0FQ" logicalName="객실 분류 타입 기본키" physicalName="PK_room_category" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroups>

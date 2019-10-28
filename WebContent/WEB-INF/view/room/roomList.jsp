@@ -42,7 +42,7 @@
 	<table>
 		<tr>
 			<td>호수</td>
-			<td>객실 분류</td>
+			<td colspan="2">객실 분류</td>
 			<td>전망 타입</td>
 			<td>침대 타입</td>
 			<td>객실 크기</td>
@@ -54,6 +54,7 @@
 			<tr>
 				<td>${room.roomNo }</td>
 				<td>${room.roomCategory.rcName }</td>
+				<td>${room.roomCategory.rcEngName }</td>
 				<td>${room.viewType.vtName }</td>
 				<td>${room.bedType.btName }</td>
 				<td>${room.roomSize.rsName }</td>
