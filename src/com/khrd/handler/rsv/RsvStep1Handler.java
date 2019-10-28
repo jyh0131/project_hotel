@@ -42,7 +42,7 @@ public class RsvStep1Handler implements CommandHandler {
 				//Room 객체 생성
 				RoomDAO rDao = RoomDAO.getInstance();
 				int rNo = Integer.parseInt(request.getParameter("roomNum"));
-				Room r = rDao.selectListByRoomNo(conn, rNo);
+				Room r = rDao.selectedByRoomNo(conn, rNo);
 				
 				//ckIn ckOut 날짜 받기
 				String date = request.getParameter("rsvDate");

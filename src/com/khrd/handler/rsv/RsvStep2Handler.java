@@ -66,7 +66,7 @@ public class RsvStep2Handler implements CommandHandler {
 				//멤버객체, 룸객체, 카드인포 객체 생성
 				String id = (String) request.getSession().getAttribute("Auth");
 				Member m = mDao.selectById(conn, id);
-				Room r = rmDao.selectListByRoomNo(conn, roomNo);
+				Room r = rmDao.selectedByRoomNo(conn, roomNo);
 				
 				//체크인, 체크아웃 날짜 변환
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
