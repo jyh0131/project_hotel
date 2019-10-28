@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <link href="${pageContext.request.contextPath}/css/rsv/rsvStep4.css" rel="stylesheet" type="text/css">
 
 <!-- 예약마지막 -->
@@ -11,7 +12,7 @@
 <div class="rsv-cpl-wrap">
 	<div class="rsv-cpl-top">
 		<p>
-			[NAME] 고객님 감사합니다.
+			${rsv.member.mName} 고객님 감사합니다.
 			<a href="#">
 				인쇄
 			</a>
@@ -21,7 +22,7 @@
 			예약이 완료되었습니다.
 			<span class="rsv-cpl-num">
 				<small>예약번호</small>
-				16955070
+				${rsv.rNo}
 			</span>
 			
 		</h1>
@@ -35,15 +36,15 @@
 		<ul>
 			<li>
 				<label>고객명</label>
-				<span>SOOHEE KIM</span>
+				<span>${rsv.member.mName}</span>
 			</li>
 			<li>
 				<label>연락처</label>
-				<span>010-0000-0000</span>
+				<span>${rsv.member.mPhone}</span>
 			</li>
 			<li>
 				<label>이메일</label>
-				<span>k_1safqaewfahatsu@naver.com</span>
+				<span>${rsv.member.mMail}</span>
 			</li>
 		</ul>
 	</div>
@@ -56,19 +57,20 @@
 				<ul>
 					<li>
 						· 체크인
-						<span>2019.11.24.</span>
+						
+						<span><fmt:formatDate value="${rsv.rIn}" pattern="yyyy-MM-dd" /></span>
 					</li>
 					<li>
 						· 체크아웃
-						<span>2019.11.26.</span>
+						<span><fmt:formatDate value="${rsv.rOut}" pattern="yyyy-MM-dd" /></span>
 					</li>
 					<li>
 						· 숙박일수
-						<span>2박</span>
+						<span>${rsv.rStay}박</span>
 					</li>
 					<li>
 						· 투숙인원
-						<span>성인: 1명 / 어린이: 0명</span>
+						<span>성인: ${rsv.rPsnAdt}명 / 어린이: ${rsv.rPsnCdr}명</span>
 					</li>
 				</ul>
 			</div>
@@ -78,55 +80,79 @@
 				<ul>
 					<li>
 						· 객실
-						<span>Premier / Mountain</span>
+						<span>${rsv.room.roomCategory.rcName} / ${rsv.room.viewType.vtName}</span>
 					</li>
 					<li>
 						· 침대타입
-						<span>Double</span>
+						<span>${rsv.room.bedType.btName}</span>
 					</li>
 					<li>
 						· 객실요금
-						<span>329,587원</span>
+						<c:set var="stayPrice" value="${rsv.room.roomPrice * rsv.rStay}" />
+						<span><fmt:formatNumber value="${stayPrice}" pattern="###,###" /> 원</span>
 					</li>
 					<li>
-						· 봉사료
-						<span>32,959원</span>
+						　<!-- 그냥 디스플레이가 맘에 안들어서 넣어보았어요 -->
+						　
 					</li>
 					<li>
-						· 부가가치세
-						<span>36,255원</span>
+						　<!-- 그냥 디스플레이가 맘에 안들어서 넣어보았어요 -->
+						　
 					</li>
 				</ul>
 			</div>
 		
 			<div class="cpl-bottom-content">
 				<p>옵션</p>
+				<c:set var="opPrice" value="0" />
 				<ul>
-					<li>
-						· 옵션
-						<span>Extra bed: 0개</span>
-					</li>
-					<li>
+					<c:if test="${fn:contains(rsv.opNo, '1')}">
+						<c:set var="opPrice" value="${opPrice + 40000}" />
+						<li>
+							· 옵션
+							<span>Extra bed</span>
+						</li>
+					</c:if>
+					
+					<c:if test="${fn:contains(rsv.opNo, '2')}">
+						<c:set var="opPrice" value="${opPrice + (32000 * rsv.rPsnAdt)}" />
+						<li>
 						　
-						<span>Daily Breakfast(Audult): 0명</span>
-					</li>
-					<li>
+							<span>Daily Breakfast(Audult)</span>
+						</li>
+					</c:if>
+					
+					<c:if test="${fn:contains(rsv.opNo, '3')}">
+						<c:set var="opPrice" value="${opPrice + (23000 * rsv.rCdrAdt)}" />
+						<li>
 						　
-						<span>Daily Breakfast(Children): 0명</span>
-					</li>
+							<span>Daily Breakfast(Children)</span>
+						</li>
+					</c:if>
 					
 					<li>
 						· 옵션요금
-						<span>352,643원</span>
+						<span><fmt:formatNumber value="${opPrice}" pattern="###,###" /> 원</span>
+					</li>
+					
+					<li style="border-top:1px dotted #ccc;">
+						· 봉사료
+						<c:set var="svcPrice" value="${(stayPrice + opPrice) / 10}" />
+						<span><fmt:formatNumber value="${svcPrice}" pattern="###,###" /> 원</span>
+					</li>
+					<li>
+						· 부가가치세
+						<c:set var="vatPrice" value="${(stayPrice + opPrice + svcPrice) / 10}" />
+						<span><fmt:formatNumber value="${vatPrice}" pattern="###,###" /> 원</span>
 					</li>
 				</ul>
-				<h3>123,123,123원</h3>
+				<h3><fmt:formatNumber value="${rsv.rTotalPrice}" pattern="###,###" /> 원</h3>
 			</div>
 		</div>
 	</div>
 	
 	<div class="btn-area">
-		<a href="#">
+		<a href="index.jsp">
 			<span class="btnHome">[메인으로]</span>
 		</a>
 		<a href="#">
@@ -134,6 +160,8 @@
 		</a>
 	</div>
 </div>
+
+<% session.removeAttribute("rsv");%>
 
 <%@ include file="/WEB-INF/view/include/footer.jsp"%>
 

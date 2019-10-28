@@ -2,6 +2,8 @@
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +41,7 @@
 					</li>
 					</c:if>
 					<li>
-						<a href="${pageContext.request.contextPath}/rsv/rsvListMember.do">예약확인</a>
+						<a href="${pageContext.request.contextPath}/rsvMng/mem/list.do">예약확인</a>
 					</li>
 				</ul>	
 			</div>
