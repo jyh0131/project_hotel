@@ -153,14 +153,13 @@
 	}
 	#rm_tableBox th, td{
 		padding:20px;
+		border-top:1px solid #EAEAEA;
+		font-size:13px;
 	}
 	#rm_tableBox li{
 		line-height: 25px;
 		background: url("../images/room_img/bgDot.gif") 0 8px no-repeat;
 		padding-left:8px;
-	}
-	#rm_tableBox th, td{
-		border-top:1px solid #EAEAEA;
 	}
 </style>
 
@@ -175,6 +174,7 @@
 		$(".flex-prev").html("");
 	  	$(".flex-next").html("");
 	  	
+	  	//$(".contentImg").
 	});
 </script>
 <div>
@@ -193,7 +193,7 @@
 			<h2>${rc.rcName }</h2>
 			<p>
 				<img src="../images/room_img/location.gif">
-				> 객실 > <strong>${rc.rcName }</strong>dd${pictureRoom.roomCategory.rcEngName}
+				> 객실 > <strong>${rc.rcName }</strong>
 			</p>
 		</div><!-- #rm_roomTitle -->
 		
@@ -201,17 +201,17 @@
 		<!-- Place somewhere in the <body> of your page -->
 		<div class="flexslider">
 			<ul class="slides">
-				<li data-thumb="../images/room_img/s_terrace1.jpg">
-		      		<img src="${pageContext.request.contextPath }/upload/${pictureRoom.rcEngName}1.jpg">
+				<li data-thumb="${pageContext.request.contextPath }/upload/s_${pictureRoom.roomCategory.rcEngName}1.jpg">
+		      		<img src="${pageContext.request.contextPath }/upload/${pictureRoom.roomCategory.rcEngName}1.jpg">
 		    	</li>
-		    	<li data-thumb="../images/room_img/s_terrace2.jpg">
-		      		<img src="../images/room_img/terrace2.jpg">
+		    	<li data-thumb="${pageContext.request.contextPath }/upload/s_${pictureRoom.roomCategory.rcEngName}2.jpg">
+		      		<img src="${pageContext.request.contextPath }/upload/${pictureRoom.roomCategory.rcEngName}2.jpg">
 		    	</li>
-		    	<li data-thumb="../images/room_img/s_terrace3.jpg">
-		      		<img src="../images/room_img/terrace3.jpg">
+		    	<li data-thumb="${pageContext.request.contextPath }/upload/s_${pictureRoom.roomCategory.rcEngName}3.jpg">
+		      		<img src="${pageContext.request.contextPath }/upload/${pictureRoom.roomCategory.rcEngName}3.jpg">
 		    	</li>
-		    	<li data-thumb="../images/room_img/s_terrace4.jpg">
-		      		<img src="../images/room_img/terrace4.jpg">
+		    	<li data-thumb="${pageContext.request.contextPath }/upload/s_${pictureRoom.roomCategory.rcEngName}4.jpg">
+		      		<img src="${pageContext.request.contextPath }/upload/${pictureRoom.roomCategory.rcEngName}4.jpg">
 		    	</li>
 			</ul>
 		</div>

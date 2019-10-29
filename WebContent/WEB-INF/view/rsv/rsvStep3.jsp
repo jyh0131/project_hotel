@@ -153,7 +153,7 @@
 	</div>
 	
 	<div class="btn-area">
-		<a href="index.jsp">
+		<a href="${pageContext.request.contextPath }/index.jsp">
 			<span class="btnHome">[메인으로]</span>
 		</a>
 		<a href="#">

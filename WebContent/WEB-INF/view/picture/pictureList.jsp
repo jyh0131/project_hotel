@@ -54,7 +54,6 @@
 				<td>${pic.gType.gName }</td>
 				<td>${pic.roomCategory.rcName }</td>
 				<td>
-					<a href="${pageContext.request.contextPath }/picture/update.do?picFile=${pic.picFile}">수정</a>
 					<button class="p_btn_delete" data-picFile="${pic.picFile }">삭제</button>
 				</td>	
 			</tr>

@@ -36,6 +36,7 @@
 	<div id="r_menu">
 		<ul>
 			<li><a href="${pageContext.request.contextPath }/room/insert.do">객실 등록하기</a></li>
+			<li><a href="${pageContext.request.contextPath }/picture/list.do">사진관리하기(사진 리스트로 이동)</a></li>
 		</ul> 	
 	</div>
 	
@@ -71,7 +72,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="${pageContext.request.contextPath }/picture/list.do">사진관리하기</a>
+	
 	<!-- <a href="${pageContext.request.contextPath }/picture/list.do?rNo=${room.roomNo}" class="picture_view">사진관리하기</a> -->
 </div>
 

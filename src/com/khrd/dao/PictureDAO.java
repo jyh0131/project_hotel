@@ -85,7 +85,7 @@ public class PictureDAO {
 		try {
 			String sql = "select * from picture p join room_category rc on p.rc_no = rc.rc_no\r\n"
 											   + "join g_type g on p.g_no = g.g_no\r\n" 
-								+ "order by pic_file;";
+								+ "order by g.g_no, rc.rc_no";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			List<Picture> list = new ArrayList<Picture>();
@@ -191,15 +191,15 @@ public class PictureDAO {
 		return null;
 	}// selectedByContent
 	
-	public Picture selectedByRoom(Connection conn, int rcNo, String rcEngName) {
+	public Picture selectedByRoom(Connection conn, int rcNo, RoomCategory roomCategory) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
-			String sql = "select * from picture p join g_type g using(g_no) join room_category rc using(rc_no) where rc_no=? and pic_file like %'?'%";
+			String sql = "select * from picture p join g_type g using(g_no) join room_category rc using(rc_no) where rc_no=? and pic_file like ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, rcNo);
-			pstmt.setString(2, rcEngName); /*이부분 안됨@@@@@@@@@@@@@@@@@@@@@@*/
+			pstmt.setString(2, "%" + roomCategory.getRcEngName() + "%"); 
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
