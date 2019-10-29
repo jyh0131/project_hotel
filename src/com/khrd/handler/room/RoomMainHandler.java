@@ -40,8 +40,11 @@ public class RoomMainHandler implements CommandHandler {
 			Picture picture = picDao.selectedByContent(conn, rcNo);
 			request.setAttribute("picture", picture);
 			
-			Picture pictureRoom = picDao.selectedByRoom(conn, rcNo, roomCategory);
-			request.setAttribute("pictureRoom", pictureRoom);
+//			Picture pictureRoom = picDao.selectedByRoom(conn, rcNo, roomCategory);
+//			request.setAttribute("pictureRoom", pictureRoom);
+			
+			List<Picture> rcNoList = picDao.selectedByRcNoList(conn, rcNo);
+			request.setAttribute("rcNoList", rcNoList);
 			
 			return "/WEB-INF/view/room/roomMain.jsp";
 		}catch (Exception e) {

@@ -39,6 +39,10 @@ public class PictureInsertHandler implements CommandHandler {
 			int rcNo = Integer.parseInt(multi.getParameter("rc_no"));
 			String file = multi.getFilesystemName("pic_file");
 			
+		
+			if(file.substring(0, 2).contains("s_") == true) {
+				System.out.println("true");
+			}
 			Connection conn = null;
 			
 			try {

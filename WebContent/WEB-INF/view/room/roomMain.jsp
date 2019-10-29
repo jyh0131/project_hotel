@@ -73,7 +73,7 @@
 		margin-bottom: 130px;
 	}
 	.flex-control-thumbs img{
-		width:24.2%;
+		width:24.3%;
 		float: left;
 		margin:3px;
 	}
@@ -201,6 +201,24 @@
 		<!-- Place somewhere in the <body> of your page -->
 		<div class="flexslider">
 			<ul class="slides">
+				<c:forEach var="i" items="${rcNoList}"  varStatus="status" >
+				<li data-thumb="${pageContext.request.contextPath }/upload/s_${i.picFile }">
+					<img src="${pageContext.request.contextPath }/upload/${i.picFile }">
+				</li>
+					<%-- <c:set var="sImgSrc" value="${i.picFile }"/>
+					<c:choose>
+						<c:when test="${fn:substring(sImgSrc, 0, 2) } == 's_'"> <!-- src 앞부분에 s_가 들어갈 경우 -->
+							<li data-thumb="${pageContext.request.contextPath }/upload/${i.picFile }">
+						</c:when>
+						<c:otherwise>
+						
+							<img src="${pageContext.request.contextPath }/upload/${i.picFile }">
+						</c:otherwise>
+						
+					</c:choose>
+						</li> --%>
+				</c:forEach>
+				<%-- <li></li>
 				<li data-thumb="${pageContext.request.contextPath }/upload/s_${pictureRoom.roomCategory.rcEngName}1.jpg">
 		      		<img src="${pageContext.request.contextPath }/upload/${pictureRoom.roomCategory.rcEngName}1.jpg">
 		    	</li>
@@ -212,7 +230,7 @@
 		    	</li>
 		    	<li data-thumb="${pageContext.request.contextPath }/upload/s_${pictureRoom.roomCategory.rcEngName}4.jpg">
 		      		<img src="${pageContext.request.contextPath }/upload/${pictureRoom.roomCategory.rcEngName}4.jpg">
-		    	</li>
+		    	</li> --%>
 			</ul>
 		</div>
 		<!-- <div id="roomImg">

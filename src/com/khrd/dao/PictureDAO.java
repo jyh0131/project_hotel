@@ -85,7 +85,7 @@ public class PictureDAO {
 		try {
 			String sql = "select * from picture p join room_category rc on p.rc_no = rc.rc_no\r\n"
 											   + "join g_type g on p.g_no = g.g_no\r\n" 
-								+ "order by g.g_no, rc.rc_no";
+								+ "order by g.g_no, rc.rc_no"; /**************/
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			List<Picture> list = new ArrayList<Picture>();
@@ -191,6 +191,7 @@ public class PictureDAO {
 		return null;
 	}// selectedByContent
 	
+	/*없어도 될거같음***************************************/
 	public Picture selectedByRoom(Connection conn, int rcNo, RoomCategory roomCategory) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -215,4 +216,31 @@ public class PictureDAO {
 		}
 		return null;
 	}// selectedByRoom
+	
+	public List<Picture> selectedByRcNoList(Connection conn, int rcNo){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select * from picture p join room_category rc on p.rc_no = rc.rc_no\r\n" 
+											   + "join g_type g on p.g_no = g.g_no\r\n" 
+								+ "where rc.rc_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rcNo);
+			rs = pstmt.executeQuery();
+			List<Picture> list = new ArrayList<Picture>();
+			
+			while(rs.next()) {
+				Picture picture = picConstruct(rs);
+				list.add(picture);
+			}
+			return list;
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+		return null;
+	}
 }
