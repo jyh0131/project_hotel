@@ -20,7 +20,7 @@
 			<div class="rsv-date-top">
 				<div class="rsv-date">
 					<input type="text" name="rsvDate"
-					readonly="readonly" class="datepicker-here" data-position="bottom left" 
+					readonly="readonly" class="datepicker-here" data-position="bottom center" 
 					data-language="en" data-range="true" data-multiple-dates-separator="/" data-language="en" />
 					<span class="ck-title">체크인</span>
 		
@@ -98,93 +98,15 @@
 							
 						</div>
 						
-						<h2>예약을 원하시는 호텔, 날짜, 인원을 선택 후 검색 버튼을 눌러주세요.</h2>
+						<h2>예약을 원하시는 날짜, 인원을 선택 후 검색 버튼을 눌러주세요.</h2>
 						
-						<div class="rsv-result-list-wrap tabs">
-							<h2>원하시는 방과 옵션을 선택해주세요.</h2>
+						<div class="rsv-result-list-wrap">
+							<!-- <h2>원하시는 방과 옵션을 선택해주세요.</h2> -->
 							<input type="hidden" name="roomCate">
 							<input type="hidden" name="roomNum">
-							<ul class='rsv-result-list-top horizontal'>
-								<li><a href="#tab-1">스탠다드</a></li>
-								<li><a href="#tab-2">tab</a></li>
-								<li><a href="#tab-3">tab</a></li>
+							<ul class="ar-list">
+								<!-- 방 목록 뿌려질 곳 -->	
 							</ul>
-							
-							<!-- 탭메뉴 -->
-							<div class="option-choice-wrap" id="choice-top">
-								<ul class="result-sub-list">
-									<li>
-										<label>전망</label>
-										<select>
-											<option>none</option>
-										</select>
-									</li>
-									<li>
-										<label>침대 타입</label>
-										<select>
-											<option>none</option>
-										</select>
-									</li>
-									<li>
-										<button type='button' class='roomCkBtn'>빈방체크</button>
-									</li>
-								</ul>
-								<div class="available-result">
-									<span class='available-room-amount'></span>
-									<input type='submit' value='예약'>
-								</div>
-							</div>
-							
-							<ul class="rsv-result-list-bottom">
-								<li>
-									<a>
-										<img src="images/rsv-img/test.jpg">
-									</a>
-									<span>프리미어 테라스</span>
-								</li>
-								<li>
-									<a>
-										<img src="images/rsv-img/test.jpg">
-									</a>
-									<span>퍼시픽 디럭스</span>
-								</li>
-								<li>
-									<a>
-										<img src="images/rsv-img/test.jpg">
-									</a>
-									<span>로열 스위트</span>
-								</li>
-								<li>
-									<a>
-										<img src="images/rsv-img/test.jpg">
-									</a>
-									<span>프레지덴셜 스위트</span>
-								</li>
-							</ul>		
-							
-							<div class="option-choice-wrap" id="choice-bottom">
-								<ul class="result-sub-list">
-									<li>
-										<label>전망</label>
-										<select>
-											<option>none</option>
-										</select>
-									</li>
-									<li>
-										<label>침대 타입</label>
-										<select>
-											<option>none</option>
-										</select>
-									</li>
-									<li>
-										<button type='button' class='roomCkBtn'>빈방체크</button>
-									</li>
-								</ul>
-								<div class="available-result">
-									<span class='available-room-amount'></span>
-									<input type='submit' value='예약'>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>

@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+form {
+	padding: 50px 0;
+}
 /*날짜설정 파트*/
 div.rsv-step-wrap {
 	width: 100%;
@@ -150,83 +153,94 @@ h2 {
 }
 
 /*객실 리스트*/
-div.rsv-result-list-wrap {
-	display: none;
-}
-div.rsv-result-list-wrap ul {
-	width: 80%;
-	margin: 50px auto 30px;
-	overflow: hidden;
-}
-div.rsv-result-list-wrap > ul > li {
-	float: left;
-	width: 22%;
-	margin: 10px;
-	text-align: center;
-	font-size: 13px;
-}
-div.rsv-result-list-wrap > ul > li > a > img {
+ul.ar-list {
 	width: 100%;
-	height: 118px;
-	display: block;
-	margin: 0 auto;
-	cursor: pointer;
 }
-div.option-choice-wrap {
-	width: 80%;
-	margin: 0 auto;
-	padding: 10px 0 20px;
+ul.ar-list > li {
 	height: 150px;
-	background: lightgreen;
-	position: relative;
-	display: none;
+	padding: 37px 30px;
+	border: 4px solid #47a3da;
+	background: pink;
+	margin-bottom:-5px;
 }
-div.show{
-	display: block;
-} 
-ul.result-sub-list {
-	width: 100%;
+ul.ar-list > li.ar-rc {
+	margin-top: 10px;
 	overflow: hidden;
-}
-ul.result-sub-list > li {
-	vertical-align: middle;
-	height: 40px;
-	float: left;
-	width: 33%;
-	text-align: center;
-}
-ul.result-sub-list > li > label {
-	float: left;
-	width: 90px;
-	font-size: 14px;
-	line-height: 40px;
-}
-ul.result-sub-list > li > select {
-	padding: 10px 20px 10px 10px;
-	outline: none;
-}
-button.roomCkBtn {
-	width: 60px;
-	height: 100%;
-	background: red;
-	color: navy;
-	box-shadow: 1px 2px 3px grey;
-	border: none;
-	outline: none;
 	cursor: pointer;
 }
-div.available-result {
-	text-align: right;
-	overflow: hidden;
-	margin: 50px;
+ul.ar-list > li.ar-op {
+	margin-bottom: 10px;
+	display: none; 
 }
-span.available-room-amount {
-	font-size: 12px;
-	color: #666;
+/*객실 정보 나오는 곳*/
+li.ar-rc > div.ar-rc-img {
+	float: left;
+	width: 27%;
+	margin: 15px 8px 15px 15px;
+}
+li.ar-rc > div.ar-rc-img > img {
+	width: 100%;
+}
+li.ar-rc > div.ar-rc-type {
+	float: left;
+	width: 25%;
+	margin: 15px 8px;
+}
+li.ar-rc > div.ar-rc-name {
+	float: right;
+	width: 25%;
+	margin: 15px;
+	text-align: right;
+	word-break: break-all;
+}
+li.ar-rc > div.ar-rc-name > h1 {
+	font-size: 2.8em;
+	font-weight: lighter;
+	letter-spacing: 0.15em;
+}
+/*객실 옵션 선택하는 곳*/
+li.ar-op select {
+	padding: 10px 30px 10px 10px;
+}
+li.ar-op > p.ar-ep {
+	text-align: right;
+	margin-right: 15px;
+	font-size: 14px;
+}
+li.ar-op > div.ar-op1 {
+	float: left;
+	width: 27%;
+	margin: 15px 8px 15px 15px;
+	text-align: center;
+}
+li.ar-op > div.ar-op1 > p {
+	font-size: 17px;
+	background: lightgreen;
+	padding: 9px 0;
+	margin-bottom: 5px;
+}
+li.ar-op > div.ar-op2 {
+	float: left;
+	width: 27%;
+	margin: 15px 8px 15px 15px;
+	text-align: center;
+}
+li.ar-op > div.ar-op2 > p {
+	font-size: 17px;
+	background: lightgreen;
+	padding: 9px 0;
+	margin-bottom: 5px;
+}
+li.ar-op > div.ar-op-btn {
+	float: right;
+	width: 27%;
+	margin: 15px;
+	text-align: right;
+	padding-right: 40px;
 }
 input[type='submit'] {
-	width: 60px;
-	height: 60px;
+	width: 80px;
+	height: 80px;
 	background: skyblue;
 	border-radius: 80px;
 	color: navy;

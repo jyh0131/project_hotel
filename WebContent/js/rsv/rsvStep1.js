@@ -1,6 +1,11 @@
 
 (function(win, $){
 	$(function(){
+		//콤마찍는 메소드
+		function addComma(num) {
+			  var regexp = /\B(?=(\d{3})+(?!\d))/g;
+			  return num.toString().replace(regexp, ',');
+		}
 		
 		$(".datepicker-here").datepicker({
 			toggleSelected: false,
@@ -72,6 +77,7 @@
 	    
 	    //검색 버튼 누르면 방 리스트 나오게
 	    $(".btn-Search").click(function(){
+	    	$("h2").hide();
 	    	$.ajax({
 	    		url: "availbleRoom.do",
 	    		type: "get",
@@ -81,133 +87,42 @@
 	    			console.log(res);
 	    			
 	    			$(res.ar).each(function(i, obj){
+	    				//RC 만들기
+	    				$divImg = $("<div>").addClass("ar-rc-img").append("<p>이미지 들어갈 곳</p>");
+	    				$divType = $("<div>").addClass("ar-rc-type")
+	    							.append("<p>크기: "+obj.roomSize.rsName+"㎡</p>")
+	    							.append("<p>가격: "+addComma(obj.roomPrice)+"<small>(1박)</small></p>");
+	    				$divName = $("<div>").addClass("ar-rc-name").append("<h1>"+obj.roomCategory.rcName+"</h1>");
 	    				
-	    				obj.roomCategory.rcName
+	    				//OP 만들기
+	    				$pPrice = $("<p>").addClass(".ar-ep").append("객실 옵션을 선택하고 예약을 눌러주세요.");
+	    				$selOp1 = $("<select>").append("<option></option>");
+	    				$divOp1 = $("<div>").addClass("ar-op1").append("<p>옵션1</p>").append($selOp1);
+	    				$divOp1.append($selOp1);
 	    				
+	    				$selOp2 = $("<select>").append("<option></option>");
+	    				$divOp2 = $("<div>").addClass("ar-op2").append("<p>옵션2</p>").append($selOp2);
+	    				$divOp2.append($selOp2);
 	    				
+	    				$divOpBtn = $("<div>").addClass("ar-op-btn").append("<input type='submit' value='예약'>");
+	    				
+	    				$liRc = $("<li>").addClass("ar-rc").append($divImg).append($divType).append($divName);
+	    				$liOp = $("<li>").addClass("ar-op").append($pPrice).append($divOp1).append($divOp2).append($divOpBtn);
+	    				$("ul.ar-list").append($liRc).append($liOp);
 	    			});
-	    			
-	    			
 	    		}
-	    		
 	    	});
 	    })
-	    
-	    
-	    //객실 사진 클릭하면 옵션 창 나오게 (위)
-//	    $("ul.rsv-result-list-top > li > a").click(function(){
-//	    	$("div#choice-bottom").removeClass("show");
-//	    	var roomType = $(this).next().text();
-//	    	$selView = $("<select>").attr("name", "viewType");
-//	    	$selBed = $("<select>").attr("name", "bedType");
-//	    	$("ul.result-sub-list").text("");
-//	    	$("span.available-room-amount").text("");
-//	    	$("input[name='roomCate']").val(roomType);
-//	
-//    		switch(roomType) {
-//    		case "스탠다드":
-//    			$selView.append("<option>산</option>").append("<option>정원</option>");
-//    			$selBed.append("<option>더블</option>").append("<option>트윈</option>");
-//    			
-//    			break;
-//    		case "디럭스":
-//    			$selView.append("<option>산</option>").append("<option>바다</option>");
-//    			$selBed.append("<option>더블</option>").append("<option>트윈</option>");
-//    			
-//    			break;
-//    		case "테라스":
-//    			$selView.append("<option>정원</option>");
-//    			$selBed.append("<option>더블</option>").append("<option>트윈</option>").append("<option>온돌</option>");
-//    			
-//    			break;
-//    		case "프리미어":
-//    			$selView.append("<option>산</option>").append("<option>바다</option>");
-//    			$selBed.append("<option>더블</option>").append("<option>트윈</option>");
-//    			
-//    			break;
-//
-//    		default:
-//    			$("div#choice-top").removeClass("show");
-//    			break;
-//    		}
-//    		
-//    		$liBtn = $("<li>").append("<button type='button' class='roomCkBtn'>빈방체크</button>");
-//        	$liView = $("<li>").append("<label>전망</label>").append($selView);
-//	    	$liBed = $("<li>").append("<label>침대 타입</label>").append($selBed);
-//	    	
-//	    	$("ul.result-sub-list").append($liView).append($liBed).append($liBtn);
-//	    	$("div#choice-top").toggleClass("show");
-//	    });
-	    
-	    //객실 사진 클릭하면 옵션 창 나오게 (아래)
-//	    $("ul.rsv-result-list-bottom > li > a").click(function(){
-//	    	$("div#choice-top").removeClass("show");
-//	    	var roomType = $(this).next().text();
-//	    	$selView = $("<select>").attr("name", "viewType");
-//	    	$selBed = $("<select>").attr("name", "bedType");
-//	    	$("ul.result-sub-list").text("");
-//	      	$("span.available-room-amount").text("");
-//	    	$("input[name='roomCate']").val(roomType);
-//	    	
-//	    	switch(roomType) {
-//    		case "프리미어 테라스":
-//       			$selView.append("<option>정원</option>");
-//    			$selBed.append("<option>더블</option>");
-//
-//    			break;
-//	    	case "퍼시픽 디럭스":
-//	    		$selView.append("<option>바다</option>").append("<option>정원</option>");
-//	    		$selBed.append("<option>더블</option>").append("<option>트윈</option>");
-//	    		
-//	    		break;
-//	    	case "로열 스위트":
-//	    		$selView.append("<option>바다</option>");
-//	    		$selBed.append("<option>더블</option>");
-//	    		
-//	    		break;
-//	    	case "프레지덴셜 스위트":
-//	    		$selView.append("<option>바다</option>");
-//	    		$selBed.append("<option>더블</option>");
-//	    		
-//	    		break;
-//    		default:
-//    			$("div#choice-bottom").removeClass("show");
-//    			break;
-//	    	}
-//	    	
-//			$liBtn = $("<li>").append("<button type='button' class='roomCkBtn'>빈방체크</button>");
-//	    	$liView = $("<li>").append("<label>전망</label>").append($selView);
-//	    	$liBed = $("<li>").append("<label>침대 타입</label>").append($selBed);
-//	    	
-//	    	$("ul.result-sub-list").append($liView).append($liBed).append($liBtn);
-//	    	$("div#choice-bottom").toggleClass("show");
-//	    });
-	    
-	    $(document).on("click", ".roomCkBtn", function(){
-	    	var btnObj = $(this);
-	    
-	    	$.ajax({
-	    		url: "findRoom.do",
-	    		type: "get",
-	    		data: {"rsvDate": $("input[name='rsvDate']").val(), 
-	    			   "roomCate": $("input[name='roomCate']").val(), 
-	    			   "viewType": $("select[name='viewType']").val(), 
-	    			   "bedType": $("select[name='bedType']").val()},
-	    		dataType: "json",
-	    		success: function(res){
-	    			console.log(res);
-	    			
-	    			if(res == null) {
-	    				var res_length = res.list.length;
-	    				$(btnObj).closest("ul.result-sub-list").next().find(".available-room-amount").text("예약 가능 객실 : " + res_length + "개");
-	    			} else {
-	    				var res_length = res.list.length;
-	    				$(btnObj).closest("ul.result-sub-list").next().find(".available-room-amount").text("예약 가능 객실 : " + res_length + "개");
-	    				$("input[name='roomNum']").val(res.list[0].roomNo);
-	    			}
-	    		}
-	    	});
-	    });
+
+	    //객실 선택시 옵션창 나오게
+	    $(document).on("click", "li.ar-rc", function(){
+	    	$("li.ar-op").slideUp();
+	    	if($(this).next().css("display") == "none") {
+	    		$(this).next().slideDown();
+	    	} else {
+	    		$("li.ar-op").slideUp();
+	    	}
+	    })
 	    
 	    
 	    

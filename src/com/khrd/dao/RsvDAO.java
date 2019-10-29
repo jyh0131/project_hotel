@@ -120,7 +120,13 @@ public class RsvDAO {
 		ResultSet rs = null;
 		
 		try {
-			String sql = "select * from reservation";
+			String sql = "select * from room r "
+						+"join bed_type b using(bt_no) "
+						+"join view_type v using(vt_no) "
+						+"join room_category rc using(rc_no) "
+						+"join room_size rs using(rs_no) "
+						+"join reservation rsv using(room_no) "
+						+"join member m using(m_no)";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			List<Reservation> list = new ArrayList<>();
