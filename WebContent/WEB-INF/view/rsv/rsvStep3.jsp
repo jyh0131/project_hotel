@@ -124,7 +124,7 @@
 					</c:if>
 					
 					<c:if test="${fn:contains(rsv.opNo, '3')}">
-						<c:set var="opPrice" value="${opPrice + (23000 * rsv.rCdrAdt)}" />
+						<c:set var="opPrice" value="${opPrice + (23000 * rsv.rPsnCdr)}" />
 						<li>
 						　
 							<span>Daily Breakfast(Children)</span>
@@ -157,7 +157,7 @@
 			<span class="btnHome">[메인으로]</span>
 		</a>
 		<a href="#">
-			<span class="btnMod">[예약수정]</span>
+			<span class="btnMod">[예약리스트]</span>
 		</a>
 	</div>
 </div>
