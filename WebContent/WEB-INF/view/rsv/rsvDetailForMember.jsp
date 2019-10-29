@@ -99,8 +99,7 @@
 		<div class="rsv-detail-btn-wrap">
 			<a href="#">목록</a>
 			<div>
-				<a href="${pageContext.request.contextPath}/rsv/updateStep1.do?no=${rsv.rNo}" id="aMod">수정</a>
-				<a href="${pageContext.request.contextPath}/rsv/deleteRsv.do?no=${rsv.rNo}" id="aDel">삭제</a>
+				
 			</div>
 		</div>
 	</div>

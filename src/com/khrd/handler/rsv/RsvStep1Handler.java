@@ -41,8 +41,6 @@ public class RsvStep1Handler implements CommandHandler {
 			String sOut = sdf.format(ckOutDate);
 			String[] outArr = sOut.split("-");
 			
-			
-			
 			request.setAttribute("doPath", "rsvStep1.do");
 			request.setAttribute("ckIn", inArr);
 			request.setAttribute("ckOut", outArr);

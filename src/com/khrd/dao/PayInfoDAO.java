@@ -206,42 +206,6 @@ public class PayInfoDAO {
 		}
 		
 	}/*/deletePayInfo*/
-	
-	//updatePayInfo
-	public int updatePayInfo(Connection conn, PayInfo pay) throws SQLException {
-		PreparedStatement pstmt = null;
-		
-		try {
-			String sql = "update room r "
-						+"join bed_type b using(bt_no) "
-						+"join view_type v using(vt_no) "
-						+"join room_category rc using(rc_no) "
-						+"join room_size rs using(rs_no) "
-						+"join reservation rsv using(room_no) "
-						+"join member m using(m_no) "
-						+"join pay_info pay using(r_no) "
-						+"set pay.p_cardType=?, pay.p_cardNum=?, "
-						+"pay.p_validMonth=?, pay.p_validYear=?, "
-						+"pay.p_bank_name=?, pay.p_bank_no=?, pay.p_bank_sername=? "
-						+"where rsv.r_no = ?";
-			
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, pay.getpCardType());
-			pstmt.setString(2, pay.getpCardNum());
-			pstmt.setString(3, pay.getpValidMonth());
-			pstmt.setString(4, pay.getpValidYear());
-			pstmt.setString(5, pay.getpBankName());
-			pstmt.setString(6, pay.getpBankNo());
-			pstmt.setString(7, pay.getpBankSername());
-			pstmt.setInt(8, pay.getRsv().getrNo());
-			
-			return pstmt.executeUpdate();
-			
-		} finally {
-			JDBCUtil.close(pstmt);
-		}
-		
-	}/*/updatePayInfo*/
 
 
 	

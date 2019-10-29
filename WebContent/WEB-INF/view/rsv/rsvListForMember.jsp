@@ -26,6 +26,7 @@
 					<td>${ckIn} ~ ${ckOut}</td>
 					<td>${rsv.rStay}</td>
 					<td><fmt:formatDate value="${rsv.rPayDate}" pattern="yyyy-MM-dd" /></td>
+					<td><a href="${pageContext.request.contextPath}/rsvMng/mem/deleteRsv.do?no=${rsv.rNo}" id="aDel">삭제</a></td>
 				</tr>
 			</c:forEach>
 		</table>		
