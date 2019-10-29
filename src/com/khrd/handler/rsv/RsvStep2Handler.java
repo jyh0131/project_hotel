@@ -116,7 +116,7 @@ public class RsvStep2Handler implements CommandHandler {
 				if(resultPi > 0 && resultRsv > 0) {
 					response.sendRedirect("rsvStep3.do"); //예약 완료 페이지로.
 				} else {
-					return "/index.jsp"; //에러 메세지 송출(에러페이지 만들 예정)
+					return request.getContextPath() + "/index.jsp"; //에러 메세지 송출(에러페이지 만들 예정)
 				}
 				
 			} catch (Exception e) {

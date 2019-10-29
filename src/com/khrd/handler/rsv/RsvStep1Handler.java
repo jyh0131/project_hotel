@@ -2,7 +2,9 @@ package com.khrd.handler.rsv;
 
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +25,30 @@ public class RsvStep1Handler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if(request.getMethod().equalsIgnoreCase("get")) {
+			//디폴트로 ckIn에 오늘 날짜, ckOut 내일 날짜 설정하기
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			//new Date로 해도되는데 그레고리안 캘린더를 써보고 싶었따
+			Calendar cal = new GregorianCalendar();
+			//오늘날짜
+			cal.add(Calendar.DATE, 0);
+			Date ckInDate = cal.getTime();
+			String sIn = sdf.format(ckInDate);
+			String[] inArr = sIn.split("-");
+			
+			//내일날짜
+			cal.add(Calendar.DATE, 1);
+			Date ckOutDate = cal.getTime();
+			String sOut = sdf.format(ckOutDate);
+			String[] outArr = sOut.split("-");
+			
+			
+			
+			request.setAttribute("doPath", "rsvStep1.do");
+			request.setAttribute("ckIn", inArr);
+			request.setAttribute("ckOut", outArr);
+			request.setAttribute("psnAdt", "1");
+			request.setAttribute("psnCdr", "0");
+			
 			return "/WEB-INF/view/rsv/rsvStep1.jsp"; //예약1단계(기본정보)
 			
 		} else if(request.getMethod().equalsIgnoreCase("post")) {

@@ -78,6 +78,7 @@
 			<div class="cpl-bottom-content">
 				<p>객실/패키지</p>
 				<ul>
+
 					<li>
 						· 객실
 						<span>${rsv.room.roomCategory.rcName} / ${rsv.room.viewType.vtName}</span>

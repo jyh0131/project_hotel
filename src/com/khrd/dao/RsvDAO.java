@@ -32,7 +32,8 @@ public class RsvDAO {
 	// RoomCategory 객체 생성 메소드
 	private RoomCategory rcConstructor(ResultSet rs) throws SQLException {
 		RoomCategory rc = new RoomCategory(rs.getInt("rc_no"), 
-										   rs.getString("rc_name"));
+										   rs.getString("rc_name"),
+										   rs.getString("rc_eng_name"));
 		return rc;  
 	}
 		
@@ -446,6 +447,43 @@ public class RsvDAO {
 		
 	}/*/deleteRsvByRNo*/
 	
+	//updateRsv -> 예약 내역 수정
+	public int updateRsv(Connection conn, Reservation rsv) throws SQLException {
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "update last_insert_id() from room r "
+						+"join bed_type b using(bt_no) "
+						+"join view_type v using(vt_no) "
+						+"join room_category rc using(rc_no) "
+						+"join room_size rs using(rs_no) "
+						+"join reservation rsv using(room_no) "
+						+"join member m using(m_no) "
+						+"join pay_info pay using(r_no) "
+						+"set rsv.room_no=?, rsv.r_in=?, rsv.r_out=?, rsv.r_stay=?, "
+						+"rsv.r_total_price=?, rsv.r_request=?, rsv.r_psnAdt=?, rsv.r_psnCdr=?, "
+						+"rsv.r_pay_date=now(), rsv.op_no=? "
+						+"where rsv.r_no=?";
+						
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rsv.getRoom().getRoomNo());
+			pstmt.setTimestamp(2, new Timestamp(rsv.getrIn().getTime()));
+			pstmt.setTimestamp(3, new Timestamp(rsv.getrOut().getTime()));
+			pstmt.setInt(4, rsv.getrStay());
+			pstmt.setInt(5, rsv.getrTotalPrice());
+			pstmt.setString(6, rsv.getrRequest());
+			pstmt.setInt(7, rsv.getrPsnAdt());
+			pstmt.setInt(8, rsv.getrPsnCdr());
+			pstmt.setInt(9, rsv.getOpNo());
+			pstmt.setInt(10, rsv.getrNo());
+			
+			return pstmt.executeUpdate();
+			
+		} finally {
+			JDBCUtil.close(pstmt);
+		}
+		
+	}/*/updateRsv*/
 	
 	
 	

@@ -14,7 +14,7 @@
 	</span>
 </div>
 
-<form action="rsvStep1.do" method="post">
+<form action="${doPath}" method="post">
 	<div class="rsv-date-wrap">
 		<div class="rsv-date-inner">
 			<div class="rsv-date-top">
@@ -25,11 +25,11 @@
 		
 					<div class="ck-date" id="ckIn-info">
 						<span class="left-side"> 
-							<input type="text" name="inYear" value="YYYY" readonly="readonly" class="rsv-year">
-							<input type="text" name="inMonth" value="MM" readonly="readonly" class="rsv-month">
+							<input type="text" name="inYear" value="${ckIn[0]}" readonly="readonly" class="rsv-year">
+							<input type="text" name="inMonth" value="${ckIn[1]}" readonly="readonly" class="rsv-month">
 						</span> 
 						<span class="right-side"> 
-							<input type="text" name="inDate" value="DD" readonly="readonly" class="rsv-date">
+							<input type="text" name="inDate" value="${ckIn[2]}" readonly="readonly" class="rsv-date">
 						</span>
 					</div>
 				</div>
@@ -39,11 +39,11 @@
 		
 					<div class="ck-date" id="ckOut-info">
 						<span class="left-side"> 
-							<input type="text" name="outYear" value="YYYY" readonly="readonly" class="rsv-year">
-							<input type="text" name="outMonth" value="MM" readonly="readonly" class="rsv-month">
+							<input type="text" name="outYear" value="${ckOut[0]}" readonly="readonly" class="rsv-year">
+							<input type="text" name="outMonth" value="${ckOut[1]}" readonly="readonly" class="rsv-month">
 						</span> 
 						<span class="right-side"> 
-							<input type="text" name="outDate" value="DD" readonly="readonly" class="rsv-date">
+							<input type="text" name="outDate" value="${ckOut[2]}" readonly="readonly" class="rsv-date">
 						</span>
 					</div>
 				</div>
@@ -52,7 +52,7 @@
 					<span class="ck-title">성인</span>
 					<div class="rsv-person">
 						<span class="left-side"> 
-							<input type="text" value="1" readonly="readonly" class="rsv-num" name="adtNum">
+							<input type="text" value="${psnAdt}" readonly="readonly" class="rsv-num" name="adtNum">
 						</span> 
 						<span class="right-side"> 
 							<span class="rsv-button-plus" id="adtAdd"> 
@@ -69,7 +69,7 @@
 					<span class="ck-title">어린이</span>
 					<div class="rsv-person">
 						<span class="left-side"> 
-							<input type="text" value="0" readonly="readonly" class="rsv-num" name="chdNum">
+							<input type="text" value="${psnCdr}" readonly="readonly" class="rsv-num" name="chdNum">
 						</span> 
 						<span class="right-side"> 
 							<span class="rsv-button-plus" id="chdAdd"> 
