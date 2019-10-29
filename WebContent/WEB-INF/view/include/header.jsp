@@ -65,16 +65,31 @@
 							<a href="http://localhost:8080/project_hotel/room/main.do?rcNo=1">객실</a>
 							<ul class="sub-nav">
 								<li>
-									<a href="http://localhost:8080/project_hotel/room/main.do?rcNo=1">스탠다드</a>
+									<a href="${pageContext.request.contextPath }/room/main.do?rcNo=1">스탠다드</a>
 								</li>
 								<li>
-									<a href="http://localhost:8080/project_hotel/room/main.do?rcNo=2">프리미어</a>
+									<a href="${pageContext.request.contextPath }/room/main.do?rcNo=2">디럭스</a>
 								</li>
 								<li>
-									<a href="http://localhost:8080/project_hotel/room/main.do?rcNo=3">스위트</a>
+									<a href="${pageContext.request.contextPath }/room/main.do?rcNo=3">테라스</a>
+								</li>
+									<li>
+									<a href="${pageContext.request.contextPath }/room/main.do?rcNo=4">프리미어</a>
+								</li>
+									<li>
+									<a href="${pageContext.request.contextPath }/room/main.do?rcNo=5">프리미어 테라스</a>
+								</li>
+									<li>
+									<a href="${pageContext.request.contextPath }/room/main.do?rcNo=6">퍼시픽 디럭스</a>
+								</li>
+									<li>
+									<a href="${pageContext.request.contextPath }/room/main.do?rcNo=7">로열 스위트</a>
+								</li>
+									<li>
+									<a href="${pageContext.request.contextPath }/room/main.do?rcNo=8">프레지덴셜 스위트</a>
 								</li>
 								<li>
-									<a href="http://localhost:8080/project_hotel/room/main.do?rcNo=4">전체 객실 보기</a>
+									<a href="#">전체 객실 보기</a>
 								</li>
 							</ul>
 						</li>
@@ -177,5 +192,3 @@
 		
 		<div id="section">
 			<div id="section-wrap">
-</body>
-</html>

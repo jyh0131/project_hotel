@@ -33,7 +33,7 @@ public class PictureInsertHandler implements CommandHandler {
 			}
 			
 			int size = 1024 * 1024 * 10; // 파일 사이즈 제한(10메가)
-			MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "utf-8", new DefaultFileRenamePolicy());
+			MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "utf-8");
 			
 			int gNo = Integer.parseInt(multi.getParameter("g_no"));
 			int rcNo = Integer.parseInt(multi.getParameter("rc_no"));

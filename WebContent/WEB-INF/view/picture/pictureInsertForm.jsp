@@ -22,7 +22,7 @@
 		<table>
 			<tr>
 				<td>이미지</td>
-				<td><input type="file" name="pic_file"></td>
+				<td><input type="file" name="pic_file"></td><!-- multiple="multiple"  -->
 			</tr>
 			<tr>
 				<td>갤러리 분류</td>

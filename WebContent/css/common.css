@@ -78,9 +78,9 @@ ul#main-menu > li {
 	text-align: center;
 	position: relative;
 }
-/* ul#main-menu:hover > li > ul.sub-nav { 나중에 제이쿼리로 다시 처리하기
+ ul#main-menu:hover > li > ul.sub-nav {/*  나중에 제이쿼리로 다시 처리하기 */
 	display: block;
-} */
+}
 ul#main-menu > li > a {
 	display: block;
 	color: white;
@@ -105,7 +105,7 @@ ul.sub-nav {
 	display: none;
 	overflow: hidden;
 	width: 100%;
-	height: 320px;
+	height: 360px;
 	background: blue;
 	position: absolute;
 	left: 0;

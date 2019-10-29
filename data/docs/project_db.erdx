@@ -81,7 +81,7 @@
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_tQU-cvAVEemabKU1RCR6CA" location="Point(-12, 524)" table="Table_tQZP6vAVEemabKU1RCR6CA" theme="nightSky"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_tQU-c_AVEemabKU1RCR6CA" location="Point(546, 684)" table="Table_tQZ2-fAVEemabKU1RCR6CA" theme="nightSky"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_CNjP8fC-EemqrpvplCsJEw" location="Point(1008, 42)" table="Table_CNjP8PC-EemqrpvplCsJEw"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_f0rs4fC-EemqrpvplCsJEw" location="Point(1008, 166)" table="Table_f0rs4PC-EemqrpvplCsJEw"/>
+      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_f0rs4fC-EemqrpvplCsJEw" location="Point(1008, 193)" table="Table_f0rs4PC-EemqrpvplCsJEw"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_Hx520PPTEemvf_1tywZ0FQ" location="Point(994, 343)" table="Table_HxwF0PPTEemvf_1tywZ0FQ" theme="coffie"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_9_MKIPPTEemvf_1tywZ0FQ" location="Point(994, 475)" table="Table_9_KU8PPTEemvf_1tywZ0FQ" theme="coffie"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_XPZqIPPUEemvf_1tywZ0FQ" location="Point(998, 610)" table="Table_XPX08PPUEemvf_1tywZ0FQ" theme="coffie"/>
@@ -360,6 +360,7 @@
         <columns UUID="Column_XB_vQPC-EemqrpvplCsJEw" logicalName="분류명" physicalName="g_name" dataType="VARCHAR(10)" notNull="TRUE">
           <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_b0JPoPC-EemqrpvplCsJEw"/>
         </columns>
+        <columns UUID="Column_e2CqIPlgEemFhqYiMO9xpA" logicalName="경로" physicalName="g_path" dataType="VARCHAR(255)" notNull="TRUE"/>
         <columnGroups xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_Wue9YPC-EemqrpvplCsJEw" logicalName="갤러리 타입 기본키" physicalName="PK_g_type" derivedPhysicalName="true" derivedLogicalName="true">
           <physicalProperties xsi:type="mysql:IndexProperties" UUID="IProperties_b0JPofC-EemqrpvplCsJEw"/>
           <primaryKeyConstraint UUID="PKConstraint_Wue9YfC-EemqrpvplCsJEw" logicalName="갤러리 타입 기본키" physicalName="PK_g_type" derivedPhysicalName="true" derivedLogicalName="true"/>
