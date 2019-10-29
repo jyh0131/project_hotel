@@ -17,7 +17,7 @@ import com.khrd.dto.Room;
 import com.khrd.jdbc.ConnectionProvider;
 import com.khrd.jdbc.JDBCUtil;
 
-public class RsvAvailableRoomListHandler implements CommandHandler {
+public class RsvEmptyRoomByConditionHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {

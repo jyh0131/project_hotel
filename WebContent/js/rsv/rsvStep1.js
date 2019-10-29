@@ -5,6 +5,8 @@
 		$(".datepicker-here").datepicker({
 			toggleSelected: false,
 			minDate: new Date(),
+			clear: 'Clear',
+			firstDay: 0,
 			onSelect: function(formattedDate, date, inst){
 				
 				var dateArr = formattedDate.split("/");
@@ -18,7 +20,6 @@
 				$("#ckOut-info .rsv-date").val(dateArr[4]);
 			}
 		});
-		
 		
 
 	    var cntAdt = parseInt($(".rsv-button-plus").eq(0).closest("div").find(".rsv-num").val() || 0);
@@ -71,110 +72,116 @@
 	    
 	    //검색 버튼 누르면 방 리스트 나오게
 	    $(".btn-Search").click(function(){
-	    	if(($("#ckIn-info .rsv-year").val() == "YYYY" || 
-	    	   $("#ckIn-info .rsv-month").val() == "MM" ||
-	    	   $("#ckIn-info .rsv-date").val() == "DD") ||
-	    	   ($("#ckIn-info .rsv-year").val() == "YYYY" ||  $("#ckIn-info .rsv-year").val() == "" ||
-	    	    $("#ckIn-info .rsv-month").val() == "MM" || $("#ckIn-info .rsv-month").val() == "" ||
-	    	    $("#ckIn-info .rsv-date").val() == "DD" || $("#ckIn-info .rsv-date").val() == "")) {
+	    	$.ajax({
+	    		url: "availbleRoom.do",
+	    		type: "get",
+	    		data: {"rsvDate": $("input[name='rsvDate']").val()},
+	    		dataType: "json", 
+	    		success: function(res){
+	    			console.log(res);
+	    			
+	    			$(res.ar).each(function(i, obj){
+	    				
+	    				obj.roomCategory.rcName
+	    				
+	    				
+	    			});
+	    			
+	    			
+	    		}
 	    		
-	    		alert("날짜를 입력하시오");
-	    		return false;
-	    	} else {
-	    		$("h2").hide();
-	    		$("div.rsv-result-list-wrap").show();
-	    	}
+	    	});
 	    })
 	    
 	    
 	    //객실 사진 클릭하면 옵션 창 나오게 (위)
-	    $("ul.rsv-result-list-top > li > a").click(function(){
-	    	$("div#choice-bottom").removeClass("show");
-	    	var roomType = $(this).next().text();
-	    	$selView = $("<select>").attr("name", "viewType");
-	    	$selBed = $("<select>").attr("name", "bedType");
-	    	$("ul.result-sub-list").text("");
-	    	$("span.available-room-amount").text("");
-	    	$("input[name='roomCate']").val(roomType);
-	
-    		switch(roomType) {
-    		case "스탠다드":
-    			$selView.append("<option>산</option>").append("<option>정원</option>");
-    			$selBed.append("<option>더블</option>").append("<option>트윈</option>");
-    			
-    			break;
-    		case "디럭스":
-    			$selView.append("<option>산</option>").append("<option>바다</option>");
-    			$selBed.append("<option>더블</option>").append("<option>트윈</option>");
-    			
-    			break;
-    		case "테라스":
-    			$selView.append("<option>정원</option>");
-    			$selBed.append("<option>더블</option>").append("<option>트윈</option>").append("<option>온돌</option>");
-    			
-    			break;
-    		case "프리미어":
-    			$selView.append("<option>산</option>").append("<option>바다</option>");
-    			$selBed.append("<option>더블</option>").append("<option>트윈</option>");
-    			
-    			break;
-
-    		default:
-    			$("div#choice-top").removeClass("show");
-    			break;
-    		}
-    		
-    		$liBtn = $("<li>").append("<button type='button' class='roomCkBtn'>빈방체크</button>");
-        	$liView = $("<li>").append("<label>전망</label>").append($selView);
-	    	$liBed = $("<li>").append("<label>침대 타입</label>").append($selBed);
-	    	
-	    	$("ul.result-sub-list").append($liView).append($liBed).append($liBtn);
-	    	$("div#choice-top").toggleClass("show");
-	    });
+//	    $("ul.rsv-result-list-top > li > a").click(function(){
+//	    	$("div#choice-bottom").removeClass("show");
+//	    	var roomType = $(this).next().text();
+//	    	$selView = $("<select>").attr("name", "viewType");
+//	    	$selBed = $("<select>").attr("name", "bedType");
+//	    	$("ul.result-sub-list").text("");
+//	    	$("span.available-room-amount").text("");
+//	    	$("input[name='roomCate']").val(roomType);
+//	
+//    		switch(roomType) {
+//    		case "스탠다드":
+//    			$selView.append("<option>산</option>").append("<option>정원</option>");
+//    			$selBed.append("<option>더블</option>").append("<option>트윈</option>");
+//    			
+//    			break;
+//    		case "디럭스":
+//    			$selView.append("<option>산</option>").append("<option>바다</option>");
+//    			$selBed.append("<option>더블</option>").append("<option>트윈</option>");
+//    			
+//    			break;
+//    		case "테라스":
+//    			$selView.append("<option>정원</option>");
+//    			$selBed.append("<option>더블</option>").append("<option>트윈</option>").append("<option>온돌</option>");
+//    			
+//    			break;
+//    		case "프리미어":
+//    			$selView.append("<option>산</option>").append("<option>바다</option>");
+//    			$selBed.append("<option>더블</option>").append("<option>트윈</option>");
+//    			
+//    			break;
+//
+//    		default:
+//    			$("div#choice-top").removeClass("show");
+//    			break;
+//    		}
+//    		
+//    		$liBtn = $("<li>").append("<button type='button' class='roomCkBtn'>빈방체크</button>");
+//        	$liView = $("<li>").append("<label>전망</label>").append($selView);
+//	    	$liBed = $("<li>").append("<label>침대 타입</label>").append($selBed);
+//	    	
+//	    	$("ul.result-sub-list").append($liView).append($liBed).append($liBtn);
+//	    	$("div#choice-top").toggleClass("show");
+//	    });
 	    
 	    //객실 사진 클릭하면 옵션 창 나오게 (아래)
-	    $("ul.rsv-result-list-bottom > li > a").click(function(){
-	    	$("div#choice-top").removeClass("show");
-	    	var roomType = $(this).next().text();
-	    	$selView = $("<select>").attr("name", "viewType");
-	    	$selBed = $("<select>").attr("name", "bedType");
-	    	$("ul.result-sub-list").text("");
-	      	$("span.available-room-amount").text("");
-	    	$("input[name='roomCate']").val(roomType);
-	    	
-	    	switch(roomType) {
-    		case "프리미어 테라스":
-       			$selView.append("<option>정원</option>");
-    			$selBed.append("<option>더블</option>");
-
-    			break;
-	    	case "퍼시픽 디럭스":
-	    		$selView.append("<option>바다</option>").append("<option>정원</option>");
-	    		$selBed.append("<option>더블</option>").append("<option>트윈</option>");
-	    		
-	    		break;
-	    	case "로열 스위트":
-	    		$selView.append("<option>바다</option>");
-	    		$selBed.append("<option>더블</option>");
-	    		
-	    		break;
-	    	case "프레지덴셜 스위트":
-	    		$selView.append("<option>바다</option>");
-	    		$selBed.append("<option>더블</option>");
-	    		
-	    		break;
-    		default:
-    			$("div#choice-bottom").removeClass("show");
-    			break;
-	    	}
-	    	
-			$liBtn = $("<li>").append("<button type='button' class='roomCkBtn'>빈방체크</button>");
-	    	$liView = $("<li>").append("<label>전망</label>").append($selView);
-	    	$liBed = $("<li>").append("<label>침대 타입</label>").append($selBed);
-	    	
-	    	$("ul.result-sub-list").append($liView).append($liBed).append($liBtn);
-	    	$("div#choice-bottom").toggleClass("show");
-	    });
+//	    $("ul.rsv-result-list-bottom > li > a").click(function(){
+//	    	$("div#choice-top").removeClass("show");
+//	    	var roomType = $(this).next().text();
+//	    	$selView = $("<select>").attr("name", "viewType");
+//	    	$selBed = $("<select>").attr("name", "bedType");
+//	    	$("ul.result-sub-list").text("");
+//	      	$("span.available-room-amount").text("");
+//	    	$("input[name='roomCate']").val(roomType);
+//	    	
+//	    	switch(roomType) {
+//    		case "프리미어 테라스":
+//       			$selView.append("<option>정원</option>");
+//    			$selBed.append("<option>더블</option>");
+//
+//    			break;
+//	    	case "퍼시픽 디럭스":
+//	    		$selView.append("<option>바다</option>").append("<option>정원</option>");
+//	    		$selBed.append("<option>더블</option>").append("<option>트윈</option>");
+//	    		
+//	    		break;
+//	    	case "로열 스위트":
+//	    		$selView.append("<option>바다</option>");
+//	    		$selBed.append("<option>더블</option>");
+//	    		
+//	    		break;
+//	    	case "프레지덴셜 스위트":
+//	    		$selView.append("<option>바다</option>");
+//	    		$selBed.append("<option>더블</option>");
+//	    		
+//	    		break;
+//    		default:
+//    			$("div#choice-bottom").removeClass("show");
+//    			break;
+//	    	}
+//	    	
+//			$liBtn = $("<li>").append("<button type='button' class='roomCkBtn'>빈방체크</button>");
+//	    	$liView = $("<li>").append("<label>전망</label>").append($selView);
+//	    	$liBed = $("<li>").append("<label>침대 타입</label>").append($selBed);
+//	    	
+//	    	$("ul.result-sub-list").append($liView).append($liBed).append($liBtn);
+//	    	$("div#choice-bottom").toggleClass("show");
+//	    });
 	    
 	    $(document).on("click", ".roomCkBtn", function(){
 	    	var btnObj = $(this);

@@ -3,10 +3,10 @@
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
 <link href="${pageContext.request.contextPath}/css/util/datepicker.min.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/css/rsv/rsvStep1.css" rel="stylesheet" type="text/css">
+
 <script src="${pageContext.request.contextPath}/js/util/datepicker.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/util/datepicker.en.js"></script>
 <script src="${pageContext.request.contextPath}/js/rsv/rsvStep1.js"></script>
-
 
 <div class="rsv-step-wrap">
 	<span> 
@@ -14,13 +14,14 @@
 	</span>
 </div>
 
-<form action="${doPath}" method="post">
+<form action="rsvStep1.do" method="post">
 	<div class="rsv-date-wrap">
 		<div class="rsv-date-inner">
 			<div class="rsv-date-top">
 				<div class="rsv-date">
-					<input type="text" name="rsvDate" readonly="readonly" class="datepicker-here" data-position="bottom left" 
-					data-language="en" data-range="true" data-multiple-dates-separator="/" data-language="en"/>
+					<input type="text" name="rsvDate"
+					readonly="readonly" class="datepicker-here" data-position="bottom left" 
+					data-language="en" data-range="true" data-multiple-dates-separator="/" data-language="en" />
 					<span class="ck-title">체크인</span>
 		
 					<div class="ck-date" id="ckIn-info">
@@ -39,11 +40,11 @@
 		
 					<div class="ck-date" id="ckOut-info">
 						<span class="left-side"> 
-							<input type="text" name="outYear" value="${ckOut[0]}" readonly="readonly" class="rsv-year">
-							<input type="text" name="outMonth" value="${ckOut[1]}" readonly="readonly" class="rsv-month">
+							<input type="text" name="outYear" value="" readonly="readonly" class="rsv-year">
+							<input type="text" name="outMonth" value="" readonly="readonly" class="rsv-month">
 						</span> 
 						<span class="right-side"> 
-							<input type="text" name="outDate" value="${ckOut[2]}" readonly="readonly" class="rsv-date">
+							<input type="text" name="outDate" value="" readonly="readonly" class="rsv-date">
 						</span>
 					</div>
 				</div>
@@ -99,41 +100,34 @@
 						
 						<h2>예약을 원하시는 호텔, 날짜, 인원을 선택 후 검색 버튼을 눌러주세요.</h2>
 						
-						<div class="rsv-result-list-wrap">
+						<div class="rsv-result-list-wrap tabs">
 							<h2>원하시는 방과 옵션을 선택해주세요.</h2>
 							<input type="hidden" name="roomCate">
 							<input type="hidden" name="roomNum">
-							<ul class="rsv-result-list-top">
-								<li>
-									<a>
-										<img src="images/rsv-img/test.jpg">
-									</a>
-									<span>스탠다드</span>
-								</li>
-		
-								<li>
-									<a>
-										<img src="images/rsv-img/test.jpg">
-									</a>
-									<span>디럭스</span>
-								</li>
-								<li>
-									<a>
-										<img src="images/rsv-img/test.jpg">
-									</a>
-									<span>테라스</span>
-								</li>
-								<li>
-									<a>
-										<img src="images/rsv-img/test.jpg">
-									</a>
-									<span>프리미어</span>
-								</li>
+							<ul class='rsv-result-list-top horizontal'>
+								<li><a href="#tab-1">스탠다드</a></li>
+								<li><a href="#tab-2">tab</a></li>
+								<li><a href="#tab-3">tab</a></li>
 							</ul>
 							
+							<!-- 탭메뉴 -->
 							<div class="option-choice-wrap" id="choice-top">
 								<ul class="result-sub-list">
-
+									<li>
+										<label>전망</label>
+										<select>
+											<option>none</option>
+										</select>
+									</li>
+									<li>
+										<label>침대 타입</label>
+										<select>
+											<option>none</option>
+										</select>
+									</li>
+									<li>
+										<button type='button' class='roomCkBtn'>빈방체크</button>
+									</li>
 								</ul>
 								<div class="available-result">
 									<span class='available-room-amount'></span>
@@ -170,7 +164,21 @@
 							
 							<div class="option-choice-wrap" id="choice-bottom">
 								<ul class="result-sub-list">
-
+									<li>
+										<label>전망</label>
+										<select>
+											<option>none</option>
+										</select>
+									</li>
+									<li>
+										<label>침대 타입</label>
+										<select>
+											<option>none</option>
+										</select>
+									</li>
+									<li>
+										<button type='button' class='roomCkBtn'>빈방체크</button>
+									</li>
 								</ul>
 								<div class="available-result">
 									<span class='available-room-amount'></span>

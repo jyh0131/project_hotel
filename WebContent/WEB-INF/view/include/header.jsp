@@ -18,7 +18,7 @@
 		<div id="head">
 			<div id="header">
 				<div id="logo-wrap">
-					<h1>PROJECT HOTEL</h1>
+					<h1><a href="${pageContext.request.contextPath }/index.jsp">PROJECT HOTEL</a></h1>
 				</div>
 				<ul id="top-menu">
 					<c:if test="${Auth != null }">

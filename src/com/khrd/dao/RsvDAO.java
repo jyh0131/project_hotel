@@ -180,28 +180,35 @@ public class RsvDAO {
 	//selectAvailableRoomList -> 날짜에 따른 예약 가능한 방 목록 (selectEmptyRoomByCondition로 진화시킴)
 	public List<Room> selectAvailableRoomList(Connection conn, String inDate, String outDate){
 		PreparedStatement pstmt = null;
+		PreparedStatement pstmtDrop = null;
+		PreparedStatement pstmtSel = null;
 		ResultSet rs = null;
 		
+		
 		try {
-			String sql = "select * from ("
-						+"select * from room r join bed_type b using(bt_no) "
-						+"join view_type v using(vt_no) "
-						+"join room_category rc using(rc_no) "
-						+"join room_size rs using(rs_no) "
-						+"left join reservation rsv using(room_no) "
-						+"where !((rsv.r_in >= ? and rsv.r_in <= ?) "
-						+"or (rsv.r_out >= ? and rsv.r_out <= ?))) as subRsv"
-						+"where !((subRsv.r_in <= ? and subRsv.r_out >= ?) "
-						+"or (subRsv.r_in <= ? and subRsv.r_out >= ?)) "
-						+"union"
-						+"select * from room r join bed_type b using(bt_no) "
-						+"join view_type v using(vt_no) "
-						+"join room_category rc using(rc_no) "
-						+"join room_size rs using(rs_no) "
-						+"left join reservation rsv using(room_no) "
-						+"where rsv.r_in is null and rsv.r_out is null";
-					
-			pstmt = conn.prepareStatement(sql);
+			//view 삭제 후 생성
+			String dropView = "drop view if exists vw_available";
+			String createView = "create or replace view vw_available "
+								+"as select * from ("
+								+"select * from room r join bed_type b using(bt_no) "
+								+"join view_type v using(vt_no) "
+								+"join room_category rc using(rc_no) "
+								+"join room_size rs using(rs_no) "
+								+"left join reservation rsv using(room_no) "
+								+"where !((rsv.r_in >= ? and rsv.r_in <= ?) "
+								+"or (rsv.r_out >= ? and rsv.r_out <= ?))) as subRsv "
+								+"where !((subRsv.r_in <= ? and subRsv.r_out >= ?) "
+								+"or (subRsv.r_in <= ? and subRsv.r_out >= ?)) "
+								+"union "
+								+"select * from room r join bed_type b using(bt_no) "
+								+"join view_type v using(vt_no) "
+								+"join room_category rc using(rc_no) "
+								+"join room_size rs using(rs_no) "
+								+"left join reservation rsv using(room_no) "
+								+"where rsv.r_in is null and rsv.r_out is null";  
+			 
+			pstmtDrop = conn.prepareStatement(dropView); 
+			pstmt = conn.prepareStatement(createView);
 			pstmt.setString(1, inDate);
 			pstmt.setString(2, outDate);
 			pstmt.setString(3, inDate);
@@ -211,7 +218,13 @@ public class RsvDAO {
 			pstmt.setString(7, outDate);
 			pstmt.setString(8, outDate);
 			
-			rs = pstmt.executeQuery();
+			pstmtDrop.execute();
+			pstmt.execute();
+			
+			String sql = "select * from vw_available group by rc_name order by rc_no";
+			pstmtSel = conn.prepareStatement(sql);
+			
+			rs = pstmtSel.executeQuery(); 
 			
 			List<Room> list = new ArrayList<>();
 			while(rs.next()) {
@@ -227,7 +240,9 @@ public class RsvDAO {
 			
 		} finally {
 			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmtSel);
 			JDBCUtil.close(pstmt);
+			JDBCUtil.close(pstmtDrop);
 		}
 		
 		return null;

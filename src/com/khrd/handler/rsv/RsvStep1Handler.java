@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,11 +42,27 @@ public class RsvStep1Handler implements CommandHandler {
 			String sOut = sdf.format(ckOutDate);
 			String[] outArr = sOut.split("-");
 			
-			request.setAttribute("doPath", "rsvStep1.do");
-			request.setAttribute("ckIn", inArr);
-			request.setAttribute("ckOut", outArr);
-			request.setAttribute("psnAdt", "1");
-			request.setAttribute("psnCdr", "0");
+			//방 리스트 가져오기
+			Connection conn = null;
+			
+			try {
+				conn = ConnectionProvider.getConnection();
+				RoomDAO dao = RoomDAO.getInstance();
+				List<Room> list = dao.selectList(conn);
+				
+				request.setAttribute("list", list);
+				request.setAttribute("ckIn", inArr);
+				request.setAttribute("ckOut", outArr);
+				request.setAttribute("psnAdt", "1");
+				request.setAttribute("psnCdr", "0");
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				JDBCUtil.close(conn);
+			}
+			
+
 			
 			return "/WEB-INF/view/rsv/rsvStep1.jsp"; //예약1단계(기본정보)
 			
