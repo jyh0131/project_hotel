@@ -9,8 +9,8 @@
 		width: 100%;
 	}
 	div#section {
-		clear: both;
-		width: 100%;
+		margin:0 auto;
+		border:1px solid red;
 	}
 	/* div#rm_wrap {
 		width: 1200px; 
@@ -54,9 +54,10 @@
 	
 /* --------- 큰 title, > 객실 > 스탠다드 --------- */	
 	#rm_roomContent{
-		width:78%;
+		width:870px;
 		float: right;
 		margin-top: 50px;
+		
 	}
 	#rm_roomTitle p{
 		text-align: right;
@@ -65,6 +66,11 @@
 		margin-right:20px;
 	}
 /* --------- 객실 이미지 슬라이드 --------- */
+	ul.slides{
+		width:800px;
+		border:1px solid red;
+		overflow: hidden;
+	}
 	.slides>li>img{
 		width:100%;
 	}
@@ -72,10 +78,11 @@
 		position: relative;
 		margin-bottom: 130px;
 	}
+	.flex-control-nav{
+	}
 	.flex-control-thumbs img{
-		width:24.3%;
 		float: left;
-		margin:3px;
+		margin:2px;
 	}
 	.flex-prev, .flex-next{
 		color:white;
@@ -98,6 +105,9 @@
 		height:60px;
 	}
 /* --------- 객실 설명 --------- */
+	#rm_contentBox{
+		clear:both;
+	}
 	#rm_contentLeft{
 		width:48%;
 		float: left;
@@ -168,13 +178,16 @@
 	$(window).load(function() {
 		$(".flexslider").flexslider({
 			animation: "slide",
-	    	controlNav: "thumbnails"
+	    	controlNav: "thumbnails",
 	  	});   
 		
 		$(".flex-prev").html("");
 	  	$(".flex-next").html("");
 	  	
-	  	//$(".contentImg").
+	  	$(".flex-control-thumbs img").addClass("sImg");
+	  	var smallImgObj = document.getElementsByClassName("sImg");
+	  	var size = (100/smallImgObj.length) - 0.6;
+	  	$(".flex-control-thumbs img").css("width", size + "%");
 	});
 </script>
 <div>
@@ -201,45 +214,25 @@
 		<!-- Place somewhere in the <body> of your page -->
 		<div class="flexslider">
 			<ul class="slides">
-				<c:forEach var="i" items="${rcNoList}"  varStatus="status" >
-				<li data-thumb="${pageContext.request.contextPath }/upload/s_${i.picFile }">
-					<img src="${pageContext.request.contextPath }/upload/${i.picFile }">
-				</li>
-					<%-- <c:set var="sImgSrc" value="${i.picFile }"/>
-					<c:choose>
-						<c:when test="${fn:substring(sImgSrc, 0, 2) } == 's_'"> <!-- src 앞부분에 s_가 들어갈 경우 -->
-							<li data-thumb="${pageContext.request.contextPath }/upload/${i.picFile }">
-						</c:when>
-						<c:otherwise>
-						
+				<c:forEach var="i" items="${rcNoList}">
+					<c:if test="${i.picCategory == 1 }"> <!-- 작은 이미지 -->
+						<li data-thumb="${pageContext.request.contextPath }/upload/${i.picFile }">
+					</c:if> 
+					<c:if test="${i.picCategory == 2 }"> <!-- 큰 이미지 -->	
 							<img src="${pageContext.request.contextPath }/upload/${i.picFile }">
-						</c:otherwise>
-						
-					</c:choose>
-						</li> --%>
+						</li>
+					</c:if>
 				</c:forEach>
-				<%-- <li></li>
-				<li data-thumb="${pageContext.request.contextPath }/upload/s_${pictureRoom.roomCategory.rcEngName}1.jpg">
-		      		<img src="${pageContext.request.contextPath }/upload/${pictureRoom.roomCategory.rcEngName}1.jpg">
-		    	</li>
-		    	<li data-thumb="${pageContext.request.contextPath }/upload/s_${pictureRoom.roomCategory.rcEngName}2.jpg">
-		      		<img src="${pageContext.request.contextPath }/upload/${pictureRoom.roomCategory.rcEngName}2.jpg">
-		    	</li>
-		    	<li data-thumb="${pageContext.request.contextPath }/upload/s_${pictureRoom.roomCategory.rcEngName}3.jpg">
-		      		<img src="${pageContext.request.contextPath }/upload/${pictureRoom.roomCategory.rcEngName}3.jpg">
-		    	</li>
-		    	<li data-thumb="${pageContext.request.contextPath }/upload/s_${pictureRoom.roomCategory.rcEngName}4.jpg">
-		      		<img src="${pageContext.request.contextPath }/upload/${pictureRoom.roomCategory.rcEngName}4.jpg">
-		    	</li> --%>
 			</ul>
 		</div>
-		<!-- <div id="roomImg">
-			<img src="room.jpg">
-		</div> -->
 		
 		<div id="rm_contentBox">
 			<div id="rm_contentLeft">
-				<img src="${pageContext.request.contextPath }/upload/${picture.picFile}">
+				<c:forEach var="i" items="${rcNoList}">
+					<c:if test="${i.picCategory == 3 }">	
+						<img src="${pageContext.request.contextPath }/upload/${i.picFile }">
+					</c:if>	
+				</c:forEach>
 			</div>
 			
 			<div id="rm_contentRight">

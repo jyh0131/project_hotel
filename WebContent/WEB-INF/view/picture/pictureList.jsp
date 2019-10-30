@@ -35,7 +35,7 @@
 	<div id="p_menu">
 		<ul>
 			<li><a href="${pageContext.request.contextPath }/picture/list.do">사진 리스트 보기</a></li>
-			<li><a href="${pageContext.request.contextPath }/picture/insert.do">사진 등록하기</a></li>
+			<li><a href="${pageContext.request.contextPath }/picture/insert.do">객실 사진 등록하기</a></li>
 		</ul> 	
 	</div>
 	
@@ -45,6 +45,7 @@
 			<td>파일명</td>
 			<td>갤러리분류</td><!-- 분류명 들어와야함. -->
 			<td>객실분류</td>
+			<td>파일분류</td>
 			<td></td>
 		</tr>
 		<c:forEach var="pic" items="${list }">
@@ -54,8 +55,21 @@
 				<td>${pic.gType.gName }</td>
 				<td>${pic.roomCategory.rcName }</td>
 				<td>
+					<c:choose>
+						<c:when test="${pic.picCategory == '1'}">
+							작은 이미지
+						</c:when>
+						<c:when test="${pic.picCategory == '2'}">
+							원본 이미지
+						</c:when>
+						<c:when test="${pic.picCategory == '3'}">
+							내용 이미지
+						</c:when>
+					</c:choose>
+				</td>
+				<td>
 					<button class="p_btn_delete" data-picFile="${pic.picFile }">삭제</button>
-				</td>	
+				</td>
 			</tr>
 		</c:forEach>	
 	</table>

@@ -46,9 +46,10 @@ public class PictureDAO {
 		GType gt = gtConstructor(rs);
 		RoomCategory rc = rcConstructor(rs);
 		
-		Picture picture = new Picture(rs.getString("pic_file"), 
+		Picture picture = new Picture(rs.getString("pic_file"), // 파일명
 									  gt, // 갤러리 타입
-									  rc); // 객실 분류 타입
+									  rc, // 객실 분류 타입
+									  rs.getInt("pic_category")); // 파일 구분
 		
 		return picture;
 	}
@@ -61,11 +62,12 @@ public class PictureDAO {
 		 
 		try {
 //			insert into picture values(null, "sample.jpg", 5, null);
-			String sql = "insert into picture values(?, ?, ?)";
+			String sql = "insert into picture values(?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, picture.getPicFile()); // 파일명
 			pstmt.setInt(2, picture.getgType().getgNo()); // g_type no
 			pstmt.setInt(3, picture.getRoomCategory().getRcNo()); // room_category no
+			pstmt.setInt(4, picture.getPicCategory()); // 파일 구분
 			
 			return pstmt.executeUpdate();
 			
@@ -234,6 +236,7 @@ public class PictureDAO {
 				Picture picture = picConstruct(rs);
 				list.add(picture);
 			}
+			
 			return list;
 		}catch (Exception e) {
 			e.printStackTrace();

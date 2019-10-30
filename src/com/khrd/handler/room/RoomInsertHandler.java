@@ -74,7 +74,8 @@ public class RoomInsertHandler implements CommandHandler {
 				
 				Picture picture = new Picture(null, 
 											  null, 
-											  new RoomCategory(rcNo, null, null));
+											  new RoomCategory(rcNo, null, null),
+											  0);
 				
 				dao.insert(conn, room);
 				pDao.insert(conn, picture);

@@ -25,8 +25,8 @@ public class PictureInsertHandler implements CommandHandler {
 		}else if(request.getMethod().equalsIgnoreCase("post")) {
 			
 			// upload폴더 만들기
-			
 			String uploadPath = request.getRealPath("upload");
+			
 			File dir = new File(uploadPath);
 			if(dir.exists() == false) {
 				dir.mkdir();
@@ -35,22 +35,20 @@ public class PictureInsertHandler implements CommandHandler {
 			int size = 1024 * 1024 * 10; // 파일 사이즈 제한(10메가)
 			MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "utf-8");
 			
-			int gNo = Integer.parseInt(multi.getParameter("g_no"));
+//			int gNo = Integer.parseInt(multi.getParameter("g_no"));
 			int rcNo = Integer.parseInt(multi.getParameter("rc_no"));
 			String file = multi.getFilesystemName("pic_file");
+			int fc = Integer.parseInt(multi.getParameter("pic_category"));
 			
-		
-			if(file.substring(0, 2).contains("s_") == true) {
-				System.out.println("true");
-			}
 			Connection conn = null;
 			
 			try {
 				conn = ConnectionProvider.getConnection();
 				PictureDAO dao = PictureDAO.getInstance();
 				Picture picture = new Picture(file, 
-											  new GType(gNo, null, null), 
-											  new RoomCategory(rcNo, null, null));
+											  new GType(1, null, null), 
+											  new RoomCategory(rcNo, null, null),
+											  fc);
 				dao.insert(conn, picture);
 				
 				response.sendRedirect(request.getContextPath() + "/picture/list.do");

@@ -25,16 +25,25 @@
 				<td><input type="file" name="pic_file"></td><!-- multiple="multiple"  -->
 			</tr>
 			<tr>
-				<td>갤러리 분류</td>
+				<td>이미지 구분</td>
 				<td>
-					<select name="g_no">
+					<input type="radio" name="pic_category" value="1" id="smallImg"><label for="smallImg">작은 이미지</label>
+					<input type="radio" name="pic_category" value="2" checked="checked" id="basicImg"><label for="basic">원본 이미지</label>
+					<input type="radio" name="pic_category" value="3" id="contentImg"><label for="contentImg">내용 이미지</label>
+				</td>
+			</tr>
+			<tr>
+				<td>갤러리 분류</td>
+				<td>객실</td>
+					
+					<!--<select name="g_no">
 						<option value=1>객실</option>
 						<option value=2>다이닝</option>
 						<option value=3>액티비티</option>
 						<option value=4>부대시설</option>
-						<option value=5>기타</option>
+						<option value=5>기타</option> 
 					</select>
-				</td>
+				</td>-->
 			</tr>
 			<tr>
 				<td>객실 분류</td>

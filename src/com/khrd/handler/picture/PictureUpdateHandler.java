@@ -40,6 +40,7 @@ public class PictureUpdateHandler implements CommandHandler {
 			String picFile = request.getParameter("pic_file");
 			int gNo = Integer.parseInt(request.getParameter("g_no"));
 			int rcNo = Integer.parseInt(request.getParameter("rc_no"));
+			int fc = Integer.parseInt(request.getParameter("fileCategory"));
 			
 			Connection conn = null;
 			
@@ -48,7 +49,8 @@ public class PictureUpdateHandler implements CommandHandler {
 				PictureDAO dao = PictureDAO.getInstance();
 				Picture picture = new Picture(picFile,
 											  new GType(gNo, null, null), 
-											  new RoomCategory(rcNo, null, null));
+											  new RoomCategory(rcNo, null, null),
+											  fc);
 				dao.update(conn, picture);
 				
 				response.sendRedirect(request.getContextPath() + "/picture/list.do");

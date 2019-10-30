@@ -103,12 +103,14 @@ update room_category set rc_eng_name="royal_suite" where rc_no=7;
 alter table room_category add column rc_eng_name varchar(50) not null;
 
 
+
 # 객실 사진만
 select * from picture p join room_category rc on p.rc_no = rc.rc_no;
 
 # 객실 사진중에 객실 타입만
 select * from picture where rc_no=8;
 
+select * from picture;
 
 select * from picture p join g_type g using(g_no) join room_category rc using(rc_no) where rc_no=8 and pic_file like '%content%' ;
 
@@ -118,7 +120,16 @@ select * from picture p join g_type g using(g_no) join room_category rc using(rc
 
 select * from picture where rc_no=1 and pic_file like 's_%standard%';
 
+select * from picture p join room_category rc on p.rc_no = rc.rc_no 
+						join g_type g on p.g_no = g.g_no 
+				where rc.rc_no = 1; and pic_category = 0;
 
+		
+select * from picture p join room_category rc on p.rc_no = rc.rc_no 
+						join g_type g on p.g_no = g.g_no 
+				where pic_category = 0;
+		
+		
 SELECT EMPNAME, TITLE, DNO
 FROM EMPLOYEE
 WHERE EMPNAME LIKE ‘이%’;
@@ -126,8 +137,9 @@ WHERE EMPNAME LIKE ‘이%’;
 
 
 
+alter table picture add column pic_category int(11) not null;
 
-
+select * from picture;
 
 
 
