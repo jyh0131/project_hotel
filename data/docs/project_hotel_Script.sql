@@ -275,10 +275,335 @@ ALTER TABLE project_hotel.picture
 		);
 /*------------- ↑ 여기까지 생성 영역이었음 ↑ -------------*/	
 
+use project_hotel;
+
+select * from reservation;
+insert into reservation values (r_no, m_no, room_no, r_in, r_out, r_total_price, r_request, r_personnel, r_pay_date, op_no);
+insert into reservation values (null, 1, 302, "2019-11-07", "2019-11-08", 1, 130000, null, 1, 0,  now(), 4, "예약완료");
+
+-- reservation & room -> right join
+select * from reservation rsv right join room rm on rsv.room_no = rm.room_no;
+
+select * from reservation rsv right join room rm on rsv.room_no = rm.room_no
+	where !((rsv.r_in >= "2019-11-09" and rsv.r_in <= "2019-11-10") or (rsv.r_out >= "2019-11-09" and rsv.r_out <= "2019-11-10"));
+
+-- 아예 빈방
+select * from reservation rsv right join room rm on rsv.room_no = rm.room_no
+	where rsv.r_in is null and rsv.r_out is null;
+
+select rm.room_no, rm.room_price, rm.rc_no, rm.vt_no, rm.bt_no, rm.rs_no
+	from reservation rsv right join room rm on rsv.room_no = rm.room_no
+	where rsv.r_no is not null;
+
+
+select * from member;
+select * from room_category;
+
+select * from room;
+insert into room values (105, 270000, 1, 1, 1, 1, 1);
+
+
+select * from picture;
+insert into picture values (1, "pic1.jpg", 1);
+
+select * from r_option;
+
+-- 예약번호로 예약정보 찾기
+select * from reservation where r_no=3;
+
+-- 방호수 별 예약상황
+select * from reservation res join room rm using(room_no)
+
+-- 예약상태 변경
+update reservation set r_state="취소" where r_no=5;
+
+
+select * from room_category;
+select * from room_size;
+select * from view_type;
+select * from bed_type;
+
+
+-- 룸 조인
+select * from room r, bed_type b, view_type v, room_category rc, room_size rs
+where r.bt_no = b.bt_no and r.vt_no = v.vt_no and r.rc_no = rc.rc_no and r.rs_no = rs.rs_no;
+
+	
+select distinct *
+	from room r join bed_type b on r.bt_no = b.bt_no 
+	                 join view_type v on r.vt_no = v.vt_no 
+	                 join room_category rc on r.rc_no = rc.rc_no
+	                 join room_size rs on r.rs_no = rs.rs_no
+                 	 left join reservation rsv on r.room_no = rsv.room_no;
+
+
+-- 룸 카테고리 & 뷰타입
+select rc_name, bt_name, vt_name
+	from room r, room_category rc , view_type vt, bed_type bt, room_size rs;
+
+
+select rc_name, bt_name, vt_name
+	from room r, room_category rc , view_type vt, bed_type bt, room_size rs;
+
+select rc_name from room_category where rc_name="스탠다드";
+
+select *
+	from room r join bed_type b on r.bt_no = b.bt_no 
+	                 join view_type v on r.vt_no = v.vt_no 
+	                 join room_category rc on r.rc_no = rc.rc_no
+	                 join room_size rs on r.rs_no = rs.rs_no
+                 	 left join reservation rsv on r.room_no = rsv.room_no
+	where rsv.r_in is null and rsv.r_out is null order by r.room_no;
+
+
+
+select rc_name, bt_name, vt_name from 
+where rc_name=?, bt_name=?, vt_name=?;
+
+
+
+-- 방 조건으로 방 찾기 (room_no)
+select *
+	from room r join bed_type b on r.bt_no = b.bt_no 
+	                 join view_type v on r.vt_no = v.vt_no 
+	                 join room_category rc on r.rc_no = rc.rc_no
+	                 join room_size rs on r.rs_no = rs.rs_no
+where rc_name="스탠다드" and bt_name="더블" and vt_name="산";
+
+select r.room_no, rc.rc_name, v.vt_name, b.bt_name, rs.rs_name, r.room_price
+	from room r join bed_type b on r.bt_no = b.bt_no 
+	                 join view_type v on r.vt_no = v.vt_no 
+	                 join room_category rc on r.rc_no = rc.rc_no
+	                 join room_size rs on r.rs_no = rs.rs_no
+                 	 left join reservation rsv on r.room_no = rsv.room_no
+	where rsv.r_in is null and rsv.r_out is null 
+	and rc_name="스탠다드" and bt_name="더블" and vt_name="산" 
+	order by r.room_no;
+
+select count(r.room_no)
+	from room r join bed_type b on r.bt_no = b.bt_no 
+	                 join view_type v on r.vt_no = v.vt_no 
+	                 join room_category rc on r.rc_no = rc.rc_no
+	                 join room_size rs on r.rs_no = rs.rs_no
+                 	 left join reservation rsv on r.room_no = rsv.room_no
+	where rsv.r_in is null and rsv.r_out is null 
+	and rc_name="스탠다드" and bt_name="더블" and vt_name="산" 
+	order by r.room_no;
+
+select r.room_no, rc.rc_name, v.vt_name, b.bt_name, rs.rs_name, r.room_price
+	from room r join bed_type b on r.bt_no = b.bt_no 
+	                 join view_type v on r.vt_no = v.vt_no 
+	                 join room_category rc on r.rc_no = rc.rc_no
+	                 join room_size rs on r.rs_no = rs.rs_no
+                 	 left join reservation rsv on r.room_no = rsv.room_no
+	where rsv.r_in is null and rsv.r_out is null
+	order by r.room_no;
+
+select r.room_no, rc.rc_name, v.vt_name, b.bt_name, rs.rs_name, r.room_price, rsv.r_in, rsv.r_out
+	from room r join bed_type b on r.bt_no = b.bt_no 
+	                 join view_type v on r.vt_no = v.vt_no 
+	                 join room_category rc on r.rc_no = rc.rc_no
+	                 join room_size rs on r.rs_no = rs.rs_no
+                 	 left join reservation rsv on r.room_no = rsv.room_no
+	where 
+	order by r.room_no;
+
+
+
+-- 예약날짜 사이에 있는 예약 걸러내기
+select * from reservation rsv right join room rm on rsv.room_no = rm.room_no
+	where !((rsv.r_in >= "2019-11-09" and rsv.r_in <= "2019-11-10") or (rsv.r_out >= "2019-11-09" and rsv.r_out <= "2019-11-10"));
+
+select * from reservation rsv right join room rm on rsv.room_no = rm.room_no
+	where !((rsv.r_in <= "2019-11-09" and rsv.r_in >= "2019-11-10") or (rsv.r_out <= "2019-11-09" and rsv.r_out >= "2019-11-10"));
+
+-- 예약날짜 사이에 있는 예약 걸러내기
+select * 
+	from (select * from reservation rsv right join room rm using(room_no)
+		where !((rsv.r_in >= "2019-11-09" and rsv.r_in <= "2019-11-10") 
+			or (rsv.r_out >= "2019-11-09" and rsv.r_out <= "2019-11-10"))) as subRsv
+	where !((subRsv.r_in <= "2019-11-09" and subRsv.r_out >= "2019-11-19") 
+		or (subRsv.r_in <= "2019-11-10" and subRsv.r_out >= "2019-11-10"))
+union
+select *
+	from room r join bed_type b on r.bt_no = b.bt_no 
+	                 join view_type v on r.vt_no = v.vt_no 
+	                 join room_category rc on r.rc_no = rc.rc_no
+	                 join room_size rs on r.rs_no = rs.rs_no
+                 	 left join reservation rsv on r.room_no = rsv.room_no
+	where rsv.r_in is null and rsv.r_out is null order by r.room_no;
+
+
+
+-- 실험실
+select * 
+	from (select *
+			from room r join bed_type b on r.bt_no = b.bt_no 
+	                 join view_type v on r.vt_no = v.vt_no 
+	                 join room_category rc on r.rc_no = rc.rc_no
+	                 join room_size rs on r.rs_no = rs.rs_no
+                 	 left join reservation rsv on r.room_no = rsv.room_no
+		where !((rsv.r_in >= "2019-11-09" and rsv.r_in <= "2019-11-10") 
+			or (rsv.r_out >= "2019-11-09" and rsv.r_out <= "2019-11-10"))) as subRsv
+	where !((subRsv.r_in <= "2019-11-09" and subRsv.r_out >= "2019-11-19") 
+		or (subRsv.r_in <= "2019-11-10" and subRsv.r_out >= "2019-11-10"))
+union
+select *
+	from room r join bed_type b on r.bt_no = b.bt_no 
+	                 join view_type v on r.vt_no = v.vt_no 
+	                 join room_category rc on r.rc_no = rc.rc_no
+	                 join room_size rs on r.rs_no = rs.rs_no
+                 	 left join reservation rsv on r.room_no = rsv.room_no
+	where rsv.r_in is null and rsv.r_out is null;
+
+select * from (
+select * from (select *
+			from room r join bed_type b using(bt_no)
+	                 join view_type v using(vt_no)
+	                 join room_category rc using(rc_no)
+	                 join room_size rs using(rs_no)
+                 	 left join reservation rsv using(room_no)
+		where !((rsv.r_in >= "2019-10-28" and rsv.r_in <= "2019-10-29") 
+			or (rsv.r_out >= "2019-10-28" and rsv.r_out <= "2019-10-29"))) as subRsv
+	where !((subRsv.r_in <= "2019-10-28" and subRsv.r_out >= "2019-10-28") 
+		or (subRsv.r_in <= "2019-10-29" and subRsv.r_out >= "2019-10-29"))
+	
+	-- in 28 out 29
+union 
+select *
+	from room r join bed_type b using(bt_no)
+                join view_type v using(vt_no)
+                join room_category rc using(rc_no)
+                join room_size rs using(rs_no)
+             	left join reservation rsv using(room_no)
+	where rsv.r_in is null and rsv.r_out is null) as emptyRoom
+where rs_no=1;
+
+
+
+select * from (select *
+			from room r join bed_type b using(bt_no)
+	                 join view_type v using(vt_no)
+	                 join room_category rc using(rc_no)
+	                 join room_size rs using(rs_no)
+                 	 left join reservation rsv using(room_no)
+		where !((rsv.r_in >= '2019-10-28' and rsv.r_in <= '2019-10-29') 
+			or (rsv.r_out >= '2019-10-28' and rsv.r_out <= '2019-10-29'))) as subRsv
+	where !((subRsv.r_in <= '2019-10-28' and subRsv.r_out >= '2019-10-28') 
+		or (subRsv.r_in <= '2019-10-29' and subRsv.r_out >= '2019-10-29'))
+union 
+select *
+	from room r join bed_type b using(bt_no)
+                join view_type v using(vt_no)
+                join room_category rc using(rc_no)
+                join room_size rs using(rs_no)
+             	left join reservation rsv using(room_no)
+	where rsv.r_in is null and rsv.r_out is null;
+				
+insert into r_option values(null, "옵션없음", 0);
+select * from r_option;
 
 
 
 
+select * from reservation rsv join member m using(m_no) where m_no = 1;
+select * from `member`;
+select * from member where m_id = "mlmlml";
+
+select * from pay_info;
+insert into pay_info values(null, "훔친카드", "1234123412341234", "12", "2027", null, null, null, 1, 1);
+
+select last_insert_id()
+	from room r join bed_type b using(bt_no)
+	            join view_type v using(vt_no)
+	            join room_category rc using(rc_no)
+	            join room_size rs using(rs_no)
+                join reservation rsv using(room_no)
+               	join member m using(m_no);
+           
+select *
+	from room r join bed_type b using(bt_no)
+	            join view_type v using(vt_no)
+	            join room_category rc using(rc_no)
+	            join room_size rs using(rs_no)
+                join reservation rsv using(room_no)
+               	join member m using(m_no)
+                join pay_info pay using(r_no);
+               
+               
+select * from pay_info;
+select * from reservation;
+
+update room r join bed_type b using(bt_no)
+	            join view_type v using(vt_no)
+	            join room_category rc using(rc_no)
+	            join room_size rs using(rs_no)
+                join reservation rsv using(room_no)
+               	join member m using(m_no)
+                join pay_info pay using(r_no)
+	set rsv.room_no=301, rsv.r_in="2020-01-12", rsv.r_out="2020-01-13", rsv.r_stay=1, 
+		rsv.r_total_price=333333, rsv.r_request=null, rsv.r_psnAdt=1, rsv.r_psnCdr=0, 
+		rsv.r_pay_date=now(), rsv.op_no=4
+	where rsv.r_no=2;
+
+update room r join bed_type b using(bt_no)
+	            join view_type v using(vt_no)
+	            join room_category rc using(rc_no)
+	            join room_size rs using(rs_no)
+                join reservation rsv using(room_no)
+               	join member m using(m_no)
+                join pay_info pay using(r_no)
+	set p_cardType="CHRISTMAS CARD", p_cardNum="2019122520191225", 
+		p_validMonth="11", p_validYear="2029",
+		p_bank_name=null, p_bank_no=null, p_bank_sername=null
+	where r_no = 2;
+
+
+
+create or replace view vw_available
+as 
+
+select * from (select *
+			from room r join bed_type b using(bt_no)
+	                 join view_type v using(vt_no)
+	                 join room_category rc using(rc_no)
+	                 join room_size rs using(rs_no)
+                 	 left join reservation rsv using(room_no)
+		where !((rsv.r_in >= '2019-10-28' and rsv.r_in <= '2019-10-29') 
+			or (rsv.r_out >= '2019-10-28' and rsv.r_out <= '2019-10-29'))) as subRsv 
+	where !((subRsv.r_in <= '2019-10-28' and subRsv.r_out >= '2019-10-28') 
+		or (subRsv.r_in <= '2019-10-29' and subRsv.r_out >= '2019-10-29'))
+union 
+select *
+	from room r join bed_type b using(bt_no)
+                join view_type v using(vt_no)
+                join room_category rc using(rc_no)
+                join room_size rs using(rs_no)
+             	left join reservation rsv using(room_no)
+	where rsv.r_in is null and rsv.r_out is null;
+
+select rc_name, vt_name, bt_name 
+	from vw_available
+	group by rc_name
+	order by rc_no;
+
+select * from reservation;
+
+update room r 
+join bed_type b using(bt_no) 
+join view_type v using(vt_no) 
+join room_category rc using(rc_no) 
+join room_size rs using(rs_no) 
+join reservation rsv using(room_no) 
+join member m using(m_no) 
+join pay_info pay using(r_no) 
+set r_state='예약완료' 
+where r_no = 1;
+
+
+select distinct room_no, rc_name, vt_name, bt_name 
+	from vw_available 
+	where rc_name='프리미어' and vt_name='산' and bt_name='트윈';
 
 
 

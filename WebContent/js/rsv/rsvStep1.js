@@ -78,6 +78,7 @@
 	    //검색 버튼 누르면 방 리스트 나오게
 	    $(".btn-Search").click(function(){
 	    	$("h2").hide();
+	    	
 	    	$.ajax({
 	    		url: "availbleRoom.do",
 	    		type: "get",
@@ -95,12 +96,12 @@
 	    				$divName = $("<div>").addClass("ar-rc-name").append("<h1>"+obj.roomCategory.rcName+"</h1>");
 	    				
 	    				//OP 만들기
-	    				$pPrice = $("<p>").addClass(".ar-ep").append("객실 옵션을 선택하고 예약을 눌러주세요.");
-	    				$selOp1 = $("<select>").append("<option></option>");
+	    				$pPrice = $("<p>").addClass("ar-ep").append("객실 옵션을 선택하고 예약을 눌러주세요.");
+	    				$selOp1 = $("<select name='viewType'>").addClass("ar-selOp1");
 	    				$divOp1 = $("<div>").addClass("ar-op1").append("<p>옵션1</p>").append($selOp1);
 	    				$divOp1.append($selOp1);
 	    				
-	    				$selOp2 = $("<select>").append("<option></option>");
+	    				$selOp2 = $("<select name='bedType'>").addClass("ar-selOp2");
 	    				$divOp2 = $("<div>").addClass("ar-op2").append("<p>옵션2</p>").append($selOp2);
 	    				$divOp2.append($selOp2);
 	    				
@@ -116,21 +117,67 @@
 
 	    //객실 선택시 옵션창 나오게
 	    $(document).on("click", "li.ar-rc", function(){
+	    	$("input[name='roomCate']").val($(this).find(".ar-rc-name").children("h1").text());
+	    	$(".ar-selOp1").empty().append("<option>전망 타입</option>");
+			$(".ar-selOp2").empty().append("<option>침대 타입</option>");
+	    	
+	    	$.ajax({
+	    		url: "findOption.do",
+	    		type: "post",
+	    		data: {"name":$(this).find(".ar-rc-name").children("h1").text()},
+	    		dataType: "json",
+	    		success: function(res){
+	    			console.log(res);
+	    			
+	    			var op1Arr = [];
+	    			var op2Arr = [];
+	    			
+	    			$(res.options).each(function(i, obj){
+	    				op1Arr.push(obj[0]);
+	    				op2Arr.push(obj[1]);
+	    			});
+	    			
+	    			var uniqueOp1 = [];
+	    			var uniqueOp2 = [];
+	    			
+	    			//옵션 중복 제거
+	    			$.each(op1Arr, function(i, obj){
+	    				if($.inArray(obj, uniqueOp1) == -1) uniqueOp1.push(obj);
+	    			});
+
+	    			$.each(op2Arr, function(i, obj){
+	    				if($.inArray(obj, uniqueOp2) == -1) uniqueOp2.push(obj);
+	    			});
+	    			
+	    			for(var i=0; i < uniqueOp1.length; i++) {
+	    				$opView = $("<option>").append(uniqueOp1[i]);
+	    				$(".ar-selOp1").append($opView);
+	    			}
+	    			
+	    			for(var i=0; i < uniqueOp2.length; i++) {
+	    				$opBed = $("<option>").append(uniqueOp2[i]);
+	    				$(".ar-selOp2").append($opBed);
+	    			}
+	    			
+	    		}
+	    	});
+
+	    	//sub창 나오기
 	    	$("li.ar-op").slideUp();
 	    	if($(this).next().css("display") == "none") {
 	    		$(this).next().slideDown();
 	    	} else {
 	    		$("li.ar-op").slideUp();
 	    	}
-	    })
-	    
-	    
+	    	
+	    });
 	    
 	    //방보기 버튼
-	    $(document).on("click", "div.rsv-detail-btn", function(){
-	    	$("div.rsv-detail-tab").show();
+	    $(document).on("click", "input[type='submit']", function(){
+	    	$(".ar-selOp1").val($(this).closest("li.ar-op").find("select[name=viewType]").val());
+	    	$(".ar-selOp2").val($(this).closest("li.ar-op").find("select[name=bedType]").val());
 	    });
-
+	  
 	    
 	    
 	})

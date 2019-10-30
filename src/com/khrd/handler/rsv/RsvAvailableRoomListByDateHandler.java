@@ -18,39 +18,72 @@ import com.khrd.jdbc.ConnectionProvider;
 import com.khrd.jdbc.JDBCUtil;
 
 public class RsvAvailableRoomListByDateHandler implements CommandHandler {
-
+	//날짜에 따라 예약 가능한 방 카테고리 (get) & 방 카테고리 별 옵션 (post) 
+	
+	Connection conn = null;
+	
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		Connection conn = null;
-		String date = request.getParameter("rsvDate");
-		
-		String[] dateArr = date.split("/");
-		String inDate = dateArr[2] + "-" + dateArr[0] + "-" + dateArr[1];
-		String outDate = dateArr[5] + "-" + dateArr[3] + "-" + dateArr[4];
-		 
-		try {
-			conn = ConnectionProvider.getConnection();
-			RsvDAO dao = RsvDAO.getInstance();
-			List<Room> list = dao.selectAvailableRoomList(conn, inDate, outDate);
+		if(request.getMethod().equalsIgnoreCase("get")) { //예약 가능한 방 카테고리
+			String date = request.getParameter("rsvDate");
 			
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("ar", list);
+			String[] dateArr = date.split("/");
+			String inDate = dateArr[2] + "-" + dateArr[0] + "-" + dateArr[1];
+			String outDate = dateArr[5] + "-" + dateArr[3] + "-" + dateArr[4];
+			 
+			try {
+				conn = ConnectionProvider.getConnection();
+				RsvDAO dao = RsvDAO.getInstance();
+				List<Room> list = dao.selectAvailableRoomList(conn, inDate, outDate);
+				
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("ar", list);
+				
+				ObjectMapper om = new ObjectMapper();
+				String json = om.writeValueAsString(map);
+				
+				response.setContentType("application/json;charset=utf-8");
+				PrintWriter out = response.getWriter();
+				out.print(json);
+				out.flush();
+				
+				return null;
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				
+			} finally {
+				JDBCUtil.close(conn);
+			}
 			
-			ObjectMapper om = new ObjectMapper();
-			String json = om.writeValueAsString(map);
+		} else if (request.getMethod().equalsIgnoreCase("post")) { //카테고리 별 옵션
+			String rcName = request.getParameter("name");
 			
-			response.setContentType("application/json;charset=utf-8");
-			PrintWriter out = response.getWriter();
-			out.print(json);
-			out.flush();
+			try {
+				conn = ConnectionProvider.getConnection();
+				RsvDAO dao = RsvDAO.getInstance();
+				List<String[]> list = dao.selectOptionByRoomCategory(conn, rcName);
+				
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("options", list);
+				
+				ObjectMapper om = new ObjectMapper();
+				String json = om.writeValueAsString(map);
+				
+				response.setContentType("application/json;charset=utf-8");
+				PrintWriter out = response.getWriter();
+				out.print(json);
+				out.flush();
+				
+				return null;
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				
+			} finally {
+				JDBCUtil.close(conn);
+			}
 			
-			return null;
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-		} finally {
-			JDBCUtil.close(conn);
 		}
 		
 		return null;

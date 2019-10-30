@@ -51,6 +51,11 @@ public class RsvStep2Handler implements CommandHandler {
 			String validMonth = request.getParameter("cardNumMonth");
 			String validYear = request.getParameter("cardNumYear");
 			
+			//환불정보 받기
+			String bank = request.getParameter("refundBank");
+			String bankNum = request.getParameter("refundNum");
+			String serName = request.getParameter("refundName");
+			
 			//룸 관련 옵션들 -> 룸에서 뽑아내기
 			//투숙자 정보 -> 멤버에서 뽑아내기
 			
@@ -95,7 +100,8 @@ public class RsvStep2Handler implements CommandHandler {
 												  psnAdt, 
 												  psnCdr,
 												  new Date(), 
-												  opNo);
+												  opNo,
+												  "예약완료");
 				
 				//예약 insert
 				int resultRsv = rDao.insertRsv(conn, rsv);
@@ -105,7 +111,7 @@ public class RsvStep2Handler implements CommandHandler {
 				Reservation rsvForPi = rDao.selectRsvByRNo(conn, rNo);
 				
 				//예약정보 객체 생성후 insert
-				PayInfo pi = new PayInfo(0, cardType, cardNum, validMonth, validYear, null, null, null, rsvForPi, m);
+				PayInfo pi = new PayInfo(0, cardType, cardNum, validMonth, validYear, bank, bankNum, serName, rsvForPi, m);
 				int resultPi = piDao.insertPayInfo(conn, pi);
 
 				//다음 페이지에서 내용 뿌리려고 저장함

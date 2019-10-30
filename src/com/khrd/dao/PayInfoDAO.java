@@ -107,7 +107,8 @@ public class PayInfoDAO {
 										  rs.getInt("r_psnAdt"), 
 										  rs.getInt("r_psnCdr"), 
 										  rs.getTimestamp("r_pay_date"), 
-										  rs.getInt("op_no"));
+										  rs.getInt("op_no"),
+										  rs.getString("r_state"));
 		return rsv;
 	}
 	

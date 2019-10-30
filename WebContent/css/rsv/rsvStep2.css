@@ -178,6 +178,19 @@ input.cardNum {
 p.cau {
 	font-size: 12px;
 }
+/*환불*/
+div.rsv-input-refund {
+	width: 100%;
+}
+div.rsv-input-refund span.required_field {
+	color: red;
+}
+div.rsv-input-refund > table.ip-info-tb {
+	width: 50%;
+}
+div.rsv-input-refund > table.ip-info-tb > tbody > tr > td:first-child {
+	font-size: 14px;
+}
 
 /*예약 유의사항*/
 div.rsv-input-notice {

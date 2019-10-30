@@ -81,8 +81,7 @@
 		<h3>요청사항</h3>
 		<table>
 			<tr>
-				<th>남기신 말씀</th>
-				<td>${rsv.rRequest}</td>
+				<td colspan="3">${rsv.rRequest}</td>
 			</tr>
 		</table>
 		
@@ -97,10 +96,7 @@
 		</table>
 		
 		<div class="rsv-detail-btn-wrap">
-			<a href="#">목록</a>
-			<div>
-				
-			</div>
+			<a href="list.do">목록</a>
 		</div>
 	</div>
 </div>	

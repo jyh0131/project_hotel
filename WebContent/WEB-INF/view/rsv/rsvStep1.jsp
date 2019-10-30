@@ -101,9 +101,7 @@
 						<h2>예약을 원하시는 날짜, 인원을 선택 후 검색 버튼을 눌러주세요.</h2>
 						
 						<div class="rsv-result-list-wrap">
-							<!-- <h2>원하시는 방과 옵션을 선택해주세요.</h2> -->
 							<input type="hidden" name="roomCate">
-							<input type="hidden" name="roomNum">
 							<ul class="ar-list">
 								<!-- 방 목록 뿌려질 곳 -->	
 							</ul>

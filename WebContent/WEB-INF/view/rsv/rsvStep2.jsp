@@ -3,6 +3,8 @@
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
 <link href="${pageContext.request.contextPath}/css/rsv/rsvStep2.css" rel="stylesheet" type="text/css">
 <script src="${pageContext.request.contextPath}/js/rsv/rsvStep2.js"></script> 
+
+
 <!-- 예약 2단계 -->
 <div class="rsv-step-wrap">
 	<span> 
@@ -115,7 +117,6 @@
 									<input type="tel" name="tel" placeholder="ex) 01012345678" value="${rsv.member.mPhone}">
 								</td>
 							</tr>
-						
 						</table>
 						
 						<table class="ip-info-tb">
@@ -191,23 +192,63 @@
 					</div>
 				</div>
 				
+				<div class="rsv-input-refund">
+					<div class="input-info-title">
+						<p>
+							　환불 정보 입력
+							<span><span class="required_field">*</span>표시 필수 입력사항</span>
+						</p>
+					</div>
+					<table class="ip-info-tb">
+						<tr>
+							<td><span class="required_field">*</span>환불 은행명</td>
+							<td>
+								<select name="refundBank">
+									<option>국민은행</option>
+									<option>기업은행</option>
+									<option>농협은행</option>
+									<option>신한은행</option>
+									<option>산업은행</option>
+									<option>우리은행</option>
+									<option>하나은행</option>
+									<option>SC제일은행</option>
+									<option>카카오뱅크</option>
+									<option>케이뱅크</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td><span class="required_field">*</span>환불 계좌번호</td>
+							<td>
+								<input type="text" name="refundNum" placeholder="-없이 숫자만 입력해주세요">
+							</td>
+						</tr>
+						<tr>
+							<td><span class="required_field">*</span>예금주 성명</td>
+							<td>
+								<input type="text" name="refundName">
+							</td>
+						</tr>
+					</table>
+				</div>
+				
 				<div class="rsv-input-notice">
 					<div class="input-notice">
-						<p>예약 취소/변경 및 No-Show 안내</p>
+						<p>예약 취소 및 No-Show 안내</p>
 						<dl>
 							<dt><u>성수기(5월~10월, 12월 24일~31일)</u></dt>
-							<dd>- 숙박 예정일 7일 전까지는 위약금 없이 취소 및 변경됩니다.</dd>
-							<dd>- 숙박 예정일 6일 전 ~ 1일 전 18시까지 취소 및 변경 시, 최초 1박 요금의 20%가 위약금으로 부과됩니다.</dd>
-							<dd>- 숙박 예정일 1일 전 18시 이후 취소/변경하거나 노쇼(No-Show)시, 최초 1박 요금의 80%가 위약금으로 부과됩니다.</dd>
+							<dd>- 숙박 예정일 7일 전까지는 위약금 없이 취소 가능합니다.</dd>
+							<dd>- 숙박 예정일 6일 전 ~ 1일 전 18시까지 취소 시, 최초 1박 요금의 20%가 위약금으로 부과됩니다.</dd>
+							<dd>- 숙박 예정일 1일 전 18시 이후 취소하거나 노쇼(No-Show)시, 최초 1박 요금의 80%가 위약금으로 부과됩니다.</dd>
 						</dl>
 						<dl>
 							<dt><u>비성수기(성수기 외 기간)</u></dt>
-							<dd>- 숙박 예정일 1일 전 18시까지는 위약금 없이 취소 및 변경됩니다.</dd>
-							<dd>- 숙박 예정일 1일 전 18시 이후 취소/변경하거나 노쇼(No-Show)시, 최초 1박 요금의 10%가 위약금으로 부과됩니다.</dd>
+							<dd>- 숙박 예정일 1일 전 18시까지는 위약금 없이 취소 가능합니다.</dd>
+							<dd>- 숙박 예정일 1일 전 18시 이후 취소하거나 노쇼(No-Show)시, 최초 1박 요금의 10%가 위약금으로 부과됩니다.</dd>
 						</dl>
 						<p>
-							※ 홈페이지를 통한 온라인 예약의 경우 체크인 기준 7일 이후 예약건만 온라인에서 취소 및 변경이 가능합니다.<br>
-							※ 체크인 7일 이내 예약을 취소하실 경우 예약실로 전화주시기 바랍니다.
+							※ <u>예약의 변경은 취소 후 재예약 부탁드립니다.</u><br>
+							※ 기타 문의사항이 있으시면 예약실로 전화주시기 바랍니다.
 						</p>
 					</div>
 				</div>
@@ -328,4 +369,6 @@
 		</div>
 	</div>
 </form>
+
+
 <%@ include file="/WEB-INF/view/include/footer.jsp"%>

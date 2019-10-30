@@ -25,7 +25,7 @@ public class RsvStep1Handler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		if(request.getMethod().equalsIgnoreCase("get")) {
+		if(request.getMethod().equalsIgnoreCase("get")) { /* 예약페이지 디폴트 설정 */
 			//디폴트로 ckIn에 오늘 날짜, ckOut 내일 날짜 설정하기
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			//new Date로 해도되는데 그레고리안 캘린더를 써보고 싶었따
@@ -66,7 +66,7 @@ public class RsvStep1Handler implements CommandHandler {
 			
 			return "/WEB-INF/view/rsv/rsvStep1.jsp"; //예약1단계(기본정보)
 			
-		} else if(request.getMethod().equalsIgnoreCase("post")) {
+		} else if(request.getMethod().equalsIgnoreCase("post")) { /* form에서 받은 정보 처리 */
 			Connection conn = null;
 			
 			try {
@@ -80,10 +80,16 @@ public class RsvStep1Handler implements CommandHandler {
 				MemberDAO mDao = MemberDAO.getInstance();
 				Member m = mDao.selectById(conn, mId);
 				
-				//Room 객체 생성
+				//방 번호
+				String rc = request.getParameter("roomCate");
+				String bt = request.getParameter("bedType");
+				String vt = request.getParameter("viewType");
+				System.out.println("rc: " + rc + "/ bt: " + bt + "/ vt: " + vt);
+				
 				RoomDAO rDao = RoomDAO.getInstance();
-				int rNo = Integer.parseInt(request.getParameter("roomNum"));
-				Room r = rDao.selectedByRoomNo(conn, rNo);
+				List<Integer> list = dao.selectEmptyRoomByCondition(conn, rc, bt, vt);
+				System.out.println(list);
+				Room r = rDao.selectedByRoomNo(conn, list.get(0));
 				
 				//ckIn ckOut 날짜 받기
 				String date = request.getParameter("rsvDate");
@@ -106,6 +112,8 @@ public class RsvStep1Handler implements CommandHandler {
 				int adtNum =  Integer.parseInt(request.getParameter("adtNum"));
 				int chdNUm = Integer.parseInt(request.getParameter("chdNum"));
 				
+
+				
 				Reservation rsv = new Reservation(0, 
 												  m, 
 												  r, 
@@ -117,7 +125,8 @@ public class RsvStep1Handler implements CommandHandler {
 												  adtNum,
 												  chdNUm,
 												  new Date(), 
-												  4);
+												  4,
+												  "예약중");
 				
 				request.setAttribute("adtNum", adtNum);
 				request.setAttribute("chdNUm", chdNUm);

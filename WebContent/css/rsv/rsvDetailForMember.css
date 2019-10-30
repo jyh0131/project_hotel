@@ -16,13 +16,13 @@ div.rsv-detail > table {
 	margin: 0 auto;
 	border-collapse: collapse;
 }
-caption {
-	caption-side: bottom;
-	text-align: right;
-}
 th, td {
 	border: 1px solid #5CD1E5;
 	padding: 15px 0;
+}
+caption {
+	caption-side: bottom;
+	text-align: right;
 }
 div.rsv-detail-btn-wrap {
 	width: 95%;
@@ -31,9 +31,6 @@ div.rsv-detail-btn-wrap {
 }
 div.rsv-detail-btn-wrap > a:first-child {
 	float: left;
-}
-div.rsv-detail-btn-wrap > div {
-	float: right;
 }
 
 
