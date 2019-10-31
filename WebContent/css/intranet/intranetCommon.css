@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+div.intra-main-wrap {
+	width: 100%;
+	overflow: hidden;
+	padding: 60px 0;
+}
+div.intra-main-menu {
+	float: left;
+	width: 13%;
+	background: pink;
+}
+div.intra-main-menu > ul {
+	width: 100%;
+}
+div.intra-main-menu > ul > li {
+	text-align: center;
+	position: relative;
+	cursor: pointer;
+}
+div.intra-main-menu > ul > li > a {
+	padding: 20px 0;
+	display: block;
+}
+div.intra-main-menu > ul > li:first-child:hover {
+	background: none;
+}
+div.intra-main-menu > ul > li:hover {
+	background: rgba(255,255,255,0.3);
+}
+
+/*서브메뉴*/
+ul.intra-sub-menu {
+	width: 100%;
+	display: none;
+	margin-top: 16.5px;
+}
+ul.intra-sub-menu > li {
+	padding: 20px 0;
+	background: skyblue;
+}
+div.intra-main-content {
+	float: right;
+	width: 85%;
+}
+
+/*내용영역*/
+div.intra-main-content > h2 {
+	background: lightgreen;
+	text-align: right;
+	font-weight: normal;
+	letter-spacing: 0.15em;
+	padding: 10px 40px 10px 0;
+}

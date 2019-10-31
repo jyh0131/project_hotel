@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+div.mem-list-state {
+	width: 97%;
+	margin: 20px auto -5px;	
+	text-align: right;
+}
+div.mem-list-state > select {
+	padding: 2px 5px 2px 2px;
+}
+div.intra-mem-list > table {
+	width: 97%;
+	margin: 10px auto 20px;
+	border-collapse: collapse;
+}
+div.intra-mem-list > table th,
+div.intra-mem-list > table td {
+	border: 1px solid skyblue;
+	padding: 5px;
+	text-align: center;
+}
+div.intra-mem-list > table td[colspan='7'] {
+	text-align: left;
+	padding-left: 20px;
+}

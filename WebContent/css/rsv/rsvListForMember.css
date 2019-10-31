@@ -4,6 +4,15 @@ div.rsv-list-wrap {
 	width: 100%;
 	padding: 30px 0;
 }
+div.rsv-list > div.rsv-state-wrap {
+	width: 90%;
+	margin: 10px auto 5px;
+	text-align: right;
+}
+div.rsv-list > div.rsv-state-wrap > select {
+	padding: 2px 2px 2px 4px;
+	outline: none;
+}
 div.rsv-list > table {
 	width: 90%;
 	margin: 0 auto;
@@ -15,4 +24,7 @@ th, td {
 	padding: 10px;
 	border-top: 1px solid #FFE08C;
 	border-bottom: 1px solid #FFE08C;
+}
+div.rsv-list > table > tbody > tr > td{
+	font-size: 15px;
 }

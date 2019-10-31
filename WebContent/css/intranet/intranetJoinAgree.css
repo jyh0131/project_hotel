@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+div.join-agree-wrap {
+	width: 50%;
+	margin: 0 auto;
+	padding: 20px 0 40px 0 ;
+	background: pink;
+}
+div.join-agree-wrap > h1 {
+	background: lightgreen;
+	padding: 15px;
+	font-weight: normal;
+	letter-spacing: 0.15em;
+	text-align: center;
+}
+form h3 {
+	margin: 20px 0;
+	padding: 10px 15px;
+	font-weight: normal;
+	background: rgba(0, 0, 0, 0.3);
+}
+div.agree-content {
+	overflow: auto;
+	width: 400px;
+	height: 300px;
+	width: 96%;
+	margin: 30px auto;
+}
+div.agree-radio-wrap, div.agree-btn-wrap {
+	width: 100%;
+	text-align: center;
+	padding-bottom: 40px;
+}
+
+
+
+
+
+
+
+
+
+

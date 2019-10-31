@@ -151,6 +151,45 @@ public class RsvDAO {
 		return null;
 		
 	}/*/selectList*/
+	
+	//selectRsvListByState -> 예약상태에 따른 리스트
+	public List<Reservation> selectRsvListByStateForAdmin(Connection conn, String state){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select * from room r "
+						+"join bed_type b using(bt_no) "
+						+"join view_type v using(vt_no) "
+						+"join room_category rc using(rc_no) "
+						+"join room_size rs using(rs_no) "
+						+"join reservation rsv using(room_no) "
+						+"join member m using(m_no) "
+						+"where r_state=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, state);
+			rs = pstmt.executeQuery();
+			List<Reservation> list = new ArrayList<>();
+			
+			while(rs.next()) {
+				Reservation rsv = RsvConstructor(rs);
+				
+				list.add(rsv);
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+		
+		return null;
+		
+	}/*/selectList*/
 
 	//selectRsvByRNo -> 예약번호로 예약정보 한건 조회하기
 	public Reservation selectRsvByRNo(Connection conn, int rNo) throws SQLException {
@@ -353,6 +392,47 @@ public class RsvDAO {
 	}/*/selectReservedRoomList*/
 	
 	
+	//selectRsvListByStateForMem -> 예약확인에서 상태별로 조회
+	public List<Reservation> selectRsvListByStateForMem(Connection conn, String mId, String state) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select * from room r "
+						+"join bed_type b using(bt_no) "
+						+"join view_type v using(vt_no) "
+						+"join room_category rc using(rc_no) "
+						+"join room_size rs using(rs_no) "
+						+"join reservation rsv using(room_no) "
+						+"join member m using(m_no)"
+						+"where m_id=? and r_state=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mId);
+			pstmt.setString(2, state);
+			
+			rs = pstmt.executeQuery();
+			List<Reservation> list = new ArrayList<>();
+			
+			while(rs.next()) {
+				Reservation r = RsvConstructor(rs);
+				
+				list.add(r);
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+		
+		return null;
+		
+	}/*/selectRsvListByStateForMem*/
 	
 	//selectByMNo -> 멤버 별 예약 확인
 	public List<Reservation> selectRsvByMNo(Connection conn, int mNo) {
@@ -393,7 +473,48 @@ public class RsvDAO {
 		
 		return null;
 		
-	}/*/selectByMId*/
+	}/*/selectByMNo*/
+	
+	//selectRsvByMId -> 아이디로 예약찾기
+		public List<Reservation> selectRsvByMId(Connection conn, String mId) {
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+				String sql = "select * from room r "
+							+"join bed_type b using(bt_no) "
+							+"join view_type v using(vt_no) "
+							+"join room_category rc using(rc_no) "
+							+"join room_size rs using(rs_no) "
+							+"join reservation rsv using(room_no) "
+							+"join member m using(m_no)"
+							+"where m_id = ?";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, mId);
+				
+				rs = pstmt.executeQuery();
+				List<Reservation> list = new ArrayList<>();
+				
+				while(rs.next()) {
+					Reservation r = RsvConstructor(rs);
+					
+					list.add(r);
+				}
+				
+				return list;
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				
+			} finally {
+				JDBCUtil.close(rs);
+				JDBCUtil.close(pstmt);
+			}
+			
+			return null;
+			
+		}/*/selectRsvByMId*/
 	
 	
 	//insertRsv -> 예약 추가

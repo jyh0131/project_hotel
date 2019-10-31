@@ -1,4 +1,4 @@
-package com.khrd.handler.rsv;
+package com.khrd.handler.intranet.rsv;
 
 import java.sql.Connection;
 import java.util.List;
@@ -12,11 +12,10 @@ import com.khrd.dto.Reservation;
 import com.khrd.jdbc.ConnectionProvider;
 import com.khrd.jdbc.JDBCUtil;
 
-public class RsvListAllHandler implements CommandHandler {
+public class IntranetRsvListHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//관리자 페이지에서 쓸 핸들러임
 		Connection conn = null;
 		
 		try {
@@ -25,8 +24,8 @@ public class RsvListAllHandler implements CommandHandler {
 			List<Reservation> list = dao.selectRsvListAll(conn);
 			
 			request.setAttribute("list", list);
-
-			return null;
+			
+			return "/WEB-INF/view/intranet/intranetRsvMng.jsp";
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -38,4 +37,4 @@ public class RsvListAllHandler implements CommandHandler {
 		return null;
 	}//process
 
-}//RsvListHandler
+}//RsvListForAdminHandler

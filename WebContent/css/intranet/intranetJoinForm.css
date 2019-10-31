@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+div.join-info-wrap {
+	width: 50%;
+	margin: 0 auto;
+	padding: 20px 0;
+	background: pink;
+}
+label {
+	width: 120px;
+	float: left;
+}
+span.error {
+	color: red;
+	font-size: 9px;
+	display: none;
+}
+div.join-info-wrap p {
+	margin: 20px;
+	font-size: 14px;
+}
+div.join-info-wrap input {
+	padding: 3px;
+}
+div.join-info-form {
+	margin: 30px 0;
+}
+div.join-info-form > h3 {
+	background: lightgreen;
+	padding: 15px;
+	font-size: 1.3em;
+	font-weight: normal;
+	letter-spacing: 0.15em;
+}
+div#form-btn {
+	padding-left: 20px;
+}
+
+

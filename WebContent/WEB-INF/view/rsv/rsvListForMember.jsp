@@ -6,12 +6,20 @@
 
 <div class="rsv-list-wrap">
 	<div class="rsv-list">
+		<div class="rsv-state-wrap">
+			<select name="rsvState">
+				<option>전체</option>
+				<option>예약완료</option>
+				<option>취소</option>
+			</select>
+		</div>
+		
 		<table>
 			<tr>
 				<th>예약번호</th>
 				<th>객실</th>
 				<th>체크인/체크아웃</th>
-				<th>숙박일수</th>
+				<th>숙박인원</th>
 				<th>결제날짜</th>
 				<th></th>
 			</tr>
@@ -34,8 +42,11 @@
 					</c:if>
 					<fmt:formatDate value="${rsv.rIn}" pattern="yyyy-MM-dd" var="ckIn" />
 					<fmt:formatDate value="${rsv.rOut}" pattern="yyyy-MM-dd" var="ckOut" />
-					<td>${ckIn} ~ ${ckOut}</td>
-					<td>${rsv.rStay}</td>
+					<td>
+						${ckIn} ~ ${ckOut}<br>
+						(${rsv.rStay}박)
+					</td>
+					<td>성인: ${rsv.rPsnAdt}명 / 어린이: ${rsv.rPsnCdr}명</td>
 					<td><fmt:formatDate value="${rsv.rPayDate}" pattern="yyyy-MM-dd" /></td>
 			
 					<c:if test="${rsv.rState == '예약완료'}">
