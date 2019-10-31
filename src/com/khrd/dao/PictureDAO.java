@@ -245,5 +245,6 @@ public class PictureDAO {
 			JDBCUtil.close(pstmt);
 		}
 		return null;
-	}
+	} // selectedByRcNoList
+	
 }

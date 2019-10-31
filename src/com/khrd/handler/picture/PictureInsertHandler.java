@@ -15,6 +15,7 @@ import com.khrd.jdbc.ConnectionProvider;
 import com.khrd.jdbc.JDBCUtil;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.oreilly.servlet.multipart.FileRenamePolicy;
 
 public class PictureInsertHandler implements CommandHandler {
 
@@ -33,12 +34,13 @@ public class PictureInsertHandler implements CommandHandler {
 			}
 			
 			int size = 1024 * 1024 * 10; // 파일 사이즈 제한(10메가)
-			MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "utf-8");
+			MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "utf-8", new DefaultFileRenamePolicy());
 			
 //			int gNo = Integer.parseInt(multi.getParameter("g_no"));
 			int rcNo = Integer.parseInt(multi.getParameter("rc_no"));
 			String file = multi.getFilesystemName("pic_file");
 			int fc = Integer.parseInt(multi.getParameter("pic_category"));
+			
 			
 			Connection conn = null;
 			

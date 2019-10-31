@@ -11,6 +11,13 @@
 		width:250px;
 	}
 </style>
+<script>
+	$(function(){
+		$("#submitBtn").click(function(){
+			alert($("input[name='pic_file']").val());
+		})
+	})
+</script>
 <div>
 	<div id="p_menu">
 		<ul>
@@ -62,7 +69,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="등록">
+					<input type="submit" value="등록" id="submitBtn">
 					<input type="reset" value="처음부터">
 				</td>
 			</tr>
