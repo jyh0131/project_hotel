@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
-<link href="${pageContext.request.contextPath}/css/rsv_form.css" rel="stylesheet" type="text/css">
+<%@ include file="/WEB-INF/view/include/intranet/intranetSideMenu.jsp"%>
+<link href="${pageContext.request.contextPath}/css/intranet/intranetMain.css" rel="stylesheet" type="text/css">
 <script>
 	$(function(){
 		$(".r_btn_delete").click(function(){
@@ -32,7 +33,7 @@
 		border-collapse: collapse;
 	}
 </style>
-<div> 
+<div>
 	<div id="r_menu">
 		<ul>
 			<li><a href="${pageContext.request.contextPath }/room/insert.do">객실 등록하기</a></li>
@@ -74,7 +75,10 @@
 	</table>
 	
 	<!-- <a href="${pageContext.request.contextPath }/picture/list.do?rNo=${room.roomNo}" class="picture_view">사진관리하기</a> -->
+
 </div>
 
 
+<%@ include file="/WEB-INF/view/include/intranet/intranetBottom.jsp"%>
 <%@ include file="/WEB-INF/view/include/footer.jsp"%>
+

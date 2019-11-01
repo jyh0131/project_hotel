@@ -142,9 +142,23 @@ alter table picture add column pic_category int(11) not null;
 select * from picture;
 
 
+select * from question_board;
+select * from question_content;
+
+alter table question_board drop r_no;
+
+insert into question_board values(null, "결제가 안돼요", "홍길동", "asd@naver.com", "결제 관련 문의", "010-1111-1111", "031-123-1234", now(), null, null, null);
+
+insert into question_content values("결제 창이 안떠요", last_insert_id());
 
 
 
 
 
 
+
+# 게시글 list 조회
+select * from question_board order by qb_no desc;
+
+
+select * from question_board qb join question_content qc on qb.qb_no = qc.qb_no;
