@@ -1,7 +1,14 @@
 
 (function(win, $){
 	$(function(){
+		//콤마찍는 메소드
+		function addComma(num) {
+			  var regexp = /\B(?=(\d{3})+(?!\d))/g;
+			  return num.toString().replace(regexp, ',');
+		}
+			
 		
+		//날짜선택창
 		$(".datepicker-here").datepicker({
 			toggleSelected: false,
 			minDate: new Date(),
@@ -72,6 +79,24 @@
 	    
 	    //검색 버튼 누르면 방 리스트 나오게
 	    $(".btn-Search").click(function(){
+	    	//체크아웃 날짜 미선택
+	    	if($(".datepicker-here").val() == "") {
+	    		
+	    	//if($(".rsv-year").val() == "" || $(".rsv-month").val() == "" || $(".rsv-date").val() == "") {
+	    		alert("예약을 원하시는 날짜를 선택해주세요");
+	    		return;
+	    	}
+	    	
+	    	//체크인, 체크아웃 날짜가 같을때(데이트피커놈이 그렇게 선택되니까ㅡㅡ)
+	    	if(
+		    	($("#ckIn-info .rsv-year").val() == $("#ckOut-info .rsv-year").val()) &&
+		    	($("#ckIn-info .rsv-month").val() == $("#ckOut-info .rsv-month").val()) &&
+		    	($("#ckIn-info .rsv-date").val() == $("#ckOut-info .rsv-date").val())
+	    	) {
+	    		alert("체크인 날짜와 체크아웃 날짜가 같을 수 없습니다.");
+	    		return;
+	    	}
+	    	
 	    	$("h2").hide();
 	    	
 	    	$.ajax({
@@ -173,6 +198,22 @@
 	    	$(".ar-selOp2").val($(this).closest("li.ar-op").find("select[name=bedType]").val());
 	    });
 	  
+	    //submit 전 유효성 검사
+	    $("form").submit(function(){
+	    	//옵션 선택 유효성 검사
+	    	var btnView = $("input[type='submit']").closest("li.ar-op").find("select[name=viewType]").val();
+	    	var btnBed = $("input[type='submit']").closest("li.ar-op").find("select[name=bedType]").val();
+	    	if(btnView == "전망 타입") {
+	    		alert("전망 타입을 선택해주세요.");
+	    		return false;
+	    		
+	    	} else if(btnBed == "침대 타입") {
+	    		alert("침대 타입을 선택해주세요.");
+	    		return false;
+	    	}
+	    	
+	    });
+	    
 	    
 	    
 	})

@@ -3,7 +3,7 @@
 div.rsv-step-wrap {
 	width: 100%;
 	height: 48px;
-	background: url("../../images/rsv-img/resvStep3On.gif") no-repeat center;
+	background: url("../../images/rsv-img/step3On.png") no-repeat center;
 	padding: 65px 0 0 0;	
 }
 div.rsv-spl-wrap {
@@ -13,8 +13,9 @@ div.rsv-spl-wrap {
 
 /*위쪽*/
 div.rsv-cpl-top {
-	border: 10px solid skyblue;
-	padding: 70px;
+	border: 10px solid #47a3da;
+	padding: 80px 70px;
+	margin-top: 60px;
 }
 div.rsv-cpl-top span, div.rsv-cpl-top a {
 	float: right;
@@ -22,6 +23,7 @@ div.rsv-cpl-top span, div.rsv-cpl-top a {
 div.rsv-cpl-top > p {
 	font-size: 14px;
 	margin: 0 0 40px 0;
+	line-height: 26px;
 }
 div.rsv-cpl-top > h1 {
 	font-weight: normal;
@@ -47,12 +49,15 @@ div.rsv-cpl-top > ul > li > span {
 	float: none;
 	/*나중에 내용물 넣고 수정하고 싶으면 수정하기*/
 }
-
+a#aPrint {
+	font-size: 14px;
+	color: #666;
+}
 
 /*아래쪽*/
 div.rsv-cpl-bottom {
 	width: 100%;
-	margin: 40px 0;
+	margin: 90px 0;
 }
 div.rsv-cpl-bottom span {
 	float: right;
@@ -90,24 +95,31 @@ div.cpl-bottom-content h3:last-child {
 /*버튼*/
 div.btn-area {
 	width: 100%;
-	margin-bottom: 200px;
+	padding: 10px 0 200px 0;
+	text-align: center;
+	font-size: 13px;
+	letter-spacing: 0.05em;
+	line-height: 44px;
 }
 span.btnHome {
 	width: 140px;
 	height: 44px;
 	display: inline-block;
+	border: 4px solid #47a3da;
 	float: left;
 	cursor: pointer;
-	background: red;
-	color: white;
+	color: #47a3da;
+	box-shadow: 1px 2px 2px grey;
 }
-span.btnMod {
+span.btnMyList {
 	width: 140px;
 	height: 44px;
 	display: inline-block;
 	float: right;
-	background: red;
+	background: #47a3da;
+	border: 4px solid #47a3da;
 	color: white;
+	box-shadow: 1px 2px 2px grey;
 }
 
 

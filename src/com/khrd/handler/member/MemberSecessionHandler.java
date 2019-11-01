@@ -17,34 +17,57 @@ public class MemberSecessionHandler implements CommandHandler {
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if(request.getMethod().equalsIgnoreCase("get")) {
 			return "/WEB-INF/view/member/secessionForm.jsp";
+			
 		}else if(request.getMethod().equalsIgnoreCase("post")) {
-			String id = request.getParameter("id");
-			String password = request.getParameter("password");
-			String dId = request.getParameter("did");
 			Connection conn = null;
+
+			//사용자 입력 정보
+			String ipId = request.getParameter("id");
+			String ipPw = request.getParameter("password");
+			
+			//세션 저장 정보
+			String crId = (String) request.getSession().getAttribute("Auth");
+			
 			try {
 				conn = ConnectionProvider.getConnection();
 				MemberDAO dao = MemberDAO.getInstance();
-				Member dbmember = dao.selectById(conn, id);
-				if(id.equals(dId)==false) {
-					request.setAttribute("notIdMatch",true );
+				Member mem = dao.selectById(conn, crId);
+				
+				if(crId.equals(ipId) == false) {
+					request.setAttribute("notIdMatch", true);
+					
 					return "/WEB-INF/view/member/secessionForm.jsp";
-				}else if(password.equals(dbmember.getmPwd())==false) {
-					request.setAttribute("notPwdMatch",true );
+					
+				}else if(ipPw.equals(mem.getmPwd()) == false) {
+					request.setAttribute("notPwdMatch", true);
+					
 					return "/WEB-INF/view/member/secessionForm.jsp";
-				}else if(password.equals(dbmember.getmPwd())==true) {
-					int result = dao.delete(conn, dbmember.getmNo());
-					request.setAttribute("result", result);
-					return "/WEB-INF/view/member/secessionSuccess.jsp";
+					
 				}
+				
+				int result = dao.updateMemberToSecession(conn, crId);
+				request.setAttribute("result", result);
+				
+				if(result > 0) {
+					request.getSession().removeAttribute("Auth");
+					
+					return "/WEB-INF/view/member/secessionSuccess.jsp"; //탈퇴 완료 메세지가 나오는 페이지로 이동했다가 타이머로 메인으로 돌아감
+					
+				} else {
+					return ""; //에러페이지 만들 예정
+				}
+				
 			} catch (Exception e) {
 				e.printStackTrace();
+				
 			}finally {
 				JDBCUtil.close(conn);
 			}
+			
 		}
 		
 		return null;
-	}
+		
+	}//process
 
-}
+}//MemberSecessionHandler

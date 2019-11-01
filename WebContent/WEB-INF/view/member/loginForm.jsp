@@ -1,49 +1,72 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
-<link href="${pageContext.request.contextPath}/css/member/memberCheck.css" type="text/css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/member/memberLoginForm.css" type="text/css" rel="stylesheet">
 
 <script>
 	$(function(){
 		$("form").submit(function(){
 			if($("input[name='id']").val() == ""){
-				$("input[name='id']").next().css("display","inline");
+				alert("아이디를 입력하세요.");
 				return false;
 			}
+			
 			if($("input[name='password']").val() == ""){
-				$("input[name='password']").next().css("display","inline");
+				alert("비밀번호를 입력하세요.")
 				return false;
 			}
-		})
-	})
+		});
+	});
 </script>
-<section>
-	<form action="login.do" method="post">
-		<fieldset>
-			<legend>로그인</legend>
-			<p>
-				<label>아이디</label>
-				<input type="text" name="id">
-				<span class="error">아이디를 입력하세요</span>
-			</p>
-			<p>
-				<label>비밀번호</label>
-				<input type="password" name="password">
-				<span class="error">비밀번호를 입력하세요</span>
-			</p>
-			<p>
-				<c:if test="${notMatch == false }">
-							일치!	
+	
+	
+<div class="mem-login-wrap">
+	<h2>로그인</h2>
+	
+	<form action="login.do" method="post">	
+		<table class="mem-login">
+			<tr>
+				<td>아이디</td>
+				<td><input type="text" name="id"></td>
+			</tr>
+		
+			<tr>
+				<td>비밀번호</td>
+				<td><input type="password" name="password"></td>
+			</tr>
+		
+			<tr>
+				<td colspan="2">
+					<a href="#">아이디 / 비밀번호 찾기</a>
+					<a href="join.do">회원가입</a>
+				</td>
+			</tr>
+			
+			<tr>
+				<c:if test="${idNotExist != null}">
+					<td colspan="2">
+						<span class="error">존재하지 않는 아이디입니다.</span>
+					</td>
 				</c:if>
-				<c:if test="${notMatch == true }">
-					<span class="error" style="display: inline">잘못입력하셨습니다</span>
+				<c:if test="${pwdNotMatch != null}">
+					<td colspan="2">
+						<span class="error">비밀번호가 틀립니다.</span>
+					</td>
 				</c:if>
-				
-			</p>
-			<p>
-				<input type="submit" value="로그인">
-			</p>
-		</fieldset>
+			</tr>
+		</table>
+		
+		<input type="submit" value="로그인">
+		
 	</form>
-</section>
+</div>		
+	
+	
+	
+	
+	
+	
+	
+	
+	
 <%@ include file="/WEB-INF/view/include/footer.jsp"%>

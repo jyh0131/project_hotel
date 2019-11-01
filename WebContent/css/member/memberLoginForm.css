@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-div.admin-login-wrap {
+div.mem-login-wrap {
 	width: 45%;
 	padding: 60px 0;
 	margin: 50px auto 100px;
@@ -9,10 +9,11 @@ div.admin-login-wrap {
 form {
 	position: relative;
 }
-div.admin-login-wrap > h2 {
+div.mem-login-wrap > h2 {
 	text-align: center;
+	margin: 0 0 20px 0;
 }
-table.admin-login {
+table.mem-login {
 	width: 70%;
 	margin: 0 auto;
 	border-collapse: collapse;
@@ -24,10 +25,10 @@ td {
 input {
 	padding: 5px;
 }
-table.admin-login > tbody > tr > td:first-child {
+table.mem-login > tbody > tr > td:first-child {
 	text-align: right;
 }
-table.admin-login > tbody > tr > td[colspan='2'] {
+table.mem-login > tbody > tr > td[colspan='2'] {
 	text-align: center;
 }
 span.error {
@@ -45,19 +46,3 @@ input[type="submit"] {
 	right: 118px;
 	top: 15px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

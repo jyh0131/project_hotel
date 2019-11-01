@@ -18,32 +18,49 @@ public class MemberLoginHandler implements CommandHandler {
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if(request.getMethod().equalsIgnoreCase("get")) {
 			return "/WEB-INF/view/member/loginForm.jsp";
+			
 		}else if(request.getMethod().equalsIgnoreCase("post")) {
+			Connection conn = null;
+
 			String id = request.getParameter("id");
 			String password = request.getParameter("password");
-			
-			Connection conn = null;
 			
 			try {
 				conn = ConnectionProvider.getConnection();
 				MemberDAO dao = MemberDAO.getInstance();
 				Member member = dao.selectIdAndPw(conn, id, password);
-				if(member == null) {
-					request.setAttribute("notMatch", true);
+				
+				if(member == null) { //회원 정보가 존재하지 않을 경우
+					request.setAttribute("idNotExist", true);
+					
+					return "/WEB-INF/view/member/loginForm.jsp";
+					
+				} else if (member.getmQuitdate() != null) { //탈퇴된 회원일 경우
+					request.setAttribute("idNotExist", true);
+
+					return "/WEB-INF/view/member/loginForm.jsp";
+					
+				} else if (!member.getmPwd().equals(password)) { //비밀번호가 틀릴 경우
+					request.setAttribute("pwdNotMatch", true);
+
 					return "/WEB-INF/view/member/loginForm.jsp";
 				}
+				
 				HttpSession session = request.getSession();
 				session.setAttribute("Auth", member.getmId());
 				
-				return "../index.jsp";
+				response.sendRedirect(request.getContextPath() + "/main.do");
+				
 				
 			} catch (Exception e) {
 				e.printStackTrace();
+				
 			}finally {
 				JDBCUtil.close(conn);
 			}
 		}
+		
 		return null;
-	}
+	}//process
 
-}
+}//MemberLoginHandler
