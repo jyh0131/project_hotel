@@ -88,7 +88,7 @@
 						//$(".allList").css("display", "none"); // select 선택 시 기본 리스트 지워지기
 						
 						
-					})
+					})// each
 				},
 				error:function(e){
 					console.log(e);
