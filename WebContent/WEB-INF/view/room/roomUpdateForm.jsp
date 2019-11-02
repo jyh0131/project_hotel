@@ -4,14 +4,11 @@
 <link href="${pageContext.request.contextPath}/css/rsv_form.css" rel="stylesheet" type="text/css">
 <div>
 	<form action="update.do" method="post" ><!-- enctype="multipart/form-data" -->
-		<table><!-- name 임시로 지정 -->
+		<table>
 			<tr>
 				<td>객실 이름</td>
 				<td>
 					<select name="rc_no">
-						<%-- <c:forEach var="r" items="room">
-							<option></option>
-						</c:forEach> --%>
 						<option value=1 ${(room.roomCategory.rcName)=="스탠다드"?'selected="selected"':''}>스탠다드</option>
 						<option value=2 ${(room.roomCategory.rcName)=="디럭스"?'selected="selected"':''}>디럭스</option>
 						<option value=3 ${(room.roomCategory.rcName)=="테라스"?'selected="selected"':''}>테라스</option>

@@ -31,9 +31,6 @@
     <relation key="FKCGroup_LAxigPTDEemBn4OsauZAlg">
       <value foreignKeyColumnGroup="FKCGroup_LAxigPTDEemBn4OsauZAlg"/>
     </relation>
-    <relation key="FKCGroup_b20egPxWEemQE8AFDQ7ouw">
-      <value foreignKeyColumnGroup="FKCGroup_b20egPxWEemQE8AFDQ7ouw"/>
-    </relation>
     <relation key="FKCGroup_-ZHN4PxWEemQE8AFDQ7ouw">
       <value foreignKeyColumnGroup="FKCGroup_-ZHN4PxWEemQE8AFDQ7ouw"/>
     </relation>
@@ -87,26 +84,26 @@
   </configuration>
   <businessAreas UUID="BArea_CFTKn_AIEemabKU1RCR6CA" logicalName="기본 업무영역" physicalName="DEFAULT_AREA" tables="Table_J3x9jfAKEemabKU1RCR6CA Table_wGebQ_AMEemabKU1RCR6CA Table_tQXatPAVEemabKU1RCR6CA Table_tQYo2_AVEemabKU1RCR6CA Table_tQZP6vAVEemabKU1RCR6CA Table_tQZ2-fAVEemabKU1RCR6CA Table_CNjP8PC-EemqrpvplCsJEw Table_f0rs4PC-EemqrpvplCsJEw Table_HxwF0PPTEemvf_1tywZ0FQ Table_9_KU8PPTEemvf_1tywZ0FQ Table_XPX08PPUEemvf_1tywZ0FQ Table_4mhm4PPUEemvf_1tywZ0FQ Table_CLeS0PtzEemuEffJl-rxCA Table_IbKWIPudEemuEffJl-rxCA Table_eYS8wPxWEemQE8AFDQ7ouw Table_EZO9QPxXEemQE8AFDQ7ouw">
     <diagrams UUID="Diagram_CFTKoPAIEemabKU1RCR6CA" logicalName="다이어그램" physicalName="diagram">
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_J3x9hvAKEemabKU1RCR6CA" location="Point(468, 45)" table="Table_J3x9jfAKEemabKU1RCR6CA" theme="peruOpal"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_tQU-cPAVEemabKU1RCR6CA" location="Point(874, 256)" table="Table_tQXatPAVEemabKU1RCR6CA" theme="deepSea"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_tQU-cfAVEemabKU1RCR6CA" location="Point(856, 45)" table="Table_tQYo2_AVEemabKU1RCR6CA" theme="coffie"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_tQU-cvAVEemabKU1RCR6CA" location="Point(447, 420)" table="Table_tQZP6vAVEemabKU1RCR6CA" theme="deepSea"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_tQU-c_AVEemabKU1RCR6CA" location="Point(887, 588)" table="Table_tQZ2-fAVEemabKU1RCR6CA" theme="perl"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_CNjP8fC-EemqrpvplCsJEw" location="Point(1291, 480)" table="Table_CNjP8PC-EemqrpvplCsJEw"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_f0rs4fC-EemqrpvplCsJEw" location="Point(1281, 610)" table="Table_f0rs4PC-EemqrpvplCsJEw"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_Hx520PPTEemvf_1tywZ0FQ" location="Point(1271, 45)" table="Table_HxwF0PPTEemvf_1tywZ0FQ" theme="coffie"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_9_MKIPPTEemvf_1tywZ0FQ" location="Point(1271, 155)" table="Table_9_KU8PPTEemvf_1tywZ0FQ" theme="coffie"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_XPZqIPPUEemvf_1tywZ0FQ" location="Point(1271, 250)" table="Table_XPX08PPUEemvf_1tywZ0FQ" theme="coffie"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_4mkDIPPUEemvf_1tywZ0FQ" location="Point(1271, 350)" table="Table_4mhm4PPUEemvf_1tywZ0FQ" theme="coffie"/>
+      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_J3x9hvAKEemabKU1RCR6CA" location="Point(565, 58)" table="Table_J3x9jfAKEemabKU1RCR6CA" theme="peruOpal"/>
+      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_tQU-cPAVEemabKU1RCR6CA" location="Point(1039, 276)" table="Table_tQXatPAVEemabKU1RCR6CA" theme="deepSea"/>
+      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_tQU-cfAVEemabKU1RCR6CA" location="Point(1014, 58)" table="Table_tQYo2_AVEemabKU1RCR6CA" theme="coffie"/>
+      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_tQU-cvAVEemabKU1RCR6CA" location="Point(541, 421)" table="Table_tQZP6vAVEemabKU1RCR6CA" theme="deepSea"/>
+      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_tQU-c_AVEemabKU1RCR6CA" location="Point(1052, 608)" table="Table_tQZ2-fAVEemabKU1RCR6CA" theme="perl"/>
+      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_CNjP8fC-EemqrpvplCsJEw" location="Point(1530, 493)" table="Table_CNjP8PC-EemqrpvplCsJEw"/>
+      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_f0rs4fC-EemqrpvplCsJEw" location="Point(1520, 623)" table="Table_f0rs4PC-EemqrpvplCsJEw"/>
+      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_Hx520PPTEemvf_1tywZ0FQ" location="Point(1510, 58)" table="Table_HxwF0PPTEemvf_1tywZ0FQ" theme="coffie"/>
+      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_9_MKIPPTEemvf_1tywZ0FQ" location="Point(1510, 168)" table="Table_9_KU8PPTEemvf_1tywZ0FQ" theme="coffie"/>
+      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_XPZqIPPUEemvf_1tywZ0FQ" location="Point(1510, 263)" table="Table_XPX08PPUEemvf_1tywZ0FQ" theme="coffie"/>
+      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_4mkDIPPUEemvf_1tywZ0FQ" location="Point(1510, 363)" table="Table_4mhm4PPUEemvf_1tywZ0FQ" theme="coffie"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_IbKWIfudEemuEffJl-rxCA" location="Point(63, 271)" table="Table_IbKWIPudEemuEffJl-rxCA" theme="amethyst"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_eYUx8PxWEemQE8AFDQ7ouw" location="Point(63, 132)" table="Table_eYS8wPxWEemQE8AFDQ7ouw" theme="amethyst"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_EZQLYPxXEemQE8AFDQ7ouw" location="Point(74, 586)" table="Table_EZO9QPxXEemQE8AFDQ7ouw" theme="amethyst"/>
       <viewSettings showColumnHeader="true">
         <cellsToShow>name</cellsToShow>
-        <cellsToShow>oppositeModeName</cellsToShow>
-        <cellsToShow>domain</cellsToShow>
         <cellsToShow>dataType</cellsToShow>
+        <cellsToShow>domain</cellsToShow>
         <cellsToShow>nullable</cellsToShow>
+        <cellsToShow>oppositeModeName</cellsToShow>
       </viewSettings>
       <printSettings marginTop="10" marginRight="10" marginBottom="10" marginLeft="10" paperKind="A4" paperOrientation="landscape" header="${FILE} - ${DIAGRAM} - ${PAGENUM} / ${FULLPAGE}" footter="${YEAR}-${MONTH}-${DAY} ${HOUR}:${DAY}"/>
     </diagrams>
@@ -224,6 +221,7 @@
         <columns UUID="Column_QI5p4PioEemynqbRacjw-w" logicalName="투숙인원(어린이)" physicalName="r_psnCdr" dataType="INT(1)" defaultValue="0"/>
         <columns UUID="Column_tQYo0PAVEemabKU1RCR6CA" logicalName="결제날짜" physicalName="r_pay_date" dataType="DATETIME"/>
         <columns UUID="Column_tQYo0fAVEemabKU1RCR6CA" logicalName="옵션 번호" physicalName="op_no" derivedPhysicalName="true" derivedLogicalName="true" dataType="INT" notNull="FALSE"/>
+        <columns UUID="Column_PgB2YP1mEemwV8vfBBdIWA" logicalName="예약상태" physicalName="r_state" dataType="VARCHAR(6)"/>
         <columnGroups xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_tQYo1PAVEemabKU1RCR6CA" logicalName="예약 기본키" physicalName="PK_reservation" derivedPhysicalName="true" derivedLogicalName="true">
           <physicalProperties xsi:type="mysql:IndexProperties" UUID="IProperties_tQYo1fAVEemabKU1RCR6CA"/>
           <primaryKeyConstraint UUID="PKConstraint_tQYo1vAVEemabKU1RCR6CA" logicalName="예약 기본키" physicalName="PK_reservation" derivedPhysicalName="true" derivedLogicalName="true"/>
@@ -544,12 +542,6 @@
         <columns UUID="Column_uGRRgPxWEemQE8AFDQ7ouw" logicalName="첨부 파일 경로" physicalName="qb_path" dataType="VARCHAR(20)">
           <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_6gFt5PxWEemQE8AFDQ7ouw"/>
         </columns>
-        <columns UUID="Column_b20egvxWEemQE8AFDQ7ouw" logicalName="예약번호" physicalName="r_no" derivedPhysicalName="true" derivedLogicalName="true" dataType="INT">
-          <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_6gFt5fxWEemQE8AFDQ7ouw"/>
-          <memberships UUID="MEntry_b20eg_xWEemQE8AFDQ7ouw" key="FKCGroup_b20egPxWEemQE8AFDQ7ouw">
-            <value xsi:type="e:ColumnReference" UUID="CReference_b20ehPxWEemQE8AFDQ7ouw" group="FKCGroup_b20egPxWEemQE8AFDQ7ouw" parentColumn="Column_tQYBw_AVEemabKU1RCR6CA"/>
-          </memberships>
-        </columns>
         <columns UUID="Column_VWwjcPxZEemQE8AFDQ7ouw" logicalName="회원번호" physicalName="m_no" derivedPhysicalName="true" derivedLogicalName="true" dataType="INT">
           <memberships UUID="MEntry_VWwjcfxZEemQE8AFDQ7ouw" key="FKCGroup_VWvVUPxZEemQE8AFDQ7ouw">
             <value xsi:type="e:ColumnReference" UUID="CReference_VWwjcvxZEemQE8AFDQ7ouw" group="FKCGroup_VWvVUPxZEemQE8AFDQ7ouw" parentColumn="Column_J3x9kvAKEemabKU1RCR6CA"/>
@@ -558,11 +550,6 @@
         <columnGroups xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_CmkiQPxWEemQE8AFDQ7ouw" logicalName="문의 게시판 기본키" physicalName="PK_question_board" derivedPhysicalName="true" derivedLogicalName="true">
           <physicalProperties xsi:type="mysql:IndexProperties" UUID="IProperties_6gGU8PxWEemQE8AFDQ7ouw"/>
           <primaryKeyConstraint UUID="PKConstraint_CmkiQfxWEemQE8AFDQ7ouw" logicalName="문의 게시판 기본키" physicalName="PK_question_board" derivedPhysicalName="true" derivedLogicalName="true"/>
-        </columnGroups>
-        <columnGroups xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_b20egPxWEemQE8AFDQ7ouw" logicalName="예약 -> 문의 게시판" physicalName="FK_reservation_TO_question_board" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_tQYo1PAVEemabKU1RCR6CA">
-          <foreignKeyConstraint UUID="FKConstraint_b20egfxWEemQE8AFDQ7ouw" logicalName="예약 -> 문의 게시판" physicalName="FK_reservation_TO_question_board" derivedPhysicalName="true" derivedLogicalName="true">
-            <physicalProperties xsi:type="mysql:ForeignKeyConstraintProperties" UUID="FKCProperties_6gIKIPxWEemQE8AFDQ7ouw"/>
-          </foreignKeyConstraint>
         </columnGroups>
         <columnGroups xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_VWvVUPxZEemQE8AFDQ7ouw" logicalName="회원정보 -> 문의 게시판" physicalName="FK_member_TO_question_board" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_J37uhvAKEemabKU1RCR6CA">
           <foreignKeyConstraint UUID="FKConstraint_VWvVUfxZEemQE8AFDQ7ouw" logicalName="회원정보 -> 문의 게시판" physicalName="FK_member_TO_question_board" derivedPhysicalName="true" derivedLogicalName="true"/>

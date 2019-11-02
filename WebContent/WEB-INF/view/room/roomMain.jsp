@@ -5,17 +5,13 @@
 <script src="${pageContext.request.contextPath }/js/jquery.flexslider-min.js"></script> --%>
 <script src="http://stephenpontes.com/misc/permanent/jquery.flexslider-min.js" type="text/javascript"></script>
 <style>
-	div#container {
-		width: 100%;
-	}
-	div#section {
-		margin:0 auto;
-		border:1px solid red;
-	}
 	/* div#rm_wrap {
 		width: 1200px; 
 		margin: 0 auto;
 	} */
+	#rMain-wrap{
+		overflow: hidden;
+	}
 /* --------- 왼쪽 메뉴 --------- */
 	#rm_left_menu{
 		background: #F1E3C4;
@@ -190,7 +186,7 @@
 	  	$(".flex-control-thumbs img").css("width", size + "%");
 	});
 </script>
-<div>
+<div id="rMain-wrap">
 	<div id="rm_left_menu">
 		<h3>객실</h3>
 		<hr size=3 color="black">
