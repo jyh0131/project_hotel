@@ -1,0 +1,337 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Poiret+One&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+}
+html, body {
+	width: 100%;
+	height: 100%;
+}
+li {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+}
+div#container {
+	width: 100%;
+	height: 100%:
+}
+div#head {
+	width: 100%;
+	height: 90px;
+	padding-top: 6px;
+}
+
+/*header*/
+div#header {
+	width: 70%;
+	height: 100%;
+	margin: 0 auto;
+	position: relative;
+}
+div#logo-wrap {
+	width: 100%;
+	height: 90px;
+}
+div#logo-wrap > a {
+	width: 200px;
+	height: 90px;
+	display: block;
+	background: url("../images/bg-img/bluaLundoLogo.png") no-repeat;
+	background-size: contain;
+}
+ul#top-menu {
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+ul#top-menu > li {
+	float: left;
+	position: relative;
+}
+ul#top-menu > li > a {
+	font-size: 12px;
+	margin-right: 20px;
+	color: black;
+}
+ul#top-menu > li > a:before {
+	content: '';
+	width: 1px;
+	height: 10px;
+	background: black;
+	position: absolute;
+	top: 8px;
+	left: -10px;
+}
+
+/*nav*/
+div#gnb-nav {
+	width: 80%;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+div#nav-wrap {
+	height: 52px;
+	position: relative;
+}
+ul#main-menu {
+	width: 75%;
+	height: 52px;
+}
+ul#main-menu > li {
+	float: left;
+	width: 16.6%;
+	text-align: center;
+	position: relative;
+}
+ul#main-menu:hover > li > ul.sub-nav {
+	display: block;
+}
+ul#main-menu > li > a {
+	display: block;
+	color: #47a3da;
+	font-size: 16.5px;
+	letter-spacing: 0.05em;
+	line-height: 52px;
+}
+
+ul.sub-nav {
+	display: none;
+	overflow: hidden;
+	width: 100%;
+	height: 500px;
+	background: rgba(245, 219, 189, 0.8);
+	position: absolute;
+	left: 0;
+	top: 52px;
+	z-index: 100000;
+}
+ul.sub-nav > li {
+	background: none;
+	height: 53px;
+	overflow: hidden;
+}
+ul.sub-nav > li > a {
+	font-size: 13px;
+	line-height: 40px;
+	color: #47a3da;
+	display: block;
+}
+ul.sub-nav > li > a:hover {
+	background: rgba(255,255,255,0.3);
+}
+
+/*예약 메뉴*/
+div#rsv-menu {
+	width: 200px;
+	height: 53px;
+	text-align: center;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+div#rsv-menu > a {
+	width: 100%;
+	height: 100%;
+	display: block;
+	color: #47a3da;
+	line-height: 53px;
+	letter-spacing: 0.15em;
+	background: rgba(239, 242, 244, 0.8);
+	font-size: 18px;
+	font-weight: bold;
+}
+
+/*section*/
+div#section {
+	clear: both;
+	width: 100%;
+	padding: 50px 0;
+	position: relative;
+}
+div.backgroundTransition {
+	width: 80%;
+	height: 90vh;
+	z-index: 134;
+} 
+h1#title-text {
+	font-family: 'Poiret One', cursive;
+	font-size: 16em;
+	text-align: right;
+	color: #47a3da;
+	letter-spacing: 0.05em;
+	position: absolute;
+	top: 150px;
+	right: 30px;
+	z-index: 12341;
+	text-shadow: 1px 1px 1px silver;
+}
+
+div#section-intro {
+	width: 100%;
+	height: 100vh;
+}
+div#intro-wrap {
+	width: 70%;
+	margin: 25% auto;
+}
+div#intro-wrap > div.intro {
+	float: left;
+	width: 16%;
+	height: 280px;
+	border: 4px solid #47a3da;
+	text-align: center;
+	padding: 45px 30px;
+	margin: 0 61.5px;
+}
+div#intro-wrap > div.intro > img {
+	width: 50px;
+	height: 50px;
+}
+div#intro-wrap > div.intro > h2 {
+	margin: 15px 0;
+	color: #47a3da;
+}
+div#intro-wrap > div.intro > p {
+	color: #A6A6A6;
+}
+
+div#section-etc {
+	width: 100%;
+	height: 100vh;
+	padding: 25% 0;
+	position: relative;
+}
+div#section-etc > div#etc-bg { 
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: url("../images/bg-img/bg11.jpg") no-repeat; 
+	filter: blur(3px);
+	z-index: -1;
+	background-size: contain;
+}
+div.etc-etc {
+	width: 50%;
+	margin: 0 auto;
+	background: #47a3da;
+	text-align: center;
+	padding: 50px 40px;
+}
+div.etc-etc > h2 {
+	color: #f5dbbd;
+	font-weight: lighter;
+	letter-spacing: 0.15em;
+	margin: 10px 0;
+	font-size: 2em;
+}
+div.etc-etc > p {
+	width: 50%;
+	margin: 10px auto;
+	color: #EAEAEA;
+}
+div.etc-etc > input {
+	margin: 10px 0;
+	width: 30%;
+	padding: 10px;
+	outline: none;
+}
+div.etc-etc > button {
+	padding: 10px;
+	background: #f5dbbd;
+	outline: none;
+	color: #666;
+	border: 1px solid #f5dbbd;
+	box-shadow: 1px 2px 2px grey;
+}
+
+/*footer*/
+div#footer {
+	width: 100%;
+	height: 150px;
+}
+div#footer-wrap {
+	width: 70%;
+	height: 100%;
+	border-top: 5px solid #47a3da;
+	margin: 0 auto;
+	overflow: hidden;
+}
+div.footer-info {
+	float: left;
+	width: 70%;
+}
+div.footer-info1 {
+	float: left;
+	width: 35%;
+	padding: 20px;
+	text-align: center;
+	color: #47a3da;
+}
+div.footer-info1 > p:first-child {
+	letter-spacing: 0.15em;
+}
+div.footer-info1 > p:nth-child(2) {
+	font-size: 10px;
+	padding-top: 20px;
+	letter-spacing: 0.05em;
+}
+div.footer-logo {
+	width: 22.75%;
+	height: 150px;
+	display: block;
+	background: url("../images/bg-img/bluaLundoLogo.png") no-repeat;
+	background-size: contain;
+	float: left;
+	text-align: center;
+	position: relative;
+}
+div.footer-logo > a {
+	width: 100%;
+	height: 100%;
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+div.footer-logo > span {
+	font-size: 9px;
+	color: #47a3da;
+	position: absolute;
+	left: 50%;
+	bottom: 35px;
+	margin-left: -30.885px;
+}
+div.footer-info2 {
+	float: left;
+	width: 35%;
+	padding: 20px;
+}
+div.footer-info2 > ul {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+div.footer-info2 > ul > li {
+	float: left;
+	width: 25%;
+}
+div.footer-info2 > ul > li > a {
+	font-size: 14px;
+	color: #47a3da;
+}
+
+
+
+
+
+
+
+

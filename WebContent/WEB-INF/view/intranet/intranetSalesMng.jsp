@@ -20,6 +20,8 @@
 	
 	<div id="sales-chart"></div>
 	
+	<div id="sales-chart-control"></div>
+	
 	
 </div>
 

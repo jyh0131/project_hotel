@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>PROJECT HOTEL</title>
+<title>BLUA LUNDO</title>
 <link href="${pageContext.request.contextPath}/css/common.css" rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/common.js"></script>

@@ -11,6 +11,7 @@ public class RedirectToMainHandler implements CommandHandler {
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		response.sendRedirect(request.getContextPath() + "/index.jsp");
+		
 		return null;
 	}//process
 
