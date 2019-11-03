@@ -10,9 +10,9 @@ public class RedirectToMainHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		//response.sendRedirect(request.getContextPath() + "");
+		response.sendRedirect(request.getContextPath() + "/index.jsp");
 		
-		return "/WEB-INF/view/mainPage.jsp";
+		return null;
 	}//process
 
 }//RedirectToMainHandler

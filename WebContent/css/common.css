@@ -35,7 +35,7 @@ div#logo-wrap > a {
 	height: 125px;
 	display: block;
 	margin: 0 auto;
-	background: url("../images/rsv-img/bluaLundoLogo.png") no-repeat;
+	background: url("../images/bg-img/bluaLundoLogo.png") no-repeat;
 	background-size: contain;
 }
 ul#top-menu {
@@ -202,7 +202,7 @@ div.footer-logo {
 	width: 22.75%;
 	height: 150px;
 	display: block;
-	background: url("../images/rsv-img/bluaLundoLogo.png") no-repeat;
+	background: url("../images/bg-img/bluaLundoLogo-white.png") no-repeat;
 	background-size: contain;
 	float: left;
 	text-align: center;
