@@ -47,10 +47,14 @@
 				<td><img src="${pageContext.request.contextPath }/upload/${qb.qbPath}"></td>
 			</tr>
 			<tr>
-				<td><input type="file" name="qb_file"></td>
+				<td><input type="file" name="qb_newFile"></td>
 			</tr>
 			<tr>
 		</table>
+		
+		<!-- 게시글에 이미 업로드 되어있는 파일 가져오기 위해 -->
+		<input type="hidden" value="${qb.qbPath }" name="qb_oldFile">
+		
 		<div>
 			<a href="${pageContext.request.contextPath }/qb/list.do">목록</a>
 		</div>

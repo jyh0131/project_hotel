@@ -2,6 +2,7 @@ package com.khrd.handler.questionBoard;
 
 import java.io.File;
 import java.sql.Connection;
+import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,7 @@ import com.khrd.dto.QuestionBoard;
 import com.khrd.jdbc.ConnectionProvider;
 import com.khrd.jdbc.JDBCUtil;
 import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.oreilly.servlet.multipart.FileRenamePolicy;
 
 public class QuestionUpdateHandler implements CommandHandler {
@@ -19,6 +21,7 @@ public class QuestionUpdateHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if(request.getMethod().equalsIgnoreCase("get")) {
+			
 			int qbNo = Integer.parseInt(request.getParameter("qbNo"));
 			
 			Connection conn = null;
@@ -47,31 +50,38 @@ public class QuestionUpdateHandler implements CommandHandler {
 				dir.mkdir();
 			}
 			int size = 1024 * 1024 * 10;
-			MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "utf-8"); // 중복 파일 저장 안되게함.
+			MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "utf-8", new DefaultFileRenamePolicy()); // 중복 파일 저장 안되게함.
 			
 			int qbNo = Integer.parseInt(multi.getParameter("qbNo"));
 			String qbCategory = multi.getParameter("qb_category");
 			String qbTitle = multi.getParameter("qb_title");
 			String qcContent = multi.getParameter("qc_content");
-			String qbPath = multi.getFilesystemName("qb_file");
+			
+			String qbOldFile = multi.getParameter("qb_oldFile"); // 게시글에 이미 업로드 되어있는 파일
+			String qbNewFile = multi.getFilesystemName("qb_newFile"); // 수정하기에서 '파일선택'한 파일
+			
+			// 수정할 때 파일은 수정하지 않은 경우
+			if(qbNewFile == null) { 
+				qbNewFile = qbOldFile; // 업로드 될 파일에 예전에 올린 파일 대입. 
+			}
 			
 			Connection conn = null;
 			
-			try {
+			try {    
 				conn = ConnectionProvider.getConnection();
 				conn.setAutoCommit(false);
+				QuestionBoard qb = new QuestionBoard(qbNo, qbTitle, null, null, qbCategory, null, null, null, qbNewFile, null, qcContent);
 				
 				QuestionBoardDAO dao = QuestionBoardDAO.getInstance();
-				QuestionBoard qb = new QuestionBoard(qbNo, qbTitle, null, null, qbCategory, null, null, null, qbPath, null, qcContent);
 				dao.updateArticle(conn, qb);
 				dao.updateContent(conn, qb);
 				
 				conn.commit();
-				
-				response.sendRedirect(request.getContextPath() + "/qb/list.do");
+
+				response.sendRedirect(request.getContextPath() + "/qb/detail.do?qbNo=" + qbNo);
 				return null;
 			} catch (Exception e) {
-				e.printStackTrace();
+				e.printStackTrace();      
 				conn.rollback();
 			} finally {
 				JDBCUtil.close(conn);
@@ -79,5 +89,4 @@ public class QuestionUpdateHandler implements CommandHandler {
 		}
 		return null;
 	}
-
 }

@@ -51,12 +51,10 @@
 	<filter-mapping>
 		<filter-name>LoginCheckFilterForAdmin</filter-name>
 		<url-pattern>/intranet/main.do</url-pattern>
-		<url-pattern>/intranet/adminCk.do</url-pattern>
-		<url-pattern>/intranet/join.do</url-pattern>
 		<url-pattern>/intranet/member/list.do</url-pattern>
 		<url-pattern>/intranet/rsv/list.do</url-pattern>
 	</filter-mapping>
-  
+    
   
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

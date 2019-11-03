@@ -78,7 +78,7 @@
 						</li>
 						
 						<li>
-							<a href="http://localhost:8080/project_hotel/room/main.do?rcNo=1">객실</a>
+							<a href="${pageContext.request.contextPath }/room/main.do?rcNo=1">객실</a>
 							<ul class="sub-nav">
 								<li>
 									<a href="${pageContext.request.contextPath }/room/main.do?rcNo=1">스탠다드</a>
