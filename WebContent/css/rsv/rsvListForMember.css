@@ -23,7 +23,7 @@ div.rsv-list > table {
 th {
 	border-bottom: 3px solid #F5DBBD;
 	letter-spacing: 0.05em;
-	background: rgba(245, 219, 189, 0.7);
+	background: rgba(71, 163, 218);
 }
 th, td {
 	padding: 10px;
@@ -35,16 +35,16 @@ div.rsv-list > table > tbody > tr > td {
 	font-size: 15px;
 }
 div.rsv-list > table > tbody > tr:hover > td {
-	background: rgba(255, 255, 255, 0.3);
+	background: rgba(245, 219, 189, 0.4);
 }
 div.rsv-list > table > tbody > tr > td > a {
-	color: #C9A3B6;
+	color: #47a3da;
 }
 div.rsv-list > table > tbody > tr > td > a:hover {
 	text-decoration: underline;
 }
 div.rsv-list > table > tbody > tr > td > a.aDel {
-	color: #DBB5C8;
+	color: #C9A3B6;
 }
 div.rsv-list > table > tbody > tr > td > a.aDel:hover {
 	font-weight: bold;

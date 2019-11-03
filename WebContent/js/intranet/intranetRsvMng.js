@@ -50,7 +50,7 @@
 						
 						//상태에 따라 버튼 노출여부 결정
 						if(obj.rState == "예약완료") { /*취소버튼 쫌있다가!*/
-							$tdBtn.append("<a href='#' id='aDel'>취소하기</a>");
+							$tdBtn.append("<a href='#' id='aDel'>취소</a>");
 						} else {
 							$tdBtn.append("취소됨");
 						}

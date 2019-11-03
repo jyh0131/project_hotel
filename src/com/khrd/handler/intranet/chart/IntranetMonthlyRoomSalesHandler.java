@@ -1,4 +1,4 @@
-package com.khrd.handler.intranet.sales;
+package com.khrd.handler.intranet.chart;
 
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -17,7 +17,7 @@ import com.khrd.dao.ViewDAO;
 import com.khrd.jdbc.ConnectionProvider;
 
 public class IntranetMonthlyRoomSalesHandler implements CommandHandler {
-
+	//방 별 월매출 차트
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Connection conn = null;

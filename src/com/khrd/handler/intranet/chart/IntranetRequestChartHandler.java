@@ -5,14 +5,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.khrd.controller.CommandHandler;
 
-public class IntranetSalesChartHandler implements CommandHandler {
+public class IntranetRequestChartHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//매출관ㄹ리로 고고싱로 고고싱
+		//문의관리로 고고싱로 고고싱
 		
-		return "/WEB-INF/view/intranet/intranetSalesMng.jsp";
-		
+		return "/WEB-INF/view/intranet/intranetRequestMng.jsp";
 	}//process
 
-}//IntranetSalesChartHandler
+}//IntranetRequestChartHandler
