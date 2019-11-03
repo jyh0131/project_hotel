@@ -41,6 +41,7 @@
 		<url-pattern>/rsvMng/mem/list.do</url-pattern>
 		<url-pattern>/rsvMng/mem/detail.do</url-pattern>
 		<url-pattern>/rsvMng/mem/deleteRsv.do</url-pattern>
+		<url-pattern>/qb/list.do</url-pattern>
 	</filter-mapping>
 
 	<filter>
