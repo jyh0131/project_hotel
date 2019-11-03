@@ -6,19 +6,19 @@ public class QuestionReply {
 	private int qrNo; // 답글번호
 	private String qrContent; // 답글내용
 	private Timestamp qrDate; // 답글날짜
-	private QuestionBoard qbNo; // 문의번호
+	private QuestionBoard qb; // 문의번호 가져오기 위해
 	
 	public QuestionReply() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public QuestionReply(int qrNo, String qrContent, Timestamp qrDate, QuestionBoard qbNo) {
+	public QuestionReply(int qrNo, String qrContent, Timestamp qrDate, QuestionBoard qb) {
 		super();
 		this.qrNo = qrNo;
 		this.qrContent = qrContent;
 		this.qrDate = qrDate;
-		this.qbNo = qbNo;
+		this.qb = qb;
 	}
 
 	public int getQrNo() {
@@ -45,17 +45,17 @@ public class QuestionReply {
 		this.qrDate = qrDate;
 	}
 
-	public QuestionBoard getQbNo() {
-		return qbNo;
+	public QuestionBoard getQb() {
+		return qb;
 	}
 
-	public void setQbNo(QuestionBoard qbNo) {
-		this.qbNo = qbNo;
+	public void setQb(QuestionBoard qb) {
+		this.qb = qb;
 	}
 
 	@Override
 	public String toString() {
-		return "QuestionReply [qrNo=" + qrNo + ", qrContent=" + qrContent + ", qrDate=" + qrDate + ", qbNo=" + qbNo
-				+ "]";
+		return "QuestionReply [qrNo=" + qrNo + ", qrContent=" + qrContent + ", qrDate=" + qrDate + ", qb=" + qb + "]";
 	}
+	
 }

@@ -9,17 +9,18 @@ index.jsp<br><br>
 <br><br>
 
 <p>임시 - 인트라넷 대문</p>
-<a href="${pageContext.request.contextPath}/intranet/login.do">인트라넷 들어가기</a>
+<a href="${pageContext.request.contextPath }/intranet/login.do">인트라넷 들어가기</a>
 <br><br>
 
 <!-- 문의하기 -->
-<c:if test="${Auth != null }">
-	<p>임시 - 문의하기</p>
-	<a href="${pageContext.request.contextPath}/qb/list.do">문의하기</a>
-</c:if>
-
-<c:if test="${Auth == null }">
-	<p>문의하기 - 로그인 후 문의 가능합니다.</p>
-</c:if>
+<c:choose>
+	<c:when test="${Auth != null || Admin != null }">
+		<p>임시 - 문의하기</p>
+		<a href="${pageContext.request.contextPath}/qb/list.do">문의하기</a>
+	</c:when>
+	<c:otherwise>
+		<p>문의하기 - 로그인 후 문의 가능합니다.</p>
+	</c:otherwise>
+</c:choose>
 
 <%@ include file="/WEB-INF/view/include/footer.jsp"%>

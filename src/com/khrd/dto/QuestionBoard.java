@@ -12,7 +12,7 @@ public class QuestionBoard {
 	private String qbTel; // 자택전화
 	private Timestamp qbDate; // 문의날짜
 	private String qbPath; // 첨부파일경로
-	private Member mNo; // 회원번호
+	private Member member; // 회원번호 가져오기 위해
 	private String qcContent; // 문의내용
 	
 	public QuestionBoard() {
@@ -21,7 +21,7 @@ public class QuestionBoard {
 	}
 
 	public QuestionBoard(int qbNo, String qbTitle, String qbName, String qbEmail, String qbCategory, String qbPhone,
-			String qbTel, Timestamp qbDate, String qbPath, Member mNo, String qcContent) {
+			String qbTel, Timestamp qbDate, String qbPath, Member member, String qcContent) {
 		super();
 		this.qbNo = qbNo;
 		this.qbTitle = qbTitle;
@@ -32,7 +32,7 @@ public class QuestionBoard {
 		this.qbTel = qbTel;
 		this.qbDate = qbDate;
 		this.qbPath = qbPath;
-		this.mNo = mNo;
+		this.member = member;
 		this.qcContent = qcContent;
 	}
 
@@ -108,12 +108,12 @@ public class QuestionBoard {
 		this.qbPath = qbPath;
 	}
 
-	public Member getmNo() {
-		return mNo;
+	public Member getMember() {
+		return member;
 	}
 
-	public void setmNo(Member mNo) {
-		this.mNo = mNo;
+	public void setMember(Member member) {
+		this.member = member;
 	}
 
 	public String getQcContent() {
@@ -128,7 +128,7 @@ public class QuestionBoard {
 	public String toString() {
 		return "QuestionBoard [qbNo=" + qbNo + ", qbTitle=" + qbTitle + ", qbName=" + qbName + ", qbEmail=" + qbEmail
 				+ ", qbCategory=" + qbCategory + ", qbPhone=" + qbPhone + ", qbTel=" + qbTel + ", qbDate=" + qbDate
-				+ ", qbPath=" + qbPath + ", mNo=" + mNo + ", qcContent=" + qcContent + "]";
+				+ ", qbPath=" + qbPath + ", member=" + member + ", qcContent=" + qcContent + "]";
 	}
 
 }

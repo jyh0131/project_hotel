@@ -23,10 +23,13 @@
 				<th>제목</th>
 				<th>작성자</th>
 				<th>작성일</th>
+				<c:if test="${Admin != null }">
+					<th>관리</th>
+				</c:if>
 			</tr>
 			
 			<c:forEach var="list" items="${list }">
-			<input type="hidden" value="${list.mNo.mId }" name = "mId">
+			<input type="hidden" value="${list.member.mId }" name = "mId">
 				<tr>
 					<td>${list.qbNo }</td>
 					<td>
@@ -46,21 +49,42 @@
 							기타 문의
 						</c:if>
 					</td>
-					<td>
-						<a href="${pageContext.request.contextPath }/qb/detail.do?qbNo=${list.qbNo }">${list.qbTitle }</a>
+					<td><!-- 제목 -->
+						<%-- <a href="${pageContext.request.contextPath }/qb/detail.do?qbNo=${list.qbNo }">${list.qbTitle }</a> --%>
+						<!-- 회원일 경우 -->
+						<c:if test="${Auth != null }"> 
+							<a href="${pageContext.request.contextPath }/qb/detail.do?qbNo=${list.qbNo }">${list.qbTitle }</a>
+						</c:if> 
+				
+						<!-- 관리자일 경우 -->
+						<c:if test="${Admin != null }">
+							<a href="${pageContext.request.contextPath }/qr/detail.do?qbNo=${list.qbNo }">${list.qbTitle }</a>
+						</c:if> 
+						
 					</td>
 					<td>${list.qbName }</td>
 					<td>
 						<fmt:formatDate value="${list.qbDate}" pattern="yyyy-MM-dd"/>
 					</td>
+					
+					<!-- 관리자일 경우 -->
+					<c:if test="${Admin != null }">
+						<td>
+							<a href="${pageContext.request.contextPath }/qb/delete.do?qbNo=${list.qbNo}">[게시글 삭제]</a>
+						</td>
+					</c:if>
 				</tr>
 			</c:forEach>
 		</table>
 	</div>
 	
 	<div>
-		<a href="${pageContext.request.contextPath }/qb/insert.do?mId=${Auth}">글쓰기</a>
+		<!-- 회원일 경우 -->
+		<c:if test="${Auth != null }"> 
+			<a href="${pageContext.request.contextPath }/qb/insert.do?mId=${Auth}">글쓰기</a>
+		</c:if> 
 	</div>
+	
 	
 </div>
 

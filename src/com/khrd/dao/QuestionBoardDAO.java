@@ -127,7 +127,7 @@ public class QuestionBoardDAO {
 			pstmt.setString(5, qb.getQbPhone());
 			pstmt.setString(6, qb.getQbTel());
 			pstmt.setString(7, qb.getQbPath());
-			pstmt.setInt(8, qb.getmNo().getmNo());
+			pstmt.setInt(8, qb.getMember().getmNo());
 
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
