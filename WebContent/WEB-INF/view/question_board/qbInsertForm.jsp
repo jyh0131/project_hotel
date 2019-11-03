@@ -3,7 +3,8 @@
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
 
 <div>
-	<form action="insert.do" method="post">
+	<form action="insert.do" method="post" enctype="multipart/form-data">
+		<input type="hidden" value="${member.mNo }" name="m_no">
 		<table>
 			<tr>
 				<th>문의분류<span>*</span></th>
@@ -23,26 +24,22 @@
 			</tr>
 			<tr>
 				<th>성명<span>*</span></th>
-				<td><input type="text" name="qb_name"></td>
+				<td><input type="text" name="qb_name" value="${member.mName }" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>이메일<span>*</span></th>
-				<td><input type="email" name="qb_email"></td>
+				<td><input type="email" name="qb_email" value="${member.mMail }" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>휴대전화<span>*</span></th>
-				<td><input type="tel" name="qb_phone"></td>
+				<td><input type="tel" name="qb_phone" value="${member.mPhone }" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>자택전화</th>
-				<td><input type="tel" name="qb_tel"></td>
-			</tr>
-			<tr>	
-				<th>예약번호</th>
-				<td><input type="text" name="qb_rNo"></td>
+				<td><input type="tel" name="qb_tel" value="${member.mTel }" readonly="readonly"></td>
 			</tr>
 			<tr>
-				<th>내용</th>
+				<th>내용<span>*</span></th>
 				<td>
 					<textarea rows="5" cols="70" name="qc_content"></textarea>
 				</td>
@@ -54,7 +51,7 @@
 			<tr>
 		</table>
 		<div>
-			<a href="#">목록</a>
+			<a href="${pageContext.request.contextPath }/qb/list.do">목록</a>
 		</div>
 		<div>
 			<input type="submit" value="등록하기">

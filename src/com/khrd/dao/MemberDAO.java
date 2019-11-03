@@ -400,4 +400,22 @@ public class MemberDAO {
 		return -1;
 	}
 	
+	
+	public int selectedByMNo(Connection conn, int mNo) {
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "select * from member where m_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, mNo);
+			
+			return pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(pstmt);
+		}
+		return -1;
+	}
+	
 }//MemberDAO

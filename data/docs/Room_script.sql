@@ -145,20 +145,45 @@ select * from picture;
 select * from question_board;
 select * from question_content;
 
-alter table question_board drop r_no;
 
-insert into question_board values(null, "결제가 안돼요", "홍길동", "asd@naver.com", "결제 관련 문의", "010-1111-1111", "031-123-1234", now(), null, null, null);
+insert into question_board values(null, "객실문의합니다", "홍길동", "asd@naver.com", "객실 관련 문의", "010-1111-1111", "031-123-1234", now(), null, 1);
 
-insert into question_content values("결제 창이 안떠요", last_insert_id());
-
+insert into question_content values("ㅇㅇ", last_insert_id());
 
 
+select * from member;
 
 
 
 
 # 게시글 list 조회
-select * from question_board order by qb_no desc;
+select * from question_board qb join member m on qb.m_no = m.m_no order by qb.qb_no desc;
 
-
+# 내용join
 select * from question_board qb join question_content qc on qb.qb_no = qc.qb_no;
+
+
+# 전체조회(글 + 내용)
+select * from question_board qb 
+join question_content qc on qb.qb_no = qc.qb_no 
+								join member m on qb.m_no = m.m_no;
+
+# 한 게시물 전체조회
+select * from question_board qb 
+join question_content qc on qb.qb_no = qc.qb_no 
+								join member m on qb.m_no = m.m_no 
+						where qb.qb_no = 24;
+
+select * from member where m_no=1;
+
+# 삭제
+delete from question_board where qb_no = 1;
+delete from question_content where qb_no = 1;
+
+# 수정
+update question_board set qb_title = "수정한 제목", qb_category = 4, qb_path = "album_img.PNG" where qb_no = 23;
+update question_content set qc_content = "수정한 내용" where qb_no = 25;
+
+
+
+

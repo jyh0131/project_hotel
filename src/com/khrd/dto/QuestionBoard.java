@@ -130,5 +130,5 @@ public class QuestionBoard {
 				+ ", qbCategory=" + qbCategory + ", qbPhone=" + qbPhone + ", qbTel=" + qbTel + ", qbDate=" + qbDate
 				+ ", qbPath=" + qbPath + ", mNo=" + mNo + ", qcContent=" + qcContent + "]";
 	}
-	
+
 }
