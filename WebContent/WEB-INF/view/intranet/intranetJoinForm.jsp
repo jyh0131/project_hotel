@@ -43,12 +43,18 @@
 			</p>
 			<p>
 				<label>휴대전화</label>
-				<input type="tel" name="phone" placeholder="ex)01012345678" maxlength="11">
-				
-				<br>
-				
-				<span class="formRule">'-'없이 숫자만 공백없이 입력</span>
-				<span class="error">형식에 맞지않는 전화번호입니다.</span>
+				<select name="phone1">
+					<option>010</option>
+					<option>011</option>
+					<option>016</option>
+					<option>017</option>
+					<option>018</option>
+					<option>019</option>
+				</select>
+				<span>-</span>
+				<input type="tel" name="phone2" maxlength="4">
+				<span>-</span>
+				<input type="tel" name="phone3" maxlength="4">
 			</p>
 			<p>
 				<label>이메일</label>
@@ -66,7 +72,30 @@
 			<h3>선택사항</h3>
 			<p>
 				<label>자택전화</label>
-				<input type="tel" name="tel">
+				<select name="tel1">
+					<option>02</option>
+					<option>051</option>
+					<option>053</option>
+					<option>032</option>
+					<option>062</option>
+					<option>042</option>
+					<option>052</option>
+					<option>044</option>
+					<option>031</option>
+					<option>033</option>
+					<option>043</option>
+					<option>041</option>
+					<option>063</option>
+					<option>061</option>
+					<option>054</option>
+					<option>055</option>
+					<option>064</option>
+					<option>070</option>
+				</select>
+				<span>-</span>
+				<input type="tel" name="tel2" maxlength="4">
+				<span>-</span>
+				<input type="tel" name="tel3" maxlength="4">
 			</p>
 			<p>
 				<label>우편번호</label>

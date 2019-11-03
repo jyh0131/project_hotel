@@ -28,7 +28,8 @@ public class MemberLoginHandler implements CommandHandler {
 			try {
 				conn = ConnectionProvider.getConnection();
 				MemberDAO dao = MemberDAO.getInstance();
-				Member member = dao.selectIdAndPw(conn, id, password);
+				Member member = dao.selectById(conn, id);
+				
 				
 				if(member == null) { //회원 정보가 존재하지 않을 경우
 					request.setAttribute("idNotExist", true);

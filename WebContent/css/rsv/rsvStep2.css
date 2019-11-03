@@ -31,11 +31,13 @@ div.rsv-op-choice {
 div.op-choice-title > p {
 	width: 100%;
 	height: 50px;
-	background: skyblue;
+	background: #47a3da;
+	color: white;
 	line-height: 50px;	
 	font-size: 18px;
 }
 div.op-choice-title > p > span {
+	color: white;
 	font-size: 14px;
 	font-weight: normal;
 	float: right;
@@ -83,7 +85,8 @@ div.rsv-op-request {
 div.op-request-main > p {
 	width: 100%;
 	height: 50px;
-	background: skyblue;
+	background: #47a3da;
+	color: white;
 	line-height: 50px;	
 	font-size: 18px;
 	position: relative;
@@ -117,7 +120,8 @@ div.rsv-input-info span.required_field {
 div.input-info-title > p {
 	width: 100%;
 	height: 50px;
-	background: skyblue;
+	background: #47a3da;
+	color: white;
 	line-height: 50px;	
 	font-size: 18px;
 	position: relative;
@@ -127,6 +131,7 @@ div.input-info-title > p {
 div.input-info-title > p > span {
 	font-size: 14px;
 	font-weight: normal;
+	color: white;
 	float: right;
 	margin-right: 10px;
 }
@@ -152,7 +157,7 @@ table.ip-info-tb > tbody > tr:first-child > td {
 	width: 100%;
 }
 table.ip-info-tb > tbody > tr > td:first-child {
-	width: 23%;
+	width: 24%;
 }
 table.ip-info-tb input, table.ip-info-tb select {
 	float: left;
@@ -172,7 +177,7 @@ input[name='lastNameEng'] {
 input[name='tel'] {
 	width: 50%;
 }
-input.cardNum {
+input[maxlength='4'] {
 	width: 15%;
 }
 p.cau {
@@ -196,7 +201,7 @@ div.rsv-input-refund > table.ip-info-tb > tbody > tr > td:first-child {
 div.rsv-input-notice {
 	width: 90%;
 	padding: 30px 35px;
-	border: 5px solid green;
+	border: 5px solid rgba(245,219,189);
 	margin: 30px auto;
 }
 div.input-notice {
@@ -222,7 +227,8 @@ div.rsv-notice {
 div.notice-main > p {
 	width: 100%;
 	height: 50px;
-	background: skyblue;
+	background: #47a3da;
+	color: white;
 	line-height: 50px;	
 	font-size: 18px;
 	position: relative;
@@ -242,32 +248,32 @@ div.btn-area {
 	position: relative;
 }
 span.btnBack {
-	background: url("../../images/rsv-img/btnStep1.gif") no-repeat 0 0;
+	background:none;
 	width: 140px;
 	height: 44px;
+	border: 3px solid #47a3da;
+	color: #47a3da;
 	display: inline-block;
 	float: left;
 	cursor: pointer;
-}
-span.btnRsv {
-	background: url("../../images/rsv-img/btnStepMem.gif") no-repeat 0 0;
-	width: 140px;
-	height: 44px;
-	display: inline-block;
-	float: right;
-	cursor: pointer;
+	line-height: 44px;
+	text-align: center;
+	letter-spacing: 0.15em;
 }
 input[type='submit'] {
+	letter-spacing: 0.15em;
+	border: 3px solid #47a3da;
 	width: 140px;
 	height: 44px;
 	border: none;
 	outline: none;
 	display: inline-block;
-	background: none;
-	position: absolute;
-	top: 0;
-	right: 0;
+	background: #47a3da;
+	color: white;
+	float: right;
 	cursor: pointer;
+	font-size: 16px;
+	font-weight: bold;
 }
 
 
@@ -278,15 +284,19 @@ div.rsv-op-right {
 }
 div.rsv-info-wrap {
 	width: 95%;
-	border: 1px solid black;
+	border: 1px solid rgb(237,199,218);
 	padding: 5px;
 }
 div.rsv-info {
 	width: 83%;
 	padding: 30px 25px;
 }
-div.rsv-info a.aReset {
+div.rsv-info a#aReset {
 	cursor: pointer;
+	float: right;
+}
+div.rsv-info a#aReset > span {
+	font-size: 13px;
 }
 div.rsv-info > p {
 	font-size: 16px;

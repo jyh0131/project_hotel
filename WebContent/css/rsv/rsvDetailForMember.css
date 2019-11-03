@@ -9,20 +9,31 @@ div.rsv-detail {
 div.rsv-detail > h3 {
 	font-weight: normal;
 	letter-spacing: 0.05em;
-	margin: 20px 0 5px 33px;
+	padding: 10px;
+	margin: 20px 0 15px 33px;
+	border-bottom: 4px solid #f5dbbd;
+	color: #353535;
+	font-size: 1.2em;
 }
 div.rsv-detail > table {
 	width: 95%;
 	margin: 0 auto;
 	border-collapse: collapse;
+	boder: 4px solid #47a3da;
 }
-th, td {
-	border: 1px solid #5CD1E5;
+th {
 	padding: 15px 0;
+	background: #47a3da;
+	font-weight: normal;
+	color: white;
+}
+td {
+	padding: 15px 0 15px 15px;
 }
 caption {
 	caption-side: bottom;
 	text-align: right;
+	font-size: 14px;
 }
 div.rsv-detail-btn-wrap {
 	width: 95%;
@@ -31,6 +42,7 @@ div.rsv-detail-btn-wrap {
 }
 div.rsv-detail-btn-wrap > a:first-child {
 	float: left;
+	color: #47a3da;
 }
 
 

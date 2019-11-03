@@ -12,7 +12,8 @@ div.rsv-step-wrap {
 }
 div.rsv-date-top {
 	height: 82px;
-	background: #D1B2FF;
+	border: rgba(245,219,189) 4px solid;
+	color: white;
 	padding: 50px 20px;
 }
 div.rsv-date-inner {
@@ -61,21 +62,24 @@ input {
 input.rsv-year {
 	font-size: 13px;
 	width: 100%;
+	color: #47a3da;
 }
 input.rsv-month {
 	font-size: 20px;
 	width: 100%;
+	color: #47a3da;
 }
 input.rsv-date {
 	font-size: 40px;
 	width: 45%;
+	color: #47a3da;
 }
 input.rsv-num {
 	font-size: 40px;
-	color: #000;
 	width: 60px;
 	text-align: right;
 	margin: 5px 0 0;
+	color: #47a3da;
 }
 div.rsv-person > span.left-side {
 	float: left;
@@ -112,10 +116,12 @@ div.rsv-date:last-child{
 button.btn-Search {
 	width: 80px;
 	height: 80px;
-	border: none;
-	background: skyblue;
+	color: #47a3da;
+	font-size: 17px;
+	letter-spacing: 0.15em;
+	border: 5px solid #47a3da;
+	background: none;
 	border-radius: 80px;
-	color: navy;
 	box-shadow: 1px 2px 3px grey;
 	cursor: pointer;
 	outline: none;
@@ -132,7 +138,7 @@ div.rsv-result-wrap {
 div.rsv-result-title {
 	width: 100%;
 	height: 50px;
-	background: lightgreen;
+	background: #b5c1db;
 	text-align: center;
 	margin: 25px 0;
 }
@@ -160,7 +166,7 @@ ul.ar-list > li {
 	height: 150px;
 	padding: 37px 30px;
 	border: 4px solid #47a3da;
-	background: pink;
+	background: rgba(237,199,218,0.2);
 	margin-bottom:-5px;
 }
 ul.ar-list > li.ar-rc {
@@ -215,7 +221,8 @@ li.ar-op > div.ar-op1 {
 }
 li.ar-op > div.ar-op1 > p {
 	font-size: 17px;
-	background: lightgreen;
+	background: #47a3da;
+	color: white;
 	padding: 9px 0;
 	margin-bottom: 5px;
 }
@@ -227,7 +234,8 @@ li.ar-op > div.ar-op2 {
 }
 li.ar-op > div.ar-op2 > p {
 	font-size: 17px;
-	background: lightgreen;
+	background: #47a3da;
+	color: white;
 	padding: 9px 0;
 	margin-bottom: 5px;
 }
@@ -241,9 +249,9 @@ li.ar-op > div.ar-op-btn {
 input[type='submit'] {
 	width: 80px;
 	height: 80px;
-	background: skyblue;
+	background: #47a3da;
 	border-radius: 80px;
-	color: navy;
+	color: white;
 	box-shadow: 1px 2px 3px grey;
 	cursor: pointer;
 	display: inline;

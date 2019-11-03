@@ -3,6 +3,7 @@ package com.khrd.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,28 @@ public class MemberDAO {
 	
 	private MemberDAO() {}
 	
+	/*----------------------------------------------------------------------------------------*/
+	//Member 객체 생성 메소드
+	private Member memConstructor(ResultSet rs) throws SQLException {
+		Member m = new Member(rs.getInt("m_no"), 
+							  rs.getString("m_name"), 
+							  rs.getTimestamp("m_birth"), 
+							  rs.getString("m_mail"), 
+							  rs.getString("m_phone"), 
+							  rs.getString("m_tel"), 
+							  rs.getString("m_zipcode"), 
+							  rs.getString("m_addr1"), 
+							  rs.getString("m_addr2"), 
+							  rs.getString("m_id"), 
+							  rs.getString("m_pwd"), 
+							  rs.getTimestamp("m_regdate"), 
+							  rs.getTimestamp("m_quitdate"), 
+							  rs.getInt("m_isAdmin"));
+		return m;
+	}
+	/*----------------------------------------------------------------------------------------*/
+	
+	//회원 등록
 	public int insert(Connection conn, Member member) {
 		PreparedStatement pstmt = null;
 		
@@ -48,7 +71,7 @@ public class MemberDAO {
 		return -1;
 	}
 	
-	
+	//아이디와 비밀번호가 일치하는 회원 찾기
 	public Member selectIdAndPw(Connection conn, String id, String pwd) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -61,60 +84,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				Member member = new Member(rs.getInt("m_no"),
-											rs.getString("m_name"),
-											rs.getDate("m_birth"),
-											rs.getString("m_mail"), 
-											rs.getString("m_phone"),
-											rs.getString("m_tel"),
-											rs.getString("m_zipcode"),
-											rs.getString("m_addr1"),
-											rs.getString("m_addr2"),
-											rs.getString("m_id"),
-											rs.getString("m_pwd"),
-											rs.getDate("m_regdate"),
-											rs.getDate("m_quitdate"),
-											rs.getInt("m_isAdmin"));
-				return member;  
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-		}finally {
-			JDBCUtil.close(rs);
-			JDBCUtil.close(pstmt);
-		}
-		
-		return null;
-	}
-	
-	
-	public Member selectByEmail(Connection conn, String email) {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		try {
-			String sql = "select * from member where m_mail = ?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, email);
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				Member member = new Member(rs.getInt("m_no"),
-						rs.getString("m_name"),
-						rs.getDate("m_birth"),
-						rs.getString("m_mail"), 
-						rs.getString("m_phone"),
-						rs.getString("m_tel"),
-						rs.getString("m_zipcode"),
-						rs.getString("m_addr1"),
-						rs.getString("m_addr2"),
-						rs.getString("m_id"),
-						rs.getString("m_pwd"),
-						rs.getDate("m_regdate"),
-						rs.getDate("m_quitdate"),
-						rs.getInt("m_isAdmin"));
+				Member member = memConstructor(rs);
 				
 				return member;  
 			}
@@ -130,7 +100,35 @@ public class MemberDAO {
 		return null;
 	}
 	
+	//이메일로 회원 찾기
+	public Member selectByEmail(Connection conn, String email) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select * from member where m_mail = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				Member member = memConstructor(rs);
+				
+				return member;  
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+		
+		return null;
+	}
 	
+	//아이디로 회원찾기
 	public Member selectById(Connection conn, String id) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -142,20 +140,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				Member member = new Member(rs.getInt("m_no"),
-										   rs.getString("m_name"),
-										   rs.getDate("m_birth"),
-										   rs.getString("m_mail"), 
-										   rs.getString("m_phone"),
-										   rs.getString("m_tel"),
-										   rs.getString("m_zipcode"),
-											rs.getString("m_addr1"),
-											rs.getString("m_addr2"),
-											rs.getString("m_id"),
-											rs.getString("m_pwd"),
-											rs.getDate("m_regdate"),
-											rs.getDate("m_quitdate"),
-											rs.getInt("m_isAdmin"));
+				Member member = memConstructor(rs);
 					
 				return member;  
 			}
@@ -171,7 +156,7 @@ public class MemberDAO {
 		return null;
 	}
 	
-	
+	//회원 전체 리스트(일반회원 + 관리자)
 	public List<Member> selectList(Connection conn) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -184,20 +169,7 @@ public class MemberDAO {
 			list = new ArrayList<>();
 			
 			while(rs.next()) {
-				Member member = new Member(rs.getInt("m_no"),
-										   rs.getString("m_name"),
-										   rs.getDate("m_birth"),
-										   rs.getString("m_mail"), 
-											rs.getString("m_phone"),
-											rs.getString("m_tel"),
-											rs.getString("m_zipcode"),
-											rs.getString("m_addr1"),
-											rs.getString("m_addr2"),
-											rs.getString("m_id"),
-											rs.getString("m_pwd"),
-											rs.getDate("m_regdate"),
-											rs.getDate("m_quitdate"),
-											rs.getInt("m_isAdmin")); 
+				Member member = memConstructor(rs);
 			
 				list.add(member);
 			}
@@ -213,10 +185,131 @@ public class MemberDAO {
 		}
 		
 		return null;
+	}
+	
+	//일반회원 전체 리스트
+		public List<Member> selectMemberList(Connection conn) {
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<Member> list = null;
+			
+			try {
+				String sql = "select * from member where m_isAdmin = 0";
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				list = new ArrayList<>();
+				
+				while(rs.next()) {
+					Member member = memConstructor(rs);
+				
+					list.add(member);
+				}
+				
+				return list;
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				
+			}finally {
+				JDBCUtil.close(rs); 
+				JDBCUtil.close(pstmt);
+			}
+			
+			return null;
+		}
 		
+		//관리자 회원만 나오는 리스트
+		public List<Member> selectAdminMemberList(Connection conn) {
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+				String sql = "select * from member where m_isAdmin = 1";
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				List<Member> list = new ArrayList<>();
+				
+				while(rs.next()) {
+					Member member = memConstructor(rs);
+					
+					list.add(member);
+				}
+				
+				return list;
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				
+			} finally {
+				JDBCUtil.close(pstmt);
+			}
+			
+			return null;
+		}
+		
+	//일반회원 중 탈퇴회원 리스트
+	public List<Member> selectQuitMember(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select * from member where m_isAdmin = 0 and m_quitdate is not null";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			List<Member> list = new ArrayList<>();
+			
+			while(rs.next()) {
+				Member member = memConstructor(rs);
+				
+				list.add(member);
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			JDBCUtil.close(pstmt);
+		}
+		
+		return null;
+	}
+	
+	//아직 존재하는 일반회원 리스트
+	public List<Member> selectNotQuitMember(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select * from member where m_isAdmin = 0 and m_quitdate is null";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			List<Member> list = new ArrayList<>();
+			
+			while(rs.next()) {
+				Member member = memConstructor(rs);
+				
+				list.add(member);
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			JDBCUtil.close(pstmt);
+		}
+		
+		return null;
 	}
 	
 	
+	//비밀번호 바꾸기
 	public int PwdUpdate(Connection conn, Member member) {
 		PreparedStatement pstmt = null;
 		try {
@@ -238,7 +331,7 @@ public class MemberDAO {
 		
 	}
 	
-	
+	//회원 정보 바꾸기
 	public int MemberUpdate(Connection conn, Member member) {
 		PreparedStatement pstmt = null;
 		try {
@@ -287,7 +380,7 @@ public class MemberDAO {
 		
 	}
 	
-	
+	//회원 삭제 (근데 우리는 논리 삭제를 사용할거니까 당장은 사용 안함.)
 	public int delete(Connection conn,	int mNo) {
 		PreparedStatement pstmt = null;
 		try {

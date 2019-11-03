@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-div.admin-login-wrap {
+div.change-pwd-wrap {
 	width: 45%;
 	padding: 60px 0;
 	margin: 50px auto 100px;
@@ -9,47 +9,41 @@ div.admin-login-wrap {
 form {
 	position: relative;
 }
-div.admin-login-wrap > h2 {
+div.change-pwd-wrap > h2 {
 	text-align: center;
 	margin: 0 0 20px 0;
 	font-weight: normal;
 	letter-spacing: 0.05em;
 	color: #6D7993;
 }
-table.admin-login {
+div.change-pwd {
 	width: 70%;
 	margin: 0 auto;
 	border-collapse: collapse;
 }
-table.admin-login td {
-	padding: 10px;
+div.change-pwd > p {
+	margin: 20px;
 	font-size: 14px;
 }
-table.admin-login p {
-	margin-bottom: 10px;
-}
-table.admin-login label {
+div.change-pwd label {
 	float: left;
-	width: 70px;
-	margin-top: 5px;
+	width: 120px;
 	color: #6D7993;
 }
-table.admin-login input {
+div.change-pwd input {
 	padding: 5px;
 }
-table.admin-login > tbody > tr > td.td-btn {
-	padding: 5px 0 15px;
-}
-table.admin-login > tbody > tr > td.centerAlign > a {
-	margin: 0px 20px;
-	color: #B5C1DB;
-}
-table.admin-login > tbody > tr > td[colspan='2'] {
-	text-align: center;
+div.change-pwd p.p-btn {
+	text-align: right;
 }
 span.error {
 	color: red;
 	font-size: 12px;
+	display: none;
+}
+span.formRule {
+	font-size: 11px;
+	color: #8C8C8C;	
 }
 input[type="submit"] {
 	width: 70px;
@@ -60,19 +54,4 @@ input[type="submit"] {
 	border: none;
 	box-shadow: 1px 2px 3px gray;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

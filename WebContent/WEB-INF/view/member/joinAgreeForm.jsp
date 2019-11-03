@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
-<link href="css/member/memberJoinAgree.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/css/member/memberJoinAgree.css" rel="stylesheet" type="text/css">
+
 <script>
   $(function(){
 	$("form").submit(function(){
-		 if($("#n").prop("checked")||$("#n1").prop("checked")){		 
+		 if($("#n").prop("checked") || $("#n1").prop("checked")){		 
 			 alert("호텔 이용약관에 대한 동의는 필수 선택 사항입니다."); 
 			return false;
 			 }
@@ -56,8 +57,8 @@
 		</div>
 			
 		<div class="agree-radio-wrap">
-			<input type="radio" name="agree" value="yes">동의함 
-			<input type="radio" name="agree" value="no" id="n">동의하지않음
+			<input type="radio" name="agree" value="yes" id="y"><label for="y">동의함</label>
+			<input type="radio" name="agree" value="no" id="n"><label for="n">동의하지않음</label>
 		</div>
 			
 
@@ -88,8 +89,8 @@
 		</div>
 			
 		<div class="agree-radio-wrap">
-		   	<input type="radio" name="agree1" value="yes1">동의함 
-			<input type="radio" name="agree1" value="no1" id="n1">동의하지않음
+		   	<input type="radio" name="agree1" value="yes1" id="y1"><label for="y1">동의함</label> 
+			<input type="radio" name="agree1" value="no1" id="n1"><label for="n1">동의하지않음</label>
 		</div>
 		
 		<div class="agree-btn-wrap">

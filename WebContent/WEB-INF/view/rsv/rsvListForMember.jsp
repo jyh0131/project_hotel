@@ -35,7 +35,7 @@
 					</c:if>
 					<c:if test="${rsv.rState == '취소'}">
 						<td>
-							<a>
+							<a class="canceled-rsv">
 								${rsv.room.roomCategory.rcName} / ${rsv.room.viewType.vtName} / ${rsv.room.bedType.btName}
 							</a>
 						</td>
@@ -50,10 +50,10 @@
 					<td><fmt:formatDate value="${rsv.rPayDate}" pattern="yyyy-MM-dd" /></td>
 			
 					<c:if test="${rsv.rState == '예약완료'}">
-						<td><a href="${pageContext.request.contextPath}/rsvMng/mem/deleteRsv.do?no=${rsv.rNo}" id="aDel">예약취소</a></td>
+						<td><a href="${pageContext.request.contextPath}/rsvMng/mem/deleteRsv.do?no=${rsv.rNo}" class="aDel">예약취소</a></td>
 					</c:if>
 					<c:if test="${rsv.rState == '취소'}">
-						<td>취소된 예약</td>
+						<td class="canceled-rsv">취소된 예약</td>
 					</c:if>
 				</tr>
 			</c:forEach>

@@ -45,18 +45,18 @@
 				</td>
 			</tr>
 			<tr>
-				<th colspan="2">　</th>
+				<td colspan="2">　</td>
 				<th>객실 요금</th>
 				<fmt:formatNumber var="rmPrice" value="${rsv.room.roomPrice}" pattern="###,###" />
 				<td>${rmPrice} 원(${rsv.rStay}박)</td>
 			</tr>
 			<tr>
-				<th colspan="2">　</th>
+				<td colspan="2">　</td>
 				<th>부가가치세 ＆ 봉사료</th>
 				<td>123,456 원</td> 
 			</tr>
 			<tr>
-				<th colspan="2">　</th>
+				<td colspan="2">　</td>
 				<th>요금합계</th>
 				<fmt:formatNumber var="totalPrice" value="${rsv.rTotalPrice}" pattern="###,###" />
 				<td>${totalPrice} 원</td>

@@ -18,7 +18,7 @@
 			$("table").empty();
 			$trDf = $("<tr>").append("<th>예약번호</th>").append("<th>예약자명</th>").append("<th>객실</th>")
 					.append("<th>체크인/체크아웃</th>").append("<th>투숙인원</th>").append("<th>금액</th>")
-					.append("<th>결제날짜</th>").append("<th>예약상태</th>").append("<th></th>");
+					.append("<th>결제날짜</th>").append("<th>예약상태</th>").append("<th>비고</th>");
 			$("table").append($trDf);
 			
 			$.ajax({
@@ -50,9 +50,9 @@
 						
 						//상태에 따라 버튼 노출여부 결정
 						if(obj.rState == "예약완료") { /*취소버튼 쫌있다가!*/
-							$tdBtn.append("<a href='#' id='aDel'>취소<br>(여기서요..?)</a>");
+							$tdBtn.append("<a href='#' id='aDel'>취소하기</a>");
 						} else {
-							$tdBtn.append("취소된 예약");
+							$tdBtn.append("취소됨");
 						}
 					
 						$tr = $("<tr>").append($tdNo).append($tdName).append($tdRoom).append($tdDate).append($tdPsn)

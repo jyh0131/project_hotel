@@ -3,7 +3,7 @@
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
 <%@ include file="/WEB-INF/view/include/intranet/intranetSideMenu.jsp"%>
 <link href="${pageContext.request.contextPath}/css/intranet/intranetRsvMng.css" rel="stylesheet" type="text/css">
-<script src="${pageContext.request.contextPath}/js/intranet/rsvListForAdmin.js"></script>
+<script src="${pageContext.request.contextPath}/js/intranet/intranetRsvMng.js"></script>
 
 <h2>예약관리</h2>
 
@@ -26,7 +26,7 @@
 				<th>금액</th>
 				<th>결제날짜</th>
 				<th>예약상태</th>
-				<th></th>
+				<th>비고</th>
 			</tr>
 			<c:if test="${list == null}">
 				<tr>
@@ -67,11 +67,11 @@
 						
 						<c:if test="${rsv.rState == '예약완료'}">
 							<td rowspan="2">
-								<a href="${pageContext.request.contextPath}/rsvMng/mem/deleteRsv.do?no=${rsv.rNo}" id="aDel">취소<br>(여기서요..?)</a>
+								<a href="${pageContext.request.contextPath}/rsvMng/mem/deleteRsv.do?no=${rsv.rNo}" id="aDel">취소하기</a>
 							</td>
 						</c:if>
 						<c:if test="${rsv.rState == '취소'}">
-							<td rowspan="2">취소된 예약</td>
+							<td rowspan="2">취소됨</td>
 						</c:if>
 						
 					

@@ -19,7 +19,7 @@ div.intra-mem-list > table td {
 	padding: 5px;
 	text-align: center;
 }
-div.intra-mem-list > table td[colspan='7'] {
+div.intra-mem-list > table td[colspan='8'] {
 	text-align: left;
 	padding-left: 20px;
 }

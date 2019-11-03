@@ -38,6 +38,10 @@ public class IntranetLoginHandler implements CommandHandler {
 					request.setAttribute("pwdNotMatch", true);
 					
 					return "/WEB-INF/view/intranet/intranetLoginForm.jsp";
+				} else if (m.getmIsAdmin() == 0) {
+					request.setAttribute("notAdmin", true);
+					
+					return "/WEB-INF/view/intranet/intranetLoginForm.jsp";
 				}
 				
 				HttpSession session = request.getSession();

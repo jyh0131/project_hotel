@@ -26,38 +26,41 @@
 	<form action="login.do" method="post">	
 		<table class="mem-login">
 			<tr>
-				<td>아이디</td>
-				<td><input type="text" name="id"></td>
+				<td>
+					<p>
+						<label>아이디</label>
+						<input type="text" name="id">
+					</p>
+					<p>
+						<label>비밀번호</label>
+						<input type="password" name="password">
+					</p>
+				</td>
+				<td class="td-btn">
+					<input type="submit" value="로그인">
+				</td>
 			</tr>
 		
 			<tr>
-				<td>비밀번호</td>
-				<td><input type="password" name="password"></td>
-			</tr>
-		
-			<tr>
-				<td colspan="2">
+				<td colspan="2" class="centerAlign">
 					<a href="#">아이디 / 비밀번호 찾기</a>
-					<a href="join.do">회원가입</a>
+					<a href="join.do">회원 가입</a>
 				</td>
 			</tr>
 			
 			<tr>
 				<c:if test="${idNotExist != null}">
-					<td colspan="2">
+					<td colspan="2"  class="centerAlign">
 						<span class="error">존재하지 않는 아이디입니다.</span>
 					</td>
 				</c:if>
 				<c:if test="${pwdNotMatch != null}">
-					<td colspan="2">
+					<td colspan="2"  class="centerAlign">
 						<span class="error">비밀번호가 틀립니다.</span>
 					</td>
 				</c:if>
 			</tr>
 		</table>
-		
-		<input type="submit" value="로그인">
-		
 	</form>
 </div>		
 	

@@ -17,35 +17,43 @@ public class MemberChangePwdHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if(request.getMethod().equalsIgnoreCase("get")) {
-			return "/WEB-INF/view/member/changePwdForm.jsp";
+			return "/WEB-INF/view/member/memberChangePwdForm.jsp";
+		
 		}else if(request.getMethod().equalsIgnoreCase("post")) {
-			String id = request.getParameter("id");
-			String name = request.getParameter("name");
+			Connection conn = null;
+
+			String id = (String) request.getSession().getAttribute("Auth");
 			String password = request.getParameter("password");
 			String confirmPassword = request.getParameter("confirmPassword");
-			Connection conn = null;
+			
 			try { 
 				conn = ConnectionProvider.getConnection();
 				MemberDAO dao = MemberDAO.getInstance();
-				Member member = new Member(0, name, null, null, null, null,
-						null, null, null, id, confirmPassword, null, null, 0);
-				Member dbmember = dao.selectById(conn, id);
-				if(password.equals(dbmember.getmPwd())==true) {
-					int result = dao.PwdUpdate(conn, member);
+				Member mem = dao.selectById(conn, id);
+				
+				if(password.equals(mem.getmPwd()) == true) { //현재 비밀번호 일치
+					mem.setmPwd(confirmPassword);
+					int result = dao.PwdUpdate(conn, mem);
 					request.setAttribute("result", result);
+					
 					return "/WEB-INF/view/member/changePwdSuccess.jsp";
+					
 				}else {
-					request.setAttribute("notMatch",true );
-					return "/WEB-INF/view/member/changePwdForm.jsp";
+					request.setAttribute("pwdNotMatch", true);
+					
+					return "/WEB-INF/view/member/memberChangePwdForm.jsp";
 				}
+		
 			} catch (Exception e) {
 				e.printStackTrace();
+		
 			}finally {
 				JDBCUtil.close(conn);
 			}
+			
 		}
 		
 		return null;
-	}
+	}//process
 
-}
+}//MemberChangePwdHandler

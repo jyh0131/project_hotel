@@ -3,6 +3,7 @@
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
 <%@ include file="/WEB-INF/view/include/intranet/intranetSideMenu.jsp"%>
 <link href="${pageContext.request.contextPath}/css/intranet/intranetMemberMng.css" rel="stylesheet" type="text/css">
+<script src="${pageContext.request.contextPath}/js/intranet/intranetMemberMng.js"></script>
 
 <h2>회원관리</h2>
 
@@ -23,24 +24,54 @@
 			<th>아이디</th>
 			<th>생년월일</th>
 			<th>이메일</th>
-			<th>연락처(휴대전화/자택전화)</th>
+			<th>연락처</th>
 			<th>가입일</th>
+			<th>비고</th>
 		</tr>
-		<tr>
-			<td>1</td>
-			<td>김믜믜</td>
-			<td>mlmlml</td>
-			<td>1993-02-23</td>
-			<td>mlml@mlml.ml</td>
-			<td>
-				(HP) 01012341234<br>
-				(TEL) 0534283399
-			</td>
-			<td>2019-10-31</td>
-		</tr>
-		<tr>
-			<td colspan="7">주소: 대구광역시 동구 동부로 29, 신천역 까사밀라 101-203</td>
-		</tr>
+		<!-- 회원이 존재하지 않을떄 -->
+		<c:if test="${list == null}">
+			<tr>
+				<td colspan="8">등록된 회원이 없습니다.</td>
+			</tr>
+		</c:if>
+		
+		<!-- 회원이 존재할떄 -->
+		<c:if test="${list != null}">
+			<c:forEach var="mem" items="${list}">
+				<tr>
+					<td>${mem.mNo}</td>
+					
+					<td>${mem.mName}</td>
+					
+					<td>${mem.mId}</td>
+					
+					<td>
+						<fmt:formatDate value="${mem.mBirth}" pattern="yyyy-MM-dd"/>
+					</td>
+					
+					<td>
+						${mem.mMail}
+					</td>
+					
+					<td>(HP) ${mem.mPhone} / (TEL) ${mem.mTel}</td>
+					
+					<td>
+						<fmt:formatDate value="${mem.mRegdate}" pattern="yyyy-MM-dd"/>
+					</td>
+
+					<td>
+						<c:if test="${mem.mQuitdate != null}">
+							탈퇴한 회원
+						</c:if>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="8">
+						주소: (${mem.mZipcode}) ${mem.mAddr1} ${mem.mAddr2}
+					</td>
+				</tr>
+			</c:forEach>
+		</c:if>	
 	</table>
 </div>
 

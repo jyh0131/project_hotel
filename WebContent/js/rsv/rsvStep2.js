@@ -6,6 +6,16 @@
 			  return num.toString().replace(regexp, ',');
 		}
 		
+		//초기화 선택시
+		$("#aReset").click(function(){
+			var rs = confirm("예약을 취소하고 메인으로 돌아시겠습니까?");
+			if(rs == true) {
+				return true;
+			} else {
+				return false;
+			}
+		});
+		
 		//옵션 선택시 총 금액에 반영되게
 		var psn = $("input.ckPerson-area").val().trim();
 		var psnAdt = psn.substr(psn.indexOf("명")-1, 1);

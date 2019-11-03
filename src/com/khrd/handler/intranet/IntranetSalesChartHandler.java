@@ -1,16 +1,16 @@
-package com.khrd.handler.intranet.member;
+package com.khrd.handler.intranet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.khrd.controller.CommandHandler;
 
-public class IntranetMemberMngHandler implements CommandHandler {
+public class IntranetSalesChartHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		return "/WEB-INF/view/intranet/intranetMemberMng.jsp";
-	}//process
+		// TODO Auto-generated method stub
+		return "/WEB-INF/view/intranet/intranetSalesMng.jsp";
+	}
 
-}//IntranetMemberMngHandler
+}

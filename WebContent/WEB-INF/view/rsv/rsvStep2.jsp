@@ -108,11 +108,17 @@
 							<tr>
 								<td><span class="required_field">*</span>연락처</td>
 								<td>
-									<select>
-										<option selected="sele$cted">휴대전화</option>
-										<option>자택전화</option>
-									</select>
-									<input type="tel" name="tel" placeholder="ex) 01012345678" value="${rsv.member.mPhone}">
+								<c:set var="p" value="${fn:split(rsv.member.mPhone, '-')}"></c:set>
+								<select name="tel1">
+									<option ${p[0] == "010"?'selected="selected"':''}>010</option>
+									<option ${p[0] == "011"?'selected="selected"':''}>011</option>
+									<option ${p[0] == "016"?'selected="selected"':''}>016</option>
+									<option ${p[0] == "017"?'selected="selected"':''}>017</option>
+									<option ${p[0] == "018"?'selected="selected"':''}>018</option>
+									<option ${p[0] == "019"?'selected="selected"':''}>019</option>
+								</select>
+								<input type="tel" name="tel2" value="${p[1]}" maxlength="4">
+								<input type="tel" name="tel3" value="${p[2]}" maxlength="4">	
 								</td>
 							</tr>
 						</table>
@@ -268,9 +274,10 @@
 								
 				<!-- 버튼 -->
 				<div class="btn-area">
-					<span class="btnBack"></span>
-					<input type="submit" value="">
-					<span class="btnRsv"></span>
+					<span class="btnBack">
+						◀ STEP1
+					</span>
+					<input type="submit" value="예약">
 				</div>
 			</div>
 		</div>

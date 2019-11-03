@@ -30,13 +30,22 @@ public class IntranetJoinHandler implements CommandHandler {
 				String mName = request.getParameter("name");
 				String mBirth = request.getParameter("birth");
 				String mMail = request.getParameter("mail");
-				String mPhone = request.getParameter("phone");
-				String mTel = request.getParameter("tel");
 				String mZipcode = request.getParameter("zip");
 				String mAddr1 = request.getParameter("addr1");
 				String mAddr2 = request.getParameter("addr2");
 				String mId = request.getParameter("id");
 				String mPwd = request.getParameter("password");
+				
+				//전화번호 뚝딱뚝딱 재조립
+				String mPhone1 = request.getParameter("phone1");
+				String mPhone2 = request.getParameter("phone2");
+				String mPhone3 = request.getParameter("phone3");
+				String phone = mPhone1+"-"+mPhone2+"-"+mPhone3;
+				
+				String mTel1 = request.getParameter("tel1");
+				String mTel2 = request.getParameter("tel2");
+				String mTel3 = request.getParameter("tel3");
+				String tel = mTel1+"-"+mTel2+"-"+mTel3;
 				
 				//날짜 변환
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -46,8 +55,8 @@ public class IntranetJoinHandler implements CommandHandler {
 									  mName, 
 									  birth, 
 									  mMail, 
-									  mPhone, 
-									  mTel, 
+									  phone, 
+									  tel, 
 									  mZipcode, 
 									  mAddr1, 
 									  mAddr2, 

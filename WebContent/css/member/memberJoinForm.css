@@ -37,8 +37,8 @@ div.join-info-form {
 	margin: 30px 0;
 }
 div.join-info-form > h3 {
-	background: #47a3da;
-	color: white;
+	border-bottom: 5px solid #47a3da;
+	color: #47a3da;
 	padding: 15px;
 	font-size: 1.3em;
 	font-weight: normal;

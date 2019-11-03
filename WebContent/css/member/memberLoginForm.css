@@ -4,7 +4,7 @@ div.mem-login-wrap {
 	width: 45%;
 	padding: 60px 0;
 	margin: 50px auto 100px;
-	background: pink;
+	background: rgba(250, 236, 197, 0.8);
 }
 form {
 	position: relative;
@@ -12,21 +12,37 @@ form {
 div.mem-login-wrap > h2 {
 	text-align: center;
 	margin: 0 0 20px 0;
+	font-weight: normal;
+	letter-spacing: 0.05em;
+	color: #6D7993;
 }
 table.mem-login {
 	width: 70%;
 	margin: 0 auto;
 	border-collapse: collapse;
 }
-td {
+table.mem-login td {
 	padding: 10px;
 	font-size: 14px;
 }
-input {
+table.mem-login p {
+	margin-bottom: 10px;
+}
+table.mem-login label {
+	float: left;
+	width: 70px;
+	margin-top: 5px;
+	color: #6D7993;
+}
+table.mem-login input {
 	padding: 5px;
 }
-table.mem-login > tbody > tr > td:first-child {
-	text-align: right;
+table.mem-login > tbody > tr > td.td-btn {
+	padding: 5px 0 15px;
+}
+table.mem-login > tbody > tr > td.centerAlign > a {
+	margin: 0px 20px;
+	color: #B5C1DB;
 }
 table.mem-login > tbody > tr > td[colspan='2'] {
 	text-align: center;
@@ -39,10 +55,8 @@ input[type="submit"] {
 	width: 70px;
 	height: 70px;
 	border-radius: 50px 50px;
-	background: yellow;
+	background: rgba(71, 163, 218, 0.8);
+	color: white;
 	border: none;
 	box-shadow: 1px 2px 3px gray;
-	position: absolute;
-	right: 118px;
-	top: 15px;
 }

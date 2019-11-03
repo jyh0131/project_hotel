@@ -52,7 +52,7 @@
 	<div class="rsv-cpl-bottom">
 		<div class="cpl-bottom-content-wrap">
 			<div class="cpl-bottom-content">
-				<h3>BLUA LUNDO</h3>
+				<h3 style="color: #47a3da;">BLUA LUNDO</h3>
 				<p>날짜/투숙인원</p>
 				<ul>
 					<li>

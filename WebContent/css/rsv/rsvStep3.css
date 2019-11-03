@@ -10,7 +10,6 @@ div.rsv-spl-wrap {
 	width: 100%;
 }
 
-
 /*위쪽*/
 div.rsv-cpl-top {
 	border: 10px solid #47a3da;
@@ -51,7 +50,7 @@ div.rsv-cpl-top > ul > li > span {
 }
 a#aPrint {
 	font-size: 14px;
-	color: #666;
+	color: rgb(255, 203, 203);
 }
 
 /*아래쪽*/
@@ -65,14 +64,14 @@ div.rsv-cpl-bottom span {
 }
 div.cpl-bottom-content-wrap {
 	overflow: hidden;
-	border: 1px solid grey;
+	border: 1px solid rgb(256, 219, 189);
 	padding: 40px;
 }
 div.cpl-bottom-content {
 	float: left;
-	width: 30%;
+	width: 29%;
 	padding: 20px;
-	border-right: 1px solid grey;
+	border-right: 1px dotted grey;
 }
 div.cpl-bottom-content:nth-child(3) {
 	border: none;

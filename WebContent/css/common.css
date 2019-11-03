@@ -59,7 +59,7 @@ ul#top-menu > li > a:before {
 	height: 10px;
 	background: black;
 	position: absolute;
-	top: 7px;
+	top: 8px;
 	left: -10px;
 }
 
@@ -148,9 +148,10 @@ div#rsv-menu > a {
 	display: block;
 	color: #47a3da;
 	line-height: 53px;
+	letter-spacing: 0.15em;
 	background: rgba(239, 242, 244, 0.8);
 	font-size: 18px;
-	letter-spacing: 0.15em;
+	font-weight: bold;
 }
 
 /*section*/
