@@ -37,7 +37,7 @@ public class QuestionReplyDAO {
 		return -1;
 	}
 
-	public QuestionReply selectByQrNo(Connection conn, int qbNo) {
+	public QuestionReply selectByQbNo(Connection conn, int qbNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
@@ -64,7 +64,7 @@ public class QuestionReplyDAO {
 			JDBCUtil.close(pstmt);
 		}
 		return null;
-	}//selectByQrNo
+	}//selectByQbNo
 	
 	public int delete(Connection conn, int qrNo) {
 		PreparedStatement pstmt = null;
@@ -84,6 +84,37 @@ public class QuestionReplyDAO {
 		return -1;
 	}//delete
 	
+	public QuestionReply selectByQrNo(Connection conn, int qrNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select * from question_board qb \r\n" 
+							+ "join question_content qc on qb.qb_no = qc.qb_no\r\n" 
+							+ "join question_reply qr on qb.qb_no = qr.qb_no\r\n" 
+							+ "where qr.qr_no = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, qrNo);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				QuestionReply qr = new QuestionReply(rs.getInt("qr_no"), 
+													 rs.getString("qr_content"), 
+													 rs.getTimestamp("qr_date"),
+													 new QuestionBoard(qrNo, null, null, null, null, null, null, null, null, null, null));
+				return qr;
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+		return null;
+	}//selectByQrNo
+	
+	
 	public int update(Connection conn, QuestionReply qr) {
 		PreparedStatement pstmt = null;
 		
@@ -102,5 +133,7 @@ public class QuestionReplyDAO {
 		}
 		return -1;
 	}
+	
+	
 	
 }

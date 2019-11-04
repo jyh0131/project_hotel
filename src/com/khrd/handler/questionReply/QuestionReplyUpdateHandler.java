@@ -21,52 +21,64 @@ public class QuestionReplyUpdateHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		if(request.getMethod().equalsIgnoreCase("get")) {
+		if (request.getMethod().equalsIgnoreCase("get")) {
 			int qrNo = Integer.parseInt(request.getParameter("qrNo"));
 			int qbNo = Integer.parseInt(request.getParameter("qbNo"));
 			String qrContent = request.getParameter("qrContent");
 			Connection conn = null;
-System.out.println("qrNo : " + qrNo);
-System.out.println("qbNo : " + qbNo);
-System.out.println("qrContent : " + qrContent);
+
 			try {
 				conn = ConnectionProvider.getConnection();
 				QuestionReplyDAO dao = QuestionReplyDAO.getInstance();
 				QuestionBoard qb = new QuestionBoard(qbNo, null, null, null, null, null, null, null, null, null, null);
 				QuestionReply qr = new QuestionReply(qrNo, qrContent, null, qb);
-				System.out.println("qb : " + qb);
-				System.out.println("qr : " + qr);
-				int result = dao.update(conn, qr);
-				request.setAttribute("result", result);
-				System.out.println("result : " + result);
+
+				QuestionReply qrResult = dao.selectByQrNo(conn, qrNo);
+
 				Map<String, Object> map = new HashMap<String, Object>();
-				map.put("result", result);
+				map.put("qrResult", qrResult);
 				
 				ObjectMapper om = new ObjectMapper();
 				String json = om.writeValueAsString(map);
-				
-				
+
 				response.setContentType("application/json;charset=utf-8");
 				PrintWriter out = response.getWriter();
 				out.print(json);
 				out.flush();
-				
-//				// response.sendRedirect(request.getContextPath() + "/qb/list.do");
-//				response.sendRedirect(request.getContextPath() + "/qr/detail.do?qbNo=" + qbNo);
-//				return null;
 
+				// // response.sendRedirect(request.getContextPath() + "/qb/list.do");
+				// response.sendRedirect(request.getContextPath() + "/qr/detail.do?qbNo=" +
+				// qbNo);
+				// return null;
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
 				JDBCUtil.close(conn);
 			}
-
-			return null;
-//			return "/WEB-INF/view/question_reply/qrDetailForm.jsp";
-		}else if(request.getMethod().equalsIgnoreCase("post")) {
 			
-		}
+		}else if (request.getMethod().equalsIgnoreCase("post")) {
+			int qrNo = Integer.parseInt(request.getParameter("qrNo_hidden"));
+			int qbNo = Integer.parseInt(request.getParameter("qbNo_hidden"));
+			String newContent = request.getParameter("newContent");
+			Connection conn = null;
+
+			try {
+				conn = ConnectionProvider.getConnection();
+				QuestionReplyDAO dao = QuestionReplyDAO.getInstance();
+				QuestionBoard qb = new QuestionBoard(qbNo, null, null, null, null, null, null, null, null, null, null);
+				QuestionReply qr = new QuestionReply(qrNo, newContent, null, qb);
+
+				dao.update(conn, qr);
+				
+				// // response.sendRedirect(request.getContextPath() + "/qb/list.do");
+				response.sendRedirect(request.getContextPath() + "/qr/detail.do?qbNo=" + qbNo);
+				return null;
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				JDBCUtil.close(conn);
+			}
+		}                
 		return null;
 	}
-
 }

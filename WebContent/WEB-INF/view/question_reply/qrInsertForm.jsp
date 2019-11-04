@@ -75,13 +75,13 @@
 	    $(".btnQRUpdateFinish").css("display", "none");
 	    
 		// 답글의 내용이 있으면 답글수정, 삭제버튼 나오게 하기
-	    if($(".content").val() == ""){
+	    /* if($(".content").val() == ""){
 	    	$("#btnBox").css("display", "none");
 	    }else{// 답글의 내용이 없으면
 	    	$("#btnBox").css("display", "block");
 	    	$(".btnReply").css("display", "none");
 	    }	  
-	    
+	     */
 	    // 답글달기 버튼 클릭 시
 	    $(document).on("click", ".btnReply", function(){
 	    	if($(this).text() == "답글달기"){
@@ -92,7 +92,6 @@
 		})//btnReply
 	      
 		$("input[type='submit']").click(function(){
-	    	/*  alert("답글을 작성하였습니다."); */
 			
 		})
 	      
@@ -123,9 +122,9 @@
 		})//qr_btn_delete 
 	    
 		
-		// 답글수정 버튼 클릭 시
+		/* // 답글수정 버튼 클릭 시
 		$(".qr_btn_update").click(function(){
-	    	var qrNo = $("input[name='qrNo_hidden']").val();
+	    	var qrNo = $(this).attr("data-qrNo");
 	    	var qbNo = $(this).attr("data-qbNo");
 			var qrContent = $(this).attr("data-qrContent");
 	    	
@@ -154,9 +153,9 @@
 	    	
 			$("#btnBox").css("display", "none");
 		    $("#btnReplyBox").css("display", "block");
-		    $(".btnReply").css("display", "block"); */
+		    $(".btnReply").css("display", "block"); *
 		})//qr_btn_update
-	      
+	      */ 
 	})
 </script>
 <div id="detailDiv">
@@ -220,8 +219,8 @@
 		</div>
 		
 		<!-- 답변이 있을 경우 -->
+		<%-- <c:if test="${qr.qrContent != null }"> --%>
 		<div class="replyBox">
-			<c:if test="${qr.qrContent != null }">
 				<p>답변일자 <span name="qr_date"><fmt:formatDate value="${qr.qrDate}" pattern="yyyy-MM-dd"/></span></p>
 				<table>
 					<tr>
@@ -229,11 +228,11 @@
 						<td>${qr.qrContent }</td>
 					</tr>
 				</table>
-			</c:if>
 		</div>
+			<%-- </c:if> --%>
 		
 		
-		
+		<input type="hidden" value="${qr.qrContent }" class="content" name="qr_content_hidden">
 		
 		<c:if test="${Admin != null }">
 			<input type="hidden" value="${qb.qbNo }" name="qbNo">
@@ -255,12 +254,10 @@
 				<tr>
 					<th>답변내용</th>
 					<td>
-						<textarea rows="5" cols="70" name="newContent">${qr.qrContent }</textarea>
+						<textarea rows="5" cols="70">${qr.qrContent }</textarea>
 					</td>
 				</tr>
 			</table>
-			<input type="hidden" value="${qr.qrNo }" name="qrNo_hidden"> <!-- post에서 parameter로 받음 -->
-			<input type="hidden" value="${qb.qbNo }" name="qbNo_hidden">
 			<input type="submit" value="수정완료" class="btnQRUpdateFinish">
 		</form>
 	</div>
@@ -275,10 +272,9 @@
 	<a class="btnReply">답글달기</a>
 	
 	
-	
 	<div id="btnBox">
 		<a class="qr_btn_delete" data-qrNo="${qr.qrNo }">답글삭제</a>
-		<a class="qr_btn_update" data-qbNo="${qb.qbNo }" data-qrContent="${qr.qrContent }">답글수정</a>
+		<a class="qr_btn_update" data-qrNo="${qr.qrNo }" data-qbNo="${qb.qbNo }" data-qrContent="${qr.qrContent }">답글수정</a>
 		<%-- <a href="${pageContext.request.contextPath }/qr/update.do?qrNo=${qr.qrNo }&qdNo=${qb.qbNo }" class="qr_btn_update">답글수정</a> --%>
 	</div>
 		

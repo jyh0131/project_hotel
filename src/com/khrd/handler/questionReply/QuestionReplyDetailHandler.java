@@ -29,7 +29,7 @@ public class QuestionReplyDetailHandler implements CommandHandler {
 			request.setAttribute("qb", qb);
 			
 			QuestionReplyDAO arDao = QuestionReplyDAO.getInstance();
-			QuestionReply qr = arDao.selectByQrNo(conn, qbNo);
+			QuestionReply qr = arDao.selectByQbNo(conn, qbNo);
 			request.setAttribute("qr", qr);
 			
 			return "/WEB-INF/view/question_reply/qrDetailForm.jsp";
