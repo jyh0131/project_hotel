@@ -21,7 +21,7 @@ public class QuestionReplyUpdateHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		if (request.getMethod().equalsIgnoreCase("get")) {
+		if (request.getMethod().equalsIgnoreCase("get")) { // detail.form에서 ajax를 거쳐 여기로 옴. 수정버튼 눌렀을 때 원래 데이터 값이 들어가 있게 하려고 하는 것
 			int qrNo = Integer.parseInt(request.getParameter("qrNo"));
 			int qbNo = Integer.parseInt(request.getParameter("qbNo"));
 			String qrContent = request.getParameter("qrContent");
@@ -46,18 +46,14 @@ public class QuestionReplyUpdateHandler implements CommandHandler {
 				out.print(json);
 				out.flush();
 
-				// // response.sendRedirect(request.getContextPath() + "/qb/list.do");
-				// response.sendRedirect(request.getContextPath() + "/qr/detail.do?qbNo=" +
-				// qbNo);
-				// return null;
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
 				JDBCUtil.close(conn);
 			}
 			
-		}else if (request.getMethod().equalsIgnoreCase("post")) {
-			int qrNo = Integer.parseInt(request.getParameter("qrNo_hidden"));
+		}else if (request.getMethod().equalsIgnoreCase("post")) { // form action="update.do"에서 submit하면 여기로 옴
+			int qrNo = Integer.parseInt(request.getParameter("qrNo_hidden")); // form action="update.do"에서 넘어온 값
 			int qbNo = Integer.parseInt(request.getParameter("qbNo_hidden"));
 			String newContent = request.getParameter("newContent");
 			Connection conn = null;
@@ -70,8 +66,7 @@ public class QuestionReplyUpdateHandler implements CommandHandler {
 
 				dao.update(conn, qr);
 				
-				// // response.sendRedirect(request.getContextPath() + "/qb/list.do");
-				response.sendRedirect(request.getContextPath() + "/qr/detail.do?qbNo=" + qbNo);
+				response.sendRedirect(request.getContextPath() + "/qr/detail.do?qbNo=" + qbNo); // update한 내용을 detail에 뿌림
 				return null;
 			} catch (Exception e) {
 				e.printStackTrace();

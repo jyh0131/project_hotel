@@ -43,7 +43,7 @@
 		border:1px solid rgba(250, 236, 197, 0.8);
 	}
 	.btnList:hover{
-		color:#6D7993;
+		color:rgba(71, 163, 218, 0.8);
 	}
 	/* ------- 답글달기, 삭제하기, 수정하기 버튼 ------- */
 	#btnBox{
@@ -73,15 +73,16 @@
 	    $("#insertBox").css("display", "none");
 	    $("#updateBox").css("display", "none");
 	    $(".btnQRUpdateFinish").css("display", "none");
+	   
 	    
-		// 답글의 내용이 있으면 답글수정, 삭제버튼 나오게 하기
+	 	// 답글의 내용이 없으면 -> 답글달기 버튼만 나오게 하기
 	    if($(".content").val() == ""){
-	    	$("#btnBox").css("display", "none");
-	    }else{// 답글의 내용이 없으면
-	    	$("#btnBox").css("display", "block");
+	    	$("#btnBox").css("display", "none"); // 답글삭제, 답글수정 버튼 있는 box 숨기기
+	    }else{// 답글의 내용이 있으면 -> 답글수정, 삭제버튼 나오게 하기, 답글달기버튼 숨기기
+	    	$("#btnBox").css("display", "block"); 
 	    	$(".btnReply").css("display", "none");
 	    }	  
-	    
+		
 	    // 답글달기 버튼 클릭 시
 	    $(document).on("click", ".btnReply", function(){
 	    	if($(this).text() == "답글달기"){
@@ -90,12 +91,6 @@
 	            $(".btnQRFinish").css("display", "block"); // 작성완료 버튼 나오게 하기
 			}
 		})//btnReply
-	      
-		$("input[type='submit']").click(function(){
-	    	/*  alert("답글을 작성하였습니다."); */
-			
-		})
-	      
 	      
 	    	  
 	    // 답글삭제 버튼 클릭 시
@@ -117,25 +112,26 @@
 			
 			$(".replyBox").remove();
 	    	
-			$("#btnBox").css("display", "none");
+			$("#btnBox").css("display", "none"); // 답글삭제, 답글수정 버튼 들어있는 box
 		    $("#btnReplyBox").css("display", "block");
-		    $(".btnReply").css("display", "block");
+		    $(".btnReply").css("display", "block"); // 답글달기버튼 나오게 하기
 		})//qr_btn_delete 
 	    
 		
 		// 답글수정 버튼 클릭 시
 		$(".qr_btn_update").click(function(){
-	    	var qrNo = $("input[name='qrNo_hidden']").val();
-	    	var qbNo = $(this).attr("data-qbNo");
+	    	//var qrNo = $("input[name='qrNo_hidden']").val();
+	    	var qrNo = $(this).attr("data-qrNo"); // 이거나 위에거나 아무거나 상관 없음.
+	    	var qbNo = $(this).attr("data-qbNo"); // 보내야 하는 값, 해당하는 값(입력되어있는 데이터)만 가져오면 됨.
 			var qrContent = $(this).attr("data-qrContent");
 	    	
 	    	$.ajax({
-	    		url:"${pageContext.request.contextPath }/qr/update.do",
-	    		type:"get",
-	    		data:{"qrNo": qrNo, "qbNo": qbNo, "qrContent": qrContent },
+	    		url:"${pageContext.request.contextPath }/qr/update.do", // 이부분의
+	    		type:"get", // get으로 
+	    		data:{"qrNo": qrNo, "qbNo": qbNo, "qrContent": qrContent }, // data를 보낸다. 여기 data는 위에 var에서 받아온 데이터(입력되어 있는 값)
 	    		dataType:"json",
-	    		success:function(res){
-					console.log(res);
+	    		success:function(res){ // update.do 핸들러의 get부분에 가서 dao.selectByQrNo를 거쳐서 json으로 데이터를 받아옴
+					console.log(res); // 성공하면 받아온 데이터를 콜솔에 뿌림.
 					$(".replyBox").css("display", "none"); // insert 테이블 숨기기
 					$("#updateBox").css("display", "block"); // update 테이블 나오게 하기
 					$(".qr_btn_update").css("display", "none"); // 답글수정 버튼 숨기기
@@ -149,12 +145,6 @@
 				}
 			})//ajax
 			
-			
-			/* $(".replyBox").remove();
-	    	
-			$("#btnBox").css("display", "none");
-		    $("#btnReplyBox").css("display", "block");
-		    $(".btnReply").css("display", "block"); */
 		})//qr_btn_update
 	      
 	})
@@ -219,7 +209,7 @@
 			</table>
 		</div>
 		
-		<!-- 답변이 있을 경우 -->
+		<!-- 답변이 있을 경우 테이블 보이게 하기 위해서 넣음 -->
 		<div class="replyBox">
 			<c:if test="${qr.qrContent != null }">
 				<p>답변일자 <span name="qr_date"><fmt:formatDate value="${qr.qrDate}" pattern="yyyy-MM-dd"/></span></p>
@@ -232,19 +222,12 @@
 			</c:if>
 		</div>
 		
-		
-		
-		
-		<c:if test="${Admin != null }">
-			<input type="hidden" value="${qb.qbNo }" name="qbNo">
-			
-		<%-- 	<c:if test="${qr.qrContent == null }">
-				<a class="btnReply">답글달기</a>
-			</c:if> --%>
-		</c:if>		
-		
 		<input type="submit" value="작성완료" class="btnQRFinish">
-	</form> 
+		
+		<!-- form에서 qbNo값 넘기기 위해 필요함. -->
+		<input type="hidden" value="${qb.qbNo }" name="qbNo">
+	</form>  <!-- insert.do form 태그 -->
+		
 		
 	<!-- update -->
 	<div id="updateBox">
@@ -265,24 +248,21 @@
 		</form>
 	</div>
 			
+			
 	<a href="${pageContext.request.contextPath }/qb/list.do" class="btnList">목록</a>
-	<!-- 관리자일 경우 -->
-		
-	<!-- 답글삭제, 답글수정버튼  -->
-<!-- 	<div id="btnReplyBox">
-		<a class="btnReply">답글달기</a>
-	</div> -->
+
+
+	<!-- 답글 여부에 따라 버튼을 나오게 해야하기 때문에 제이쿼리로 처리함. 그래서 버튼(a태그)만 덜렁 있는 것 -->
 	<a class="btnReply">답글달기</a>
 	
+	<!-- 답글의 내용을 받아옴. -> 값이 있으면 답글이 있는 것으로 판단 -> 답글이 있고 없고에 따라 버튼을 다르게 줘야하기 때문에 필요함. 그래서 hidden으로 넣음 -->
+	<input type="hidden" value="${qr.qrContent }" class="content">
 	
 	
 	<div id="btnBox">
 		<a class="qr_btn_delete" data-qrNo="${qr.qrNo }">답글삭제</a>
-		<a class="qr_btn_update" data-qbNo="${qb.qbNo }" data-qrContent="${qr.qrContent }">답글수정</a>
-		<%-- <a href="${pageContext.request.contextPath }/qr/update.do?qrNo=${qr.qrNo }&qdNo=${qb.qbNo }" class="qr_btn_update">답글수정</a> --%>
+		<a class="qr_btn_update" data-qbNo="${qb.qbNo }" data-qrNo="${qr.qrNo }" data-qrContent="${qr.qrContent }">답글수정</a>
 	</div>
-		
-		
 	
 </div>
 
