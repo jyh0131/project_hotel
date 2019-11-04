@@ -83,13 +83,13 @@
 				<div id="gnb-nav">
 					<div id="nav-wrap">
 						<ul id="main-menu">
-							<li><a href="#">스페셜 오퍼</a>
+							<li><a href="#">ABOUT</a>
 								<ul class="sub-nav">
 									<li>
-										<a href="#">객실패키지</a>
+										<a href="${pageContext.request.contextPath}/etcPage/introHotel.jsp">소개</a>
 									</li>
 									<li>
-										<a href="#">이벤트</a>
+										<a href="${pageContext.request.contextPath}/etcPage/introSCV.jsp">노예소개</a>
 									</li>
 								</ul>
 							</li>
@@ -126,9 +126,9 @@
 	
 							<li><a href="#">액티비티</a>
 								<ul class="sub-nav">
-									<li><a href="#">와인 파티</a></li>
-									<li><a href="#">갤러리 투어</a></li>
-									<li><a href="#">숨비정원</a></li>
+									<li><a href="${pageContext.request.contextPath}/etcPage/actSurf.jsp">서핑 체험</a></li>
+									<li><a href="${pageContext.request.contextPath}/etcPage/actForest.jsp">숲으로</a></li>
+									<li><a href="${pageContext.request.contextPath}/etcPage/actNoBirth.jsp">안생일축하</a></li>
 									<li><a href="#">플레이스테이션</a></li>
 								</ul>
 							</li>
