@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.khrd.controller.CommandHandler;
 import com.khrd.dao.QuestionBoardDAO;
+import com.khrd.dao.QuestionReplyDAO;
 import com.khrd.dto.QuestionBoard;
+import com.khrd.dto.QuestionReply;
 import com.khrd.jdbc.ConnectionProvider;
 import com.khrd.jdbc.JDBCUtil;
 
@@ -24,6 +26,10 @@ public class QuestionDetailHandler implements CommandHandler {
 			QuestionBoardDAO dao = QuestionBoardDAO.getInstance();
 			QuestionBoard qb = dao.selectByQbNo(conn, qbNo);
 			request.setAttribute("qb", qb);
+			
+			QuestionReplyDAO arDao = QuestionReplyDAO.getInstance();
+			QuestionReply qr = arDao.selectByQrNo(conn, qbNo);
+			request.setAttribute("qr", qr);
 			
 			return "/WEB-INF/view/question_board/qbDetailForm.jsp";
 		}catch (Exception e) {

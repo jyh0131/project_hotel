@@ -34,6 +34,18 @@ DROP TABLE IF EXISTS project_hotel.bed_type RESTRICT;
 -- 객실크기
 DROP TABLE IF EXISTS project_hotel.room_size RESTRICT;
 
+-- 새 테이블
+DROP TABLE IF EXISTS project_hotel.TABLE RESTRICT;
+
+-- 문의 게시판
+DROP TABLE IF EXISTS project_hotel.question_board RESTRICT;
+
+-- 문의 내용
+DROP TABLE IF EXISTS project_hotel.question_content RESTRICT;
+
+-- 문의 답글
+DROP TABLE IF EXISTS project_hotel.question_reply RESTRICT;
+
 -- project_hotel
 DROP SCHEMA IF EXISTS project_hotel;
 
@@ -42,7 +54,7 @@ CREATE SCHEMA project_hotel;
 
 -- 회원정보
 CREATE TABLE project_hotel.member (
-	m_no       INT          NOT NULL COMMENT '회원 번호', -- 회원 번호
+	m_no       INT          NOT NULL COMMENT '회원번호', -- 회원번호
 	m_name     VARCHAR(20)  NOT NULL COMMENT '성명', -- 성명
 	m_birth    DATE         NOT NULL COMMENT '생년월일', -- 생년월일
 	m_mail     VARCHAR(50)  NOT NULL COMMENT '이메일', -- 이메일
@@ -63,11 +75,11 @@ COMMENT '회원정보';
 ALTER TABLE project_hotel.member
 	ADD CONSTRAINT PK_member -- 회원정보 기본키
 		PRIMARY KEY (
-			m_no -- 회원 번호
+			m_no -- 회원번호
 		);
 
 ALTER TABLE project_hotel.member
-	MODIFY COLUMN m_no INT NOT NULL AUTO_INCREMENT COMMENT '회원 번호';
+	MODIFY COLUMN m_no INT NOT NULL AUTO_INCREMENT COMMENT '회원번호';
 
 -- 객실 타입
 CREATE TABLE project_hotel.room_type (
@@ -76,18 +88,19 @@ COMMENT '객실 타입';
 
 -- 예약
 CREATE TABLE project_hotel.reservation (
-	r_no          INT      NOT NULL COMMENT '예약 번호', -- 예약 번호
-	m_no          INT      NOT NULL COMMENT '회원 번호', -- 회원 번호
-	room_no       INT(11)  NOT NULL COMMENT '호수', -- 호수
-	r_in          DATE     NOT NULL COMMENT '체크인', -- 체크인
-	r_out         DATE     NOT NULL COMMENT '체크아웃', -- 체크아웃
-	r_stay        INT      NOT NULL COMMENT '숙박일수', -- 숙박일수
-	r_total_price INT(11)  NOT NULL COMMENT '최종금액', -- 최종금액
-	r_request     TEXT     NULL     COMMENT '요청사항', -- 요청사항
-	r_psnAdt      INT(1)   NOT NULL DEFAULT 1 COMMENT '투숙인원(성인)', -- 투숙인원(성인)
-	r_psnCdr      INT(1)   NULL     DEFAULT 0 COMMENT '투숙인원(어린이)', -- 투숙인원(어린이)
-	r_pay_date    DATETIME NULL     COMMENT '결제날짜', -- 결제날짜
-	op_no         INT      NULL     COMMENT '옵션 번호' -- 옵션 번호
+	r_no          INT        NOT NULL COMMENT '예약번호', -- 예약번호
+	m_no          INT        NOT NULL COMMENT '회원번호', -- 회원번호
+	room_no       INT(11)    NOT NULL COMMENT '호수', -- 호수
+	r_in          DATE       NOT NULL COMMENT '체크인', -- 체크인
+	r_out         DATE       NOT NULL COMMENT '체크아웃', -- 체크아웃
+	r_stay        INT        NOT NULL COMMENT '숙박일수', -- 숙박일수
+	r_total_price INT(11)    NOT NULL COMMENT '최종금액', -- 최종금액
+	r_request     TEXT       NULL     COMMENT '요청사항', -- 요청사항
+	r_psnAdt      INT(1)     NOT NULL DEFAULT 1 COMMENT '투숙인원(성인)', -- 투숙인원(성인)
+	r_psnCdr      INT(1)     NULL     DEFAULT 0 COMMENT '투숙인원(어린이)', -- 투숙인원(어린이)
+	r_pay_date    DATETIME   NULL     COMMENT '결제날짜', -- 결제날짜
+	op_no         INT        NULL     COMMENT '옵션 번호', -- 옵션 번호
+	r_state       VARCHAR(6) NULL     COMMENT '예약상태' -- 예약상태
 )
 COMMENT '예약';
 
@@ -95,11 +108,11 @@ COMMENT '예약';
 ALTER TABLE project_hotel.reservation
 	ADD CONSTRAINT PK_reservation -- 예약 기본키
 		PRIMARY KEY (
-			r_no -- 예약 번호
+			r_no -- 예약번호
 		);
 
 ALTER TABLE project_hotel.reservation
-	MODIFY COLUMN r_no INT NOT NULL AUTO_INCREMENT COMMENT '예약 번호';
+	MODIFY COLUMN r_no INT NOT NULL AUTO_INCREMENT COMMENT '예약번호';
 
 -- 객실
 CREATE TABLE project_hotel.room (
@@ -121,7 +134,7 @@ ALTER TABLE project_hotel.room
 
 -- 결제정보
 CREATE TABLE project_hotel.pay_info (
-	p_no           INT         NOT NULL COMMENT '결제 번호', -- 결제 번호
+	p_no           INT         NOT NULL COMMENT '결제번호', -- 결제번호
 	p_cardType     VARCHAR(40) NOT NULL COMMENT '카드종류', -- 카드종류
 	p_cardNum      VARCHAR(40) NOT NULL COMMENT '카드번호', -- 카드번호
 	p_validMonth   VARCHAR(2)  NOT NULL COMMENT '유효기간(달)', -- 유효기간(달)
@@ -129,8 +142,8 @@ CREATE TABLE project_hotel.pay_info (
 	p_bank_name    VARCHAR(10) NULL     COMMENT '환불 은행명', -- 환불 은행명
 	p_bank_no      VARCHAR(40) NULL     COMMENT '환불 계좌번호', -- 환불 계좌번호
 	p_bank_sername VARCHAR(10) NULL     COMMENT '환불 예금주', -- 환불 예금주
-	r_no           INT         NOT NULL COMMENT '예약 번호', -- 예약 번호
-	m_no           INT         NOT NULL COMMENT '회원 번호' -- 회원 번호
+	r_no           INT         NOT NULL COMMENT '예약번호', -- 예약번호
+	m_no           INT         NOT NULL COMMENT '회원번호' -- 회원번호
 )
 COMMENT '결제정보';
 
@@ -138,15 +151,15 @@ COMMENT '결제정보';
 ALTER TABLE project_hotel.pay_info
 	ADD CONSTRAINT PK_pay_info -- 결제정보 기본키
 		PRIMARY KEY (
-			p_no -- 결제 번호
+			p_no -- 결제번호
 		);
 
 ALTER TABLE project_hotel.pay_info
-	MODIFY COLUMN p_no INT NOT NULL AUTO_INCREMENT COMMENT '결제 번호';
+	MODIFY COLUMN p_no INT NOT NULL AUTO_INCREMENT COMMENT '결제번호';
 
 -- 옵션
 CREATE TABLE project_hotel.r_option (
-	op_no    INT         NOT NULL COMMENT '옵션 번호', -- 옵션 번호
+	op_no    INT         NOT NULL COMMENT '옵션번호', -- 옵션번호
 	op_name  VARCHAR(40) NULL     COMMENT '옵션명', -- 옵션명
 	op_price INT(11)     NULL     COMMENT '옵션 가격' -- 옵션 가격
 )
@@ -156,11 +169,11 @@ COMMENT '옵션';
 ALTER TABLE project_hotel.r_option
 	ADD CONSTRAINT PK_r_option -- 옵션 기본키
 		PRIMARY KEY (
-			op_no -- 옵션 번호
+			op_no -- 옵션번호
 		);
 
 ALTER TABLE project_hotel.r_option
-	MODIFY COLUMN op_no INT NOT NULL AUTO_INCREMENT COMMENT '옵션 번호';
+	MODIFY COLUMN op_no INT NOT NULL AUTO_INCREMENT COMMENT '옵션번호';
 
 -- 갤러리 타입
 CREATE TABLE project_hotel.g_type (
@@ -182,9 +195,10 @@ ALTER TABLE project_hotel.g_type
 
 -- 사진
 CREATE TABLE project_hotel.picture (
-	pic_file VARCHAR(50) NOT NULL COMMENT '파일명', -- 파일명
-	g_no     INT         NOT NULL COMMENT '분류번호', -- 분류번호
-	rc_no    INT         NULL     COMMENT '객실 분류 번호' -- 객실 분류 번호
+	pic_file     VARCHAR(50) NOT NULL COMMENT '파일명', -- 파일명
+	g_no         INT         NOT NULL COMMENT '분류번호', -- 분류번호
+	rc_no        INT         NULL     COMMENT '객실 분류 번호', -- 객실 분류 번호
+	pic_category INT(11)     NOT NULL COMMENT '파일 구분' -- 파일 구분
 )
 COMMENT '사진';
 
@@ -264,6 +278,63 @@ ALTER TABLE project_hotel.room_size
 ALTER TABLE project_hotel.room_size
 	MODIFY COLUMN rs_no INT NOT NULL AUTO_INCREMENT COMMENT '객실 크기 번호';
 
+-- 새 테이블
+CREATE TABLE project_hotel.TABLE (
+	COL <데이터 타입 없음> NULL COMMENT '새 컬럼' -- 새 컬럼
+)
+COMMENT '새 테이블';
+
+-- 문의 게시판
+CREATE TABLE project_hotel.question_board (
+	qb_no       INT         NOT NULL COMMENT '문의번호', -- 문의번호
+	qb_title    VARCHAR(20) NOT NULL COMMENT '제목', -- 제목
+	qb_name     VARCHAR(20) NOT NULL COMMENT '성명', -- 성명
+	qb_email    VARCHAR(50) NOT NULL COMMENT '이메일', -- 이메일
+	qb_category VARCHAR(20) NOT NULL COMMENT '문의분류', -- 문의분류
+	qb_phone    VARCHAR(20) NOT NULL COMMENT '휴대전화', -- 휴대전화
+	qb_tel      VARCHAR(20) NULL     COMMENT '자택전화', -- 자택전화
+	qb_date     DATETIME    NOT NULL COMMENT '문의날짜', -- 문의날짜
+	qb_path     VARCHAR(20) NULL     COMMENT '첨부 파일 경로', -- 첨부 파일 경로
+	m_no        INT         NULL     COMMENT '회원번호' -- 회원번호
+)
+COMMENT '문의 게시판';
+
+-- 문의 게시판
+ALTER TABLE project_hotel.question_board
+	ADD CONSTRAINT PK_question_board -- 문의 게시판 기본키
+		PRIMARY KEY (
+			qb_no -- 문의번호
+		);
+
+ALTER TABLE project_hotel.question_board
+	MODIFY COLUMN qb_no INT NOT NULL AUTO_INCREMENT COMMENT '문의번호';
+
+-- 문의 내용
+CREATE TABLE project_hotel.question_content (
+	qc_content TEXT NOT NULL COMMENT '문의내용', -- 문의내용
+	qb_no      INT  NULL     COMMENT '문의번호' -- 문의번호
+)
+COMMENT '문의 내용';
+
+-- 문의 답글
+CREATE TABLE project_hotel.question_reply (
+	qr_no      INT          NOT NULL COMMENT '답글번호', -- 답글번호
+	qr_content VARCHAR(255) NOT NULL COMMENT '답글내용', -- 답글내용
+	qr_date    DATETIME     NOT NULL COMMENT '답글날짜', -- 답글날짜
+	qb_no      INT          NOT NULL COMMENT '문의번호' -- 문의번호
+)
+COMMENT '문의 답글';
+
+-- 문의 답글
+ALTER TABLE project_hotel.question_reply
+	ADD CONSTRAINT PK_question_reply -- 문의 답글 기본키
+		PRIMARY KEY (
+			qr_no -- 답글번호
+		);
+
+ALTER TABLE project_hotel.question_reply
+	MODIFY COLUMN qr_no INT NOT NULL AUTO_INCREMENT COMMENT '답글번호';
+
 -- 예약
 ALTER TABLE project_hotel.reservation
 	ADD CONSTRAINT FK_room_TO_reservation -- 객실 -> 예약
@@ -278,10 +349,10 @@ ALTER TABLE project_hotel.reservation
 ALTER TABLE project_hotel.reservation
 	ADD CONSTRAINT FK_member_TO_reservation -- 회원정보 -> 예약
 		FOREIGN KEY (
-			m_no -- 회원 번호
+			m_no -- 회원번호
 		)
 		REFERENCES project_hotel.member ( -- 회원정보
-			m_no -- 회원 번호
+			m_no -- 회원번호
 		);
 
 -- 객실
@@ -328,20 +399,20 @@ ALTER TABLE project_hotel.room
 ALTER TABLE project_hotel.pay_info
 	ADD CONSTRAINT FK_reservation_TO_pay_info -- 예약 -> 결제정보
 		FOREIGN KEY (
-			r_no -- 예약 번호
+			r_no -- 예약번호
 		)
 		REFERENCES project_hotel.reservation ( -- 예약
-			r_no -- 예약 번호
+			r_no -- 예약번호
 		);
 
 -- 결제정보
 ALTER TABLE project_hotel.pay_info
 	ADD CONSTRAINT FK_member_TO_pay_info -- 회원정보 -> 결제정보
 		FOREIGN KEY (
-			m_no -- 회원 번호
+			m_no -- 회원번호
 		)
 		REFERENCES project_hotel.member ( -- 회원정보
-			m_no -- 회원 번호
+			m_no -- 회원번호
 		);
 
 -- 사진
@@ -362,4 +433,34 @@ ALTER TABLE project_hotel.picture
 		)
 		REFERENCES project_hotel.room_category ( -- 객실 분류 타입
 			rc_no -- 객실 분류 번호
+		);
+
+-- 문의 게시판
+ALTER TABLE project_hotel.question_board
+	ADD CONSTRAINT FK_member_TO_question_board -- 회원정보 -> 문의 게시판
+		FOREIGN KEY (
+			m_no -- 회원번호
+		)
+		REFERENCES project_hotel.member ( -- 회원정보
+			m_no -- 회원번호
+		);
+
+-- 문의 내용
+ALTER TABLE project_hotel.question_content
+	ADD CONSTRAINT FK_question_board_TO_question_content -- 문의 게시판 -> 문의 내용
+		FOREIGN KEY (
+			qb_no -- 문의번호
+		)
+		REFERENCES project_hotel.question_board ( -- 문의 게시판
+			qb_no -- 문의번호
+		);
+
+-- 문의 답글
+ALTER TABLE project_hotel.question_reply
+	ADD CONSTRAINT FK_question_board_TO_question_reply -- 문의 게시판 -> 문의 답글
+		FOREIGN KEY (
+			qb_no -- 문의번호
+		)
+		REFERENCES project_hotel.question_board ( -- 문의 게시판
+			qb_no -- 문의번호
 		);

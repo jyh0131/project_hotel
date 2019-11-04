@@ -82,25 +82,8 @@
       <cellsToShow>nullable</cellsToShow>
     </viewSettingsPreset>
   </configuration>
-  <businessAreas UUID="BArea_CFTKn_AIEemabKU1RCR6CA" logicalName="기본 업무영역" physicalName="DEFAULT_AREA" tables="Table_J3x9jfAKEemabKU1RCR6CA Table_wGebQ_AMEemabKU1RCR6CA Table_tQXatPAVEemabKU1RCR6CA Table_tQYo2_AVEemabKU1RCR6CA Table_tQZP6vAVEemabKU1RCR6CA Table_tQZ2-fAVEemabKU1RCR6CA Table_CNjP8PC-EemqrpvplCsJEw Table_f0rs4PC-EemqrpvplCsJEw Table_HxwF0PPTEemvf_1tywZ0FQ Table_9_KU8PPTEemvf_1tywZ0FQ Table_XPX08PPUEemvf_1tywZ0FQ Table_4mhm4PPUEemvf_1tywZ0FQ Table_CLeS0PtzEemuEffJl-rxCA Table_IbKWIPudEemuEffJl-rxCA Table_eYS8wPxWEemQE8AFDQ7ouw Table_EZO9QPxXEemQE8AFDQ7ouw Table_mTWiQPxrEemQE8AFDQ7ouw">
+  <businessAreas UUID="BArea_CFTKn_AIEemabKU1RCR6CA" logicalName="기본 업무영역" physicalName="DEFAULT_AREA" tables="Table_J3x9jfAKEemabKU1RCR6CA Table_wGebQ_AMEemabKU1RCR6CA Table_tQXatPAVEemabKU1RCR6CA Table_tQYo2_AVEemabKU1RCR6CA Table_tQZP6vAVEemabKU1RCR6CA Table_tQZ2-fAVEemabKU1RCR6CA Table_CNjP8PC-EemqrpvplCsJEw Table_f0rs4PC-EemqrpvplCsJEw Table_HxwF0PPTEemvf_1tywZ0FQ Table_9_KU8PPTEemvf_1tywZ0FQ Table_XPX08PPUEemvf_1tywZ0FQ Table_4mhm4PPUEemvf_1tywZ0FQ Table_CLeS0PtzEemuEffJl-rxCA Table_IbKWIPudEemuEffJl-rxCA Table_eYS8wPxWEemQE8AFDQ7ouw Table_EZO9QPxXEemQE8AFDQ7ouw">
     <diagrams UUID="Diagram_CFTKoPAIEemabKU1RCR6CA" logicalName="다이어그램" physicalName="diagram">
-<<<<<<< HEAD
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_J3x9hvAKEemabKU1RCR6CA" location="Point(468, 45)" table="Table_J3x9jfAKEemabKU1RCR6CA" theme="peruOpal"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_tQU-cPAVEemabKU1RCR6CA" location="Point(874, 256)" table="Table_tQXatPAVEemabKU1RCR6CA" theme="deepSea"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_tQU-cfAVEemabKU1RCR6CA" location="Point(856, 45)" table="Table_tQYo2_AVEemabKU1RCR6CA" theme="coffie"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_tQU-cvAVEemabKU1RCR6CA" location="Point(447, 420)" table="Table_tQZP6vAVEemabKU1RCR6CA" theme="deepSea"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_tQU-c_AVEemabKU1RCR6CA" location="Point(887, 588)" table="Table_tQZ2-fAVEemabKU1RCR6CA" theme="perl"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_CNjP8fC-EemqrpvplCsJEw" location="Point(1291, 480)" table="Table_CNjP8PC-EemqrpvplCsJEw"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_f0rs4fC-EemqrpvplCsJEw" location="Point(1281, 610)" table="Table_f0rs4PC-EemqrpvplCsJEw"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_Hx520PPTEemvf_1tywZ0FQ" location="Point(1271, 45)" table="Table_HxwF0PPTEemvf_1tywZ0FQ" theme="coffie"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_9_MKIPPTEemvf_1tywZ0FQ" location="Point(1271, 155)" table="Table_9_KU8PPTEemvf_1tywZ0FQ" theme="coffie"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_XPZqIPPUEemvf_1tywZ0FQ" location="Point(1271, 250)" table="Table_XPX08PPUEemvf_1tywZ0FQ" theme="coffie"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_4mkDIPPUEemvf_1tywZ0FQ" location="Point(1271, 350)" table="Table_4mhm4PPUEemvf_1tywZ0FQ" theme="coffie"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_IbKWIfudEemuEffJl-rxCA" location="Point(55, 263)" table="Table_IbKWIPudEemuEffJl-rxCA" theme="amethyst"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_eYUx8PxWEemQE8AFDQ7ouw" location="Point(75, 138)" table="Table_eYS8wPxWEemQE8AFDQ7ouw" theme="amethyst"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_EZQLYPxXEemQE8AFDQ7ouw" location="Point(78, 554)" table="Table_EZO9QPxXEemQE8AFDQ7ouw" theme="amethyst"/>
-      <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_mTXwYPxrEemQE8AFDQ7ouw" location="Point(36, 19)" table="Table_mTWiQPxrEemQE8AFDQ7ouw" theme="nightSky"/>
-=======
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_J3x9hvAKEemabKU1RCR6CA" location="Point(565, 58)" table="Table_J3x9jfAKEemabKU1RCR6CA" theme="peruOpal"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_tQU-cPAVEemabKU1RCR6CA" location="Point(1039, 276)" table="Table_tQXatPAVEemabKU1RCR6CA" theme="deepSea"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_tQU-cfAVEemabKU1RCR6CA" location="Point(1014, 58)" table="Table_tQYo2_AVEemabKU1RCR6CA" theme="coffie"/>
@@ -115,7 +98,6 @@
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_IbKWIfudEemuEffJl-rxCA" location="Point(63, 271)" table="Table_IbKWIPudEemuEffJl-rxCA" theme="amethyst"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_eYUx8PxWEemQE8AFDQ7ouw" location="Point(63, 132)" table="Table_eYS8wPxWEemQE8AFDQ7ouw" theme="amethyst"/>
       <diagramEntry xsi:type="e:TableDiagram" UUID="TDiagram_EZQLYPxXEemQE8AFDQ7ouw" location="Point(74, 586)" table="Table_EZO9QPxXEemQE8AFDQ7ouw" theme="amethyst"/>
->>>>>>> branch 'master' of https://github.com/jyh0131/project_hotel.git
       <viewSettings showColumnHeader="true">
         <cellsToShow>name</cellsToShow>
         <cellsToShow>dataType</cellsToShow>
@@ -239,11 +221,7 @@
         <columns UUID="Column_QI5p4PioEemynqbRacjw-w" logicalName="투숙인원(어린이)" physicalName="r_psnCdr" dataType="INT(1)" defaultValue="0"/>
         <columns UUID="Column_tQYo0PAVEemabKU1RCR6CA" logicalName="결제날짜" physicalName="r_pay_date" dataType="DATETIME"/>
         <columns UUID="Column_tQYo0fAVEemabKU1RCR6CA" logicalName="옵션 번호" physicalName="op_no" derivedPhysicalName="true" derivedLogicalName="true" dataType="INT" notNull="FALSE"/>
-<<<<<<< HEAD
-        <columns UUID="Column_h9QdAPxxEemQE8AFDQ7ouw" logicalName="예약상태" physicalName="r_state" dataType="VARCHAR(6)"/>
-=======
         <columns UUID="Column_PgB2YP1mEemwV8vfBBdIWA" logicalName="예약상태" physicalName="r_state" dataType="VARCHAR(6)"/>
->>>>>>> branch 'master' of https://github.com/jyh0131/project_hotel.git
         <columnGroups xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_tQYo1PAVEemabKU1RCR6CA" logicalName="예약 기본키" physicalName="PK_reservation" derivedPhysicalName="true" derivedLogicalName="true">
           <physicalProperties xsi:type="mysql:IndexProperties" UUID="IProperties_tQYo1fAVEemabKU1RCR6CA"/>
           <primaryKeyConstraint UUID="PKConstraint_tQYo1vAVEemabKU1RCR6CA" logicalName="예약 기본키" physicalName="PK_reservation" derivedPhysicalName="true" derivedLogicalName="true"/>
@@ -551,9 +529,7 @@
         <columns UUID="Column_IybnkPxWEemQE8AFDQ7ouw" logicalName="이메일" physicalName="qb_email" dataType="VARCHAR(50)" notNull="TRUE">
           <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_6gFt4PxWEemQE8AFDQ7ouw"/>
         </columns>
-        <columns UUID="Column_zusnsPxYEemQE8AFDQ7ouw" logicalName="문의분류" physicalName="qb_category" dataType="VARCHAR(20)" notNull="TRUE">
-          <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_crPYgPxrEemQE8AFDQ7ouw"/>
-        </columns>
+        <columns UUID="Column_zusnsPxYEemQE8AFDQ7ouw" logicalName="문의분류" physicalName="qb_category" dataType="VARCHAR(20)" notNull="TRUE"/>
         <columns UUID="Column_MwcVQPxWEemQE8AFDQ7ouw" logicalName="휴대전화" physicalName="qb_phone" dataType="VARCHAR(20)" notNull="TRUE">
           <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_6gFt4fxWEemQE8AFDQ7ouw"/>
         </columns>
@@ -567,7 +543,6 @@
           <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_6gFt5PxWEemQE8AFDQ7ouw"/>
         </columns>
         <columns UUID="Column_VWwjcPxZEemQE8AFDQ7ouw" logicalName="회원번호" physicalName="m_no" derivedPhysicalName="true" derivedLogicalName="true" dataType="INT">
-          <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_crQmoPxrEemQE8AFDQ7ouw"/>
           <memberships UUID="MEntry_VWwjcfxZEemQE8AFDQ7ouw" key="FKCGroup_VWvVUPxZEemQE8AFDQ7ouw">
             <value xsi:type="e:ColumnReference" UUID="CReference_VWwjcvxZEemQE8AFDQ7ouw" group="FKCGroup_VWvVUPxZEemQE8AFDQ7ouw" parentColumn="Column_J3x9kvAKEemabKU1RCR6CA"/>
           </memberships>
@@ -587,13 +562,13 @@
             <subpartitionAlgorithm UUID="PAlgorithm_2rLR0_xWEemQE8AFDQ7ouw"/>
           </partition>
         </physicalProperties>
-        <columns UUID="Column_-ZIcAPxWEemQE8AFDQ7ouw" logicalName="문의번호" physicalName="qb_no" derivedPhysicalName="true" dataType="INT" notNull="TRUE">
+        <columns UUID="Column_HeFDwPxWEemQE8AFDQ7ouw" logicalName="문의내용" physicalName="qc_content" dataType="TEXT" notNull="TRUE">
+          <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_37fDIPxWEemQE8AFDQ7ouw"/>
+        </columns>
+        <columns UUID="Column_-ZIcAPxWEemQE8AFDQ7ouw" logicalName="문의번호" physicalName="qb_no" derivedPhysicalName="true" dataType="INT">
           <memberships UUID="MEntry_-ZIcAfxWEemQE8AFDQ7ouw" key="FKCGroup_-ZHN4PxWEemQE8AFDQ7ouw">
             <value xsi:type="e:ColumnReference" UUID="CReference_-ZIcAvxWEemQE8AFDQ7ouw" group="FKCGroup_-ZHN4PxWEemQE8AFDQ7ouw" parentColumn="Column_mStrEPxVEemQE8AFDQ7ouw"/>
           </memberships>
-        </columns>
-        <columns UUID="Column_HeFDwPxWEemQE8AFDQ7ouw" logicalName="문의내용" physicalName="qc_content" dataType="TEXT" notNull="TRUE">
-          <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_37fDIPxWEemQE8AFDQ7ouw"/>
         </columns>
         <columnGroups xsi:type="e:ForeignKeyColumnGroup" UUID="FKCGroup_-ZHN4PxWEemQE8AFDQ7ouw" logicalName="문의 게시판 -> 문의 내용" physicalName="FK_question_board_TO_question_content" derivedPhysicalName="true" derivedLogicalName="true" parentColumnGroup="PKCGroup_CmkiQPxWEemQE8AFDQ7ouw">
           <foreignKeyConstraint UUID="FKConstraint_-ZHN4fxWEemQE8AFDQ7ouw" logicalName="문의 게시판 -> 문의 내용" physicalName="FK_question_board_TO_question_content" derivedPhysicalName="true" derivedLogicalName="true"/>
@@ -629,26 +604,6 @@
         </columnGroups>
         <columnGroups xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_GaNhEPxYEemQE8AFDQ7ouw" logicalName="문의 답글 기본키" physicalName="PK_question_reply" derivedPhysicalName="true" derivedLogicalName="true">
           <primaryKeyConstraint UUID="PKConstraint_GaNhEfxYEemQE8AFDQ7ouw" logicalName="문의 답글 기본키" physicalName="PK_question_reply" derivedPhysicalName="true" derivedLogicalName="true"/>
-        </columnGroups>
-      </tables>
-      <tables UUID="Table_mTWiQPxrEemQE8AFDQ7ouw" logicalName="문의분류" physicalName="question_category">
-        <physicalProperties xsi:type="mysql:TableProperties" UUID="TProperties_oCyfkPxrEemQE8AFDQ7ouw">
-          <partition UUID="Partition_oCyfkfxrEemQE8AFDQ7ouw">
-            <partitionAlgorithm UUID="PAlgorithm_oCyfkvxrEemQE8AFDQ7ouw"/>
-            <subpartitionAlgorithm UUID="PAlgorithm_oCyfk_xrEemQE8AFDQ7ouw"/>
-          </partition>
-        </physicalProperties>
-        <columns UUID="Column_rVEvsPxrEemQE8AFDQ7ouw" logicalName="문의분류번호" physicalName="qc_no" dataType="INT">
-          <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_7SGXoPxsEemQE8AFDQ7ouw" autoIncrement="true"/>
-          <memberships UUID="MEntry_7e3oUPxsEemQE8AFDQ7ouw" key="PKCGroup_7ei4MPxsEemQE8AFDQ7ouw">
-            <value xsi:type="e:PrimaryKeyMembership" UUID="PKMembership_7e3oUfxsEemQE8AFDQ7ouw" group="PKCGroup_7ei4MPxsEemQE8AFDQ7ouw" entryIndex="0"/>
-          </memberships>
-        </columns>
-        <columns UUID="Column_FKCikPxsEemQE8AFDQ7ouw" logicalName="문의분류" physicalName="qc_category" dataType="VARCHAR(20)" notNull="TRUE">
-          <physicalProperties xsi:type="mysql:ColumnProperties" UUID="CProperties_7SHlwvxsEemQE8AFDQ7ouw"/>
-        </columns>
-        <columnGroups xsi:type="e:PrimaryKeyColumnGroup" UUID="PKCGroup_7ei4MPxsEemQE8AFDQ7ouw" logicalName="문의분류 기본키" physicalName="PK_question_category" derivedPhysicalName="true" derivedLogicalName="true">
-          <primaryKeyConstraint UUID="PKConstraint_7ejfQPxsEemQE8AFDQ7ouw" logicalName="문의분류 기본키" physicalName="PK_question_category" derivedPhysicalName="true" derivedLogicalName="true"/>
         </columnGroups>
       </tables>
     </schema>

@@ -65,4 +65,42 @@ public class QuestionReplyDAO {
 		}
 		return null;
 	}//selectByQrNo
+	
+	public int delete(Connection conn, int qrNo) {
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "delete from question_reply where qr_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, qrNo);
+			
+			return pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(pstmt);
+		}
+		
+		return -1;
+	}//delete
+	
+	public int update(Connection conn, QuestionReply qr) {
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "update question_reply set qr_content = ? where qr_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, qr.getQrContent());
+			pstmt.setInt(2, qr.getQrNo());
+			
+			return pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(pstmt);
+		}
+		return -1;
+	}
+	
 }

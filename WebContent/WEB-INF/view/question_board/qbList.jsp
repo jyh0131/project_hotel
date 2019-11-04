@@ -54,6 +54,10 @@
 						<!-- 회원일 경우 -->
 						<c:if test="${Auth != null }"> 
 							<a href="${pageContext.request.contextPath }/qb/detail.do?qbNo=${list.qbNo }">${list.qbTitle }</a>
+							<!-- 답변이 있을 경우 -->
+							<%-- <c:if test="${list.result == 1 }">
+								<p>답변</p>
+							</c:if> --%>
 						</c:if> 
 				
 						<!-- 관리자일 경우 -->
