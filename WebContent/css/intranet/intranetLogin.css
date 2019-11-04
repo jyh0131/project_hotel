@@ -59,6 +59,7 @@ input[type="submit"] {
 	color: white;
 	border: none;
 	box-shadow: 1px 2px 3px gray;
+	cursor: pointer;
 }
 
 

@@ -67,9 +67,9 @@ public class MemberJoinHandler implements CommandHandler {
 									  0);
 				
 				int result = dao.insert(conn, m);
-				request.setAttribute("result", result);
+				request.getSession().setAttribute("result", result);
 				
-				return "/WEB-INF/view/member/joinResult.jsp";
+				response.sendRedirect(request.getContextPath() + "/WEB-INF/view/member/joinResult.jsp");
 				
 			} catch (Exception e) {
 				e.printStackTrace();

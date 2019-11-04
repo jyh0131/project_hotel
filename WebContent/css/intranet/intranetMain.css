@@ -1,9 +1,48 @@
 @charset "UTF-8";
 
-
-
-
-
+div.intra-main-wrap {
+	width: 100%;
+}
+div.main-notice-wrap {
+	width: 80%;
+	margin: 0 auto 60px;
+	overflow: hidden;
+}
+div.main-notice1 {
+	width: 40%;
+	height: 300px;
+	float: left;
+	background: rgba(237,199,218,0.7);
+}
+div.main-notice2 {
+	width: 40%;
+	height: 300px;
+	float: right;
+	background: rgba(250,236,197,0.7);
+}
+div.notice-title {
+	padding: 15px 0;
+	background: #47a3da;
+	text-align: center;
+	color: white;
+}
+div.notice-list > ul {
+	width: 95%;
+	margin: 8px auto;
+	overflow: hidden;
+}
+div.notice-list > ul > li {
+	padding: 13px;
+	border-bottom: 1px dotted #666;
+}
+div.notice-list > ul > li:hover > a {
+	font-weight: bold;
+}
+div.notice-list > ul > li > a {
+	color: #535353;	
+	font-size: 13px;
+	display: block;
+}
 
 
 

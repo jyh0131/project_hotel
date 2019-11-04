@@ -12,7 +12,11 @@ public class MemberLogOutHandler implements CommandHandler {
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		session.invalidate();
-		return "../index.jsp";
-	}
+		
+		response.sendRedirect(request.getContextPath() + "/main.do");
+		
+		return null;
 
-}
+	}//process
+
+}//MemberLogOutHandler

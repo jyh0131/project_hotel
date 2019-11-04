@@ -1,7 +1,6 @@
 package com.khrd.handler.member;
 
 import java.sql.Connection;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,11 +33,11 @@ public class MemberChangePwdHandler implements CommandHandler {
 				if(password.equals(mem.getmPwd()) == true) { //현재 비밀번호 일치
 					mem.setmPwd(confirmPassword);
 					int result = dao.PwdUpdate(conn, mem);
-					request.setAttribute("result", result);
+					request.getSession().setAttribute("result", result);
 					
-					return "/WEB-INF/view/member/changePwdSuccess.jsp";
+					response.sendRedirect(request.getContextPath() + "/WEB-INF/view/changePwdSuccess.jsp");
 					
-				}else {
+				}else { //비밀번호가 일치X
 					request.setAttribute("pwdNotMatch", true);
 					
 					return "/WEB-INF/view/member/memberChangePwdForm.jsp";

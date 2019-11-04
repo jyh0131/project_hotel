@@ -3,12 +3,12 @@
 				
 		 $.ajax({
 		 url: "salesMonthlyRoom.do",
-		 type:"get",
+		 type:"post",
 		 dataType: "json",
 		 success: function(res){
 			 console.log(res);
 			 
-			 var chartDrowFun = {
+			 var salesChartDrow = {
 						chartDrow : function() {
 							var chartData = '';
 
@@ -187,11 +187,11 @@
 				google.charts.load('current', {
 					'packages' : [ 'bar', 'controls' ]
 				});
-				chartDrowFun.chartDrow();
+			 	salesChartDrow.chartDrow();
 			 
-		 }
+		 	}//success
 					
-		 });
+		 });//ajax
 
 		
 

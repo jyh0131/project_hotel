@@ -29,10 +29,14 @@ public class LoginCheckFilter implements Filter {
 		HttpSession session = request.getSession();
 		
 		//로그인 안된 상태 - 로그인 화면 이동
-		if(session == null || session.getAttribute("Auth") == null) {
+		if(session.getAttribute("Admin") != null) { //관리자 회원이 로그인 되어 있을때
+			chain.doFilter(req, res);
+			
+		} else if(session == null || session.getAttribute("Auth") == null) {
 			HttpServletResponse response = (HttpServletResponse) res;
 			response.sendRedirect(request.getContextPath() + "/member/login.do");
-		} else { //로그인 된 상태 - 글쓰기 진행
+			
+		} else { //로그인 된 상태
 			chain.doFilter(req, res);
 		}
 		

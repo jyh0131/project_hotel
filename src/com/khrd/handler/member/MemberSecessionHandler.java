@@ -42,20 +42,16 @@ public class MemberSecessionHandler implements CommandHandler {
 					request.setAttribute("notPwdMatch", true);
 					
 					return "/WEB-INF/view/member/secessionForm.jsp";
-					
 				}
 				
 				int result = dao.updateMemberToSecession(conn, crId);
-				request.setAttribute("result", result);
+				request.getSession().setAttribute("result", result);
 				
-				if(result > 0) {
-					request.getSession().removeAttribute("Auth");
-					
-					return "/WEB-INF/view/member/secessionSuccess.jsp"; //탈퇴 완료 메세지가 나오는 페이지로 이동했다가 타이머로 메인으로 돌아감
-					
-				} else {
-					return ""; //에러페이지 만들 예정
-				}
+				//Auth키 삭제
+				request.getSession().removeAttribute("Auth");
+				response.sendRedirect(request.getContextPath() + "/WEB-INF/view/secessionSuccess.jsp");
+
+				return null;
 				
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -63,7 +59,6 @@ public class MemberSecessionHandler implements CommandHandler {
 			}finally {
 				JDBCUtil.close(conn);
 			}
-			
 		}
 		
 		return null;
