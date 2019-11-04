@@ -13,7 +13,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath }/member/change.do" style="color: white;">
+			<a href="${pageContext.request.contextPath }/member/changePwd.do" style="color: white;">
 				<span class='page-title'>비밀번호 변경</span>
 				<span class='page-info'>비밀번호를<br>변경합니다</span>
 			</a>

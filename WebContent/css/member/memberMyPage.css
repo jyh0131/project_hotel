@@ -5,7 +5,7 @@ div.myPage-wrap {
 	overflow: hidden;
 }
 div.myPage-wrap > ul {
-	width: 100%;
+	width: 90%;
 	margin: 0 auto;
 }
 div.myPage-wrap > ul > li {
@@ -14,9 +14,8 @@ div.myPage-wrap > ul > li {
 	height: 200px;
 	background: pink;
 	text-align: center;
-	margin: 15px;
 	border-radius: 100px;
-	margin: 86px;
+	margin: 97px;
 }
 div.myPage-wrap > ul > li:nth-child(1),
 div.myPage-wrap > ul > li:nth-child(3) {

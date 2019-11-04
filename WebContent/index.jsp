@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${pageContext.request.contextPath}/css/backgroundTransition.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/css/util/backgroundTransition.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet" type="text/css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

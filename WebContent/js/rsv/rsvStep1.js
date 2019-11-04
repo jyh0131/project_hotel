@@ -109,7 +109,37 @@
 	    			
 	    			$(res.ar).each(function(i, obj){
 	    				//RC 만들기
-	    				$divImg = $("<div>").addClass("ar-rc-img").append("<p>이미지 들어갈 곳</p>");
+	    				var imgArr = ["rsv-rm1", "rsv-rm2", "rsv-rm3", "rsv-rm4",
+	    							  "rsv-rm5", "rsv-rm6", "rsv-rm7", "rsv-rm8"]; 	
+	    				$divImg = $("<div>").addClass("ar-rc-img");
+	    				
+	    				switch(obj.roomCategory.rcName) {
+	    				case "스탠다드":
+	    					$divImg.append("<p><img src='../images/rsv-img/"+imgArr[0]+".jpg'></p>");
+	    					break;
+	    				case "디럭스":
+	    					$divImg.append("<p><img src='../images/rsv-img/"+imgArr[1]+".jpg'></p>");
+	    					break;
+	    				case "테라스":
+	    					$divImg.append("<p><img src='../images/rsv-img/"+imgArr[2]+".jpg'></p>");
+	    					break;
+	    				case "프리미어":
+	    					$divImg.append("<p><img src='../images/rsv-img/"+imgArr[3]+".jpg'></p>");
+	    					break;
+	    				case "프리미어 테라스":
+	    					$divImg.append("<p><img src='../images/rsv-img/"+imgArr[4]+".jpg'></p>");
+	    					break;
+	    				case "퍼시픽 디럭스":
+	    					$divImg.append("<p><img src='../images/rsv-img/"+imgArr[5]+".jpg'></p>");
+	    					break;
+	    				case "로열 스위트":
+	    					$divImg.append("<p><img src='../images/rsv-img/"+imgArr[6]+".jpg'></p>");
+	    					break;
+	    				case "프레지덴셜 스위트":
+	    					$divImg.append("<p><img src='../images/rsv-img/"+imgArr[7]+".jpg'></p>");
+	    					break;
+	    				}
+	    				
 	    				$divType = $("<div>").addClass("ar-rc-type")
 	    							.append("<p>크기: "+obj.roomSize.rsName+"㎡</p>")
 	    							.append("<p>가격: "+addComma(obj.roomPrice)+"<small>(1박)</small></p>");

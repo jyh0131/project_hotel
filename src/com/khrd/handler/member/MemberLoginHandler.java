@@ -17,7 +17,7 @@ public class MemberLoginHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if(request.getMethod().equalsIgnoreCase("get")) {
-			return "/WEB-INF/view/member/loginForm.jsp";
+			return "/WEB-INF/view/member/memberLoginForm.jsp";
 			
 		}else if(request.getMethod().equalsIgnoreCase("post")) {
 			Connection conn = null;
@@ -34,17 +34,17 @@ public class MemberLoginHandler implements CommandHandler {
 				if(member == null) { //회원 정보가 존재하지 않을 경우
 					request.setAttribute("idNotExist", true);
 					
-					return "/WEB-INF/view/member/loginForm.jsp";
+					return "/WEB-INF/view/member/memberLoginForm.jsp";
 					
 				} else if (member.getmQuitdate() != null) { //탈퇴된 회원일 경우
 					request.setAttribute("idNotExist", true);
 
-					return "/WEB-INF/view/member/loginForm.jsp";
+					return "/WEB-INF/view/member/memberLoginForm.jsp";
 					
 				} else if (!member.getmPwd().equals(password)) { //비밀번호가 틀릴 경우
 					request.setAttribute("pwdNotMatch", true);
 
-					return "/WEB-INF/view/member/loginForm.jsp";
+					return "/WEB-INF/view/member/memberLoginForm.jsp";
 				}
 				
 				HttpSession session = request.getSession();
@@ -62,6 +62,7 @@ public class MemberLoginHandler implements CommandHandler {
 		}
 		
 		return null;
+		
 	}//process
 
 }//MemberLoginHandler

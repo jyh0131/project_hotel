@@ -52,7 +52,7 @@ public class MemberUpdateHandler implements CommandHandler {
 				Member member = new Member(0, name, null, email, phone, tel, zipcode, addr1, addr2, id, null, null,
 						null, 0);
 				dao.MemberUpdate(conn, member);
-				response.sendRedirect(request.getContextPath() + "/member/mypage.do");
+				response.sendRedirect(request.getContextPath() + "/member/updateResult.do");
 
 				return null;
 

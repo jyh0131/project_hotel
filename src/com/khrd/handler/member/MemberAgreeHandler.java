@@ -10,7 +10,7 @@ public class MemberAgreeHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if(request.getMethod().equalsIgnoreCase("get")) {
-			return "/WEB-INF/view/member/joinAgreeForm.jsp";
+			return "/WEB-INF/view/member/memberJoinAgreeForm.jsp";
 			
 		}else if(request.getMethod().equalsIgnoreCase("post")) {
 			String agree = request.getParameter("agree");

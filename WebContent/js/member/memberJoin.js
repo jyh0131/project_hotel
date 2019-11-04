@@ -147,8 +147,8 @@
 		//submit 전 유효성 검사
 		$("form").submit(function(){
 			//에러가 있으면 submit 진행 X -> 작동안됨.고민해보자
-			if($(this).find(".error").css("display") != "none"){
-				alert("형식에 맞지않는 입력이 존재합니다. 수정 바랍니다.");
+			if($(this).contains(".error")) {
+				alert("에러발견");
 				return false;
 			}
 			
@@ -172,16 +172,6 @@
 			var phone = $("input[name='phone']").val();
 			if(phone == "") {
 				alert("전화번호를 입력하세요.");
-				return false;
-			}
-			
-			//자택전화
-			var telReg2 = /^[0-9]{3,4}$/;
-			var telReg3 = /^[0-9]{4}$/;
-			var tel2 = $("input[name='tel2']").val();
-			var tel3 = $("input[name='tel3']").val();
-			if(telReg2.test(tel2) == false || telReg3.test(tel3) == false) {
-				alert("형식에 맞지않는 자택번호입니다. 확인 바랍니다.");
 				return false;
 			}
 			

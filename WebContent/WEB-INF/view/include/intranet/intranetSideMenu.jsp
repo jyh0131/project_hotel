@@ -21,7 +21,15 @@
 				<a href="${pageContext.request.contextPath}/intranet/rsv/list.do">예약관리</a>
 			</li>
 			<li>
-				<a href="#">매출관리</a>
+				<a>운영관리</a>
+				<ul class="intra-sub-menu">
+					<li>
+						<a href="${pageContext.request.contextPath}/intranet/mng/sales.do">매출관리</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/intranet/mng/req.do">문의관리</a>
+					</li>
+				</ul>
 			</li>
 			<li>
 				<a>사진관리</a>

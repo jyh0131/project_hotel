@@ -218,10 +218,10 @@ div.footer-logo > a {
 }
 div.footer-logo > span {
 	font-size: 9px;
-	color: white;
+	color: #47a3da;
 	position: absolute;
 	left: 50%;
-	bottom: 35px;
+	bottom: 15px;
 	margin-left: -30.885px;
 }
 div.footer-info2 {
