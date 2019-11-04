@@ -16,7 +16,7 @@
 			$("table").append($trDf);
 			
 			$.ajax({
-				url: "memStateList.do",
+				url: "adminStateList.do",
 				type: "get",
 				data: {"memState":$(this).val()},
 				dataType: "json",
@@ -24,7 +24,7 @@
 					console.log(res);
 
 					if(res.list.length == 0) {
-						$("table").append("<tr><td colspan='8'>등록된 회원이 없습니다.</td></tr>");
+						$("table").append("<tr><td colspan='8'>등록된 관리자가 없습니다.</td></tr>");
 					}
 					
 					$(res.list).each(function(i, obj){
@@ -40,7 +40,7 @@
 						
 						//상태에 따라 비고에 뭘 쓸지 결정
 						if(obj.mQuitdate != null) {
-							$tdState = $("<td>").append("<span style='color:#DF4D4D;'>탈퇴한 회원</span>");
+							$tdState = $("<td>").append("<span style='color:#DF4D4D;'>탈퇴한 관리자</span>");
 						} else {
 							$tdState = $("<td>").append("-");
 						}
@@ -60,7 +60,6 @@
 						$tr2 = $("<tr>").append($tdAddr);
 						
 						$("table").append($tr).append($tr2);
-
 					})
 				}
 			});

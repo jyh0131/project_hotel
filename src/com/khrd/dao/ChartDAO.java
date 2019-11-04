@@ -40,7 +40,7 @@ public class ChartDAO {
 						+"sum(if(month(r_in)=11, r_total_price, 0)) as '11월', "
 						+"sum(if(month(r_in)=12, r_total_price, 0)) as '12월' "
 						+"from vw_all_table "
-						+"where r_state = '예약완료' "
+//						+"where r_state = '예약완료' "
 						+"group by rc_name";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();

@@ -137,7 +137,7 @@
 						<c:when test="${getList.picCategory == '1'}">
 							작은 이미지
 						</c:when>
-						<c:when test="${getList.picCategory == '2'}">
+						<c:when test="${getList.picCategory == '0'}">
 							원본 이미지
 						</c:when>
 						<c:when test="${getList.picCategory == '3'}">

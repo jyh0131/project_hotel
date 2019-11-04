@@ -89,9 +89,6 @@ ul#main-menu > li {
 	text-align: center;
 	position: relative;
 }
-ul#main-menu:hover > li > ul.sub-nav {
-	display: block;
-}
 ul#main-menu > li > a {
 	display: block;
 	color: #47a3da;

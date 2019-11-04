@@ -66,7 +66,7 @@
 						<td>${rsv.rState}</td>
 						
 						<c:if test="${rsv.rState == '예약완료'}">
-							<td rowspan="2">
+							<td rowspan="2" class="tr-bottom">
 								<a href="${pageContext.request.contextPath}/rsvMng/mem/deleteRsv.do?no=${rsv.rNo}" id="aDel">취소</a>
 							</td>
 						</c:if>
@@ -76,7 +76,7 @@
 						
 					
 					</tr>
-					<tr>
+					<tr class="tr-bottom">
 						<td colspan="8">
 							요청사항: 
 							<c:if test="${rsv.rRequest != null}">

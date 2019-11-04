@@ -41,7 +41,10 @@
 		<url-pattern>/rsv/rsvStep3.do</url-pattern>
 		<url-pattern>/rsvMng/mem/list.do</url-pattern>
 		<url-pattern>/rsvMng/mem/detail.do</url-pattern>
-		<url-pattern>/rsvMng/mem/deleteRsv.do</url-pattern>
+		<url-pattern>/member/secession.do</url-pattern>
+		<url-pattern>/member/update.do</url-pattern>
+		<url-pattern>/member/changePwd.do</url-pattern>
+		<url-pattern>/member/mypage.do</url-pattern>
 		<url-pattern>/qb/list.do</url-pattern>
 	</filter-mapping>
 
@@ -51,9 +54,20 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>LoginCheckFilterForAdmin</filter-name>
-		<url-pattern>/intranet/main.do</url-pattern>
+		<url-pattern>/intranet/notice.do</url-pattern>
 		<url-pattern>/intranet/member/list.do</url-pattern>
 		<url-pattern>/intranet/rsv/list.do</url-pattern>
+		<url-pattern>/intranet/mng/sales.do</url-pattern>
+		<url-pattern>/intranet/mng/req.do</url-pattern>
+		<url-pattern>/room/list.do</url-pattern>
+		<url-pattern>/room/insert.do</url-pattern>
+		<url-pattern>/room/delete.do</url-pattern>
+		<url-pattern>/room/update.do</url-pattern>
+		<url-pattern>/picture/list.do</url-pattern>
+		<url-pattern>/picture/insert.do</url-pattern>
+		<url-pattern>/picture/delete.do</url-pattern>
+		<url-pattern>/picture/update.do</url-pattern>
+		<url-pattern>/picture/select.do</url-pattern>
 	</filter-mapping>
     
     <!-- error-page -->

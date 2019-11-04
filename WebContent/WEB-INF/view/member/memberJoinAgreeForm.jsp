@@ -4,13 +4,29 @@
 <link href="${pageContext.request.contextPath}/css/member/memberJoinAgree.css" rel="stylesheet" type="text/css">
 
 <script>
-  $(function(){
-	$("form").submit(function(){
-		 if($("#n").prop("checked") || $("#n1").prop("checked")){		 
-			 alert("호텔 이용약관에 대한 동의는 필수 선택 사항입니다."); 
-			return false;
-			 }
+	$(function(){
+		$("input[type='reset']").click(function(){
+			window.href="${pageContext.request.contextPath}/main.do";
 		})
+		$("form").submit(function(){
+			
+			if($("#n").prop("checked") || $("#n1").prop("checked")){		 
+				alert("호텔 이용약관에 대한 동의는 필수 사항입니다"); 
+				return false;
+			}
+					 
+			if($("#y").prop("checked") == false && $("#n").prop("checked") == false) {
+				alert("호텔 이용약관에 대한 동의를 체크해주세요"); 
+				return false;
+			}
+			
+			if($("#y1").prop("checked") == false && $("#n1").prop("checked") == false) {
+				alert("개인정보 수집, 이용에 대한 동의를 체크해주세요 "); 
+				return false;
+			}
+			 
+		})
+		
 	})   
 </script>
 

@@ -30,7 +30,7 @@
 					console.log(res);
 
 					if(res.list.length == 0) {
-						$("table").append("<tr><td>등록된 예약이 없습니다.</td></tr>");
+						$("table").append("<tr><td colspan='6'>등록된 예약이 없습니다.</td></tr>");
 					}
 					
 					$(res.list).each(function(i, obj){

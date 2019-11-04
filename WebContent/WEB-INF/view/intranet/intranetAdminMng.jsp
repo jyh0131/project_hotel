@@ -3,23 +3,23 @@
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
 <%@ include file="/WEB-INF/view/include/intranet/intranetSideMenu.jsp"%>
 <link href="${pageContext.request.contextPath}/css/intranet/intranetMemberMng.css" rel="stylesheet" type="text/css">
-<script src="${pageContext.request.contextPath}/js/intranet/intranetMemberMng.js"></script>
+<script src="${pageContext.request.contextPath}/js/intranet/intranetAdminMng.js"></script>
 
-<h2>회원관리-회원</h2>
+<h2>회원관리-관리자</h2>
 
 <div class="intra-mem-list">
 	<div class="mem-sel-list">
 		<ul>
-			<li><a href="${pageContext.request.contextPath}/intranet/member/list.do"><b>회원</b></a></li>
-			<li><a href="${pageContext.request.contextPath}/intranet/admin/list.do">관리자</a></li>
+			<li><a href="${pageContext.request.contextPath}/intranet/member/list.do">회원</a></li>
+			<li><a href="${pageContext.request.contextPath}/intranet/admin/list.do"><b>관리자</b></a></li>
 		</ul>
 	</div>
 	
 	<div class="mem-list-state">
 		<select name="memState">
 			<option>전체</option>
-			<option>일반회원만</option>
-			<option>탈퇴회원만</option>
+			<option>일반관리자</option>
+			<option>탈퇴관리자</option>
 		</select>
 	</div>
 
@@ -34,14 +34,14 @@
 			<th>가입일</th>
 			<th>비고</th>
 		</tr>
-		<!-- 회원이 존재하지 않을떄 -->
+		<!-- 관리자가 존재하지 않을떄 -->
 		<c:if test="${list == null}">
 			<tr>
-				<td colspan="8">등록된 회원이 없습니다.</td>
+				<td colspan="8">등록된 관리자가 없습니다.</td>
 			</tr>
 		</c:if>
 		
-		<!-- 회원이 존재할떄 -->
+		<!-- 관리자가 존재할떄 -->
 		<c:if test="${list != null}">
 			<c:forEach var="mem" items="${list}">
 				<tr>
@@ -67,7 +67,7 @@
 
 					<td>
 						<c:if test="${mem.mQuitdate != null}">
-							<span style='color:#DF4D4D;'>탈퇴한 회원</span>
+							<span style='color:#DF4D4D;'>탈퇴한 관리자</span>
 						</c:if>
 					</td>
 				</tr>

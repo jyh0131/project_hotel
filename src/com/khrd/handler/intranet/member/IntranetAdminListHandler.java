@@ -14,7 +14,7 @@ import com.khrd.dto.Reservation;
 import com.khrd.jdbc.ConnectionProvider;
 import com.khrd.jdbc.JDBCUtil;
 
-public class IntranetMemberListHandler implements CommandHandler {
+public class IntranetAdminListHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -23,11 +23,11 @@ public class IntranetMemberListHandler implements CommandHandler {
 		try {
 			conn = ConnectionProvider.getConnection();
 			MemberDAO dao = MemberDAO.getInstance();
-			List<Member> list = dao.selectIsAdminList(conn, 0); //0: 일반회원리스트
+			List<Member> list = dao.selectIsAdminList(conn, 1); //1: 관리자회원리스트
 
 			request.setAttribute("list", list);
 
-			return "/WEB-INF/view/intranet/intranetMemberMng.jsp";
+			return "/WEB-INF/view/intranet/intranetAdminMng.jsp";
 
 		} catch (Exception e) {
 			e.printStackTrace();

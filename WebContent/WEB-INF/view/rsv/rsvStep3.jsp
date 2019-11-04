@@ -153,7 +153,7 @@
 	</div>
 	
 	<div class="btn-area">
-		<a href="${pageContext.request.contextPath}/index.jsp">
+		<a href="${pageContext.request.contextPath}/main.do">
 			<span class="btnHome">메인으로</span>
 		</a>
 		<a href="${pageContext.request.contextPath}/rsvMng/mem/list.do">

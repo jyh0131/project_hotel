@@ -2,6 +2,7 @@
 
 div.myPage-wrap {
 	width: 100%;
+	margin: 120px 0 180px;
 	overflow: hidden;
 }
 div.myPage-wrap > ul {
@@ -15,13 +16,12 @@ div.myPage-wrap > ul > li {
 	background: pink;
 	text-align: center;
 	border-radius: 100px;
-	margin: 97px;
+	margin: 49.8px;
 }
-div.myPage-wrap > ul > li:nth-child(1),
-div.myPage-wrap > ul > li:nth-child(3) {
+div.myPage-wrap > ul > li:nth-child(2n-1){
 	background: #faecc5;
 }
-div.myPage-wrap > ul > li:nth-child(2) {
+div.myPage-wrap > ul > li:nth-child(2n) {
 	background: #47a3da;
 }
 div.myPage-wrap > ul > li > a {

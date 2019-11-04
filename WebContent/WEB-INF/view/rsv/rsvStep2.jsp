@@ -2,8 +2,8 @@
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
 <link href="${pageContext.request.contextPath}/css/rsv/rsvStep2.css" rel="stylesheet" type="text/css">
-<script src="${pageContext.request.contextPath}/js/rsv/rsvStep2.js"></script> 
 
+<script src="${pageContext.request.contextPath}/js/rsv/rsvStep2.js"></script> 
 
 <!-- 예약 2단계 -->
 <div class="rsv-step-wrap">
@@ -164,7 +164,7 @@
 							<tr>
 								<td><span class="required_field">*</span>유효기간</td>
 								<td>
-									<select name="cardNumMonth"><!-- c:forEach로 처리할것 -->
+									<select name="cardNumMonth">
 										<option>월</option>
 										<c:forEach begin="01" end="12" var="card_m">
 											<c:if test="${card_m < 10}">
@@ -268,7 +268,7 @@
 						</p>
 					</div>
 					<div class="notice-content">
-						<img src="images/rsv-img/notice.png">
+						<img src="${pageContext.request.contextPath}/images/rsv-img/notice.png">
 					</div>
 				</div>
 								

@@ -15,6 +15,10 @@
 				alert("비밀번호를 입력하세요.")
 				return false;
 			}
+			$("#hrefFindId").click(function(){
+				alert("준비중입니다.");
+				return false;
+			})
 		});
 	});
 </script>
@@ -29,11 +33,11 @@
 				<td>
 					<p>
 						<label>아이디</label>
-						<input type="text" name="id">
+						<input type="text" name="id" maxlength="15">
 					</p>
 					<p>
 						<label>비밀번호</label>
-						<input type="password" name="password">
+						<input type="password" name="password" maxlength="20">
 					</p>
 				</td>
 				<td class="td-btn">
@@ -43,7 +47,7 @@
 		
 			<tr>
 				<td colspan="2" class="centerAlign">
-					<a href="#">아이디 / 비밀번호 찾기</a>
+					<a href="#" id="hrefFindId">아이디 / 비밀번호 찾기</a>
 					<a href="join.do">회원 가입</a>
 				</td>
 			</tr>

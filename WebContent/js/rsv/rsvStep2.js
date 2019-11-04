@@ -105,20 +105,15 @@
 			}
 			
 			//휴대전화
-			var telSel = $("input[name='tel']").prev().val();
-			var telReg;
+			var tel2Reg = /^[0-9]{3,4}$/;
+			var tel3Reg = /^[0-9]{3,4}$/;
+			var tel2 = $("input[name='tel2']").val();
+			var tel3 = $("input[name='tel3']").val();
 			
-			if(telSel == "휴대전화") {
-				telReg = /^(?:(010\d{4})|(01[1|6|7|8|9]\d{3,4}))\d{4}$/;
-			} else if(telSel == "자택전화") {
-				telReg = /^0(2|3[1-3]|4[1-4]|5[1-5]|6[1-4])-?\d{3,4}-?\d{4}$/;
-			}
-			
-			var tel = $("input[name='tel']").val();
-			if(tel == "") {
+			if(tel2 == "" && tel3 == "") {
 				alert("전화번호를 입력하세요.");
 				return false;
-			} else if(telReg.test(tel) == false){
+			} else if(tel2Reg.test(tel2) == false || tel3Reg.test(tel3) == false){
 				alert("입력된 전화번호가 형식에 맞지 않습니다. 다시 확인 바랍니다.");
 				return false;
 			}

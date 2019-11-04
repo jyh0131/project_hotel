@@ -24,6 +24,12 @@
 				<span class='page-info'>😥😥<br>BLUA LUNDO를<br>탈퇴합니다</span>
 			</a>
 		</li>
+		<li>
+			<a href="${pageContext.request.contextPath}/rsvMng/mem/list.do" style="color: white;">
+				<span class='page-title'>예약 확인</span>
+				<span class='page-info'>회원님의 예약을<br>확인합니다</span>
+			</a>
+		</li>
 	</ul>
 </div>
 	

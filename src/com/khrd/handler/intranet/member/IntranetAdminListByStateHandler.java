@@ -19,7 +19,7 @@ import com.khrd.dto.Reservation;
 import com.khrd.jdbc.ConnectionProvider;
 import com.khrd.jdbc.JDBCUtil;
 
-public class IntranetMemberListByStateHandler implements CommandHandler {
+public class IntranetAdminListByStateHandler implements CommandHandler {
 	//인트라넷 회원 관리에서 회원 상태에 따른 리스트 조회
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -33,17 +33,16 @@ public class IntranetMemberListByStateHandler implements CommandHandler {
 
 			switch (state) {
 			case "전체":
-				list = dao.selectIsAdminList(conn, 0);
+				list = dao.selectIsAdminList(conn, 1);
 				break;
 				
-			case "일반회원만":
-				list = dao.selectNotQuitMember(conn, 0);
+			case "일반관리자":
+				list = dao.selectNotQuitMember(conn, 1);
 				break;
 				
-			case "탈퇴회원만":
-				list = dao.selectQuitMember(conn, 0);
+			case "탈퇴관리자":
+				list = dao.selectQuitMember(conn, 1);
 				break;
-		
 			}
 
 			Map<String, Object> map = new HashMap<String, Object>();

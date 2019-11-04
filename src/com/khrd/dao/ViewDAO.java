@@ -2,6 +2,7 @@ package com.khrd.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import com.khrd.jdbc.JDBCUtil;
 
@@ -17,6 +18,7 @@ public class ViewDAO {
 		return dao;
 	}
 	
+	//모든 정보를 담고 있는 뷰
 	public void createViewAllTable(Connection conn) {
 		PreparedStatement pstmt = null;
 		
@@ -52,5 +54,41 @@ public class ViewDAO {
 		
 	}//createViewAllTable
 	
+	//createViewAvailableRoom -> 예약가능한 빈방 정보 뷰
+	public void createViewAvailableRoom (Connection conn, String inDate, String outDate) {
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "create or replace view vw_available "
+						+"as select * from "
+						+"(select * from vw_all_table "
+						+"where !((r_in >= ? and r_in <= ?) "
+						+"or (r_out >= ? and r_out <= ?))) as rsv "
+						+"where !((r_in <= ? and r_out >= ?) "
+						+"or (r_in <= ? and r_out >= ?)) "
+						+"union "
+						+"select * from vw_all_table "
+						+"where r_in is null and r_out is null";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, inDate);
+			pstmt.setString(2, outDate);
+			pstmt.setString(3, inDate);
+			pstmt.setString(4, outDate);
+			pstmt.setString(5, inDate);
+			pstmt.setString(6, inDate);
+			pstmt.setString(7, outDate);
+			pstmt.setString(8, outDate);
+			
+			pstmt.execute();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			JDBCUtil.close(pstmt);
+		}
+		
+	}/*/createViewAvailableRoom*/
 	
 }//ViewDAO

@@ -3,6 +3,15 @@
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
 <link href="${pageContext.request.contextPath}/css/intranet/intranetLogin.css" rel="stylesheet" type="text/css">
 
+<script>
+	$(function(){
+		$("#hrefFindId").click(function(){
+			alert("준비중입니다.");
+			return false;
+		})
+	})
+</script>
+
 <div class="admin-login-wrap">
 	<h2>관리자 로그인</h2>
 	
@@ -26,7 +35,7 @@
 		
 			<tr>
 				<td colspan="2" class="centerAlign">
-					<a href="#">아이디 / 비밀번호 찾기</a>
+					<a href="#" id="hrefFindId">아이디 / 비밀번호 찾기</a>
 					<a href="adminCk.do">관리자 가입</a>
 				</td>
 			</tr>

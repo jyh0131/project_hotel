@@ -41,7 +41,7 @@ div#logo-wrap > a {
 ul#top-menu {
 	overflow: hidden;
 	position: absolute;
-	top: 0;
+	top: 3px;
 	right: 0;
 }
 ul#top-menu > li {
@@ -84,9 +84,6 @@ ul#main-menu > li {
    width: 16.6%;
    text-align: center;
    position: relative;
-}
-ul#main-menu:hover > li > ul.sub-nav {
-   display: block;
 }
 ul#main-menu > li > a {
    display: block;

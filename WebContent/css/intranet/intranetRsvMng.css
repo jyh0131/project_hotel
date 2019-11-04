@@ -22,13 +22,20 @@ div.rsv-list > table {
 }
 th, td {
 	padding: 10px;
-	border-top: 1px solid #FFE08C;
-	border-bottom: 1px solid #FFE08C;
+	border-top: 1px solid #FAECC5;
+	border-bottom: 1px solid #FAECC5;
 	font-size: 14px;
+}
+th {
+	border-top: 4px solid #FAECC5;
+	border-bottom: 4px solid #FAECC5;
 }
 td[colspan='8'] {
 	text-align: left;
 }
 td[rowspan="2"] {
-	border-left: 1px solid #FFE08C;
+	border-left: 1px solid #FAECC5;
+}
+.tr-bottom {
+	border-bottom: 3px solid #FAECC5;
 }

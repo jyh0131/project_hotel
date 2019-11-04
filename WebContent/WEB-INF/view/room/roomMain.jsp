@@ -214,7 +214,7 @@
 					<c:if test="${i.picCategory == 1 }"> <!-- 작은 이미지 -->
 						<li data-thumb="${pageContext.request.contextPath }/upload/${i.picFile }">
 					</c:if> 
-					<c:if test="${i.picCategory == 2 }"> <!-- 큰 이미지 -->	
+					<c:if test="${i.picCategory == 0 }"> <!-- 큰 이미지 -->	
 							<img src="${pageContext.request.contextPath }/upload/${i.picFile }">
 						</li>
 					</c:if>
@@ -225,16 +225,16 @@
 		<div id="rm_contentBox">
 			<div id="rm_contentLeft">
 				<c:forEach var="i" items="${rcNoList}">
-					<c:if test="${i.picCategory == 3 }">	
-						<img src="${pageContext.request.contextPath }/upload/${i.picFile }">
+					<c:if test="${i.picCategory == 2 }">	
+						<img src="${pageContext.request.contextPath}/upload/${i.picFile }">
 					</c:if>	
 				</c:forEach>
 			</div>
 			
 			<div id="rm_contentRight">
 				<div id="rm_btn">
-					<a href="#" id="btn_ask">문의하기</a>
-					<a href="#" id="btn_rsv">예약하기</a>
+					<a href="${pageContext.request.contextPath}/qb/list.do" id="btn_ask">문의하기</a>
+					<a href="${pageContext.request.contextPath}/rsv/rsvStep1.do" id="btn_rsv">예약하기</a>
 				</div><!-- #rm_btn -->
 				
 				<div id="rm_hotelInfo">

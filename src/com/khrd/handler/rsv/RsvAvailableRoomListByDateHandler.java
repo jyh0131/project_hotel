@@ -13,6 +13,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import com.khrd.controller.CommandHandler;
 import com.khrd.dao.RsvDAO;
+import com.khrd.dao.ViewDAO;
 import com.khrd.dto.Room;
 import com.khrd.jdbc.ConnectionProvider;
 import com.khrd.jdbc.JDBCUtil;
@@ -33,8 +34,13 @@ public class RsvAvailableRoomListByDateHandler implements CommandHandler {
 			 
 			try {
 				conn = ConnectionProvider.getConnection();
+				//빈방 정보 view 생성
+				ViewDAO view = ViewDAO.getInstance();
+				view.createViewAvailableRoom(conn, inDate, outDate);
+				
+				//리스트 뿌리기
 				RsvDAO dao = RsvDAO.getInstance();
-				List<Room> list = dao.selectAvailableRoomList(conn, inDate, outDate);
+				List<Room> list = dao.selectAvailableRoomList(conn);
 				
 				Map<String, Object> map = new HashMap<String, Object>();
 				map.put("ar", list);

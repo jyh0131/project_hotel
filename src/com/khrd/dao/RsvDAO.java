@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.khrd.dto.BedType;
@@ -114,20 +113,18 @@ public class RsvDAO {
 	}
 	
 /*----------------------------------------------------------------------------------------*/	
+	/* >> vw_all_table 생성 후 사용해야 하는 쿼리 주의! << */
+	/* >> vw_available 생성 후 사용해야 하는 쿼리 주의! << */
 	
-	//selectListAll -> 전체 예약 보기
+	//***selectListAll -> 전체 예약 보기
 	public List<Reservation> selectRsvListAll(Connection conn){
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
-			String sql = "select * from room r "
-						+"join bed_type b using(bt_no) "
-						+"join view_type v using(vt_no) "
-						+"join room_category rc using(rc_no) "
-						+"join room_size rs using(rs_no) "
-						+"join reservation rsv using(room_no) "
-						+"join member m using(m_no)";
+			String sql = "select * from vw_all_table "
+						+"where r_state is not null "
+						+"order by r_no desc";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			List<Reservation> list = new ArrayList<>();
@@ -152,20 +149,13 @@ public class RsvDAO {
 		
 	}/*/selectList*/
 	
-	//selectRsvListByState -> 예약상태에 따른 리스트
+	//***selectRsvListByState -> 예약상태에 따른 리스트
 	public List<Reservation> selectRsvListByStateForAdmin(Connection conn, String state){
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
-			String sql = "select * from room r "
-						+"join bed_type b using(bt_no) "
-						+"join view_type v using(vt_no) "
-						+"join room_category rc using(rc_no) "
-						+"join room_size rs using(rs_no) "
-						+"join reservation rsv using(room_no) "
-						+"join member m using(m_no) "
-						+"where r_state=?";
+			String sql = "select * from vw_all_table where r_state=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, state);
 			rs = pstmt.executeQuery();
@@ -191,26 +181,20 @@ public class RsvDAO {
 		
 	}/*/selectList*/
 
-	//selectRsvByRNo -> 예약번호로 예약정보 한건 조회하기
+	//***selectRsvByRNo -> 예약번호로 예약정보 한건 조회하기
 	public Reservation selectRsvByRNo(Connection conn, int rNo) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
-			String sql = "select * from room r "
-						+"join bed_type b using(bt_no) "
-						+"join view_type v using(vt_no) "
-						+"join room_category rc using(rc_no) "
-						+"join room_size rs using(rs_no) "
-						+"join reservation rsv using(room_no) "
-						+"join member m using(m_no)"
-						+"where r_no=?";
+			String sql = "select * from vw_all_table where r_no=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1,rNo);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
 				Reservation rsv = RsvConstructor(rs);
+				
 				return rsv;
 			}
 			
@@ -223,49 +207,16 @@ public class RsvDAO {
 		
 	}/*/selectRsvByRNo*/
 	
-	//selectAvailableRoomList -> 날짜에 따른 예약 가능한 방 목록 (selectEmptyRoomByCondition로 진화시킴)
-	public List<Room> selectAvailableRoomList(Connection conn, String inDate, String outDate){
+	//***selectAvailableRoomList -> 날짜에 따른 예약 가능한 방 목록 (createViewAvailableRoom 실행 후 사용)
+	public List<Room> selectAvailableRoomList(Connection conn){
 		PreparedStatement pstmt = null;
-		PreparedStatement pstmtSel = null;
 		ResultSet rs = null;
 		
 		try {
-			//view 생성
-			String createView = "create or replace view vw_available "
-								+"as select * from ("
-								+"select * from room r join bed_type b using(bt_no) "
-								+"join view_type v using(vt_no) "
-								+"join room_category rc using(rc_no) "
-								+"join room_size rs using(rs_no) "
-								+"left join reservation rsv using(room_no) "
-								+"where !((rsv.r_in >= ? and rsv.r_in <= ?) "
-								+"or (rsv.r_out >= ? and rsv.r_out <= ?))) as subRsv "
-								+"where !((subRsv.r_in <= ? and subRsv.r_out >= ?) "
-								+"or (subRsv.r_in <= ? and subRsv.r_out >= ?)) "
-								+"union "
-								+"select * from room r join bed_type b using(bt_no) "
-								+"join view_type v using(vt_no) "
-								+"join room_category rc using(rc_no) "
-								+"join room_size rs using(rs_no) "
-								+"left join reservation rsv using(room_no) "
-								+"where rsv.r_in is null and rsv.r_out is null";  
-			 
-			pstmt = conn.prepareStatement(createView);
-			pstmt.setString(1, inDate);
-			pstmt.setString(2, outDate);
-			pstmt.setString(3, inDate);
-			pstmt.setString(4, outDate);
-			pstmt.setString(5, inDate);
-			pstmt.setString(6, inDate);
-			pstmt.setString(7, outDate);
-			pstmt.setString(8, outDate);
+			String sql = "select * from vw_available";
+			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.execute();
-			
-			String sql = "select * from vw_available group by rc_name order by rc_no";
-			pstmtSel = conn.prepareStatement(sql);
-			
-			rs = pstmtSel.executeQuery(); 
+			rs = pstmt.executeQuery(); 
 			
 			List<Room> list = new ArrayList<>();
 			while(rs.next()) {
@@ -281,7 +232,6 @@ public class RsvDAO {
 			
 		} finally {
 			JDBCUtil.close(rs);
-			JDBCUtil.close(pstmtSel);
 			JDBCUtil.close(pstmt);
 		}
 		
@@ -289,7 +239,7 @@ public class RsvDAO {
 		
 	}/*/selectAvailableRoomList*/
 	
-	//selectOptionByRoomCategory (꼭 AvailableRoom 이후로 써야함)
+	//***selectOptionByRoomCategory (createViewAvailableRoom 실행 후 사용)
 	public List<String[]> selectOptionByRoomCategory(Connection conn, String rcName) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -321,7 +271,7 @@ public class RsvDAO {
 		
 	}/*/selectOptionByRoomCategory*/
 	
-	//selectEmptyRoomByCondition -> 조건에 맞는 빈 방 목록
+	//***selectEmptyRoomByCondition -> 조건에 맞는 빈 방 목록 (createViewAvailableRoom 실행 후 사용)
 		public List<Integer> selectEmptyRoomByCondition(Connection conn, String rc, String bt, String vt){ //rc->카테고리, bt->침대타입, vt->뷰타입
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
@@ -354,7 +304,7 @@ public class RsvDAO {
 			
 			return null;
 			
-		}/*/selectEmptyRoomByCondition*/
+	}/*/selectEmptyRoomByCondition*/
 	
 	
 	//selectReservedRoomList -> 예약된 방 목록
@@ -391,20 +341,16 @@ public class RsvDAO {
 	}/*/selectReservedRoomList*/
 	
 	
-	//selectRsvListByStateForMem -> 예약확인에서 상태별로 조회
+	//***selectRsvListByStateForMem -> 예약확인에서 상태별로 조회
 	public List<Reservation> selectRsvListByStateForMem(Connection conn, String mId, String state) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
-			String sql = "select * from room r "
-						+"join bed_type b using(bt_no) "
-						+"join view_type v using(vt_no) "
-						+"join room_category rc using(rc_no) "
-						+"join room_size rs using(rs_no) "
-						+"join reservation rsv using(room_no) "
-						+"join member m using(m_no)"
-						+"where m_id=? and r_state=?";
+			String sql = "select * from "
+						+"vw_all_table "
+						+"where m_id=? and r_state=? "
+						+"order by r_no desc";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mId);
@@ -433,20 +379,16 @@ public class RsvDAO {
 		
 	}/*/selectRsvListByStateForMem*/
 	
-	//selectByMNo -> 멤버 별 예약 확인
+	//***selectByMNo -> 멤버 별 예약 확인
 	public List<Reservation> selectRsvByMNo(Connection conn, int mNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
-			String sql = "select * from room r "
-						+"join bed_type b using(bt_no) "
-						+"join view_type v using(vt_no) "
-						+"join room_category rc using(rc_no) "
-						+"join room_size rs using(rs_no) "
-						+"join reservation rsv using(room_no) "
-						+"join member m using(m_no)"
-						+"where m_no = ?";
+			String sql = "select * from "
+						+"vw_all_table "
+						+"where m_no = ? "
+						+"order by r_no desc";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, mNo);
@@ -474,19 +416,14 @@ public class RsvDAO {
 		
 	}/*/selectByMNo*/
 	
-	//selectRsvByMId -> 아이디로 예약찾기
-		public List<Reservation> selectRsvByMId(Connection conn, String mId) {
+	//***selectRsvByMId -> 아이디로 예약찾기
+	public List<Reservation> selectRsvByMId(Connection conn, String mId) {
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			
 			try {
-				String sql = "select * from room r "
-							+"join bed_type b using(bt_no) "
-							+"join view_type v using(vt_no) "
-							+"join room_category rc using(rc_no) "
-							+"join room_size rs using(rs_no) "
-							+"join reservation rsv using(room_no) "
-							+"join member m using(m_no)"
+				String sql = "select * from "
+							+"vw_all_table "
 							+"where m_id = ?";
 				
 				pstmt = conn.prepareStatement(sql);
@@ -513,36 +450,7 @@ public class RsvDAO {
 			
 			return null;
 			
-		}/*/selectRsvByMId*/
-	
-	
-	//insertRsv -> 예약 추가
-	public int insertRsv(Connection conn, Reservation rsv) throws SQLException {
-		PreparedStatement pstmt = null;
-		
-		try {
-			String sql = "insert into reservation values (0, ?, ?, ?, ?, ?, ?, ?, ?, ?, now(), ?, '예약완료')";
-			//insert into reservation values (r_no, m_no, room_no, r_in, r_out, r_stay, r_total_price, r_request, r_psnAdt, r_psnCdr, r_pay_date, op_no);
-			
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, rsv.getMember().getmNo());
-			pstmt.setInt(2, rsv.getRoom().getRoomNo());
-			pstmt.setTimestamp(3, new Timestamp(rsv.getrIn().getTime()));
-			pstmt.setTimestamp(4, new Timestamp(rsv.getrOut().getTime()));
-			pstmt.setInt(5, rsv.getrStay());
-			pstmt.setInt(6, rsv.getrTotalPrice());
-			pstmt.setString(7, rsv.getrRequest());
-			pstmt.setInt(8, rsv.getrPsnAdt());
-			pstmt.setInt(9, rsv.getrPsnCdr());
-			pstmt.setInt(10, rsv.getOpNo());
-			
-			return pstmt.executeUpdate();
-			
-		} finally {
-			JDBCUtil.close(pstmt);
-		}
-		
-	}/*/insertRsv*/
+	}/*/selectRsvByMId*/
 	
 	//selectLastInsertId -> 가장 마지막에 추가된 아이디 가져오기 (Auto_increment값)
 	public int selectRsvLastInsertId(Connection conn) throws SQLException{
@@ -572,8 +480,35 @@ public class RsvDAO {
 		}
 	
 		return -1;
+		
 	}/*/selectLastInsertId*/
 	
+	//insertRsv -> 예약 추가
+	public int insertRsv(Connection conn, Reservation rsv) throws SQLException {
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "insert into reservation values (0, ?, ?, ?, ?, ?, ?, ?, ?, ?, now(), ?, '예약완료')";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rsv.getMember().getmNo());
+			pstmt.setInt(2, rsv.getRoom().getRoomNo());
+			pstmt.setTimestamp(3, new Timestamp(rsv.getrIn().getTime()));
+			pstmt.setTimestamp(4, new Timestamp(rsv.getrOut().getTime()));
+			pstmt.setInt(5, rsv.getrStay());
+			pstmt.setInt(6, rsv.getrTotalPrice());
+			pstmt.setString(7, rsv.getrRequest());
+			pstmt.setInt(8, rsv.getrPsnAdt());
+			pstmt.setInt(9, rsv.getrPsnCdr());
+			pstmt.setInt(10, rsv.getOpNo());
+			
+			return pstmt.executeUpdate();
+			
+		} finally {
+			JDBCUtil.close(pstmt);
+		}
+		
+	}/*/insertRsv*/
 	
 	//updateRsvStateForCancel -> 예약상태 변경(예약 논리 삭제)
 	public int updateRsvStateForCancel(Connection conn, int rNo) throws SQLException {
@@ -599,7 +534,7 @@ public class RsvDAO {
 			JDBCUtil.close(pstmt);
 		}
 		
-	}/*/deleteRsvByRNo*/
+	}/*/updateRsvStateForCancel*/
 	
 	
 	

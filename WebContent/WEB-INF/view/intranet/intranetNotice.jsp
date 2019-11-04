@@ -3,9 +3,9 @@
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
 <%@ include file="/WEB-INF/view/include/intranet/intranetSideMenu.jsp"%>
 <link href="${pageContext.request.contextPath}/css/intranet/intranetCommon.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/css/intranet/intranetMain.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/css/intranet/intranetNotice.css" rel="stylesheet" type="text/css">
 
-<h2>인트라넷 메인</h2>
+<h2>공지사항</h2>
 
 <div class="intra-main-wrap">
 	<div class="main-notice-wrap">

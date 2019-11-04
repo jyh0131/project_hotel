@@ -1,8 +1,29 @@
 @charset "UTF-8";
 
+div.intra-mem-list {
+	overflow: hidden;
+}
+div.mem-sel-list {
+	width: 17%;
+	text-align: left;
+	float: left;
+}
+div.mem-sel-list > ul {
+	width: 100%;
+	margin: 25px 0 0;
+}
+div.mem-sel-list > ul > li {
+	float: left;
+	width: 50%;
+	text-align: center;
+}
+div.mem-sel-list > ul > li > a {
+	color: #47a3da;
+}
 div.mem-list-state {
-	width: 97%;
-	margin: 20px auto -5px;	
+	width: 20%;
+	float: right;
+	margin: 25px 20px 10px 0;
 	text-align: right;
 }
 div.mem-list-state > select {
@@ -12,12 +33,21 @@ div.intra-mem-list > table {
 	width: 97%;
 	margin: 10px auto 20px;
 	border-collapse: collapse;
+	border: 4px solid #47a3da;
 }
-div.intra-mem-list > table th,
+div.intra-mem-list > table th {
+	background: #47a3da;
+	color: white;
+	font-weight: normal;
+	padding: 10px;
+}
 div.intra-mem-list > table td {
-	border: 1px solid skyblue;
-	padding: 5px;
+	border: 1px solid #47a3da;
+	padding: 8px 5px 5px;
 	text-align: center;
+}
+div.intra-mem-list > table tr.tr-addr {
+	border-bottom: 3px solid #47a3da;
 }
 div.intra-mem-list > table td[colspan='8'] {
 	text-align: left;
