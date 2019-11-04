@@ -21,7 +21,7 @@
 	div.error-img {
 		width: 70%;
 		height: 300px;
-		background: url("../../images/bg-img/error-img.png") no-repeat center;
+		background: url("${pageContext.request.contextPath}/images/bg-img/error-img.png") no-repeat center;
 		background-size: contain;
 		margin: 0 auto;
 	}

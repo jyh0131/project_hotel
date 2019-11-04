@@ -5,14 +5,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.khrd.controller.CommandHandler;
 
-public class MemberMyPageHandler implements CommandHandler {
+public class MemberUpdateResultHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//마이페이지로 이동
 		
-		return "/WEB-INF/view/member/memberMyPage.jsp";
-	
+		return "/WEB-INF/view/member/memberUpdateResult.jsp";
 	}//process
 
-}//MemberMyPageHandler
+}//MemberResult1Handler

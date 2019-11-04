@@ -35,7 +35,7 @@ public class MemberChangePwdHandler implements CommandHandler {
 					int result = dao.PwdUpdate(conn, mem);
 					request.getSession().setAttribute("result", result);
 					
-					response.sendRedirect(request.getContextPath() + "/WEB-INF/view/changePwdSuccess.jsp");
+					response.sendRedirect(request.getContextPath() + "/member/changePwdResult.do");
 					
 				}else { //비밀번호가 일치X
 					request.setAttribute("pwdNotMatch", true);

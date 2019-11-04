@@ -18,7 +18,7 @@ public class MemberJoinHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if(request.getMethod().equalsIgnoreCase("get")) {
-			return "/WEB-INF/view/member/joinForm.jsp";
+			return "/WEB-INF/view/member/memberJoinForm.jsp";
 			
 		} else if(request.getMethod().equalsIgnoreCase("post")) {
 			Connection conn = null;
@@ -69,7 +69,7 @@ public class MemberJoinHandler implements CommandHandler {
 				int result = dao.insert(conn, m);
 				request.getSession().setAttribute("result", result);
 				
-				response.sendRedirect(request.getContextPath() + "/WEB-INF/view/member/joinResult.jsp");
+				response.sendRedirect(request.getContextPath() + "/member/joinResult.do");
 				
 			} catch (Exception e) {
 				e.printStackTrace();

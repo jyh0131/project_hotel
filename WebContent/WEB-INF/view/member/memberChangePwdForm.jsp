@@ -6,7 +6,7 @@
 
 <div class="change-pwd-wrap">
 	<h2>비밀번호 변경</h2>
-	<form action="change.do" method="post">	
+	<form action="changePwd.do" method="post">	
 		<div class="change-pwd">
 			<p>
 				<label>현재 비밀번호</label>
