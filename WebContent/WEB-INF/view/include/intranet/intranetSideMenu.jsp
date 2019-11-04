@@ -7,7 +7,9 @@
 	<div class="intra-main-menu">
 		<ul class="intra-main-menu">
 			<li>
-				<a href="${pageContext.request.contextPath}/intranet/main.do">인트라넷 메뉴</a>
+				<a href="${pageContext.request.contextPath}/intranet/main.do" style="background:#47a3da;color:#FAECC5;">
+					메뉴
+				</a>
 			</li>
 			<li>
 				<a href="${pageContext.request.contextPath}/intranet/member/list.do">회원관리</a>
@@ -22,7 +24,7 @@
 				<a href="#">매출관리</a>
 			</li>
 			<li>
-				<a href="#">사진관리</a>
+				<a>사진관리</a>
 				<ul class="intra-sub-menu">
 					<li>
 						<a href="#">객실 사진</a>

@@ -15,21 +15,28 @@ div#container {
 }
 div#head {
 	width: 100%;
-	background: pink;
-	height: 90px;
+	height: 125px;
 }
 
 /*header*/
 div#header {
 	width: 70%;
 	height: 100%;
-	background: skyblue;
 	margin: 0 auto;
 	position: relative;
 }
 div#logo-wrap {
 	width: 100%;
+	height: 90px;
 	text-align: center;
+}
+div#logo-wrap > a {
+	width: 290px;
+	height: 125px;
+	display: block;
+	margin: 0 auto;
+	background: url("../images/bg-img/bluaLundoLogo.png") no-repeat;
+	background-size: contain;
 }
 ul#top-menu {
 	overflow: hidden;
@@ -52,79 +59,79 @@ ul#top-menu > li > a:before {
 	height: 10px;
 	background: black;
 	position: absolute;
-	top: 7px;
+	top: 8px;
 	left: -10px;
 }
 
 /*nav*/
 div#gnb-nav {
-	width: 100%;
-	background: yellow;
+   width: 100%;
+   background: #47a3da;
 }
 div#nav-wrap {
-	width: 70%;
-	height: 52px;
-	margin: 0 auto;
-	position: relative;
+   width: 70%;
+   height: 52px;
+   margin: 0 auto;
+   position: relative;
 }
 ul#main-menu {
-	width: 70%;
-	height: 52px;
-	background: magenta;
+   width: 70%;
+   height: 52px;
+   background: #47a3da;
 }
 ul#main-menu > li {
-	float: left;
-	width: 16.6%;
-	text-align: center;
-	position: relative;
+   float: left;
+   width: 16.6%;
+   text-align: center;
+   position: relative;
 }
-/* ul#main-menu:hover > li > ul.sub-nav { 나중에 제이쿼리로 다시 처리하기
-	display: block;
-} */
+ul#main-menu:hover > li > ul.sub-nav {
+   display: block;
+}
 ul#main-menu > li > a {
-	display: block;
-	color: white;
-	font-size: 16.5px;
-	letter-spacing: 0.05em;
-	line-height: 52px;
+   display: block;
+   color: white;
+   font-size: 16.5px;
+   letter-spacing: 0.05em;
+   line-height: 52px;
 }
 ul#main-menu > li:first-child > a:before {
-	display: none;
+   display: none;
 }
 ul#main-menu > li > a:before {
-	content: '';
-	width: 1px;
-	height: 15px;
-	background: white;
-	position: absolute;
-	top: 20px;
-	left: 5px;
+   content: '';
+   width: 1px;
+   height: 15px;
+   background: white;
+   position: absolute;
+   top: 20px;
+   left: 5px;
 }
 
 ul.sub-nav {
-	display: none;
-	overflow: hidden;
-	width: 100%;
-	height: 320px;
-	background: blue;
-	position: absolute;
-	left: 0;
-	top: 52px;
-	z-index: 100000;
+   display: none;
+   overflow: hidden;
+   width: 100%;
+   height: 320px;
+   background: rgba(250, 236, 197, 0.8);
+   position: absolute;
+   left: 0;
+   top: 52px;
+   z-index: 100000;
 }
 ul.sub-nav > li {
-	height: 40px;
-	background: blue;
+   height: 40px;
 }
 ul.sub-nav > li > a {
-	font-size: 13px;
-	line-height: 40px;
-	color: white;
-	display: block;
+   font-size: 13px;
+   line-height: 40px;
+   color: #47a3da;
+   display: block;
 }
 ul.sub-nav > li > a:hover {
-	background: rgba(255,255,255,0.3);
+   background: rgba(255,255,255,0.3);
 }
+
 
 /*예약 메뉴*/
 div#rsv-menu {
@@ -139,11 +146,12 @@ div#rsv-menu > a {
 	width: 100%;
 	height: 100%;
 	display: block;
-	color: white;
+	color: #47a3da;
 	line-height: 53px;
-	background: lightgreen;
-	font-size: 18px;
 	letter-spacing: 0.15em;
+	background: rgba(239, 242, 244, 0.8);
+	font-size: 18px;
+	font-weight: bold;
 }
 
 /*section*/
@@ -154,7 +162,7 @@ div#section {
 div#section-wrap {
 	width: 70%;
 	margin: 0 auto;
-	background: orange;
+	padding: 20px 0;
 }
 
 
@@ -162,13 +170,82 @@ div#section-wrap {
 div#footer {
 	width: 100%;
 	height: 150px;
-	background: green;
+	background: #47a3da;
 }
 div#footer-wrap {
 	width: 70%;
 	height: 100%;
-	background: red;
+	background: #47a3da;
+	margin: 0 auto;
+	overflow: hidden;
+}
+div.footer-info {
+	float: left;
+	width: 70%;
+}
+div.footer-info1 {
+	float: left;
+	width: 35%;
+	padding: 20px;
+	text-align: center;
+	color: white;
+}
+div.footer-info1 > p:first-child {
+	letter-spacing: 0.15em;
+}
+div.footer-info1 > p:nth-child(2) {
+	font-size: 10px;
+	padding-top: 20px;
+	letter-spacing: 0.05em;
+}
+div.footer-logo {
+	width: 22.75%;
+	height: 150px;
+	display: block;
+	background: url("../images/bg-img/bluaLundoLogo-white.png") no-repeat;
+	background-size: contain;
+	float: left;
+	text-align: center;
+	position: relative;
+}
+div.footer-logo > a {
+	width: 100%;
+	height: 100%;
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+div.footer-logo > span {
+	font-size: 9px;
+	color: white;
+	position: absolute;
+	left: 50%;
+	bottom: 35px;
+	margin-left: -30.885px;
+}
+div.footer-info2 {
+	float: left;
+	width: 35%;
+	padding: 20px;
+}
+div.footer-info2 > ul {
+	width: 100%;
 	margin: 0 auto;
 	text-align: center;
 }
+div.footer-info2 > ul > li {
+	float: left;
+	width: 25%;
+}
+div.footer-info2 > ul > li > a {
+	font-size: 14px;
+	color: white;
+}
+
+
+
+
+
+
 

@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>PROJECT HOTEL</title>
+<title>BLUA LUNDO</title>
 <link href="${pageContext.request.contextPath}/css/common.css" rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/common.js"></script>
@@ -18,12 +18,15 @@
 		<div id="head">
 			<div id="header">
 				<div id="logo-wrap">
-					<h1><a href="${pageContext.request.contextPath }/index.jsp">PROJECT HOTEL</a></h1>
+					<a href="${pageContext.request.contextPath }/index.jsp">
+					</a>
 				</div>
 				<ul id="top-menu">
-					<c:if test="${Auth != null }">
+					<c:if test="${Admin != null }"> <!-- 관리자 로그인시 -->
 					<li>
-						<a href="${pageContext.request.contextPath }">${Auth }님</a>
+						<a href="${pageContext.request.contextPath }">
+							<span style="color:#F2CB61; font-size: 14px;">${Admin }</span>님
+						</a>
 					</li>
 					<li>
 						<a href="${pageContext.request.contextPath }/member/logout.do">로그아웃</a>
@@ -32,17 +35,30 @@
 						<a href="${pageContext.request.contextPath }/member/mypage.do">마이페이지</a>
 					</li>
 					</c:if>
-					<c:if test="${Auth == null }">
+					<c:if test="${Auth != null }"> <!-- 회원 로그인시 -->
+					<li>
+						<a href="${pageContext.request.contextPath }">
+							<span style="color:#F2CB61; font-size: 14px;">${Auth }</span>님
+						</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath }/member/logout.do">로그아웃</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath }/member/mypage.do">마이페이지</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/rsvMng/mem/list.do">예약확인</a>
+					</li>
+					</c:if>
+					<c:if test="${Auth == null && Admin == null}"> <!-- 로그아웃 상태 -->
 					<li>
 						<a href="${pageContext.request.contextPath }/member/login.do">로그인</a>
 					</li>
 					<li>
-						<a href="${pageContext.request.contextPath }/member/agree.do">신라리워즈 가입</a>
+						<a href="${pageContext.request.contextPath }/member/agree.do">회원가입</a>
 					</li>
 					</c:if>
-					<li>
-						<a href="${pageContext.request.contextPath}/rsvMng/mem/list.do">예약확인</a>
-					</li>
 				</ul>	
 			</div>
 			
@@ -62,7 +78,7 @@
 						</li>
 						
 						<li>
-							<a href="http://localhost:8080/project_hotel/room/main.do?rcNo=1">객실</a>
+							<a href="${pageContext.request.contextPath }/room/main.do?rcNo=1">객실</a>
 							<ul class="sub-nav">
 								<li>
 									<a href="${pageContext.request.contextPath }/room/main.do?rcNo=1">스탠다드</a>

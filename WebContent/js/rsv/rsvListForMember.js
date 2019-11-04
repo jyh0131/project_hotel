@@ -36,21 +36,24 @@
 					$(res.list).each(function(i, obj){
 						//첫번째 row
 						$tdNo = $("<td>").append(obj.rNo);
-						$tdRoom = $("<td>").append(obj.room.roomNo + "<br>" 
-												 + obj.room.roomCategory.rcName + " / " 
-												 + obj.room.viewType.vtName + " / "
-												 + obj.room.bedType.btName);
 						$tdDate = $("<td>").append(dateFormat(obj.rIn) + "~" + dateFormat(obj.rOut) + "<br>(" + obj.rStay + "박)");
 						$tdPsn = $("<td>").append("성인: " + obj.rPsnAdt + "명 / 어린이: " + obj.rPsnCdr + "명");
 						$tdPayDate = $("<td>").append(dateFormat(obj.rPayDate));
+						$aRoom = $("<a>");
 						
 						//상태에 따라 버튼 노출여부 결정
 						$tdBtn = $("<td>");
-						if(obj.rState == "예약완료") { /*취소버튼 쫌있다가!*/
-							$tdBtn.append("<a href='#' id='aDel'>예약취소</a>");
+						if(obj.rState == "예약완료") {
+							$tdBtn.append("<a href='#' class='aDel'>예약취소</a>");
 						} else {
-							$tdBtn.append("취소된 예약");
+							$tdBtn.addClass("canceled-rsv").append("취소된 예약");
+							$aRoom.addClass("canceled-rsv");
 						}
+						
+						$aRoom.append(obj.room.roomCategory.rcName + " / " 
+									 + obj.room.viewType.vtName + " / "
+									 + obj.room.bedType.btName);
+						$tdRoom = $("<td>").append($aRoom);
 					
 						$tr = $("<tr>").append($tdNo).append($tdRoom).append($tdDate)
 										.append($tdPsn).append($tdPayDate).append($tdBtn);
@@ -62,7 +65,7 @@
 		});
 		
 		//예약 취소
-		$("a#aDel").click(function(){
+		$("a.aDel").click(function(){
 			var result = confirm("예약을 취소하시겠습니까?");
 			
 			if(result == true) {

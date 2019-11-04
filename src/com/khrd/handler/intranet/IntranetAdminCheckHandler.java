@@ -15,7 +15,7 @@ public class IntranetAdminCheckHandler implements CommandHandler {
 		} else if (request.getMethod().equalsIgnoreCase("post")) {
 			String inCord = request.getParameter("cord");
 			
-			if(inCord.equals("realadmin00")) {
+			if(inCord.equals("realadmin00")) { //내가 임의로 설정한 관리자 인증코드
 				response.sendRedirect(request.getContextPath() + "/intranet/join.do"); //회원가입 페이지로
 				return null;
 				

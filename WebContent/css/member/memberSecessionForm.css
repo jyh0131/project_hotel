@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+div.mem-secession-wrap {
+	width: 45%;
+	padding: 60px 0;
+	margin: 50px auto 100px;
+	background: rgba(250, 236, 197, 0.8);
+}
+form {
+	position: relative;
+}
+div.mem-secession-wrap > h2 {
+	text-align: center;
+	margin: 0 0 20px 0;
+	color: #6D7993;
+	font-weight: normal;
+	letter-spacing: 0.05em;
+}
+div.mem-secession-wrap > p {
+	text-align: center;
+	font-size: 12px;
+	margin: 10px;
+}
+table.mem-secession {
+	width: 70%;
+	margin: 0 auto;
+	border-collapse: collapse;
+}
+table.mem-secession td {
+	padding: 10px;
+	font-size: 14px;
+}
+table.mem-secession p {
+	margin-bottom: 10px;
+}
+table.mem-secession label {
+	float: left;
+	width: 70px;
+	margin-top: 5px;
+	color: #6D7993;
+}
+table.mem-secession input {
+	padding: 5px;
+}
+table.mem-secession > tbody > tr > td.td-btn {
+	padding: 5px 0 15px;
+}
+table.mem-secession > tbody > tr > td.centerAlign > a {
+	margin: 0px 20px;
+	color: #B5C1DB;
+}
+table.mem-secession > tbody > tr > td[colspan='2'] {
+	text-align: center;
+}
+span.error {
+	color: red;
+	font-size: 12px;
+}
+input[type="submit"] {
+	width: 70px;
+	height: 70px;
+	border-radius: 50px 50px;
+	background: rgba(71, 163, 218, 0.8);
+	color: white;
+	border: none;
+	box-shadow: 1px 2px 3px gray;
+}
+
+
+
+

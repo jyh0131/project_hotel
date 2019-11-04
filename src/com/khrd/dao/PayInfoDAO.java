@@ -138,14 +138,17 @@ public class PayInfoDAO {
 		
 		try {
 			String sql = "insert into pay_info "
-						+"values(null, ?, ?, ?, ?, null, null, null, ?, ?)";
+						+"values(null, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, pi.getpCardType());
 			pstmt.setString(2, pi.getpCardNum());
 			pstmt.setString(3, pi.getpValidMonth());
 			pstmt.setString(4, pi.getpValidYear());
-			pstmt.setInt(5, pi.getRsv().getrNo());
-			pstmt.setInt(6, pi.getMem().getmNo());
+			pstmt.setString(5, pi.getpBankName());
+			pstmt.setString(6, pi.getpBankNo());
+			pstmt.setString(7, pi.getpBankSername());
+			pstmt.setInt(8, pi.getRsv().getrNo());
+			pstmt.setInt(9, pi.getMem().getmNo());
 			
 			return pstmt.executeUpdate();
 			

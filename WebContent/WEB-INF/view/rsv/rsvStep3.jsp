@@ -13,7 +13,7 @@
 	<div class="rsv-cpl-top">
 		<p>
 			${rsv.member.mName} 고객님 감사합니다.
-			<a href="#">
+			<a href="#" id="aPrint">
 				인쇄
 			</a>
 		</p>
@@ -52,7 +52,7 @@
 	<div class="rsv-cpl-bottom">
 		<div class="cpl-bottom-content-wrap">
 			<div class="cpl-bottom-content">
-				<h3>PROJECT HOTEL</h3>
+				<h3 style="color: #47a3da;">BLUA LUNDO</h3>
 				<p>날짜/투숙인원</p>
 				<ul>
 					<li>
@@ -154,13 +154,13 @@
 	
 	<div class="btn-area">
 		<a href="${pageContext.request.contextPath}/index.jsp">
-			<span class="btnHome">[메인으로]</span>
+			<span class="btnHome">메인으로</span>
 		</a>
-		<a href="#">
-			<span class="btnMod">[예약리스트]</span>
+		<a href="${pageContext.request.contextPath}/rsvMng/mem/list.do">
+			<span class="btnMyList">나의 예약</span>
 		</a>
 	</div>
-</div>
+</div>		
 
 <% session.removeAttribute("rsv");%>
 

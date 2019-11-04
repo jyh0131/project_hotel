@@ -36,13 +36,25 @@
 	<filter-mapping>
 		<filter-name>LoginCheckFilter</filter-name>
 		<url-pattern>/rsv/rsvStep1.do</url-pattern>
-		<url-pattern>/rsv/findRoom.do</url-pattern>
 		<url-pattern>/rsv/rsvStep2.do</url-pattern>
 		<url-pattern>/rsv/rsvStep3.do</url-pattern>
 		<url-pattern>/rsvMng/mem/list.do</url-pattern>
 		<url-pattern>/rsvMng/mem/detail.do</url-pattern>
+		<url-pattern>/rsvMng/mem/deleteRsv.do</url-pattern>
+		<url-pattern>/qb/list.do</url-pattern>
 	</filter-mapping>
-  
+
+	<filter>
+		<filter-name>LoginCheckFilterForAdmin</filter-name>
+		<filter-class>com.khrd.util.LoginCheckFilterForAdmin</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>LoginCheckFilterForAdmin</filter-name>
+		<url-pattern>/intranet/main.do</url-pattern>
+		<url-pattern>/intranet/member/list.do</url-pattern>
+		<url-pattern>/intranet/rsv/list.do</url-pattern>
+	</filter-mapping>
+    
   
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

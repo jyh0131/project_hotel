@@ -16,15 +16,44 @@ div.rsv-list > div.rsv-state-wrap > select {
 div.rsv-list > table {
 	width: 90%;
 	margin: 0 auto;
-	background: skyblue;
 	border-collapse: collapse;
 	text-align: center;
+	border: 4px solid rgba(71, 163, 218, 0.9);
+}
+th {
+	border-bottom: 3px solid #F5DBBD;
+	letter-spacing: 0.05em;
+	background: rgba(71, 163, 218);
 }
 th, td {
 	padding: 10px;
-	border-top: 1px solid #FFE08C;
-	border-bottom: 1px solid #FFE08C;
+	border-top: 1px solid #F5DBBD;
+	border-bottom: 1px solid #F5DBBD;
+	color: #353535;
 }
-div.rsv-list > table > tbody > tr > td{
+div.rsv-list > table > tbody > tr > td {
 	font-size: 15px;
+}
+div.rsv-list > table > tbody > tr:hover > td {
+	background: rgba(245, 219, 189, 0.4);
+}
+div.rsv-list > table > tbody > tr > td > a {
+	color: #47a3da;
+}
+div.rsv-list > table > tbody > tr > td > a:hover {
+	text-decoration: underline;
+}
+div.rsv-list > table > tbody > tr > td > a.aDel {
+	color: #C9A3B6;
+}
+div.rsv-list > table > tbody > tr > td > a.aDel:hover {
+	font-weight: bold;
+	text-decoration: none;
+}
+div.rsv-list > table > tbody > tr .canceled-rsv {
+	color: #4C4C4C;
+}
+div.rsv-list > table > tbody > tr > td > a.canceled-rsv:hover {
+	font-weight: none;
+	text-decoration: none;
 }

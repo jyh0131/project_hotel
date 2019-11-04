@@ -1,10 +1,9 @@
 @charset "UTF-8";
 
 div.join-info-wrap {
-	width: 50%;
+	width: 48%;
 	margin: 0 auto;
-	padding: 20px 0;
-	background: pink;
+	padding: 15px 0 70px;
 }
 label {
 	width: 120px;
@@ -12,28 +11,49 @@ label {
 }
 span.error {
 	color: red;
-	font-size: 9px;
+	font-size: 11px;
 	display: none;
+	padding-left: 120px;
+}
+span.avCon {
+	color: #9B7CC9;
+	font-size: 13px;
+	display: none;
+}
+span.formRule {
+	font-size: 11px;
+	color: #8C8C8C;	
+	padding-left: 120px;
 }
 div.join-info-wrap p {
 	margin: 20px;
 	font-size: 14px;
 }
-div.join-info-wrap input {
+div.join-info-wrap input,
+div.join-info-wrap select {
 	padding: 3px;
 }
 div.join-info-form {
 	margin: 30px 0;
 }
 div.join-info-form > h3 {
-	background: lightgreen;
+	background: #47a3da;
+	color: white;
 	padding: 15px;
 	font-size: 1.3em;
 	font-weight: normal;
 	letter-spacing: 0.15em;
 }
+div.join-info-form input[maxlength="4"] {
+	width: 45px;
+}
 div#form-btn {
 	padding-left: 20px;
+	text-align: center;
+}
+div#form-btn > input {
+	padding: 8px 15px;
+	margin: 10px 10px;
 }
 
 

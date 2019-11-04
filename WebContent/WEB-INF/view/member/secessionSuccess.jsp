@@ -6,4 +6,10 @@
 	탈퇴 완료 !
 </section>
 
+<script>
+	setTimeout(function() {
+		window.location = "${pageContext.request.contextPath}/main.do";
+		}, 3000);
+</script>
+
 <%@ include file="/WEB-INF/view/include/footer.jsp"%>

@@ -6,6 +6,16 @@
 			  return num.toString().replace(regexp, ',');
 		}
 		
+		//초기화 선택시
+		$("#aReset").click(function(){
+			var rs = confirm("예약을 취소하고 메인으로 돌아시겠습니까?");
+			if(rs == true) {
+				return true;
+			} else {
+				return false;
+			}
+		});
+		
 		//옵션 선택시 총 금액에 반영되게
 		var psn = $("input.ckPerson-area").val().trim();
 		var psnAdt = psn.substr(psn.indexOf("명")-1, 1);
@@ -68,14 +78,117 @@
 		});
 		
 		
-
-		
-		
-		
-		
-		
-		
-		
+		//submit 전 유효성 검사
+		$("form").submit(function(){
+			//이름
+			var nameReg = /^[가-힣]{2,5}$/;
+			var name = $("input[name='nameKor']").val();
+			
+			if(name == "") {
+				alert("이름을 입력하세요.");
+				return false;
+			} else if(nameReg.test(name) == false) {
+				alert("입력된 이름이 형식에 맞지 않습니다. 다시 확인 바랍니다.");
+				return false;
+			}
+			
+			//이메일
+			var mailReg = /^[a-z0-9]([-_.]?[0-9a-z])*@[0-9a-z]([-_.]?[0-9a-z])*.[a-z]{2,3}$/i;
+			var mail = $("input[name='mail']").val();
+			
+			if(mail == "") {
+				alert("메일을 입력하세요.");
+				return false;
+			} else if(mailReg.test(mail) == false){ 
+				alert("입력된 메일주소가 형식에 맞지 않습니다. 다시 확인 바랍니다.");
+				return false;
+			}
+			
+			//휴대전화
+			var telSel = $("input[name='tel']").prev().val();
+			var telReg;
+			
+			if(telSel == "휴대전화") {
+				telReg = /^(?:(010\d{4})|(01[1|6|7|8|9]\d{3,4}))\d{4}$/;
+			} else if(telSel == "자택전화") {
+				telReg = /^0(2|3[1-3]|4[1-4]|5[1-5]|6[1-4])-?\d{3,4}-?\d{4}$/;
+			}
+			
+			var tel = $("input[name='tel']").val();
+			if(tel == "") {
+				alert("전화번호를 입력하세요.");
+				return false;
+			} else if(telReg.test(tel) == false){
+				alert("입력된 전화번호가 형식에 맞지 않습니다. 다시 확인 바랍니다.");
+				return false;
+			}
+			
+			//카드종류
+			var card = $("select[name='cardType']").val();
+			if(card == "선택") {
+				alert("카드종류를 선택해주세요.");
+				return false;
+			}
+			
+			//카드번호
+			var cardReg = /^[0-9]{4}$/;
+			var cardNum1 = $("input[name='cardNum1']").val();
+			var cardNum2 = $("input[name='cardNum2']").val();
+			var cardNum3 = $("input[name='cardNum3']").val();
+			var cardNum4 = $("input[name='cardNum4']").val();
+			
+			if(cardNum1 == "" || cardNum2 == "" || cardNum3 == "" || cardNum4 == "") {
+				alert("카드번호를 입력해주세요.");
+				return false;
+			}
+			
+			if(cardReg.test(cardNum1) == false || cardReg.test(cardNum2) == false
+			|| cardReg.test(cardNum3) == false || cardReg.test(cardNum4) == false) {
+				alert("입력된 카드번호가 형식에 맞지 않습니다. 다시 확인 바랍니다.");
+				return false;
+			}
+			
+			//카드 유효기간
+			var selMonth = $("select[name='cardNumMonth']").val();
+			var selYear = $("select[name='cardNumYear']").val();
+			
+			if(selMonth == "월") {
+				alert("카드 유효기간을 입력해주세요.");
+				return false;
+			} else if(selYear == "년") {
+				alert("카드 유효기간을 입력해주세요.");
+				return false;
+			}
+			
+			//환불은행명
+			var selBank = $("select[name='refundBank']").val();
+			if(selBank == "은행명") {
+				alert("은행을 선택해주세요.");
+				return false;
+			}
+			
+			//환불 계좌번호
+			var bankNumReg = /^[0-9]{16}$/;
+			var bankNum = $("input[name='refundNum']").val();
+			if(bankNum == "") {
+				alert("환불 계좌번호를 입력해주세요.");
+				return false;
+			} else if(bankNumReg.test(bankNum) == false) {
+				alert("입력된 계좌번호가 형식에 맞지 않습니다. 다시 확인 바랍니다.")
+				return false;
+			}
+			
+			//환불 예금주
+			var rfName = $("input[name='refundName']").val();
+			if(name == "") { 
+				alert("환불 예금주명을 입력하세요.");
+				return false;
+			} else if(nameReg.test(rfName) == false) {
+				alert("입력된 예금주명이 형식에 맞지 않습니다. 다시 확인 바랍니다.");
+				return false;
+			}
+			
+		});
 		
 		
 	})

@@ -84,11 +84,9 @@ public class RsvStep1Handler implements CommandHandler {
 				String rc = request.getParameter("roomCate");
 				String bt = request.getParameter("bedType");
 				String vt = request.getParameter("viewType");
-				System.out.println("rc: " + rc + "/ bt: " + bt + "/ vt: " + vt);
 				
 				RoomDAO rDao = RoomDAO.getInstance();
 				List<Integer> list = dao.selectEmptyRoomByCondition(conn, rc, bt, vt);
-				System.out.println(list);
 				Room r = rDao.selectedByRoomNo(conn, list.get(0));
 				
 				//ckIn ckOut 날짜 받기

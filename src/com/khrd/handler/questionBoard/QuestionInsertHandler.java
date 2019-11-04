@@ -1,5 +1,6 @@
 package com.khrd.handler.questionBoard;
 
+import java.io.File;
 import java.sql.Connection;
 
 import javax.servlet.http.HttpServletRequest;

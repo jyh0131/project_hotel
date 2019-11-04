@@ -7,9 +7,7 @@
 
 <!-- 예약 2단계 -->
 <div class="rsv-step-wrap">
-	<span> 
-		<!-- background로 step 넣기 -->
-	</span>
+	<!-- background로 step 넣기 -->
 </div>
 
 <form action="rsvStep2.do" method="post">	
@@ -96,7 +94,7 @@
 							<tr>
 								<td><span class="required_field">*</span>성명<br><small>(국문)</small></td>
 								<td>
-									<input type="text" name="nameKor" placeholder="이름을 입력하세요" value="${rsv.member.mName}">
+									<input type="text" name="nameKor" placeholder="이름을 공백없이 입력하세요" value="${rsv.member.mName}">
 								</td>
 							</tr>
 						
@@ -110,11 +108,17 @@
 							<tr>
 								<td><span class="required_field">*</span>연락처</td>
 								<td>
-									<select>
-										<option selected="selected">휴대전화</option>
-										<option>자택전화</option>
-									</select>
-									<input type="tel" name="tel" placeholder="ex) 01012345678" value="${rsv.member.mPhone}">
+								<c:set var="p" value="${fn:split(rsv.member.mPhone, '-')}"></c:set>
+								<select name="tel1">
+									<option ${p[0] == "010"?'selected="selected"':''}>010</option>
+									<option ${p[0] == "011"?'selected="selected"':''}>011</option>
+									<option ${p[0] == "016"?'selected="selected"':''}>016</option>
+									<option ${p[0] == "017"?'selected="selected"':''}>017</option>
+									<option ${p[0] == "018"?'selected="selected"':''}>018</option>
+									<option ${p[0] == "019"?'selected="selected"':''}>019</option>
+								</select>
+								<input type="tel" name="tel2" value="${p[1]}" maxlength="4">
+								<input type="tel" name="tel3" value="${p[2]}" maxlength="4">	
 								</td>
 							</tr>
 						</table>
@@ -150,10 +154,10 @@
 							<tr>
 								<td><span class="required_field">*</span>카드번호</td>
 								<td>
-									<input type="text" name="cardNum1" class="cardNum">
-									<input type="password" name="cardNum2" class="cardNum">
-									<input type="password" name="cardNum3" class="cardNum">
-									<input type="text" name="cardNum4" class="cardNum">
+									<input type="text" name="cardNum1" class="cardNum" maxlength="4">
+									<input type="password" name="cardNum2" class="cardNum" maxlength="4">
+									<input type="password" name="cardNum3" class="cardNum" maxlength="4">
+									<input type="text" name="cardNum4" class="cardNum" maxlength="4">
 								</td>
 							</tr>
 
@@ -177,6 +181,8 @@
 										<option>2028</option>
 										<option>2027</option>
 										<option>2026</option>
+										<option>2025</option>
+										<option>2024</option>
 									</select>
 								</td>
 							</tr>
@@ -184,7 +190,7 @@
 								<td colspan="2">
 									<p class="cau">
 										※ 신용카드 정보는 고객님의 투숙에 의한 개런티 외에는 어떤 목적으로도 사용되지 않으며, 체크카드 및 일부 신용 카드의 경우 사용이 제한될 수 있습니다. 
-										<span class="required_field"><u>온라인 예약완료 시 바로 결제가 진행됩니다.</u></span> 관련 문의는 예약실로 전화 부탁드립니다.
+										<br></b><span class="required_field"><u>온라인 예약완료 시 바로 결제가 진행됩니다.</u></span> 관련 문의는 예약실로 전화 부탁드립니다.
 									</p>
 								</td>
 							</tr>
@@ -204,6 +210,7 @@
 							<td><span class="required_field">*</span>환불 은행명</td>
 							<td>
 								<select name="refundBank">
+									<option>은행명</option>
 									<option>국민은행</option>
 									<option>기업은행</option>
 									<option>농협은행</option>
@@ -220,7 +227,7 @@
 						<tr>
 							<td><span class="required_field">*</span>환불 계좌번호</td>
 							<td>
-								<input type="text" name="refundNum" placeholder="-없이 숫자만 입력해주세요">
+								<input type="text" name="refundNum" placeholder="-없이 숫자만 입력해주세요" maxlength="16">
 							</td>
 						</tr>
 						<tr>
@@ -267,9 +274,10 @@
 								
 				<!-- 버튼 -->
 				<div class="btn-area">
-					<span class="btnBack"></span>
-					<input type="submit" value="">
-					<span class="btnRsv"></span>
+					<span class="btnBack">
+						◀ STEP1
+					</span>
+					<input type="submit" value="예약">
 				</div>
 			</div>
 		</div>

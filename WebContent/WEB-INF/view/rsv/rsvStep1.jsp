@@ -9,9 +9,7 @@
 <script src="${pageContext.request.contextPath}/js/rsv/rsvStep1.js"></script>
 
 <div class="rsv-step-wrap">
-	<span> 
-		<!-- background로 step 넣기 -->
-	</span>
+	<!-- background로 step 넣기 -->
 </div>
 
 <form action="rsvStep1.do" method="post">

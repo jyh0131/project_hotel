@@ -1,0 +1,193 @@
+(function(win, $){
+	$(function(){		
+		
+		//아이디 중복체크
+		$("#btnIdCk").click(function(){
+			//유효성 체크
+			var idReg = /^[a-z]{1}[0-9a-z-_]{5,14}$/;
+			var id = $("input[name='id']").val();
+			
+			if(idReg.test(id) == false) {
+				$("input[name='id']").nextAll(".formRule").css("display", "none");
+				$("input[name='id']").nextAll(".error").css("display", "inline");
+				return;
+			}
+				
+			$.ajax({
+				url:"dupCheck.do",
+				type:"get",
+				data:{"id":$("input[name='id']").val()},
+				dataType:"json",
+				success:function(res){
+					console.log(res);
+					
+					var result = res.result;
+					
+					if(result == "available") {
+						$("#btnIdCk").css("display", "none");
+						$("#btnIdCk").next(".avCon").css("display", "inline");
+					} else {
+						alert("이미 사용하고 있는 아이디입니다. 다른 아이디를 입력해주세요.");
+						$("input[name='id']").val("");
+					}
+				}
+			});
+		});
+		//아이디 에러 리셋
+		$("input[name='id']").focus(function(){
+			$(this).nextAll(".formRule").css("display", "inline");
+			$(this).nextAll(".error").css("display", "none");
+			$(this).nextAll(".avCon").css("display", "none");
+			$(this).nextAll("#btnIdCk").css("display", "inline");
+		});
+		
+		//비밀번호 입력시
+		$("input[name='password']").blur(function(){
+			var pwReg = /^[0-9a-z!@#$%^&*-_]{8,20}$/i;
+			var pw = $("input[name='password']").val();
+			
+			if(pwReg.test(pw) == false) {
+				$(this).nextAll(".formRule").css("display", "none");
+				$(this).nextAll(".error").css("display", "inline");
+			}
+		});
+		//비밀번호 에러 리셋
+		$("input[name='password']").focus(function(){
+			$(this).nextAll(".formRule").css("display", "inline");
+			$(this).nextAll(".error").css("display", "none");
+		});
+		
+		//비밀번호 확인 입력시
+		$("input[name='confirmPassword']").blur(function(){
+			var pw = $("input[name='password']").val();
+			var cPw = $("input[name='confirmPassword']").val();
+			
+			if(pw == cPw) {
+				$(this).nextAll(".error").css("display", "none");
+				$(this).nextAll(".avCon").css("display", "inline");
+			} else {
+				$(this).nextAll(".avCon").css("display", "none");
+				$(this).nextAll(".error").css("display", "inline").css("padding", "0px");
+			}
+		});
+		
+		//이름 입력시
+		$("input[name='name']").blur(function(){
+			var nameReg = /^[가-힣]{2,5}$/;
+			var name = $(this).val();
+			
+			if(nameReg.test(name) == false) {
+				$(this).nextAll(".error").css("display", "inline").css("padding","0px");
+			}
+		});
+		//이름 에러 리셋
+		$("input[name='name']").focus(function(){
+			$(this).nextAll(".error").css("display", "none");
+		})
+		
+		//휴대전화 입력시
+		$("input[name='phone3']").blur(function(){
+			var phoneReg2 = /^[0-9]{3,4}$/;
+			var phoneReg3 = /^[0-9]{4}$/;
+			var phone2 = $("input[name='phone2']").val();
+			var phone3 = $("input[name='phone3']").val();
+			
+			if(phoneReg2.test(phone2) == false || phoneReg3.test(phone3) == false) {
+				$(this).nextAll(".error").css("display", "inline");
+			}
+		});
+		//휴대전화 에러 리셋
+		$("input[name='phone2']").focus(function(){
+			$(this).nextAll(".error").css("display", "none");
+		});
+		$("input[name='phone3']").focus(function(){
+			$(this).nextAll(".error").css("display", "none");
+		});
+		
+		//이메일 중복체크
+		$("#btnMailCk").click(function(){
+			//유효성 검사
+			var mailReg = /^[a-z0-9]([-_.]?[0-9a-z])*@[0-9a-z]([-_.]?[0-9a-z])*.[a-z]{2,3}$/i;
+			var mail = $("input[name='mail']").val();
+			
+			if(mailReg.test(mail) == false) {
+				$("input[name='mail']").nextAll(".error").css("display", "inline");
+				return;
+			}
+			
+			$.ajax({
+				url:"dupCheck.do",
+				type:"post",
+				data:{"mail":$("input[name='mail']").val()},
+				dataType:"json",
+				success:function(res){
+					console.log(res);
+					
+					var result = res.result;
+					
+					if(result == "available") {
+						$("#btnMailCk").css("display", "none");
+						$("#btnMailCk").next(".avCon").css("display", "inline");
+					} else {
+						alert("이미 사용하고 있는 메일주소입니다. 다른 메일주소를 입력해주세요.");
+						$("input[name='mail']").val("");
+					}
+				}
+			});
+		});
+		//이메일 에러 리셋
+		$("input[name='mail']").focus(function(){
+			$(this).nextAll(".error").css("display", "none");
+		});
+		
+		
+		
+		
+		
+		//submit 전 유효성 검사
+		$("form").submit(function(){
+			//에러가 있으면 submit 진행 X -> 작동안됨.고민해보자
+			if($(this).find(".error").css("display") != "none"){
+				alert("형식에 맞지않는 입력이 존재합니다. 수정 바랍니다.");
+				return false;
+			}
+			
+			//아이디
+			var id = $("input[name='id']").val();
+			
+			if(id == "") {
+				alert("아이디를 입력하세요");
+				return false;
+			}
+			
+			//이메일
+			var mail = $("input[name='mail']").val();
+			
+			if(mail == "") {
+				alert("메일을 입력하세요.");
+				return false;
+			}
+			
+			//휴대전화
+			var phone = $("input[name='phone']").val();
+			if(phone == "") {
+				alert("전화번호를 입력하세요.");
+				return false;
+			}
+			
+			//자택전화
+			var telReg2 = /^[0-9]{3,4}$/;
+			var telReg3 = /^[0-9]{4}$/;
+			var tel2 = $("input[name='tel2']").val();
+			var tel3 = $("input[name='tel3']").val();
+			if(telReg2.test(tel2) == false || telReg3.test(tel3) == false) {
+				alert("형식에 맞지않는 자택번호입니다. 확인 바랍니다.");
+				return false;
+			}
+			
+			
+		});
+		
+		
+	})
+})(window, jQuery);

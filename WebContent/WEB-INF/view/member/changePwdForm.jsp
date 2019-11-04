@@ -18,11 +18,10 @@
 		})
 	})
 </script>
-<section>
+
+
 	<form action="change.do" method="post">
-		<fieldset>
-			<legend>비밀번호 변경</legend>
-			<input type="hidden" name="id" value="${Auth }">
+		<div class="change-pwd">
 				<p>
 					<label>현재 암호</label>
 					<input type="password" name="password">
@@ -43,8 +42,9 @@
 				</p>
 				<p>
 					<input type="submit" value="암호 변경">
-				</p>	
-		</fieldset>
+				</p>
+		</div>	
 	</form>
-</section>
+	
+	
 <%@ include file="/WEB-INF/view/include/footer.jsp"%>

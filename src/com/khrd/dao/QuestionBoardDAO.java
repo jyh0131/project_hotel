@@ -127,7 +127,7 @@ public class QuestionBoardDAO {
 			pstmt.setString(5, qb.getQbPhone());
 			pstmt.setString(6, qb.getQbTel());
 			pstmt.setString(7, qb.getQbPath());
-			pstmt.setInt(8, new Member().getmNo());
+			pstmt.setInt(8, qb.getMember().getmNo());
 
 			return pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -162,10 +162,10 @@ public class QuestionBoardDAO {
 		ResultSet rs = null;
 		
 		try {
-			String sql = "select * from question_board order by qb_no desc";
+			String sql = "select * from question_board qb join member m on qb.m_no = m.m_no order by qb.qb_no desc";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			List<QuestionBoard> list = new ArrayList<QuestionBoard>();
+			List<QuestionBoard> list = new ArrayList<>();
 			while(rs.next()) {
 				QuestionBoard qb = new QuestionBoard(rs.getInt("qb_no"), // 문의번호
 													 rs.getString("qb_title"), // 제목
@@ -189,5 +189,119 @@ public class QuestionBoardDAO {
 		}
 		return null;
 	}//selectBoardList
-
+	
+	public QuestionBoard selectByQbNo(Connection conn, int qbNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select * from question_board qb \r\n"
+						+ "join question_content qc on qb.qb_no = qc.qb_no \r\n"
+						+ "join member m on qb.m_no = m.m_no \r\n"
+						+ "where qb.qb_no = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, qbNo);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				QuestionBoard qb = new QuestionBoard(rs.getInt("qb_no"), 
+						                             rs.getString("qb_title"),
+						                             rs.getString("qb_name"), 
+						                             rs.getString("qb_email"), 
+						                             rs.getString("qb_category"), 
+						                             rs.getString("qb_phone"), 
+						                             rs.getString("qb_tel"), 
+						                             rs.getTimestamp("qb_date"), 
+						                             rs.getString("qb_path"), 
+						                             memConstructor(rs), 
+						                             rs.getString("qc_content"));
+				return qb;
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+		return null;
+	}//selectByQbNo
+	
+	public int deleteArticle(Connection conn, int qbNo) {
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "delete from question_board where qb_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, qbNo);
+			
+			return pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(pstmt);
+		}
+		
+		return -1;
+	}//deleteArticle
+	
+	public int deleteContent(Connection conn, int qbNo) {
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "delete from question_content where qb_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, qbNo);
+			
+			return pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(pstmt);
+		}
+		
+		return -1;
+	}//deleteContent
+	
+	public int updateArticle(Connection conn, QuestionBoard qb) {
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "update question_board "
+					+ "set qb_title=?, qb_category = ?, qb_path = ? "
+					+ "where qb_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, qb.getQbTitle());
+			pstmt.setString(2, qb.getQbCategory());
+			pstmt.setString(3, qb.getQbPath());
+			pstmt.setInt(4, qb.getQbNo());
+			
+			return pstmt.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(pstmt);
+		}
+		return -1;
+	}//updateArticle
+	
+	public int updateContent(Connection conn, QuestionBoard qb) {
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "update question_content set qc_content=? where qb_no=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, qb.getQcContent());
+			pstmt.setInt(2, qb.getQbNo());
+			
+			return pstmt.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(pstmt);
+		}
+		return -1;
+	}//updateContent
 }

@@ -23,7 +23,7 @@ public class QuestionListHandler implements CommandHandler {
 			QuestionBoardDAO dao = QuestionBoardDAO.getInstance();
 			List<QuestionBoard> list = dao.selectBoardList(conn);
 			request.setAttribute("list", list);
-			
+
 			return "/WEB-INF/view/question_board/qbList.jsp";
 			
 		}catch (Exception e) {

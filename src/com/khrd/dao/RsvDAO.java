@@ -339,7 +339,6 @@ public class RsvDAO {
 				List<Integer> list = new ArrayList<>();
 				
 				while(rs.next()) {
-					System.out.println(rs.getInt(1));
 					list.add(new Integer(rs.getInt(1)));
 				}
 				
@@ -568,6 +567,7 @@ public class RsvDAO {
 			}
 			
 		} finally {
+			JDBCUtil.close(rs);
 			JDBCUtil.close(pstmt);
 		}
 	

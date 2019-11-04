@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+div.myPage-wrap {
+	width: 100%;
+	overflow: hidden;
+}
+div.myPage-wrap > ul {
+	width: 100%;
+	margin: 0 auto;
+}
+div.myPage-wrap > ul > li {
+	float: left;
+	width: 200px;
+	height: 200px;
+	background: pink;
+	text-align: center;
+	margin: 15px;
+	border-radius: 100px;
+	margin: 86px;
+}
+div.myPage-wrap > ul > li:nth-child(1),
+div.myPage-wrap > ul > li:nth-child(3) {
+	background: #faecc5;
+}
+div.myPage-wrap > ul > li:nth-child(2) {
+	background: #47a3da;
+}
+div.myPage-wrap > ul > li > a {
+	color: #353535;
+	display: block;
+}
+div.myPage-wrap > ul > li > a > span {
+	display: block;
+}
+span.page-title {
+	border-bottom: 3px dashed #EDC7DA;
+	padding-top: 50px;
+	padding-bottom: 15px;
+	font-size: 20px;
+	letter-spacing: 0.05em;
+}
+span.page-info {
+	font-size: 14px;
+	padding-top: 20px;
+}
+
+
+
