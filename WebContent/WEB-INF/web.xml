@@ -68,6 +68,8 @@
 		<url-pattern>/picture/delete.do</url-pattern>
 		<url-pattern>/picture/update.do</url-pattern>
 		<url-pattern>/picture/select.do</url-pattern>
+		<url-pattern>/notice/insert.do</url-pattern>
+		<url-pattern>/notice/update.do</url-pattern>
 	</filter-mapping>
     
     <!-- error-page -->
