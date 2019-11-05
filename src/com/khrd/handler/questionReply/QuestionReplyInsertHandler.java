@@ -29,7 +29,7 @@ public class QuestionReplyInsertHandler implements CommandHandler {
 		try {
 			conn = ConnectionProvider.getConnection();
 			QuestionReplyDAO dao = QuestionReplyDAO.getInstance();
-			QuestionBoard qb = new QuestionBoard(qbNo, null, null, null, null, null, null, null, null, null, null);
+			QuestionBoard qb = new QuestionBoard(qbNo, null, null, null, 0, null, null, null, null, null, null);
 			QuestionReply qr = new QuestionReply(0, qrContent, null, qb);
 
 			int result = dao.insert(conn, qr);

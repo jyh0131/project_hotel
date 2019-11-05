@@ -68,6 +68,7 @@
 		<url-pattern>/picture/delete.do</url-pattern>
 		<url-pattern>/picture/update.do</url-pattern>
 		<url-pattern>/picture/select.do</url-pattern>
+		<url-pattern>/qr/list.do</url-pattern>
 	</filter-mapping>
     
     <!-- error-page -->

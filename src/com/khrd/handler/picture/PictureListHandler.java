@@ -81,7 +81,6 @@ public class PictureListHandler implements CommandHandler {
 				out.print(json);
 				out.flush();
 				
-				return null; 
 			}catch (Exception e) {
 				e.printStackTrace();
 			}finally {

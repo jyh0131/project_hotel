@@ -7,7 +7,7 @@ public class QuestionBoard {
 	private String qbTitle; // 제목 
 	private String qbName; // 성명
 	private String qbEmail; // 이메일
-	private String qbCategory; // 문의분류
+	private int qbCategory; // 문의분류
 	private String qbPhone; // 휴대전화
 	private String qbTel; // 자택전화
 	private Timestamp qbDate; // 문의날짜
@@ -20,7 +20,7 @@ public class QuestionBoard {
 		// TODO Auto-generated constructor stub
 	}
 
-	public QuestionBoard(int qbNo, String qbTitle, String qbName, String qbEmail, String qbCategory, String qbPhone,
+	public QuestionBoard(int qbNo, String qbTitle, String qbName, String qbEmail, int qbCategory, String qbPhone,
 			String qbTel, Timestamp qbDate, String qbPath, Member member, String qcContent) {
 		super();
 		this.qbNo = qbNo;
@@ -68,11 +68,11 @@ public class QuestionBoard {
 		this.qbEmail = qbEmail;
 	}
 
-	public String getQbCategory() {
+	public int getQbCategory() {
 		return qbCategory;
 	}
 
-	public void setQbCategory(String qbCategory) {
+	public void setQbCategory(int qbCategory) {
 		this.qbCategory = qbCategory;
 	}
 

@@ -30,7 +30,7 @@ public class QuestionReplyUpdateHandler implements CommandHandler {
 			try {
 				conn = ConnectionProvider.getConnection();
 				QuestionReplyDAO dao = QuestionReplyDAO.getInstance();
-				QuestionBoard qb = new QuestionBoard(qbNo, null, null, null, null, null, null, null, null, null, null);
+				QuestionBoard qb = new QuestionBoard(qbNo, null, null, null, 0, null, null, null, null, null, null);
 				QuestionReply qr = new QuestionReply(qrNo, qrContent, null, qb);
 
 				QuestionReply qrResult = dao.selectByQrNo(conn, qrNo);
@@ -61,7 +61,7 @@ public class QuestionReplyUpdateHandler implements CommandHandler {
 			try {
 				conn = ConnectionProvider.getConnection();
 				QuestionReplyDAO dao = QuestionReplyDAO.getInstance();
-				QuestionBoard qb = new QuestionBoard(qbNo, null, null, null, null, null, null, null, null, null, null);
+				QuestionBoard qb = new QuestionBoard(qbNo, null, null, null, 0, null, null, null, null, null, null);
 				QuestionReply qr = new QuestionReply(qrNo, newContent, null, qb);
 
 				dao.update(conn, qr);

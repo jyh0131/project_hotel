@@ -24,11 +24,11 @@
 				<th>문의분류<span>*</span></th>
 				<td>
 					<select name="qb_category">
-						<option value=0 ${qb.qbCategory=='0'?'selected="selected"':'' }>결제 문의</option>
-						<option value=1 ${qb.qbCategory=='1'?'selected="selected"':'' }>예약 문의</option>
-						<option value=2 ${qb.qbCategory=='2'?'selected="selected"':'' }>객실 문의</option>
-						<option value=3 ${qb.qbCategory=='3'?'selected="selected"':'' }>시설 및 옵션 문의</option>
-						<option value=4 ${qb.qbCategory=='4'?'selected="selected"':'' }>기타 문의</option>
+						<option value=1 ${qb.qbCategory==1?'selected="selected"':'' }>결제 문의</option>
+						<option value=2 ${qb.qbCategory==2?'selected="selected"':'' }>예약 문의</option>
+						<option value=3 ${qb.qbCategory==3?'selected="selected"':'' }>객실 문의</option>
+						<option value=4 ${qb.qbCategory==4?'selected="selected"':'' }>시설 및 옵션 문의</option>
+						<option value=5 ${qb.qbCategory==5?'selected="selected"':'' }>기타 문의</option>
 					</select>
 				</td>
 			</tr>

@@ -40,7 +40,7 @@
 		text-align: center;
 		color:black;
 		background:rgba(250, 236, 197, 0.8);
-		border:1px solid rgba(250, 236, 197, 0.8);
+		border:1px solid #FFE5CA;
 	}
 	.btnList:hover{
 		color:rgba(71, 163, 218, 0.8);
@@ -146,8 +146,15 @@
 			})//ajax
 			
 		})//qr_btn_update
+		
+		
+		// 첨부파일 없을 경우
+		var src = $(".imgFile").attr("src");
+		if(src == "/project_hotel/upload/"){
+			$(".imgFile").parent().text("첨부파일 없음");
+		}
 	      
-	})
+	})//ready
 </script>
 <div id="detailDiv">
 	<form action="insert.do" method="post">
@@ -164,19 +171,19 @@
 			<tr>
 				<th>문의분류</th>
 				<td>
-					<c:if test="${qb.qbCategory == '0'}">
+					<c:if test="${qb.qbCategory == 1}">
 						결제 문의
 					</c:if>
-					<c:if test="${qb.qbCategory == '1'}">
+					<c:if test="${qb.qbCategory == 2}">
 						예약 문의
 					</c:if>
-					<c:if test="${qb.qbCategory == '2'}">
+					<c:if test="${qb.qbCategory == 3}">
 						객실 문의
 					</c:if>
-					<c:if test="${qb.qbCategory == '3'}">
+					<c:if test="${qb.qbCategory == 4}">
 						시설 및 옵션 문의
 					</c:if>
-					<c:if test="${qb.qbCategory == '4'}">
+					<c:if test="${qb.qbCategory == 5}">
 						기타 문의
 					</c:if>	
 				</td>
@@ -190,7 +197,9 @@
 			</tr>
 			<tr>
 				<th>첨부파일</th>
-				<td colspan="3"><img src="${pageContext.request.contextPath }/upload/${qb.qbPath}"></td>
+				<td colspan="3">
+					<img src="${pageContext.request.contextPath }/upload/${qb.qbPath}" class="imgFile">
+				</td>
 			</tr>
 		</table>
 		
