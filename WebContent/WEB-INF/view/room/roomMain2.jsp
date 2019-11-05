@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<%@ include file="/WEB-INF/view/include/header.jsp"%>
-<link href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <%@ include file="/WEB-INF/view/include/header.jsp"%>
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath }/css/flexslider.css" type="text/css">
+<script src="${pageContext.request.contextPath }/js/jquery.flexslider-min.js"></script> --%>
+<script src="http://stephenpontes.com/misc/permanent/jquery.flexslider-min.js" type="text/javascript"></script>
 <style>
 	/* div#rm_wrap {
 		width: 1200px; 
@@ -169,22 +169,21 @@
 </style>
 
 <script>
-	$(function(){
-		/* $('.bxslider').bxSlider({
-		    mode: 'fade',
-		  	captions: true,
-		    slideWidth: 800
-		}); */
-		 $('.bxslider').bxSlider({
-	          auto: true,
-	          autoControls: true,
-	          stopAutoOnClick: true,
-	          pager: true,
-	          adaptiveHeight: true,
-	          slideWidth: "1000px"
-	      });
-
-	    });
+	//Can also be used with $(document).ready()
+	$(window).load(function() {
+		$(".flexslider").flexslider({
+			animation: "slide",
+	    	controlNav: "thumbnails",
+	  	});   
+		
+		$(".flex-prev").html("");
+	  	$(".flex-next").html("");
+	  	
+	  	$(".flex-control-thumbs img").addClass("sImg");
+	  	var smallImgObj = document.getElementsByClassName("sImg");
+	  	var size = (100/smallImgObj.length) - 0.6;
+	  	$(".flex-control-thumbs img").css("width", size + "%");
+	});
 </script>
 <div id="rMain-wrap">
 	<div id="rm_left_menu">
@@ -207,12 +206,19 @@
 		</div><!-- #rm_roomTitle -->
 		
 		<!-- -------------- 슬라이더 이미지 --------------------  -->
-		<div class="bxslider">
-			<c:forEach var="i" items="${rcNoList}">
-				<c:if test="${i.picCategory == 0 }"> 
-					<div><img src="${pageContext.request.contextPath}/upload/${i.picFile }"></div>
-				</c:if> 
-			</c:forEach>
+		<!-- Place somewhere in the <body> of your page -->
+		<div class="flexslider">
+			<ul class="slides">
+				<c:forEach var="i" items="${rcNoList}">
+					<c:if test="${i.picCategory == 1 }"> <!-- 작은 이미지 -->
+						<li data-thumb="${pageContext.request.contextPath }/upload/${i.picFile }">
+					</c:if> 
+					<c:if test="${i.picCategory == 0 }"> <!-- 큰 이미지 -->	
+							<img src="${pageContext.request.contextPath }/upload/${i.picFile }">
+						</li>
+					</c:if>
+				</c:forEach>
+			</ul>
 		</div>
 		
 		<div id="rm_contentBox">

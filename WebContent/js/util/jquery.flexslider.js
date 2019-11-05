@@ -959,6 +959,8 @@
         }
         slider.newSlides = $(slider.vars.selector, slider);
 
+        
+        
         sliderOffset = (reverse) ? slider.count - 1 - slider.currentSlide + slider.cloneOffset : slider.currentSlide + slider.cloneOffset;
         // VERTICAL:
         if (vertical && !carousel) {
