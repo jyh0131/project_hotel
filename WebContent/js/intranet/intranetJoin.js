@@ -143,17 +143,37 @@
 		
 		//submit 전 유효성 검사
 		$("form").submit(function(){
-			//에러가 있으면 submit 진행 X -> 작동안됨.고민해보자
-			if($(this).find(".error").css("display") != "none"){
-				alert("형식에 맞지않는 입력이 존재합니다. 수정 바랍니다.");
-				return false;
-			}
-			
 			//아이디
 			var id = $("input[name='id']").val();
 			
 			if(id == "") {
 				alert("아이디를 입력하세요");
+				return false;
+			}
+			
+			//비밀번호
+			var pw = $("input[name='password']").val();
+			var pw2 = $("input[name='confirmPassword']").val();
+			
+			if(pw == "" || pw2 == "") {
+				alert("비밀번호를 입력하세요.");
+				return false;
+			}
+			
+			//성명
+			var name = $("input[name='name']").val();
+			
+			if(name == "") {
+				alert("이름을 입력하세요.");
+				return false;
+			}
+			
+			
+			//휴대전화
+			var phone2 = $("input[name='phone2']").val();
+			var phone3 = $("input[name='phone3']").val();
+			if(phone2 == "" || phone3 == "") {
+				alert("전화번호 입력란이 비었습니다. 입력 바랍니다.");
 				return false;
 			}
 			
@@ -165,10 +185,29 @@
 				return false;
 			}
 			
-			//휴대전화
-			var phone = $("input[name='phone']").val();
-			if(phone == "") {
-				alert("전화번호를 입력하세요.");
+			//에러 존재시 submit 막기
+			var er = 0;
+			$(".error").each(function(i, obj){
+				if($(obj).css("display") != "none") {
+					er++;
+				}
+			})
+			
+			if(er > 0) {
+				alert("잘못된 입력이 존재합니다. 수정 바랍니다.");
+				return false;
+			}
+			
+			
+			//아이디 중복확인
+			if($("#btnIdCk").css("display") != "none") {
+				alert("아이디 중복체크가 팔요합니다.");
+				return false;
+			}
+
+			//이메일 중복확인
+			if($("#btnMailCk").css("display") != "none") {
+				alert("이메일 중복체크가 팔요합니다.");
 				return false;
 			}
 			

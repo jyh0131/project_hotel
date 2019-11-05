@@ -11,13 +11,13 @@
 	<div class="main-notice-wrap">
 		<div class="main-notice1">
 			<div class="notice-title">
-				공지사항1
+				직원 공지사항
 			</div>
 			<div class="notice-list">
 				<ul>
-					<li><a href="#">fasdfasd웅앵1</a></li>
-					<li><a href="#">sasddfasdf웅앵1</a></li>
-					<li><a href="#">웅asdfsadf앵1</a></li>
+					<li><a href="#">품행을 단정히 마음을 소중히</a></li>
+					<li><a href="#">진상에게는 고개숙이지 맙시다</a></li>
+					<li><a href="#">ㅇㅁㄴㅇㄹ </a></li>
 					<li><a href="#">웅adfs앵1</a></li>
 					<li><a href="#">웅앵fasdf1</a></li>
 				</ul>

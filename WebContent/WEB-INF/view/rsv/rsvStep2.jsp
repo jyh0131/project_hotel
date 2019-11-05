@@ -287,7 +287,9 @@
 					<span class="btnBack">
 						◀ STEP1
 					</span>
-					<input type="submit" value="예약">
+					<c:if test="${Auth != null}">
+						<input type="submit" value="예약">
+					</c:if>
 				</div>
 			</div>
 		</div>

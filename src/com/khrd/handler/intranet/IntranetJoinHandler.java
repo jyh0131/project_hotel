@@ -67,13 +67,9 @@ public class IntranetJoinHandler implements CommandHandler {
 									  1);
 				
 				int result = dao.insert(conn, m);
+				request.getSession().setAttribute("result", result);
 				
-				if(result > 0) {
-					response.sendRedirect(request.getContextPath() + "/intranet/login.do");
-					
-				} else {
-					return ""; //에러페이지
-				}
+				response.sendRedirect(request.getContextPath() + "/intranet/joinResult.do");
 				
 				
 			} catch (Exception e) {

@@ -23,7 +23,7 @@
 <script>
 	setTimeout(function() {
 		window.location = "${pageContext.request.contextPath}/member/mypage.do";
-		}, 2000);
+		}, 1500);
 </script>
 
 <%@ include file="/WEB-INF/view/include/footer.jsp"%>

@@ -3,6 +3,24 @@
 form {
 	padding: 50px 0;
 }
+div.adminAlert {
+	background: rgba(255,169,255,0.5);
+	border: 5px solid rgba(71,163,218,0.8);
+	text-align: center;
+	padding: 100px 50px;
+	position: fixed;
+	left: 50%;
+	top: 25%;
+	margin-left: -606.545px;
+	z-index: 33243;
+}
+div.adminAlert > h1 {
+	font-size: 2.3em;
+	font-weight: normal;
+	letter-spacing: 0.15em;
+	color: rgba(0,0,0,0.7);
+}
+
 /*날짜설정 파트*/
 div.rsv-step-wrap {
 	width: 100%;

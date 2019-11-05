@@ -14,7 +14,7 @@
 		<c:if test="${result <= 0}">
 			<h2>비밀번호 변경에 실패하였습니다</h2>
 		</c:if>
-		<p>잠시 후 메인화면으로 돌아갑니다.</p>
+		<p>잠시 후 이전화면으로 돌아갑니다.</p>
 		<a href="${pageContext.request.contextPath}/main.do">메인으로</a>
 	</div>
 </div>
@@ -23,7 +23,7 @@
 <script>
 	setTimeout(function() {
 		window.location = "${pageContext.request.contextPath}/member/mypage.do";
-		}, 2000);
+		}, 1500);
 </script>
 
 <%@ include file="/WEB-INF/view/include/footer.jsp"%>

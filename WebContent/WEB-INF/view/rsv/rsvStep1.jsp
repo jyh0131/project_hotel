@@ -14,6 +14,12 @@
 
 <form action="rsvStep1.do" method="post">
 	<div class="rsv-date-wrap">
+		<c:if test="${Admin != null}">
+			<div class="adminAlert">
+				<h1>관리자는 회원 예약페이지에서 예약진행이 불가능합니다.</h1>
+			</div>
+		</c:if>
+		
 		<div class="rsv-date-inner">
 			<div class="rsv-date-top">
 				<div class="rsv-date">

@@ -150,18 +150,35 @@
 				return false;
 			}
 			
-			//이메일
-			var mail = $("input[name='mail']").val();
-			if(mail == "") {
-				alert("이메일 입력란이 비었습니다. 입력 바랍니다.");
+			//비밀번호
+			var pw = $("input[name='password']").val();
+			var pw2 = $("input[name='confirmPassword']").val();
+			
+			if(pw == "" || pw2 == "") {
+				alert("비밀번호를 입력하세요.");
 				return false;
 			}
 			
+			//성명
+			var name = $("input[name='name']").val();
+			
+			if(name == "") {
+				alert("이름을 입력하세요.");
+				return false;
+			}
+
 			//휴대전화
 			var phone2 = $("input[name='phone2']").val();
 			var phone3 = $("input[name='phone3']").val();
 			if(phone2 == "" || phone3 == "") {
 				alert("전화번호 입력란이 비었습니다. 입력 바랍니다.");
+				return false;
+			}
+			
+			//이메일
+			var mail = $("input[name='mail']").val();
+			if(mail == "") {
+				alert("이메일 입력란이 비었습니다. 입력 바랍니다.");
 				return false;
 			}
 			
