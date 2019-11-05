@@ -1,4 +1,4 @@
-package com.khrd.handler.questionBoard;
+package com.khrd.handler.questionReply;
 
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -17,7 +17,7 @@ import com.khrd.dto.QuestionBoard;
 import com.khrd.jdbc.ConnectionProvider;
 import com.khrd.jdbc.JDBCUtil;
 
-public class QuestionListHandler implements CommandHandler {
+public class QuestionReplyListHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -33,7 +33,7 @@ public class QuestionListHandler implements CommandHandler {
 				List<QuestionBoard> list = dao.selectBoardList(conn);
 				request.setAttribute("list", list);
 
-				return "/WEB-INF/view/question_board/qbList.jsp";
+				return "/WEB-INF/view/question_reply/qrList.jsp";
 				
 			}catch (Exception e) {
 				e.printStackTrace();

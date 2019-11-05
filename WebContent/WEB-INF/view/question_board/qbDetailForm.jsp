@@ -32,56 +32,52 @@
       font-weight: bold;
    }
    /* ------- 목록, 수정하기 등 버튼 ------- */
-   #detailDiv a{
-      margin-top:20px;
-      width:100px;
-      line-height: 40px;
-      display: inline-block;
-      text-align: center;
-      color:black;
-      background:rgba(71, 163, 218, 0.8);
-      /* border:1px solid #353535; */
-   }
-   #detailDiv a:hover{
-      color:rgba(250, 236, 197, 0.8);
-   }
-   
+  .btnList{
+		margin-top:20px;
+		width:100px;
+		line-height: 40px;
+		display: inline-block;
+		text-align: center;
+		color:black;
+		background:rgba(250, 236, 197, 0.8);
+		border:1px solid #FFE5CA;
+		
+	}
+	.btnList:hover{
+		color:rgba(71, 163, 218, 0.8);
+	}
+   /* ------- 답글달기, 삭제하기, 수정하기 버튼 ------- */
+	#btnBox{
+		width:300px;
+		float: right;
+	}
+	.btn{
+		margin-top:20px;
+		margin-left:20px;
+		width:100px;
+		line-height: 40px;
+		display: inline-block;
+		text-align: center;
+		color:black;
+		background:rgba(71, 163, 218, 0.8);
+		border:1px solid rgba(71, 163, 218, 0.8);
+		float: right;
+	}
+	.btn:hover{
+		color:rgba(250, 236, 197, 0.8);
+	}
 </style>
 <script>
    $(function(){
-      // 답글 작성완료 버튼 숨기기
-      $(".btnQRFinish").css("display", "none");
+       
+	// 첨부파일 없을 경우
+		var src = $(".imgFile").attr("src");
+		if(src == "/project_hotel/upload/"){
+			$(".imgFile").parent().text("첨부파일 없음");
+		}
+	      
       
-      // 답글달기 버튼 클릭 시
-      $(document).on("click", ".btnReply", function(){
-         // 답글 달 수 있는 table만들기
-         var $table = $("<table>").addClass("replyTable");
-         var $tr = $("<tr>");
-         var $th = $("<th>").text("답변내용");
-         var content = "<textarea rows='7' cols='80' name='qr_content'></textarea>";
-         var $td = $("<td>").html(content);
-         
-         $tr.append($th).append($td);
-         $table.append($tr);
-         
-         // 문의글 번호 받아오기
-         var qbNo = $("input[name='qbNo']").val();
-         
-         if($(this).text() == "답글달기"){
-            $("#replyBox").append($table); // 답글 쓰는 창
-            //$(this).text("작성완료");
-            $(this).css("display", "none");
-            $(".btnQRFinish").css("display", "block");
-            //$(".btnReply").attr("href", "${pageContext.request.contextPath }/qr/insert.do?qbNo=" + qbNo);
-         }
-         /* else{
-            alert(qbNo);
-            $(".btnReply").attr("href", "${pageContext.request.contextPath }/qr/insert.do?qbNo=" + qbNo);
-         } */
-      })
-      
-      
-   })
+   })//ready
 </script>
 <div id="detailDiv">
    
@@ -98,20 +94,20 @@
       <tr>
          <th>문의분류</th>
          <td>
-            <c:if test="${qb.qbCategory == '0'}">
-               결제 문의
+            <c:if test="${qb.qbCategory == 1}">
+              	 결제 문의
             </c:if>
-            <c:if test="${qb.qbCategory == '1'}">
-               예약 문의
+            <c:if test="${qb.qbCategory == 2}">
+          	     예약 문의
             </c:if>
-            <c:if test="${qb.qbCategory == '2'}">
-               객실 문의
+            <c:if test="${qb.qbCategory == 3}">
+             	  객실 문의
             </c:if>
-            <c:if test="${qb.qbCategory == '3'}">
-               시설 및 옵션 문의
+            <c:if test="${qb.qbCategory == 4}">
+               	시설 및 옵션 문의
             </c:if>
-            <c:if test="${qb.qbCategory == '4'}">
-               기타 문의
+            <c:if test="${qb.qbCategory == 5}">
+               	기타 문의
             </c:if>   
          </td>
             
@@ -124,7 +120,9 @@
       </tr>
       <tr>
          <th>첨부파일</th>
-         <td colspan="3"><img src="${pageContext.request.contextPath }/upload/${qb.qbPath}"></td>
+         <td colspan="3">
+         	<img src="${pageContext.request.contextPath }/upload/${qb.qbPath}" class="imgFile">
+         </td>
       </tr>
    </table>
    
@@ -143,35 +141,17 @@
 
    </div>
    
-   <!-- <p>답변일자 <span name="qr_date">2019-10-10</span></p>
-   <table id="replyTable">
-      <tr>
-         <th>답변내용</th>
-         <td>
-            <textarea rows="5" cols="70" name="qr_content"></textarea>
-         </td>
-      </tr>
-   </table> -->
    
-   
-   <a href="${pageContext.request.contextPath }/qb/list.do">목록</a>
+   <a href="${pageContext.request.contextPath }/qb/list.do" class="btnList">목록</a>
    
    <!-- 작성자만 삭제, 수정 가능하게 하기위해 로그인한 아이디와 작성자 아이디를 비교 -->
-   <c:if test="${Auth == qb.member.mId }"> 
-      <a href="${pageContext.request.contextPath }/qb/update.do?qbNo=${qb.qbNo}">게시글 수정</a>
-      <a href="${pageContext.request.contextPath }/qb/delete.do?qbNo=${qb.qbNo}">게시글 삭제</a>
-   </c:if> 
+   <div id="btnBox">
+	   <c:if test="${Auth == qb.member.mId }"> 
+	      <a href="${pageContext.request.contextPath }/qb/update.do?qbNo=${qb.qbNo}" class="btn">게시글 수정</a>
+	      <a href="${pageContext.request.contextPath }/qb/delete.do?qbNo=${qb.qbNo}" class="btn">게시글 삭제</a>
+	   </c:if> 
+   </div>
 
-   <!-- 관리자일 경우 -->
-   <c:if test="${Admin != null }">
-      <form action="${pageContext.request.contextPath }/qr/insert.do" method="post">
-         <input type="hidden" value="${qb.qbNo }" name="qbNo">
-         <input type="submit" value="답글달기" class="btnQRFinish">
-      </form>
-      <a class="btnReply">답글달기</a>
-      <%-- <a href="${pageContext.request.contextPath }/qb/reply.do?qbNo=${qb.qbNo}">답글달기</a> --%>
-      
-   </c:if>
 </div>
 
 <%@ include file="/WEB-INF/view/include/footer.jsp"%>

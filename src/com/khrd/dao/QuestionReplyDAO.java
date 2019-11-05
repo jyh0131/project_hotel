@@ -53,7 +53,7 @@ public class QuestionReplyDAO {
 				QuestionReply qr = new QuestionReply(rs.getInt("qr_no"), 
 													 rs.getString("qr_content"), 
 													 rs.getTimestamp("qr_date"),
-													 new QuestionBoard(qbNo, null, null, null, null, null, null, null, null, null, null));
+													 new QuestionBoard(qbNo, null, null, null, 0, null, null, null, null, null, null));
 				return qr;
 			}
 			
@@ -101,7 +101,7 @@ public class QuestionReplyDAO {
 				QuestionReply qr = new QuestionReply(rs.getInt("qr_no"), 
 													 rs.getString("qr_content"), 
 													 rs.getTimestamp("qr_date"),
-													 new QuestionBoard(qrNo, null, null, null, null, null, null, null, null, null, null));
+													 new QuestionBoard(qrNo, null, null, null, 0, null, null, null, null, null, null));
 				return qr;
 			}
 			

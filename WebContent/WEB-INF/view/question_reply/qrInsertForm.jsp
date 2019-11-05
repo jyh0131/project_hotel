@@ -173,19 +173,19 @@
 			<tr>
 				<th>문의분류</th>
 				<td>
-					<c:if test="${qb.qbCategory == '0'}">
+					<c:if test="${qb.qbCategory == 0}">
 						결제 문의
 					</c:if>
-					<c:if test="${qb.qbCategory == '1'}">
+					<c:if test="${qb.qbCategory == 1}">
 						예약 문의
 					</c:if>
-					<c:if test="${qb.qbCategory == '2'}">
+					<c:if test="${qb.qbCategory == 2}">
 						객실 문의
 					</c:if>
-					<c:if test="${qb.qbCategory == '3'}">
+					<c:if test="${qb.qbCategory == 3}">
 						시설 및 옵션 문의
 					</c:if>
-					<c:if test="${qb.qbCategory == '4'}">
+					<c:if test="${qb.qbCategory == 4}">
 						기타 문의
 					</c:if>	
 				</td>

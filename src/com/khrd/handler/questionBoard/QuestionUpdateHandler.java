@@ -53,7 +53,7 @@ public class QuestionUpdateHandler implements CommandHandler {
 			MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "utf-8", new DefaultFileRenamePolicy()); // 중복 파일 저장 안되게함.
 			
 			int qbNo = Integer.parseInt(multi.getParameter("qbNo"));
-			String qbCategory = multi.getParameter("qb_category");
+			int qbCategory = Integer.parseInt(multi.getParameter("qb_category"));
 			String qbTitle = multi.getParameter("qb_title");
 			String qcContent = multi.getParameter("qc_content");
 			

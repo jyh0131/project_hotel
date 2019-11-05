@@ -54,7 +54,7 @@ public class QuestionInsertHandler implements CommandHandler {
          int size = 1024 * 1024 * 10;
          MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "utf-8", new DefaultFileRenamePolicy());
          
-         String qbCategory = multi.getParameter("qb_category"); // 문의분류
+         int qbCategory = Integer.parseInt(multi.getParameter("qb_category")); // 문의분류
          String qbTitle = multi.getParameter("qb_title"); // 제목
          String qbName = multi.getParameter("qb_name"); // 성명
          String qbEmail = multi.getParameter("qb_email"); // 이메일
