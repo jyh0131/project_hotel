@@ -23,6 +23,16 @@
 					</div>
 								
 					<div class="op-choice-list">
+						<div class="bf-notice">
+							<img src="${pageContext.request.contextPath}/images/rsv-img/bf.jpg" class="bf-notice-img" alt="조식사진">
+							<span class="bf-notice-content">
+								<big>🍳조식 안내</big><br><br>
+								BLUA LUNDO의 조식은<br>수영장 조식으로 운영되고 있습니다<br>
+								따라서 조식을 추가하시면<br>객실별 예약 인원에 따라<br>가격이 측정됩니다<br>
+								이 점 양해 부탁드립니다<br><br>감사합니다
+							</span>
+						</div>
+						
 						<table>
 							<tr>
 								<td>
@@ -376,7 +386,8 @@
 			</div>
 		</div>
 	</div>
-</form>
+</form>			
+			
 
 
 <%@ include file="/WEB-INF/view/include/footer.jsp"%>

@@ -3,11 +3,38 @@
 div.rsv-list {
 	width: 100%;
 	padding: 30px 0;
+	overflow: hidden;
+}
+div.rsv-list > div.rsv-date-wrap {
+	width: 30%;
+	float: left;
+	margin-left: 30px;
+	margin-bottom: 5px;
+}
+div.rsv-list > div.rsv-date-wrap > span {
+	display: block;
+	font-size: 14px;
+	margin-bottom: 2px;
+}
+div.rsv-list > div.rsv-date-wrap > input {
+	padding: 5px;
+	float: left;
+}
+div.rsv-list > div.rsv-date-wrap > button {
+	margin-left: 3px;
+	padding: 5px;
+	float: left;
+	background: #47a3da;
+	color: white;
+	border: 0;
+	box-shadow: 1px 1px 2px grey;
 }
 div.rsv-list > div.rsv-state-wrap {
-	width: 97%;
-	margin: 10px auto 5px;
+	width: 50%;
+	float: right;
 	text-align: right;
+	margin-top: 28px;
+	margin-right: 30px;
 }
 div.rsv-list > div.rsv-state-wrap > select {
 	padding: 2px 2px 2px 4px;
@@ -38,4 +65,7 @@ td[rowspan="2"] {
 }
 .tr-bottom {
 	border-bottom: 3px solid #FAECC5;
+}
+tr.centerAlign {
+	text-align: center;
 }

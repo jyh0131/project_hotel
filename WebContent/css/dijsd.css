@@ -1,5 +1,20 @@
 @charset "UTF-8";
 
+div.menu-notice-wrap {
+	width: 100%;
+	min-height: 500px;
+	padding: 30px 0 50px;
+}
+div.menu-notice-wrap > h1 {
+	width: 60%;
+	margin: 0 auto;
+	text-align: center;
+	border-bottom: 5px solid #47a3da;
+	font-size: 3em;
+	color: #47a3da;
+	font-weight: normal;
+	letter-spacing: 0.15em;
+}
 
 
 

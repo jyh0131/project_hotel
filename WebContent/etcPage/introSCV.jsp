@@ -20,7 +20,7 @@
 		letter-spacing: 0.05em;
 	}
 	div.intro-scv {
-		width: 80%;
+		width: 70%;
 		border: 8px solid #47a3da;
 		padding: 30px 40px;
 		margin: 20px;

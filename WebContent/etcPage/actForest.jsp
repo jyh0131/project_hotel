@@ -4,10 +4,10 @@
 <style>
 	div.act-bg {
 		width: 100%;
-		height: 850px;
+		height: 1000px;
 		position: absolute;
 		left: 0;
-		top: 0;
+		top: -100px;
 		background: url("../images/bg-img/act2-img1.jpg") no-repeat;
 		background-size: cover;
 		z-index: -2;

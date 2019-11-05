@@ -247,4 +247,38 @@ public class PictureDAO {
 		return null;
 	} // selectedByRcNoList
 	
+	public List<Picture> selectPicListByGNo(Connection conn, int gNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select * from g_type g join picture p using(g_no) "
+						+"left join room_category using(rc_no) "
+						+"where pic_category=0 and rc_no is null and g.g_no=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, gNo);
+			rs = pstmt.executeQuery();
+			List<Picture> list = new ArrayList<>();
+			
+			while(rs.next()) {
+				Picture picture = picConstruct(rs);
+				
+				list.add(picture);
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+		
+		return null;
+		
+	}//selectPicListByGNo
+	
+	
 }

@@ -213,7 +213,7 @@ public class RsvDAO {
 		ResultSet rs = null;
 		
 		try {
-			String sql = "select * from vw_available";
+			String sql = "select * from vw_available group by rc_name order by rc_no";
 			pstmt = conn.prepareStatement(sql);
 			
 			rs = pstmt.executeQuery(); 
@@ -482,6 +482,77 @@ public class RsvDAO {
 		return -1;
 		
 	}/*/selectLastInsertId*/
+	
+	//selectReservedListByDate -> 날짜별 예약리스트 받기
+	public List<Reservation> selectReservedListByDate(Connection conn, String inDate, String outDate) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select * from vw_all_table " 
+						+"where r_in >= ? and r_in <= ? "
+						+"order by r_in";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, inDate);
+			pstmt.setString(2, outDate);
+			rs = pstmt.executeQuery();
+			List<Reservation> list = new ArrayList<>();
+			
+			while(rs.next()) {
+				Reservation rsv = RsvConstructor(rs);
+				
+				list.add(rsv);
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+		
+		return null;
+		
+	}/*/selectReservedListByDate*/
+
+	//selectReservedListForMem -> 회원용 날짜별 예약리스트 받기
+	public List<Reservation> selectReservedListForMem(Connection conn, String inDate, String outDate, int mNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select * from vw_all_table " 
+						+"where r_in >= ? and r_in <= ? and m_no = ? "
+						+"order by r_in";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, inDate);
+			pstmt.setString(2, outDate);
+			pstmt.setInt(3, mNo);
+			rs = pstmt.executeQuery();
+			List<Reservation> list = new ArrayList<>();
+			
+			while(rs.next()) {
+				Reservation rsv = RsvConstructor(rs);
+				
+				list.add(rsv);
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+		
+		return null;
+		
+	}/*/selectReservedListForMem*/
 	
 	//insertRsv -> 예약 추가
 	public int insertRsv(Connection conn, Reservation rsv) throws SQLException {

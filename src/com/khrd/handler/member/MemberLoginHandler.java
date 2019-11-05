@@ -30,7 +30,7 @@ public class MemberLoginHandler implements CommandHandler {
 				MemberDAO dao = MemberDAO.getInstance();
 				Member member = dao.selectById(conn, id);
 				
-				
+				/*에러 상황들*/
 				if(member == null) { //회원 정보가 존재하지 않을 경우
 					request.setAttribute("idNotExist", true);
 					
@@ -47,8 +47,18 @@ public class MemberLoginHandler implements CommandHandler {
 					return "/WEB-INF/view/member/memberLoginForm.jsp";
 				}
 				
+				
+				/*isAdmin값으로 키 값 다르게 저장되게 하기*/
 				HttpSession session = request.getSession();
-				session.setAttribute("Auth", member.getmId());
+
+				switch(member.getmIsAdmin()) {
+				case 0:
+					session.setAttribute("Auth", member.getmId());
+					break;
+				case 1:
+					session.setAttribute("Admin", member.getmId());
+					break;
+				}
 				
 				response.sendRedirect(request.getContextPath() + "/main.do");
 				

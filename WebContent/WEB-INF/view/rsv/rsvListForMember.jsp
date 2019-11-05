@@ -1,11 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
+<link href="${pageContext.request.contextPath}/css/util/datepicker.min.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/css/rsv/rsvListForMember.css" rel="stylesheet" type="text/css">
+
+<script src="${pageContext.request.contextPath}/js/util/datepicker.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/util/datepicker.en.js"></script>
 <script src="${pageContext.request.contextPath}/js/rsv/rsvListForMember.js"></script>
 
 <div class="rsv-list-wrap">
 	<div class="rsv-list">
+		<div class="rsv-date-wrap">
+			<span>🎈기간별 리스트</span>
+			<input type="text" name="rsvDate" class="datepicker-here" data-position="bottom center" data-date-format="yyyy-mm-dd"
+					data-language="en" data-range="true" data-multiple-dates-separator="~" data-language="en" />
+			<button id="btnSearch">보기</button>
+		</div>	
+	
 		<div class="rsv-state-wrap">
 			<select name="rsvState">
 				<option>전체</option>
@@ -60,4 +71,6 @@
 		</table>		
 	</div>
 </div>	
+
+
 <%@ include file="/WEB-INF/view/include/footer.jsp"%>

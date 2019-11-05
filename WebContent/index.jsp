@@ -126,24 +126,24 @@
 	
 							<li><a href="#">액티비티</a>
 								<ul class="sub-nav">
-									<li><a href="${pageContext.request.contextPath}/etcPage/actSurf.jsp">서핑 체험</a></li>
+							 		<li><a href="${pageContext.request.contextPath}/etcPage/actSurf.jsp">서핑 체험</a></li>
 									<li><a href="${pageContext.request.contextPath}/etcPage/actForest.jsp">숲으로</a></li>
 									<li><a href="${pageContext.request.contextPath}/etcPage/actNoBirth.jsp">안생일축하</a></li>
-									<li><a href="#">플레이스테이션</a></li>
+									<li><a href="${pageContext.request.contextPath}/etcPage/actExhibit.jsp">전시 및 포토스팟</a></li>
 								</ul>
 							</li>
 	
-							<li><a href="#">갤러리</a>
+							<li><a href="${pageContext.request.contextPath}/etcPage/gallery/gallery1.jsp">갤러리</a>
 								<ul class="sub-nav">
-									<li><a href="#">사진</a></li>
-									<li><a href="#">동영상</a></li>
+									<li><a href="${pageContext.request.contextPath}/etcPage/gallery/gallery1.jsp">사진</a></li>
+									<li><a href="${pageContext.request.contextPath}/etcPage/gallery/video.jsp">동영상</a></li>
 								</ul>
 							</li>
 	
 							<li>
 								<a>커뮤니티</a>
 								<ul class="sub-nav">
-									<li><a href="#">공지사항</a></li>
+									<li><a href="${pageContext.request.contextPath}/notice/list.do">공지사항</a></li>
 									<li><a href="${pageContext.request.contextPath}/qb/list.do">문의하기</a></li>
 								</ul>
 							</li>

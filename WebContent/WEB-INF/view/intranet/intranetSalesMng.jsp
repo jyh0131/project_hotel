@@ -8,21 +8,8 @@
 <h2>매출관리</h2>
 
 <div class="intra-sales-chart">
-	<div class="sales-list-state">
-		<select name="sales-state">
-			<option value="2019">2019년 전체</option>
-			<option value="2019-1">2019년 1분기</option>
-			<option value="2019-2">2019년 2분기</option>
-			<option value="2019-3">2019년 3분기</option>
-			<option value="2019-4">2019년 4분기</option>
-		</select>
-	</div>
-	
 	<div id="sales-chart"></div>
-	
 	<div id="sales-chart-control"></div>
-	
-	
 </div>
 
 

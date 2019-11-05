@@ -77,6 +77,28 @@ input.op-ck {
 	width: 20px;
 	height: 20px;
 }
+div.bf-notice {
+	width: 250px;
+	padding: 40px 5px;
+	background: rgba(245,219,189,0.8);
+	text-align: center;
+	border: 5px solid #47a3da;
+	position: absolute;
+	left: 7px;
+	top: 210px;
+	box-shadow: -1px 3px 3px grey;
+}
+div.bf-notice > img.bf-notice-img {
+	width: 80%;
+	height: 120px;
+	margin: 0 auto 15px;
+	display: block;
+}
+div.bf-notice > span.bf-notice-content {
+	width: 70%;
+	font-size: 13px;
+	line-height: 25px;
+}
 
 /*요청사항*/
 div.rsv-op-request {
@@ -108,6 +130,7 @@ div.op-request-sub > ul {
 	margin: 10px 0 0px 40px;
 	font-size: 14px;
 }
+
 
 /*정보입력*/
 div.rsv-input-info {

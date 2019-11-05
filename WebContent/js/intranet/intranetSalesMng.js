@@ -68,7 +68,7 @@
 											trigger : 'both'
 										},
 										hAxis : {
-											format : "yyyy년 MM월",
+											format : "yyyy년 MM월 dd일",
 											gridlines : {
 												count : 12,
 												units : {
@@ -108,7 +108,7 @@
 											easing : 'in'
 										},
 										annotations : {
-											pattern : "yyyy년 MM월",
+											pattern : "yyyy년 MM월 dd일",
 											textStyle : {
 												fontSize : 15,
 												bold : true,
@@ -128,7 +128,7 @@
 																			// 생성할 영역
 									options : {
 										ui : {
-											chartType : 'BarChart',
+											chartType : 'ColumnChart',
 											chartOptions : {
 												chartArea : {
 													'width' : '60%',
@@ -136,7 +136,7 @@
 												},
 												hAxis : {
 													'baselineColor' : 'none',
-													format : "yyyy년 MM월",
+													format : "yyyy년 MM월 dd일",
 													textStyle : {
 														fontSize : 12
 													},
@@ -165,7 +165,7 @@
 								});
 
 								var date_formatter = new google.visualization.DateFormat({
-									pattern : "yyyy년 MM월"
+									pattern : "yyyy년 MM월 dd일"
 								});
 								date_formatter.format(data, 0);
 

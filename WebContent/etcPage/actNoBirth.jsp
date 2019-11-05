@@ -22,8 +22,9 @@
 		font-family: 'Liu Jian Mao Cao', cursive;	
 		font-size: 6em;
 		position: absolute;
-		left: 170px; 
+		left: 50%; 
 		top: 350px;
+		margin-left: -606.505px;
 		transform: rotate(-8deg);
 		text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, 
 					 -1px 1px 0 #fff, 1px 1px 0 #fff;  

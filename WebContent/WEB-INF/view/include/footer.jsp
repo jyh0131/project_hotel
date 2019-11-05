@@ -6,7 +6,7 @@
 		<!-- ↓ 공통영역 -->
 		<div id="footer">
 			<div id="footer-wrap">
-	 			<div class="footer-info1">
+ 				<div class="footer-info1">
 					<p>
 						BLUA LUNDO corp.<br>
 					</p>
@@ -17,11 +17,11 @@
 				</div>
 				
 				<div class="footer-logo">
-					<a href="${pageContext.request.contextPath}/intranet/main.do"></a>
+					<a href="${pageContext.request.contextPath}/intranet/mng/sales.do"></a>
 					<span>design by.7631</span>
 				</div>
-	 			
-	 			<div class="footer-info2">
+ 				
+ 				<div class="footer-info2">
 					<ul>
 						<li><a href="${pageContext.request.contextPath}/qb/list.do">문의하기</a></li>
 						<li><a>고객센터</a></li>

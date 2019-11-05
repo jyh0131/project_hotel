@@ -22,8 +22,8 @@
 <% session.removeAttribute("result");%>
 <script>
 	setTimeout(function() {
-		window.location = "${pageContext.request.contextPath}/main.do";
-		}, 3000);
+		window.location = "${pageContext.request.contextPath}/member/mypage.do";
+		}, 2000);
 </script>
 
 <%@ include file="/WEB-INF/view/include/footer.jsp"%>
