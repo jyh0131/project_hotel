@@ -4,6 +4,12 @@
 <style>
 	#section-wrap{
 		padding:50px;
+		margin:0 auto;
+		width:70%;
+	}
+	#qbInsertWrap{
+		margin:0 auto;
+		width:70%;
 	}
 	table{
 		margin:15px 0;
@@ -17,7 +23,7 @@
 	}
 	th{
 		text-align: center;
-		width:200px;
+		width:170px;
 	}
 	/* -------*부분 -------*/
 	.needs{ 
@@ -26,12 +32,22 @@
 	}
 	select, option{
 		padding:5px;
+		width:150px;
 	}
 	input{
 		text-align: center;
+		width:94%;
 	}
 	input, textarea{
-		padding:5px;
+		padding:10px 5px;
+	}
+	#titleInput{
+		width:98%;
+		text-align: left;
+	}
+	#fileInput{
+		width:200px;
+		cursor: pointer;
 	}
 	 /* ------- 목록 버튼 ------- */
 	 #btnBox{
@@ -48,6 +64,7 @@
 		background:rgba(250, 236, 197, 0.8);
 		border:1px solid #FFE5CA;
 		float: left;
+		font-size: 16px;
 	}
 	.btnList:hover{
 		color:rgba(71, 163, 218, 0.8);
@@ -63,7 +80,7 @@
 		text-align: center;
 		color:black;
 		background:rgba(71, 163, 218, 0.8);
-		border:1px solid rgba(71, 163, 218, 0.8);
+		border:none;
 		float: right;
 		padding:0;
 	}
@@ -100,7 +117,7 @@
 		<table>
 			<tr>
 				<th>문의분류<span class="needs">*</span></th>
-				<td>
+				<td colspan="3">
 					<select name="qb_category">
 						<option value=1>결제 문의</option>
 						<option value=2>예약 문의</option>
@@ -112,33 +129,29 @@
 			</tr>
 			<tr>
 				<th>제목<span class="needs">*</span></th>
-				<td><input type="text" name="qb_title"></td>
+				<td colspan="3"><input type="text" name="qb_title" id="titleInput"></td>
 			</tr>
 			<tr>
 				<th>성명<span class="needs">*</span></th>
 				<td><input type="text" name="qb_name" value="${member.mName }" readonly="readonly"></td>
-			</tr>
-			<tr>
 				<th>이메일<span class="needs">*</span></th>
 				<td><input type="email" name="qb_email" value="${member.mMail }" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>휴대전화<span class="needs">*</span></th>
 				<td><input type="tel" name="qb_phone" value="${member.mPhone }" readonly="readonly"></td>
-			</tr>
-			<tr>
 				<th>자택전화</th>
 				<td><input type="tel" name="qb_tel" value="${member.mTel }" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>내용<span class="needs">*</span></th>
-				<td>
-					<textarea rows="5" cols="70" name="qc_content"></textarea>
+				<td colspan="3">
+					<textarea rows="5" cols="98.7" name="qc_content"></textarea>
 				</td>
 			</tr>
 			<tr>
 				<th>첨부파일</th>
-				<td><input type="file" name="qb_file"></td>
+				<td colspan="3"><input type="file" name="qb_file" id="fileInput"></td>
 			</tr>
 			<tr>
 		</table>

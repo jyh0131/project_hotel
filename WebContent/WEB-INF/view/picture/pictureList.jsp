@@ -4,18 +4,76 @@
 <%@ include file="/WEB-INF/view/include/intranet/intranetSideMenu.jsp"%>
 <link href="${pageContext.request.contextPath}/css/intranet/intranetMain.css" rel="stylesheet" type="text/css">
 <style>
-	table, td{
-		border:1px solid black;
+	#pListWrap {
+		width: 100%;
+		margin: 0 auto;
+	}
+	a {
+		color: black;
+	}
+	table {
+		margin-top: 10px;
+		width: 100%;
+	}
+	table, th, td {
+		border: 1px solid black;
 		border-collapse: collapse;
+		padding: 10px;
+		text-align: center;
+	}
+	th {
+		background: rgba(255, 167, 167, 0.5);
+	}
+	tr:hover>td {
+		background: #EAEAEA;
 	}
 	#p_table img{
 		width:150px;
+	}
+	select{
+		padding:5px;
+	}
+	/* ------------ 객실등록하기 버튼 ------------  */
+	#clickHeader a { 
+		float:right;
+		background: rgba(255, 167, 167, 0.5);
+		width:150px;
+		line-height:40px;
+		text-align: center;
+		font-weight: bold;
+		margin-bottom:20px;
+		margin-right:5px;
+		border-radius: 3px;
+		box-shadow: 3px 3px 10px 0.2px #BDBDBD;
+		padding:5px;
+	}
+	#clickHeader a:hover{
+		font-size: 17px; 
+	}
+	/* ------- 삭제하기, 수정하기 버튼 ------- */
+	.btn{
+		width:70px;
+		padding:10px 0;
+		display: inline-block;
+		text-align: center;
+		color:black;
+		background:rgba(250, 236, 197, 0.8);
+		border:1px solid #FFE5CA;
+		border:none;
+		font-size: 16px;
+	}
+	.btn:hover{
+		color:rgba(250, 236, 197, 0.8);
+	}
+	/* ------- 삭제하기 버튼 ------- */
+	.btnDelete{
+		background:rgba(71, 163, 218, 0.8);
 	}
 </style>
 <script>
 	$(function(){
 		// 삭제하기
-		$(".p_btn_delete").click(function(){
+		$(".btnDelete").click(function(){
 			var picFile = $(this).attr("data-picFile"); 
 			
 			$.ajax({
@@ -31,8 +89,14 @@
 				}
 			})//ajax
 			
-			$(this).parent().parent().remove();
-		})//.p_btn_delete
+			// 삭제버튼 클릭 시 한번 더 확인하기
+			if(confirm("정말 삭제하시겠습니까?") == true){
+				$(this).parent().parent().remove();
+			}else{
+				return false;
+			}
+			
+		})//.btnDelete
 		
 		// 객실 분류 선택 시 해당 객실 리스트 나오게 하기
 		$(document).on("change", "select[name='rcName']", function(){
@@ -61,10 +125,11 @@
 							var textArr = ["작은 이미지", "원본 이미지", "내용 이미지"];
 							var $td_picCategory = $("<td>").append(textArr[obj.picCategory]); // obj.picCategory : 사진 구분(1, 2, 3);
 
-							var $btn = $("<button>").addClass("p_btn_delete").attr("data-picFile", obj.picFile).append("삭제");
+							var $btn = $("<button>").addClass("btnDelete btn").attr("data-picFile", obj.picFile).append("삭제");
+							var $td_btn = $("<td>").append($btn);
 							
 							var $tr = $("<tr>").addClass("selectedList");
-							$tr.append($td_img).append($td_file).append($td_gName).append($td_rcName).append($td_picCategory).append($btn);
+							$tr.append($td_img).append($td_file).append($td_gName).append($td_rcName).append($td_picCategory).append($td_btn);
 							
 							$("#p_table").append($tr);
 						}else{// select가 '전체보기'일 때
@@ -80,10 +145,11 @@
 							var textArr = ["작은 이미지", "원본 이미지", "내용 이미지"];
 							var $td_picCategory = $("<td>").append(textArr[obj.picCategory]); // obj.picCategory : 사진 구분(1, 2, 3);
 
-							var $btn = $("<button>").addClass("p_btn_delete").attr("data-picFile", obj.picFile).append("삭제");
+							var $btn = $("<button>").addClass("btnDelete btn").attr("data-picFile", obj.picFile).append("삭제");
+							var $td_btn = $("<td>").append($btn);
 							
 							var $tr = $("<tr>").addClass("selectedList");
-							$tr.append($td_img).append($td_file).append($td_gName).append($td_rcName).append($td_picCategory).append($btn);
+							$tr.append($td_img).append($td_file).append($td_gName).append($td_rcName).append($td_picCategory).append($td_btn);
 							
 							$("#p_table").append($tr);
 						}
@@ -101,29 +167,31 @@
 	})
 	
 </script>
-<div>
-	<div id="p_menu">
-		<ul>
-			<li><a href="${pageContext.request.contextPath }/picture/list.do">사진 리스트 보기</a></li>
-			<li><a href="${pageContext.request.contextPath }/picture/insert.do">객실 사진 등록하기</a></li>
-		</ul> 	
+<div id="pListWrap">
+	<h1>객실 사진 리스트</h1>
+	
+	<div id="clickHeader">
+		<a href="${pageContext.request.contextPath }/picture/insert.do">객실 사진 등록하기</a> 	
 	</div>
-	<h2>객실 사진 리스트</h2>
+	
 	<table id="p_table">
 		<tr>
-			<td>사진</td>
-			<td>파일명</td>
-			<td>갤러리분류</td><!-- 분류명 들어와야함. -->
-			<td>
+			<th rowspan="2">사진</th>
+			<th rowspan="2">파일명</th>
+			<th rowspan="2">갤러리분류</th><!-- 분류명 들어와야함. -->
+			<th>객실분류</th>
+			<th rowspan="2">파일분류</th>
+			<th rowspan="2">관리</th>
+		</tr>
+		<tr><!-- 객실분류 -->
+			<th>
 				<select name="rcName">
 					<option selected="selected" value="0">전체보기</option>
 					<c:forEach var="rc" items="${rc }">
 						<option value="${rc.rcNo }">${rc.rcName }</option>
 					</c:forEach>
 				</select>
-			</td>
-			<td>파일분류</td>
-			<td></td>
+			</th>
 		</tr>
 		
 		<c:forEach var="getList" items="${getList }">
@@ -140,13 +208,13 @@
 						<c:when test="${getList.picCategory == '0'}">
 							원본 이미지
 						</c:when>
-						<c:when test="${getList.picCategory == '3'}">
+						<c:when test="${getList.picCategory == '2'}">
 							내용 이미지
 						</c:when>
 					</c:choose>
 				</td>
 				<td>
-					<button class="p_btn_delete" data-picFile="${getList.picFile }">삭제</button> 
+					<button class="btnDelete btn" data-picFile="${getList.picFile }">삭제</button> 
 				</td>
 			</tr>
 		</c:forEach> 

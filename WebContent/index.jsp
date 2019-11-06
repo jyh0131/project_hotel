@@ -83,7 +83,7 @@
 				<div id="gnb-nav">
 					<div id="nav-wrap">
 						<ul id="main-menu">
-							<li><a href="#">ABOUT</a>
+							<li><a href="${pageContext.request.contextPath}/etcPage/introHotel.jsp">ABOUT</a>
 								<ul class="sub-nav">
 									<li>
 										<a href="${pageContext.request.contextPath}/etcPage/introHotel.jsp">소개</a>
@@ -124,7 +124,7 @@
 								</ul>
 							</li>
 	
-							<li><a href="#">액티비티</a>
+							<li><a href="${pageContext.request.contextPath}/etcPage/actSurf.jsp">액티비티</a>
 								<ul class="sub-nav">
 							 		<li><a href="${pageContext.request.contextPath}/etcPage/actSurf.jsp">서핑 체험</a></li>
 									<li><a href="${pageContext.request.contextPath}/etcPage/actForest.jsp">숲으로</a></li>
@@ -141,10 +141,17 @@
 							</li>
 	
 							<li>
-								<a>커뮤니티</a>
+								<a href="${pageContext.request.contextPath}/notice/list.do">커뮤니티</a>
 								<ul class="sub-nav">
 									<li><a href="${pageContext.request.contextPath}/notice/list.do">공지사항</a></li>
-									<li><a href="${pageContext.request.contextPath}/qb/list.do">문의하기</a></li>
+									<c:choose>
+										<c:when test="${Admin != null }"><!-- 관리자 로그인 시 -->
+											<li><a href="${pageContext.request.contextPath}/qr/list.do">문의하기</a></li>
+										</c:when>
+										<c:otherwise>
+											<li><a href="${pageContext.request.contextPath}/qb/list.do">문의하기</a></li>
+										</c:otherwise>
+									</c:choose>
 								</ul>
 							</li>
 						</ul>

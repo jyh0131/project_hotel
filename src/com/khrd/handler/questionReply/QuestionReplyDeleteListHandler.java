@@ -11,31 +11,38 @@ import com.khrd.dao.QuestionReplyDAO;
 import com.khrd.jdbc.ConnectionProvider;
 import com.khrd.jdbc.JDBCUtil;
 
-public class QuestionReplyDeleteHandler implements CommandHandler {
+public class QuestionReplyDeleteListHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		//int qbNo = Integer.parseInt(request.getParameter("qbNo"));
-		int qrNo = Integer.parseInt(request.getParameter("qrNo"));
+		int qbNo = Integer.parseInt(request.getParameter("qbNo"));
+
 		Connection conn = null;
 
 		try {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
-			
-			QuestionReplyDAO dao = QuestionReplyDAO.getInstance();
-			int result = dao.delete(conn, qrNo);
-			
-			conn.commit();
-			
+
+			QuestionBoardDAO dao = QuestionBoardDAO.getInstance();
+			QuestionReplyDAO qrDao = QuestionReplyDAO.getInstance();
+			int result1 = qrDao.deleteBoardList(conn, qbNo);
+			int result2 = dao.deleteContent(conn, qbNo);
+			int result3 = dao.deleteArticle(conn, qbNo);
+
+			if(result1 > 0 && result2 > 0 && result3 > 0) {
+				conn.commit();
+			}else {
+				conn.rollback();
+			}
+		
+
 			response.sendRedirect(request.getContextPath() + "/qr/list.do");
 			return null;
-			
-		}catch (Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
-			conn.rollback();
-		}finally {
+		} finally {
 			JDBCUtil.close(conn);
 		}
 		return null;
