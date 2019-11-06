@@ -134,6 +134,23 @@ public class QuestionReplyDAO {
 		return -1;
 	}
 	
-	
+	// list에서 게시글 삭제할 때 답글이 있을 경우 답글까지 같이 삭제되도록 함.
+	public int deleteBoardList(Connection conn, int qbNo) {
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "delete from question_reply where qb_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, qbNo);
+			
+			return pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(pstmt);
+		}
+		
+		return -1;
+	}//delete
 	
 }

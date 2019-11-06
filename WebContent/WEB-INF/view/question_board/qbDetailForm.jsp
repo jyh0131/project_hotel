@@ -2,6 +2,10 @@
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
 <style>
+	#detailDiv{
+		width:1000px;
+		margin:0 auto;
+	}
    table{
       margin-top:10px;
       width:100%;
@@ -60,8 +64,9 @@
 		text-align: center;
 		color:black;
 		background:rgba(71, 163, 218, 0.8);
-		border:1px solid rgba(71, 163, 218, 0.8);
+		border:none;
 		float: right;
+		font-size: 16px;
 	}
 	.btn:hover{
 		color:rgba(250, 236, 197, 0.8);
@@ -69,19 +74,26 @@
 </style>
 <script>
    $(function(){
-       
-	// 첨부파일 없을 경우
+		// 첨부파일 없을 경우
 		var src = $(".imgFile").attr("src");
 		if(src == "/project_hotel/upload/"){
 			$(".imgFile").parent().text("첨부파일 없음");
 		}
-	      
-      
+		
+		// 삭제버튼 클릭 시 한번 더 확인하기
+		$(".btnDelete").click(function(){
+			var a = confirm("정말 삭제하시겠습니까?");
+			if(a == true){
+				return true;
+			}else{
+				return false;
+			}
+		})
    })//ready
 </script>
 <div id="detailDiv">
-   
-   <table id="detailTable">
+	<h1>문의하기</h1>
+	<table id="detailTable">
       <tr>
          <th>제목</th>
          <td>${qb.qbTitle}</td>
@@ -137,8 +149,6 @@
 				</tr>
 			</table>
 		</c:if>
-
-
    </div>
    
    
@@ -148,7 +158,7 @@
    <div id="btnBox">
 	   <c:if test="${Auth == qb.member.mId }"> 
 	      <a href="${pageContext.request.contextPath }/qb/update.do?qbNo=${qb.qbNo}" class="btn">게시글 수정</a>
-	      <a href="${pageContext.request.contextPath }/qb/delete.do?qbNo=${qb.qbNo}" class="btn">게시글 삭제</a>
+	      <a href="${pageContext.request.contextPath }/qb/delete.do?qbNo=${qb.qbNo}" class="btn btnDelete">게시글 삭제</a>
 	   </c:if> 
    </div>
 

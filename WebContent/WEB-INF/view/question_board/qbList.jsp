@@ -1,29 +1,72 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
 <style>
-	table{
-		margin-top:10px;
-		width:100%;
+	#qbListWrap {
+		width: 1000px;
+		margin: 0 auto;
 	}
-	table, th, td{
-		border:1px solid black;
+	
+	a {
+		color: black;
+	}
+	
+	h1 {
+		margin: 10px 0;
+	}
+	
+	table {
+		margin-top: 10px;
+		width: 100%;
+	}
+	
+	table, th, td {
+		border: 1px solid black;
 		border-collapse: collapse;
-		padding:10px;
-				text-align: center;
+		padding: 10px;
+		text-align: center;
 	}
-	/* ------------ 전체보기, 내 문의 보기 버튼 ------------  */
-	.btn{
-		margin-top:20px;
-		width:100px;
+	
+	th {
+		background: rgba(255, 167, 167, 0.5);
+	}
+	
+	tr:hover>td {
+		background: #EAEAEA;
+	}
+	/* ------------ 구분 select, 전체보기, 내 문의 보기 버튼 ------------  */
+	#clickHeader {
+		margin: 20px 0;
+	}
+	
+	#clickHeader p { /* 구분 :  */
+		display: inline-block;
+		font-weight: bold;
+		font-size: 20px;
+		padding: 5px;
+	}
+	
+	select {
+		padding: 10px;
+	}
+	
+	#clickHeader>div { /* 버튼 있는 box */
+		float: right;
+	}
+	
+	.btn {
+		width: 100px;
 		line-height: 40px;
 		display: inline-block;
 		text-align: center;
-		color:black;
-		background:rgba(250, 236, 197, 0.8);
-		border:1px solid #FFE5CA;
+		color: black;
+		background: rgba(250, 236, 197, 0.8);
+		border: 1px solid #FFE5CA;
+		margin-left: 15px;
+		font-size: 16px;
 	}
-	.btn:hover{
+	
+	.btn:hover {
 		cursor: pointer;
 	}
 </style>
@@ -216,99 +259,78 @@
 		
 	})
 </script>
-<div>
-
-	<div>
-		<h1>문의하기</h1>
-		<div>
-			<select name="selectCategory">
-				<option value=0 selected="selected">전체 보기</option>
-				<option value=1>결제 문의</option>
-				<option value=2>예약 문의</option>
-				<option value=3>객실 문의</option>
-				<option value=4>시설 및 옵션 문의</option>
-				<option value=5>기타 문의</option>
-			</select>
-			<div>
-				<a data-id="${Auth }" class="btnMyList btn">내 문의 보기</a>
-				<a class="btnAllList btn">전체 보기</a>
-			</div>
+<div id="qbListWrap">
+	<h1>문의하기</h1>
+	<div id="clickHeader">
+		<p>구분 :</p>
+		<select name="selectCategory">
+			<option value=0 selected="selected">전체 보기</option>
+			<option value=1>결제 문의</option>
+			<option value=2>예약 문의</option>
+			<option value=3>객실 문의</option>
+			<option value=4>시설 및 옵션 문의</option>
+			<option value=5>기타 문의</option>
+		</select>
+		<div><!-- 회원일 경우 -->
+			<a data-id="${Auth }" class="btnMyList btn">내 문의 보기</a> 
+			<a class="btnAllList btn">전체 보기</a>
+			<c:if test="${Auth != null }">
+				<a href="${pageContext.request.contextPath }/qb/insert.do?mId=${Auth}" class="btn">글쓰기</a>
+			</c:if>
 		</div>
-		<table id="qbListTable">
-			<tr>
-				<th>글번호</th>
-				<th>구분</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>작성일</th>
-				<c:if test="${Admin != null }">
-					<th>관리</th>
-				</c:if>
-			</tr>
-			
-			
-			<c:forEach var="list" items="${list }">
-			<input type="hidden" value="${list.member.mId }" name = "mId">
-				<tr class="qbListTr">
-					<td>${list.qbNo }</td>
-					<td>
-						<c:if test="${list.qbCategory == 1}">
-							결제 문의
-						</c:if>
-						<c:if test="${list.qbCategory == 2}">
-							예약 문의
-						</c:if>
-						<c:if test="${list.qbCategory == 3}">
-							객실 문의
-						</c:if>
-						<c:if test="${list.qbCategory == 4}">
-							시설 및 옵션 문의
-						</c:if>
-						<c:if test="${list.qbCategory == 5}">
-							기타 문의
-						</c:if>
-					</td>
-					<td><!-- 제목 -->
-						<%-- <a href="${pageContext.request.contextPath }/qb/detail.do?qbNo=${list.qbNo }">${list.qbTitle }</a> --%>
-						<!-- 회원일 경우 -->
-						<c:if test="${Auth != null }"> 
-							<a href="${pageContext.request.contextPath }/qb/detail.do?qbNo=${list.qbNo }">${list.qbTitle }</a>
-							<!-- 답변이 있을 경우 -->
-							<%-- <c:if test="${list.result == 1 }">
+	</div>
+	<table id="qbListTable">
+		<tr>
+			<th>글번호</th>
+			<th>구분</th>
+			<th>제목</th>
+			<th>작성자</th>
+			<th>작성일</th>
+			<c:if test="${Admin != null }">
+				<th>관리</th>
+			</c:if>
+		</tr>
+
+		<c:forEach var="list" items="${list }">
+			<input type="hidden" value="${list.member.mId }" name="mId">
+			<tr class="qbListTr">
+				<td>${list.qbNo }</td>
+				<td>
+					<c:if test="${list.qbCategory == 1}">
+						결제 문의
+					</c:if>
+					<c:if test="${list.qbCategory == 2}">
+						예약 문의
+					</c:if>
+					<c:if test="${list.qbCategory == 3}">
+						객실 문의
+					</c:if>
+					<c:if test="${list.qbCategory == 4}">
+						시설 및 옵션 문의
+					</c:if>
+					<c:if test="${list.qbCategory == 5}">
+						기타 문의
+					</c:if>
+				</td>
+				<td><!-- 제목 -->
+					<!-- 관리자 아닐 경우 -->
+					<c:if test="${Auth != null }">
+						<a href="${pageContext.request.contextPath }/qb/detail.do?qbNo=${list.qbNo }">${list.qbTitle }</a>
+						<!-- 답변이 있을 경우 -->
+						<%-- <c:if test="${list.result == 1 }">
 								<p>답변</p>
 							</c:if> --%>
-						</c:if> 
-				
-						<!-- 관리자일 경우 -->
-						<c:if test="${Admin != null }">
-							<a href="${pageContext.request.contextPath }/qr/detail.do?qbNo=${list.qbNo }">${list.qbTitle }</a>
-						</c:if> 
-						
-					</td>
-					<td>${list.qbName }</td>
-					<td>
-						<fmt:formatDate value="${list.qbDate}" pattern="yyyy-MM-dd"/>
-					</td>
-					
-					<!-- 관리자일 경우 -->
-					<c:if test="${Admin != null }">
-						<td>
-							<a href="${pageContext.request.contextPath }/qb/delete.do?qbNo=${list.qbNo}">[게시글 삭제]</a>
-						</td>
+					</c:if> <!-- 관리자일 경우 --> <c:if test="${Admin != null }">
+						<a href="${pageContext.request.contextPath }/qr/detail.do?qbNo=${list.qbNo }">${list.qbTitle }</a>
 					</c:if>
-				</tr>
-			</c:forEach>
-		</table>
-	</div>
-	
-	<div>
-		<!-- 회원일 경우 -->
-		<c:if test="${Auth != null }"> 
-			<a href="${pageContext.request.contextPath }/qb/insert.do?mId=${Auth}">글쓰기</a>
-		</c:if> 
-	</div>
-	
-	
+				</td>
+				<td>${list.qbName }</td>
+				<td><fmt:formatDate value="${list.qbDate}" pattern="yyyy-MM-dd" />
+				</td>
+			</tr>
+		</c:forEach>
+	</table>
+
 </div>
 
-<%@ include file="/WEB-INF/view/include/footer.jsp"%>	
+<%@ include file="/WEB-INF/view/include/footer.jsp"%>

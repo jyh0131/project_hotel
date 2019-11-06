@@ -61,6 +61,7 @@
 		background:rgba(71, 163, 218, 0.8);
 		border:1px solid rgba(71, 163, 218, 0.8);
 		float: right;
+		font-size: 16px;
 	}
 	.btnReply:hover, .btnQRFinish:hover, .qr_btn_delete:hover, .qr_btn_update:hover, .btnQRUpdateFinish:hover{
 		color:rgba(250, 236, 197, 0.8);
