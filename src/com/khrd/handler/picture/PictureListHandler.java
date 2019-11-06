@@ -39,7 +39,7 @@ public class PictureListHandler implements CommandHandler {
 				// 객실분류 select부분
 				RoomCategoryDAO rcDao = RoomCategoryDAO.getInstance();
 				List<RoomCategory> rc = rcDao.selectList(conn);
-				request.setAttribute("rc", rc); //
+				request.setAttribute("rc", rc); 
 				
 				return "/WEB-INF/view/picture/pictureList.jsp"; 
 			}catch (Exception e) {

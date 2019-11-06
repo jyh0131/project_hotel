@@ -193,5 +193,35 @@ public class RoomDAO {
 		return -1;
 	}
 	
+	public List<Room> selectedRcNameList(Connection conn, String rc_name){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select * from room r join bed_type b on r.bt_no = b.bt_no\r\n" 
+								+ "join view_type v on r.vt_no = v.vt_no \r\n" 
+								+ "join room_category rc on r.rc_no = rc.rc_no \r\n"
+								+ "join room_size rs on r.rs_no = rs.rs_no\r\n" 
+							+ "where rc.rc_name = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, rc_name);
+			rs = pstmt.executeQuery();
+			
+			List<Room> list = new ArrayList<Room>();
+			while(rs.next()) {
+				Room room = room(rs); // Room 객체 생성 메소드 호출
+				list.add(room);
+			}
+			return list;
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+		return null;
+	}
 	
 }

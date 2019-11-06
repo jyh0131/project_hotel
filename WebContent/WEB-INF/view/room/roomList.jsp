@@ -76,7 +76,6 @@
 		$(".price").text(price);
 		
 		
-		
 		$(".btnDelete").click(function(){
 			var rNo = $(this).attr("data-rNo");
 	
@@ -99,9 +98,67 @@
 			}else{
 				return false;
 			}
-			
-			
 		})//.btnDelete
+		
+		
+		$(document).on("change", "select[name='rcName']", function(){
+			var rcName = $(this).val();
+			
+			$.ajax({
+				url:"${pageContext.request.contextPath }/room/list.do",
+				type:"post",
+				data:{"rcName" : rcName},
+				dataType:"json",
+				success:function(res){
+					console.log(res);
+					$(".allList").empty();
+					$(".selectedList").remove();
+					$(res.postList).each(function(i, obj){
+						if(rcName != "전체보기"){// select가 '전체보기'가 아닐 때
+							// td만들기
+							var $td_rNo = $("<td>").append(obj.roomNo); // 호수
+							var $td_rName = $("<td>").append(obj.roomCategory.rcName); // 객실 한글이름
+							var $td_rcEngName = $("<td>").append(obj.roomCategory.rcEngName); // 객실 영어이름
+							var $td_vtName = $("<td>").append(obj.viewType.vtName); // 객실 타입
+							var $td_btName = $("<td>").append(obj.bedType.btName); // 침대 타입
+							var $td_rsNo = $("<td>").append(obj.roomSize.rsNo); // 객실 사이즈
+							var $td_rPrice = $("<td>").append(obj.roomPrice); // 가격
+							
+							// 삭제버튼
+							var $btn_delete = $("<button>").addClass("btnDelete btn").attr("data-rNo", obj.roomNo).append("삭제");
+							
+							// 수정버튼
+							var href = "${pageContext.request.contextPath }/room/update.do?rNo=";
+							var $a_update = $("<a>").attr("href", href + obj.roomNo).addClass("btnUpdate btn").append("수정");
+
+							// 버튼 td에 연결하기
+							var $td_btn = $("<td>").addClass("btnBox").append($btn_delete).append($a_update);
+							
+							// tr만들어서 td연결하기
+							var $tr = $("<tr>").addClass("selectedList");
+							$tr.append($td_rNo).append($td_rName).append($td_rcEngName).append($td_vtName).append($td_btName).append($td_rsNo).append($td_rPrice).append($td_btn);
+							
+							// 테이블에 연결하기
+							$("table").append($tr);
+						}else{// select가 '전체보기'일 때
+							
+							
+						}
+						// 할일
+						// 전체보기
+						// select하고 삭제 안됨
+						// select하고 버튼 css적용
+						
+					})// each
+				},
+				error:function(e){
+					console.log(e);
+				}
+			})
+			
+		}) // ajax
+		
+		
 		
 	})
 </script>
@@ -115,7 +172,15 @@
 	<table>
 		<tr>
 			<th>호수</th>
-			<th colspan="2">객실 분류</th>
+			<th style="border-right:none;">객실 분류</th>
+			<th style="border-left:none;">
+				<select name="rcName">
+					<option selected="selected" value="전체보기">전체보기</option>
+					<c:forEach var="rcList" items="${rcList }">
+						<option value="${rcList.rcName }">${rcList.rcName }</option>
+					</c:forEach>
+				</select>
+			</th>
 			<th>전망 타입</th>
 			<th>침대 타입</th>
 			<th>객실 크기</th>
@@ -123,7 +188,7 @@
 			<th>관리</th>
 		</tr>
 		<c:forEach var="room" items="${list }">
-			<tr>
+			<tr class="allList">
 				<td>${room.roomNo }</td>
 				<td>${room.roomCategory.rcName }</td>
 				<td>${room.roomCategory.rcEngName }</td>

@@ -179,12 +179,12 @@
 			<th rowspan="2">사진</th>
 			<th rowspan="2">파일명</th>
 			<th rowspan="2">갤러리분류</th><!-- 분류명 들어와야함. -->
-			<th>객실분류</th>
+			<th style="border-bottom:none;">객실분류</th>
 			<th rowspan="2">파일분류</th>
 			<th rowspan="2">관리</th>
 		</tr>
 		<tr><!-- 객실분류 -->
-			<th>
+			<th style="border-top:none;">
 				<select name="rcName">
 					<option selected="selected" value="0">전체보기</option>
 					<c:forEach var="rc" items="${rc }">
