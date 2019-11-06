@@ -229,7 +229,12 @@
 				</div>
 				
 				<div class="footer-logo">
-					<a href="${pageContext.request.contextPath}/intranet/mng/sales.do"></a>
+					<c:if test="${Auth != null}">
+						<a></a>
+					</c:if>
+					<c:if test="${Auth == null}">
+						<a href="${pageContext.request.contextPath}/intranet/mng/sales.do"></a>
+					</c:if>
 					<span>design by.7631</span>
 				</div>
  				

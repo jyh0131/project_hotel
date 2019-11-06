@@ -63,7 +63,7 @@
 				</ul>	
 			</div>
 			
-<div id="gnb-nav">
+			<div id="gnb-nav">
 					<div id="nav-wrap">
 						<ul id="main-menu">
 							<li><a href="#">ABOUT</a>
