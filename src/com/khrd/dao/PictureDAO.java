@@ -247,6 +247,7 @@ public class PictureDAO {
 		return null;
 	} // selectedByRcNoList
 	
+	//갤러리 카테고리별 사진 나오기 (큰 사진만)
 	public List<Picture> selectPicListByGNo(Connection conn, int gNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -279,6 +280,39 @@ public class PictureDAO {
 		return null;
 		
 	}//selectPicListByGNo
+	
+	//갤러리 카테고리별 사진 전체 리스트 (큰 사진만)
+	public List<Picture> selectPicListForIntranet(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select * from g_type g join picture p using(g_no) "
+						+"left join room_category using(rc_no) "
+						+"where pic_category=0 and rc_no is null";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			List<Picture> list = new ArrayList<>();
+			
+			while(rs.next()) {
+				Picture picture = picConstruct(rs);
+				
+				list.add(picture);
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+		
+		return null;
+		
+	}//selectPicList
 	
 	
 }

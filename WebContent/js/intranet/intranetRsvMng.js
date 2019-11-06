@@ -24,8 +24,9 @@
 		//기간별 조건에 따라 리스트 뿌리기
 		$("#btnSearch").click(function(){
 			//테이블 리셋
-			
 			tableReset();
+			$("select[name='rsvState'] > option:eq(0)").prop("selected", true);
+			
 			var date = $(".datepicker-here").val();
 			var dateArr = date.split("~");
 			
@@ -38,7 +39,7 @@
 					console.log(res);
 					
 					if(res.list.length == 0) {
-						$("table").append("<tr class='centerAlign'><td>등록된 예약이 없습니다.</td></tr>");
+						$("table").append("<tr class='centerAlign'><td colspan='9'>등록된 예약이 없습니다.</td></tr>");
 					}
 					
 					$(res.list).each(function(i, obj){
@@ -60,7 +61,7 @@
 						if(obj.rState == "예약완료") { /*취소버튼 쫌있다가!*/
 							$tdBtn.append("<a href='#' id='aDel'>취소</a>");
 						} else {
-							$tdBtn.append("취소됨");
+							$tdBtn.addClass("canceled-rsv").append("취소됨");
 						}
 					
 						$tr = $("<tr>").append($tdNo).append($tdName).append($tdRoom).append($tdDate).append($tdPsn)

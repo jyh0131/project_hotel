@@ -53,3 +53,6 @@ div.intra-mem-list > table td[colspan='8'] {
 	text-align: left;
 	padding-left: 20px;
 }
+.centerAlign {
+	text-align: center;
+}
