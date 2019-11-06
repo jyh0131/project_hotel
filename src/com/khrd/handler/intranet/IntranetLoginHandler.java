@@ -45,6 +45,9 @@ public class IntranetLoginHandler implements CommandHandler {
 				}
 				
 				HttpSession session = request.getSession();
+				session.removeAttribute("Auth");
+				session.removeAttribute("Admin");
+				
 				session.setAttribute("Admin", m.getmId());
 				
 				response.sendRedirect(request.getContextPath() + "/intranet/mng/sales.do");

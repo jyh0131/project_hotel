@@ -31,59 +31,73 @@
 			</div>
 
 			<div id="gnb-nav">
-				<div id="nav-wrap">
-					<ul id="main-menu">
-						<li><a href="#">스페셜 오퍼</a>
-							<ul class="sub-nav">
-								<li><a href="#">객실패키지</a></li>
-								<li><a href="#">이벤트</a></li>
-							</ul></li>
-
-						<li><a href="#">객실</a>
-							<ul class="sub-nav">
-								<li><a href="#">스탠다드</a></li>
-								<li><a href="#">프리미어</a></li>
-								<li><a href="#">스위트</a></li>
-								<li><a href="#">전체 객실 보기</a></li>
-							</ul></li>
-
-						<li><a href="#">다이닝</a>
-							<ul class="sub-nav">
-								<li><a href="#">레스토랑</a></li>
-								<li><a href="#">라운지＆바</a></li>
-								<li><a href="#">베이커리</a></li>
-							</ul></li>
-
-						<li><a href="#">액티비티</a>
-							<ul class="sub-nav">
-								<li><a href="#">클램핑＆캠핑</a></li>
-								<li><a href="#">레저 전문가 서비스</a></li>
-								<li><a href="#">키즈 시설</a></li>
-								<li><a href="#">피트니스</a></li>
-								<li><a href="#">와인 파티</a></li>
-								<li><a href="#">갤러리 투어</a></li>
-								<li><a href="#">숨비정원</a></li>
-								<li><a href="#">플레이스테이션 게임 존</a></li>
-							</ul></li>
-
-						<li><a href="#">부대시설</a>
-							<ul class="sub-nav">
-								<li><a href="#">숨비 스파 존</a></li>
-								<li><a href="#">카비나</a></li>
-								<li><a href="#">스파</a></li>
-								<li><a href="#">라운지 에스</a></li>
-								<li><a href="#">연회장</a></li>
-								<li><a href="#">비즈니스 센터</a></li>
-								<li><a href="#">아케이드</a></li>
-								<li><a href="#">렌터카</a></li>
-							</ul></li>
-
-						<li><a href="#">갤러리</a>
-							<ul class="sub-nav">
-								<li><a href="#">사진</a></li>
-								<li><a href="#">동영상</a></li>
-							</ul></li>
-					</ul>
+					<div id="nav-wrap">
+						<ul id="main-menu">
+							<li><a href="#">ABOUT</a>
+								<ul class="sub-nav">
+									<li>
+										<a href="${pageContext.request.contextPath}/etcPage/introHotel.jsp">소개</a>
+									</li>
+									<li>
+										<a href="${pageContext.request.contextPath}/etcPage/introSCV.jsp">노예소개</a>
+									</li>
+								</ul>
+							</li>
+	
+							<li>
+								<a href="${pageContext.request.contextPath }/room/main.do?rcNo=1">객실</a>
+								<ul class="sub-nav">
+									<li>
+										<a href="${pageContext.request.contextPath }/room/main.do?rcNo=1">스탠다드</a>
+									</li>
+									<li>
+										<a href="${pageContext.request.contextPath }/room/main.do?rcNo=2">디럭스</a>
+									</li>
+									<li>
+										<a href="${pageContext.request.contextPath }/room/main.do?rcNo=3">테라스</a>
+									</li>
+										<li>
+										<a href="${pageContext.request.contextPath }/room/main.do?rcNo=4">프리미어</a>
+									</li>
+										<li>
+										<a href="${pageContext.request.contextPath }/room/main.do?rcNo=5">프리미어 테라스</a>
+									</li>
+										<li>
+										<a href="${pageContext.request.contextPath }/room/main.do?rcNo=6">퍼시픽 디럭스</a>
+									</li>
+										<li>
+										<a href="${pageContext.request.contextPath }/room/main.do?rcNo=7">로열 스위트</a>
+									</li>
+										<li>
+										<a href="${pageContext.request.contextPath }/room/main.do?rcNo=8">프레지덴셜 스위트</a>
+									</li>
+								</ul>
+							</li>
+	
+							<li><a href="#">액티비티</a>
+								<ul class="sub-nav">
+							 		<li><a href="${pageContext.request.contextPath}/etcPage/actSurf.jsp">서핑 체험</a></li>
+									<li><a href="${pageContext.request.contextPath}/etcPage/actForest.jsp">숲으로</a></li>
+									<li><a href="${pageContext.request.contextPath}/etcPage/actNoBirth.jsp">안생일축하</a></li>
+									<li><a href="${pageContext.request.contextPath}/etcPage/actExhibit.jsp">전시 및 포토스팟</a></li>
+								</ul>
+							</li>
+	
+							<li><a href="${pageContext.request.contextPath}/etcPage/gallery/gallery1.jsp">갤러리</a>
+								<ul class="sub-nav">
+									<li><a href="${pageContext.request.contextPath}/etcPage/gallery/gallery1.jsp">사진</a></li>
+									<li><a href="${pageContext.request.contextPath}/etcPage/gallery/video.jsp">동영상</a></li>
+								</ul>
+							</li>
+	
+							<li>
+								<a>커뮤니티</a>
+								<ul class="sub-nav">
+									<li><a href="${pageContext.request.contextPath}/notice/list.do">공지사항</a></li>
+									<li><a href="${pageContext.request.contextPath}/qb/list.do">문의하기</a></li>
+								</ul>
+							</li>
+						</ul>
 
 					<div id="rsv-menu">
 						<a href="#">예약</a>

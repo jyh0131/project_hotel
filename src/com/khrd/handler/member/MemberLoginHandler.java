@@ -50,7 +50,9 @@ public class MemberLoginHandler implements CommandHandler {
 				
 				/*isAdmin값으로 키 값 다르게 저장되게 하기*/
 				HttpSession session = request.getSession();
-
+				session.removeAttribute("Auth");
+				session.removeAttribute("Admin");
+				
 				switch(member.getmIsAdmin()) {
 				case 0:
 					session.setAttribute("Auth", member.getmId());

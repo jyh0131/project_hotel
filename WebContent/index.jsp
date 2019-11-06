@@ -144,7 +144,14 @@
 								<a href="${pageContext.request.contextPath}/notice/list.do">커뮤니티</a>
 								<ul class="sub-nav">
 									<li><a href="${pageContext.request.contextPath}/notice/list.do">공지사항</a></li>
-									<li><a href="${pageContext.request.contextPath}/qb/list.do">문의하기</a></li>
+									<c:choose>
+										<c:when test="${Admin != null }"><!-- 관리자 로그인 시 -->
+											<li><a href="${pageContext.request.contextPath}/qr/list.do">문의하기</a></li>
+										</c:when>
+										<c:otherwise>
+											<li><a href="${pageContext.request.contextPath}/qb/list.do">문의하기</a></li>
+										</c:otherwise>
+									</c:choose>
 								</ul>
 							</li>
 						</ul>

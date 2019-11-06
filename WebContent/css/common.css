@@ -75,13 +75,13 @@ div#nav-wrap {
    position: relative;
 }
 ul#main-menu {
-   width: 70%;
+   width: 75%;
    height: 52px;
    background: #47a3da;
 }
 ul#main-menu > li {
    float: left;
-   width: 16.6%;
+   width: 20%;
    text-align: center;
    position: relative;
 }

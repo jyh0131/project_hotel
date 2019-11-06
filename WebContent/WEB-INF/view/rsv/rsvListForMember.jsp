@@ -11,7 +11,7 @@
 <div class="rsv-list-wrap">
 	<div class="rsv-list">
 		<div class="rsv-date-wrap">
-			<span>🎈기간별 리스트</span>
+			<span>🎈체크인 날짜 기준으로 리스트 검색</span>
 			<input type="text" name="rsvDate" class="datepicker-here" data-position="bottom center" data-date-format="yyyy-mm-dd"
 					data-language="en" data-range="true" data-multiple-dates-separator="~" data-language="en" />
 			<button id="btnSearch">보기</button>

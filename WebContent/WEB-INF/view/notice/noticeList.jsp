@@ -21,9 +21,14 @@
 		width: 90%;
 		margin: 15px auto 0;
 	}
-	div.menu-notice-wrap > div.notice-wrap > a.hrefWrite {
+	div.menu-notice-wrap > div.notice-wrap > table > caption {
+		caption-side: bottom;
+		text-align: right;
+	}
+	div.menu-notice-wrap > div.notice-wrap > table > caption > a#hrefWrite {
 		text-align: right;
 		color: #535353;
+		font-size: 14px;
 	}
 	div.menu-notice-wrap > div.notice-wrap > table {
 		border-collapse: collapse;
@@ -51,14 +56,17 @@
 	.c3 {width: 12%;}
 	.c4 {width: 9%;}
 	.c5 {width: 9%;}
+
 </style>
 
 <div class="menu-notice-wrap">
 	<h1>공지사항</h1>
 	
 	<div class="notice-wrap">
-		<a href="${pageContext.request.contextPath}/notice/insert.do" id="hrefWrite">글쓰기</a>
 		<table>
+			<caption>
+				<a href="${pageContext.request.contextPath}/notice/insert.do" id="hrefWrite">글쓰기</a>
+			</caption>
 			<tr>
 				<th class="c1">No</th>
 				<th class="c2">제목</th>

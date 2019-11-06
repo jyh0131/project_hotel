@@ -86,14 +86,20 @@
 		})
 		
 		//휴대전화 입력시
-		$("input[name='phone3']").blur(function(){
+		$("input[name='phone2']").blur(function(){
 			var phoneReg2 = /^[0-9]{3,4}$/;
-			var phoneReg3 = /^[0-9]{4}$/;
 			var phone2 = $("input[name='phone2']").val();
+			
+			if(phoneReg2.test(phone2) == false) {
+				$(this).nextAll(".error").css("display", "inline").css("padding","0px");
+			}
+		});
+		$("input[name='phone3']").blur(function(){
+			var phoneReg3 = /^[0-9]{4}$/;
 			var phone3 = $("input[name='phone3']").val();
 			
-			if(phoneReg2.test(phone2) == false || phoneReg3.test(phone3) == false) {
-				$(this).nextAll(".error").css("display", "inline");
+			if(phoneReg3.test(phone3) == false) {
+				$(this).nextAll(".error").css("display", "inline").css("padding","0px");
 			}
 		});
 		//휴대전화 에러 리셋
@@ -137,14 +143,18 @@
 		});
 		//이메일 에러 리셋
 		$("input[name='mail']").focus(function(){
+			$(this).nextAll(".avCon").css("display", "none");
 			$(this).nextAll(".error").css("display", "none");
+			$("#btnMailCk").css("display", "inline");
 		});
+		
 		
 		//submit 전 유효성 검사
 		$("form").submit(function(){
 			
 			//아이디
 			var id = $("input[name='id']").val();
+			
 			if(id == "") {
 				alert("아이디 입력란이 비었습니다. 입력 바랍니다.");
 				return false;
@@ -177,6 +187,7 @@
 			
 			//이메일
 			var mail = $("input[name='mail']").val();
+			
 			if(mail == "") {
 				alert("이메일 입력란이 비었습니다. 입력 바랍니다.");
 				return false;

@@ -55,6 +55,7 @@
 				<input type="tel" name="phone2" maxlength="4">
 				<span>-</span>
 				<input type="tel" name="phone3" maxlength="4">
+				<span class="error">형식에 맞지않는 휴대전화번호입니다.</span>
 			</p>
 			<p>
 				<label>이메일</label>

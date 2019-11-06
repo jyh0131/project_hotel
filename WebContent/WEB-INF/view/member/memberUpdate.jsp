@@ -83,7 +83,7 @@
 		
 		<div class="update-info-form" id="form-btn">
 			<input type="submit" value="수정">
-			<input type="reset" value="취소">
+			<input type="reset" value="취소" onclick="goBack()">
 		</div>
 	</form>
 </div>	

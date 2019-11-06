@@ -86,18 +86,27 @@
 		})
 		
 		//휴대전화 입력시
-		$("input[name='phone']").blur(function(){
-			var phoneReg = /^(?:(010\d{4})|(01[1|6|7|8|9]\d{3,4}))\d{4}$/;
-			var phone = $(this).val();
+		$("input[name='phone2']").blur(function(){
+			var phoneReg2 = /^[0-9]{3,4}$/;
+			var phone2 = $("input[name='phone2']").val();
 			
-			if(phoneReg.test(phone) == false) {
-				$(this).nextAll(".formRule").css("display", "none");
-				$(this).nextAll(".error").css("display", "inline");
+			if(phoneReg2.test(phone2) == false) {
+				$(this).nextAll(".error").css("display", "inline").css("padding","0px");
+			}
+		});
+		$("input[name='phone3']").blur(function(){
+			var phoneReg3 = /^[0-9]{4}$/;
+			var phone3 = $("input[name='phone3']").val();
+			
+			if(phoneReg3.test(phone3) == false) {
+				$(this).nextAll(".error").css("display", "inline").css("padding","0px");
 			}
 		});
 		//휴대전화 에러 리셋
-		$("input[name='phone']").focus(function(){
-			$(this).nextAll(".formRule").css("display", "inline");
+		$("input[name='phone2']").focus(function(){
+			$(this).nextAll(".error").css("display", "none");
+		});
+		$("input[name='phone3']").focus(function(){
 			$(this).nextAll(".error").css("display", "none");
 		});
 		
@@ -134,11 +143,10 @@
 		});
 		//이메일 에러 리셋
 		$("input[name='mail']").focus(function(){
+			$(this).nextAll(".avCon").css("display", "none");
 			$(this).nextAll(".error").css("display", "none");
+			$("#btnMailCk").css("display", "inline");
 		});
-		
-		
-		
 		
 		
 		//submit 전 유효성 검사

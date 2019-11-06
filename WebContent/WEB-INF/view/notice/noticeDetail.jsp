@@ -21,6 +21,14 @@
 		width: 60%;
 		margin: 15px auto 0;
 	}
+	div.notice-wrap > form > table > caption {
+		caption-side: bottom;
+		text-align: right;
+		font-size: 14px;
+	}
+	div.notice-wrap > form > table > caption > a {
+		color: #535353;
+	}
 	div.notice-wrap > form > table {
 		width: 90%;
 		margin: 0 auto;
@@ -84,7 +92,7 @@
 </script>
 
 <div class="menu-notice-wrap">
-	<h1>공지사항 작성</h1>
+	<h1>공지사항</h1>
 	
 	<div class="notice-wrap">
 		<form action="insert.do" method="post">
@@ -108,12 +116,14 @@
 						</c:if>
 					</td>
 				</tr>
+				<caption>
+					<c:if test="${nt.member.mId == Admin}">
+						<a href="${pageContext.request.contextPath}/notice/update.do?no=${nt.ntNo}">수정</a>
+						<a href="${pageContext.request.contextPath}/notice/delete.do?no=${nt.ntNo}" id="aDel">삭제</a>
+					</c:if>
+					<a href="${pageContext.request.contextPath}/notice/list.do" id="hrefList">목록</a>
+				</caption>
 			</table>
-			<c:if test="${nt.member.mId == Admin}">
-				<a href="${pageContext.request.contextPath}/notice/update.do?no=${nt.ntNo}">수정</a>
-				<a href="${pageContext.request.contextPath}/notice/delete.do?no=${nt.ntNo}" id="aDel">삭제</a>
-			</c:if>
-			<a href="${pageContext.request.contextPath}/notice/list.do">목록</a>
 		</form>
 	</div>
 </div>
