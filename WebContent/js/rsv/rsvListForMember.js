@@ -25,6 +25,7 @@
 		$("#btnSearch").click(function(){
 			//테이블 리셋
 			tableReset();
+			$("select[name='rsvState'] > option:eq(0)").prop("selected", true);
 			
 			var date = $(".datepicker-here").val();
 			var dateArr = date.split("~");

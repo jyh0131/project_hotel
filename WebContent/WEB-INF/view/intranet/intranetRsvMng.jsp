@@ -42,7 +42,7 @@
 		</tr>
 		<c:if test="${list == null}">
 			<tr class='centerAlign'>
-				<td>등록된 예약이 없습니다.</td>
+				<td colspan="9">등록된 예약이 없습니다.</td>
 			</tr>
 		</c:if>
 		<c:if test="${list != null}">
@@ -83,7 +83,7 @@
 						</td>
 					</c:if>
 					<c:if test="${rsv.rState == '취소'}">
-						<td rowspan="2">취소됨</td>
+						<td rowspan="2" class="canceled-rsv">취소됨</td>
 					</c:if>
 					
 				

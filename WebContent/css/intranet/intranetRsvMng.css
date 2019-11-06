@@ -47,6 +47,9 @@ div.rsv-list > table {
 	border-collapse: collapse;
 	text-align: center;
 }
+a#aDel {
+	color: white;
+}
 th, td {
 	padding: 10px;
 	border-top: 1px solid #FAECC5;
@@ -66,6 +69,9 @@ td[rowspan="2"] {
 .tr-bottom {
 	border-bottom: 3px solid #FAECC5;
 }
-tr.centerAlign {
+.centerAlign {
 	text-align: center;
+}
+.canceled-rsv {
+	color: red;
 }

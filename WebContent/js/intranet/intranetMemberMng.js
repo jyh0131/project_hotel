@@ -24,7 +24,7 @@
 					console.log(res);
 
 					if(res.list.length == 0) {
-						$("table").append("<tr><td colspan='8'>등록된 회원이 없습니다.</td></tr>");
+						$("table").append("<tr class='centerAlign'><td colspan='8'>등록된 회원이 없습니다.</td></tr>");
 					}
 					
 					$(res.list).each(function(i, obj){

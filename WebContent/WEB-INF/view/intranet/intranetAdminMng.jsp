@@ -5,7 +5,7 @@
 <link href="${pageContext.request.contextPath}/css/intranet/intranetMemberMng.css" rel="stylesheet" type="text/css">
 <script src="${pageContext.request.contextPath}/js/intranet/intranetAdminMng.js"></script>
 
-<h2>회원관리-관리자</h2>
+<h2>회원관리(관리자)</h2>
 
 <div class="intra-mem-list">
 	<div class="mem-sel-list">
@@ -36,7 +36,7 @@
 		</tr>
 		<!-- 관리자가 존재하지 않을떄 -->
 		<c:if test="${list == null}">
-			<tr>
+			<tr class="centerAlign">
 				<td colspan="8">등록된 관리자가 없습니다.</td>
 			</tr>
 		</c:if>

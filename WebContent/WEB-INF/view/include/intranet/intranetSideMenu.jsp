@@ -36,7 +36,7 @@
 						<a href="${pageContext.request.contextPath}/picture/list.do">객실 사진</a>
 					</li>
 					<li>
-						<a href="#">갤러리 사진</a>
+						<a href="${pageContext.request.contextPath}/intranet/gal/list.do">갤러리 사진</a>
 					</li>
 				</ul>
 			</li>
