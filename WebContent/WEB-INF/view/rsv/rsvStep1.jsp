@@ -23,9 +23,8 @@
 		<div class="rsv-date-inner">
 			<div class="rsv-date-top">
 				<div class="rsv-date">
-					<input type="text" name="rsvDate"
-					readonly="readonly" class="datepicker-here" data-position="bottom center" 
-					data-language="en" data-range="true" data-multiple-dates-separator="/" data-language="en" />
+				<input type="text" name="ckInDate" class="datepicker-here" data-position="bottom center" 
+					data-date-format="yyyy-mm-dd" data-language="en" id="pick_start"/>
 					<span class="ck-title">체크인</span>
 		
 					<div class="ck-date" id="ckIn-info">
@@ -40,15 +39,17 @@
 				</div>
 		
 				<div class="rsv-date">
+				<input type="text" name="ckOutDate" class="datepicker-here" data-position="bottom center" 
+					data-date-format="yyyy-mm-dd" data-language="en" id="pick_end"/>
 					<span class="ck-title">체크아웃</span>
 		
 					<div class="ck-date" id="ckOut-info">
 						<span class="left-side"> 
-							<input type="text" name="outYear" value="" readonly="readonly" class="rsv-year">
-							<input type="text" name="outMonth" value="" readonly="readonly" class="rsv-month">
+							<input type="text" name="outYear" value="${ckOut[0]}" readonly="readonly" class="rsv-year">
+							<input type="text" name="outMonth" value="${ckOut[1]}" readonly="readonly" class="rsv-month">
 						</span> 
 						<span class="right-side"> 
-							<input type="text" name="outDate" value="" readonly="readonly" class="rsv-date">
+							<input type="text" name="outDate" value="${ckOut[2]}" readonly="readonly" class="rsv-date">
 						</span>
 					</div>
 				</div>

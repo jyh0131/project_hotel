@@ -155,7 +155,7 @@ public class RsvDAO {
 		ResultSet rs = null;
 		
 		try {
-			String sql = "select * from vw_all_table where r_state=?";
+			String sql = "select * from vw_all_table where r_state=? order by r_no desc";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, state);
 			rs = pstmt.executeQuery();
@@ -424,7 +424,8 @@ public class RsvDAO {
 			try {
 				String sql = "select * from "
 							+"vw_all_table "
-							+"where m_id = ?";
+							+"where m_id = ? "
+							+"order by r_no desc";
 				
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, mId);

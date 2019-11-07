@@ -54,6 +54,7 @@ div#form-btn {
 div#form-btn > input {
 	padding: 8px 15px;
 	margin: 10px 10px;
+	outline: none;
 }
 
 

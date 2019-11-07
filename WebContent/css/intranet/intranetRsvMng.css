@@ -16,9 +16,18 @@ div.rsv-list > div.rsv-date-wrap > span {
 	font-size: 12px;
 	margin-bottom: 2px;
 }
+div.rsv-list > div.rsv-date-wrap > span#anfruf{
+	float: left;
+}
 div.rsv-list > div.rsv-date-wrap > input {
 	padding: 5px;
 	float: left;
+	outline: none;
+	width: 70px;
+	text-align: center;
+}
+div.rsv-list > div.rsv-date-wrap > input:focus {
+	background: rgba(255,223,36,0.3);
 }
 div.rsv-list > div.rsv-date-wrap > button {
 	margin-left: 3px;
@@ -28,6 +37,7 @@ div.rsv-list > div.rsv-date-wrap > button {
 	color: white;
 	border: 0;
 	box-shadow: 1px 1px 2px grey;
+	cursor: pointer;
 }
 div.rsv-list > div.rsv-state-wrap {
 	width: 50%;

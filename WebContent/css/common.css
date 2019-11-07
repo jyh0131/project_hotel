@@ -10,6 +10,9 @@ li {
 a {
 	text-decoration: none;
 }
+input[readonly='readonly'] {
+	outline: none;
+}
 div#container {
 	width: 100%;
 }

@@ -308,15 +308,14 @@ public class MemberDAO {
 	public int MemberUpdate(Connection conn, Member member) {
 		PreparedStatement pstmt = null;
 		try {
-			String sql = "update member set m_mail=?, m_phone=?, m_tel=?, m_zipcode=?, m_addr1=?, m_addr2=? where m_id =?";
+			String sql = "update member set m_phone=?, m_tel=?, m_zipcode=?, m_addr1=?, m_addr2=? where m_id =?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, member.getmMail());
-			pstmt.setString(2, member.getmPhone());
-			pstmt.setString(3, member.getmTel());
-			pstmt.setString(4, member.getmZipcode());
-			pstmt.setString(5, member.getmAddr1());
-			pstmt.setString(6, member.getmAddr2());
-			pstmt.setString(7, member.getmId());
+			pstmt.setString(1, member.getmPhone());
+			pstmt.setString(2, member.getmTel());
+			pstmt.setString(3, member.getmZipcode());
+			pstmt.setString(4, member.getmAddr1());
+			pstmt.setString(5, member.getmAddr2());
+			pstmt.setString(6, member.getmId());
 
 			return pstmt.executeUpdate();
 

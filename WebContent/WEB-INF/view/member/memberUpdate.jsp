@@ -2,16 +2,20 @@
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
 <link href="${pageContext.request.contextPath}/css/member/memberUpdateInfo.css" type="text/css" rel="stylesheet">
-
+<script src="${pageContext.request.contextPath}/js/member/memberUpdateInfo.js"></script>
 
 <div class="update-info-wrap">
 	<form action="update.do" method="post">
-		
 		<div class="update-info-form">
 			<h3>정보 수정</h3>
 			<p>
 				<label>아이디</label>
-				<input type="text" name="id" readonly="readonly" value="${Auth}">
+				<c:if test="${Auth != null}">
+					<input type="text" name="id" readonly="readonly" value="${Auth}">
+				</c:if>
+				<c:if test="${Admin != null}">
+					<input type="text" name="id" readonly="readonly" value="${Admin}">
+				</c:if>
 			</p>
 			<p>
 				<label>성명</label>
@@ -40,7 +44,8 @@
 				<span>-</span>
 				<input type="tel" name="phone2" value="${p[1]}" maxlength="4">
 				<span>-</span>
-				<input type="tel" name="phone3" value="${p[2]}" maxlength="4">		
+				<input type="tel" name="phone3" value="${p[2]}" maxlength="4">	
+				<span class="error">형식에 맞지않는 휴대전화번호입니다.</span>	
 			</p>
 			<p>
 				<label>자택전화</label>

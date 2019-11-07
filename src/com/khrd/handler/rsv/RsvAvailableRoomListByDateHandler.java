@@ -26,12 +26,9 @@ public class RsvAvailableRoomListByDateHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if(request.getMethod().equalsIgnoreCase("get")) { //예약 가능한 방 카테고리
-			String date = request.getParameter("rsvDate");
+			String inDate = request.getParameter("inDate");
+			String outDate = request.getParameter("outDate");
 			
-			String[] dateArr = date.split("/");
-			String inDate = dateArr[2] + "-" + dateArr[0] + "-" + dateArr[1];
-			String outDate = dateArr[5] + "-" + dateArr[3] + "-" + dateArr[4];
-			 
 			try {
 				conn = ConnectionProvider.getConnection();
 				//빈방 정보 view 생성

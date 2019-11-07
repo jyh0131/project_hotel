@@ -167,8 +167,8 @@
 	})
 	
 </script>
+	<h2 style="margin-bottom:10px;">사진 관리(객실 사진)</h2>
 <div id="pListWrap">
-	<h1>객실 사진 리스트</h1>
 	
 	<div id="clickHeader">
 		<a href="${pageContext.request.contextPath }/picture/insert.do">객실 사진 등록하기</a> 	

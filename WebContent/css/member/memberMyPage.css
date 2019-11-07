@@ -42,6 +42,10 @@ span.page-info {
 	font-size: 14px;
 	padding-top: 20px;
 }
-
-
+div.myPage-wrap > ul > li > img {
+    width: 100%;
+    height: 50%;
+    line-height: 200px;
+    margin-top: 23%
+}
 

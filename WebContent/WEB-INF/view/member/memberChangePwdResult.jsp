@@ -9,10 +9,10 @@
 	</div>
 	<div class="result-content">
 		<c:if test="${result > 0}">
-			<h2>정보가 변경되었습니다</h2>
+			<h2>비밀번호가 변경되었습니다</h2>
 		</c:if>
 		<c:if test="${result <= 0}">
-			<h2>정보 변경에 실패하였습니다</h2>
+			<h2>비밀번호 변경에 실패하였습니다</h2>
 		</c:if>
 		<p>잠시 후 이전화면으로 돌아갑니다.</p>
 		<a href="${pageContext.request.contextPath}/main.do">메인으로</a>

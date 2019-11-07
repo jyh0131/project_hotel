@@ -60,4 +60,5 @@ input[type="submit"] {
 	border: none;
 	box-shadow: 1px 2px 3px gray;
 	outline: none;
+	cursor: pointer;
 }

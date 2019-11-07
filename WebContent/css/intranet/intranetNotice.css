@@ -34,6 +34,7 @@ div.notice-list > ul {
 div.notice-list > ul > li {
 	padding: 13px;
 	border-bottom: 1px dotted #666;
+	overflow: hidden;
 }
 div.notice-list > ul > li:hover > a {
 	font-weight: bold;

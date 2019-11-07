@@ -71,6 +71,8 @@ public class MemberJoinHandler implements CommandHandler {
 				
 				response.sendRedirect(request.getContextPath() + "/member/joinResult.do");
 				
+				return null;
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 				

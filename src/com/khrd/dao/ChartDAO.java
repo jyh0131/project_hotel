@@ -40,8 +40,9 @@ public class ChartDAO {
 						+"sum(if(month(r_in)=11, r_total_price, 0)) as '11월', "
 						+"sum(if(month(r_in)=12, r_total_price, 0)) as '12월' "
 						+"from vw_all_table "
-						+"where r_state = '예약완료' "
-						+"group by rc_name";
+/*						+"where r_state = '예약완료' "*/
+						+"group by rc_name "
+						+"order by rc_no";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			List<int[]> list = new ArrayList<>();
@@ -141,11 +142,11 @@ public class ChartDAO {
 		
 		try {
 			String sql = "select "
-						+"count(if(qb_category = '결제 문의', 1, 0)) as '결제 문의', "
-						+"count(if(qb_category = '예약 문의', 1, 0)) as '예약 문의', "
-						+"count(if(qb_category = '객실 문의', 1, 0)) as '객실 문의', "
-						+"count(if(qb_category = '시설 및 옵션 문의', 1, 0)) as '시설 및 옵션 문의', "
-						+"count(if(qb_category = '기타 문의', 1, 0)) as '기타 문의'"
+						+"sum(if(qb_category = 1, 1, 0)) as '결제 문의', "
+						+"sum(if(qb_category = 2, 1, 0)) as '예약 문의', "
+						+"sum(if(qb_category = 3, 1, 0)) as '객실 문의', "
+						+"sum(if(qb_category = 4, 1, 0)) as '시설 및 옵션 문의', "
+						+"sum(if(qb_category = 5, 1, 0)) as '기타 문의'"
 						+"from question_board order by qb_category";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();

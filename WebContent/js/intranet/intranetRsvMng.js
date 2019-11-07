@@ -9,7 +9,18 @@
 		//날짜포맷 메소드
 		function dateFormat(time) {
 			var date = new Date(time);
-			return date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
+			var mon = date.getMonth()+1;
+			var dt = date.getDate();
+		
+			//10보다 작은 수들에 0붙이기
+			if(mon < 10) {
+				mon = "0" + mon;
+			}
+			if(dt < 10) {
+				dt = "0" + dt;
+			}
+			
+			return date.getFullYear() + "-" + mon + "-" + dt;
 		}
 		
 		//테이블 리셋 메소드
@@ -21,19 +32,64 @@
 			$("table").append($trDf);
 		}
 		
+		//데이트피커 컨트롤
+		var dStart, dEnd;
+		
+		//날짜선택창
+		$("#pick_start").datepicker({
+			toggleSelected: false,
+			clear: 'Clear',
+			autoClose: true,
+			firstDay: 0,
+			onSelect: function(formattedDate, date, inst){
+				dStart = date;
+				
+				$("#pick_end").datepicker({
+					minDate: new Date(date)
+				});
+			}
+		});
+		
+		$("#pick_end").datepicker({
+			toggleSelected: false,
+			clear: 'Clear',
+			autoClose: true,
+			onSelect: function(formattedDate, date, inst){
+				dEnd = date;
+			}
+		});
+		
+		
 		//기간별 조건에 따라 리스트 뿌리기
 		$("#btnSearch").click(function(){
+			//데이트피커 공란일 때
+			if($("#pick_start").val() == "" || $("#pick_end").val() == "") {
+				alert("날짜를 선택해주세요");
+				return;
+			}
+			//데이트피커 날짜 조건
+			if(dStart == dEnd) {
+				alert("시작날짜가 종료날짜와 같을 수 없습니다.");
+				$("#pick_start").val("");
+				return;
+			}
+			if(dStart > dEnd) {
+				alert("시작날짜가 종료날짜보다 이후일 수 없습니다.");
+				$("#pick_start").val("");
+				return;
+			}
+			
 			//테이블 리셋
 			tableReset();
 			$("select[name='rsvState'] > option:eq(0)").prop("selected", true);
 			
-			var date = $(".datepicker-here").val();
-			var dateArr = date.split("~");
+			var dateStart = $("#pick_start").val();
+			var dateEnd = $("#pick_end").val();
 			
 			$.ajax({
 				url: "rsvDateList.do",
 				type: "get",
-				data: {"inDate":dateArr[0], "outDate":dateArr[1]},
+				data: {"inDate":dateStart, "outDate":dateEnd},
 				dataType: "json",
 				success: function(res){
 					console.log(res);
@@ -86,6 +142,10 @@
 		
 		//select 상태에 따라 리스트 뿌리기
 		$("select[name='rsvState']").change(function(){
+			//상태 선택시 날짜 선택은 공란으로
+			$("#pick_start").val("");
+			$("#pick_end").val("");
+			
 			//테이블 리셋
 			tableReset();
 			

@@ -17,23 +17,23 @@
 				<ul>
 					<li><a href="#">품행을 단정히 마음을 소중히</a></li>
 					<li><a href="#">진상에게는 고개숙이지 맙시다</a></li>
-					<li><a href="#">ㅇㅁㄴㅇㄹ </a></li>
-					<li><a href="#">웅adfs앵1</a></li>
-					<li><a href="#">웅앵fasdf1</a></li>
+					<li><a href="#">여기서는 제가 짱이기 때문에 저한테 다 말하세요</a></li>
+					<li><a href="#">이번 회식은 장어구이입니다😎🎇</a></li>
+					<li><a href="#">관리자는 특별예약 가능하니 회원에서 예약하지 마세요</a></li>
 				</ul>
 			</div>
 		</div>
 		<div class="main-notice2">
 			<div class="notice-title">
-				공지사항2
+				버그 리포트
 			</div>
 			<div class="notice-list">
 				<ul>
-					<li><a href="#">웅sdfasd앵1</a></li>
-					<li><a href="#">웅fasdfa앵1</a></li>
-					<li><a href="#">웅asd앵1</a></li>
-					<li><a href="#">웅fasfd앵1</a></li>
-					<li><a href="#">웅afasdfa앵1</a></li>
+					<li><a href="#">비밀번호변경 에러 안뜨는 오류 수정했습니다</a></li>
+					<li><a href="#">정보변경 자잘한 오류 수정했습니다</a></li>
+					<li><a href="#">회원예약에서 관리자 아이디로 예약 못하게 처리했습니다</a></li>
+					<li><a href="#">메뉴 비율 안맞는거 수정했습니다</a></li>
+					<li><a href="#">메인 화면 수정했습니다</a></li>
 				</ul>
 			</div>
 		</div>
@@ -42,29 +42,29 @@
 	<div class="main-notice-wrap">
 		<div class="main-notice1">
 			<div class="notice-title">
-				공지사항3
+				직원 요청
 			</div>
 			<div class="notice-list">
 				<ul>
-					<li><a href="#">웅앵sdfasdfa1</a></li>
-					<li><a href="#">asdfaa</a></li>
-					<li><a href="#">웅aas앵1</a></li>
-					<li><a href="#">웅dfadfa앵1</a></li>
-					<li><a href="#">웅df앵1</a></li>
+					<li><a href="#">직원 커뮤니티 게시판 언제 만들어주시나요?</a></li>
+					<li><a href="#">밥이 맨날 똑같은 것 같아요</a></li>
+					<li><a href="#">직원 특별예약도 회원에서 하게 해주세요</a></li>
+					<li><a href="#">직원 좀 더 뽑아주세요... 심심해요..</a></li>
+					<li><a href="#">이번 공휴일에 쉬나요?</a></li>
 				</ul>
 			</div>
 		</div>
 		<div class="main-notice2">
 			<div class="notice-title">
-				공지사항4
+				-
 			</div>
 			<div class="notice-list">
 				<ul>
-					<li><a href="#">asd웅앵1</a></li>
-					<li><a href="#">웅a앵1</a></li>
-					<li><a href="#">웅dfa앵1</a></li>
-					<li><a href="#">웅fsdfasd앵1</a></li>
-					<li><a href="#">웅adf앵1</a></li>
+					<li><a href="#">2019-11-07</a></li>
+					<li><a href="#">2019-11-06</a></li>
+					<li><a href="#">2019-11-05</a></li>
+					<li><a href="#">2019-11-04</a></li>
+					<li><a href="#">2019-11-03</a></li>
 				</ul>
 			</div>
 		</div>

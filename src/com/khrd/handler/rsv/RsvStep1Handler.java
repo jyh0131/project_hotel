@@ -90,17 +90,16 @@ public class RsvStep1Handler implements CommandHandler {
 				Room r = rDao.selectedByRoomNo(conn, list.get(0));
 				
 				//ckIn ckOut 날짜 받기
-				String date = request.getParameter("rsvDate");
+				String inDate = request.getParameter("ckInDate");
+				String outDate = request.getParameter("ckOutDate");
 				
-				String[] dateArr = date.split("/");
-				String inDate = dateArr[2] + "-" + dateArr[0] + "-" + dateArr[1];
-				String outDate = dateArr[5] + "-" + dateArr[3] + "-" + dateArr[4];
-				
-				//총 가격 -> room 가격 받고 date 차 구한 다음에 곱해서 넣기
+				//String -> Date
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				Date inD = sdf.parse(inDate);
 				Date outD = sdf.parse(outDate);
 				
+				
+				//총 가격 -> room 가격 받고 date 차 구한 다음에 곱해서 넣기
 				long diff = outD.getTime() - inD.getTime();
 			    int stay = (int) (diff / (24 * 60 * 60 * 1000));
 			    
@@ -109,8 +108,6 @@ public class RsvStep1Handler implements CommandHandler {
 				//인원수
 				int adtNum =  Integer.parseInt(request.getParameter("adtNum"));
 				int chdNUm = Integer.parseInt(request.getParameter("chdNum"));
-				
-
 				
 				Reservation rsv = new Reservation(0, 
 												  m, 

@@ -3,7 +3,18 @@
 		//날짜포맷 메소드
 		function dateFormat(time) {
 			var date = new Date(time);
-			return date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
+			var mon = date.getMonth()+1;
+			var date = date.getDate();
+		
+			//10보다 작은 수들에 0붙이기
+			if(mon < 10) {
+				mon = "0" + mon;
+			}
+			if(date < 10) {
+				date = "0" + date;
+			}
+			
+			return date.getFullYear() + "-" + mon + "-" + date.getDate();
 		}
 		
 		//select 상태에 따라 리스트 뿌리기

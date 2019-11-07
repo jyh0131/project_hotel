@@ -9,26 +9,60 @@
 			
 		
 		//날짜선택창
-		$(".datepicker-here").datepicker({
+		var dStart, dEnd;
+		var dStartArr = [];
+		var dEndArr = [];
+		
+		//데이트피커 컨트롤
+		var startPicker = $("#pick_start").datepicker({
 			toggleSelected: false,
-			minDate: new Date(),
 			clear: 'Clear',
+			autoClose: true,
 			firstDay: 0,
 			onSelect: function(formattedDate, date, inst){
+				dStart = date;
+				dStartArr = formattedDate.split("-");
 				
-				var dateArr = formattedDate.split("/");
+				$("#pick_end").datepicker({
+					minDate: new Date(date)
+				});
 				
-				$("#ckIn-info .rsv-year").val(dateArr[2]);
-				$("#ckIn-info .rsv-month").val(dateArr[0]);
-				$("#ckIn-info .rsv-date").val(dateArr[1]);
-				
-				$("#ckOut-info .rsv-year").val(dateArr[5]);
-				$("#ckOut-info .rsv-month").val(dateArr[3]);
-				$("#ckOut-info .rsv-date").val(dateArr[4]);
+				//디스플레이
+				$("#ckIn-info .rsv-year").val(dStartArr[0]);
+				$("#ckIn-info .rsv-month").val(dStartArr[1]);
+				$("#ckIn-info .rsv-date").val(dStartArr[2]);
 			}
-		});
+		}).data("datepicker");
+					
+		
+		var yIn = $("input[name='inYear']").val();
+		var mIn = $("input[name='inMonth']").val();
+		var dIn = $("input[name='inDate']").val();
+		startPicker.selectDate(new Date(yIn+"-"+mIn+"-"+dIn));
+		
+		var endPicker = $("#pick_end").datepicker({
+				toggleSelected: false,
+				clear: 'Clear',
+				autoClose: true,
+				onSelect: function(formattedDate, date, inst){
+					dEnd = date;
+					dEndArr = formattedDate.split("-");
+
+					//디스플레이
+					$("#ckOut-info .rsv-year").val(dEndArr[0]);
+					$("#ckOut-info .rsv-month").val(dEndArr[1]);
+					$("#ckOut-info .rsv-date").val(dEndArr[2]);
+				}
+			}).data("datepicker");
+
+			var yOut = $("input[name='outYear']").val();
+			var mOut = $("input[name='outMonth']").val();
+			var dOut = $("input[name='outDate']").val();
+			endPicker.selectDate(new Date(yOut+"-"+mOut+"-"+dOut));		
 		
 
+		
+		/*인원*/
 	    var cntAdt = parseInt($(".rsv-button-plus").eq(0).closest("div").find(".rsv-num").val() || 0);
 	    var cntCdl = parseInt($(".rsv-button-plus").eq(1).closest("div").find(".rsv-num").val() || 0);
 	    
@@ -77,32 +111,33 @@
 	    	$("#chdSub").closest("div").find(".rsv-num").val(--cntCdl);
 	    });
 	    
+	    
 	    //검색 버튼 누르면 방 리스트 나오게
 	    $(".btn-Search").click(function(){
-	    	//체크아웃 날짜 미선택
-	    	if($(".datepicker-here").val() == "") {
-	    		
-	    	//if($(".rsv-year").val() == "" || $(".rsv-month").val() == "" || $(".rsv-date").val() == "") {
-	    		alert("예약을 원하시는 날짜를 선택해주세요");
-	    		return;
-	    	}
-	    	
-	    	//체크인, 체크아웃 날짜가 같을때(데이트피커놈이 그렇게 선택되니까ㅡㅡ)
-	    	if(
-		    	($("#ckIn-info .rsv-year").val() == $("#ckOut-info .rsv-year").val()) &&
-		    	($("#ckIn-info .rsv-month").val() == $("#ckOut-info .rsv-month").val()) &&
-		    	($("#ckIn-info .rsv-date").val() == $("#ckOut-info .rsv-date").val())
-	    	) {
-	    		alert("체크인 날짜와 체크아웃 날짜가 같을 수 없습니다.");
-	    		return;
-	    	}
+	    	//데이트피커 공란일 때
+			if($("#pick_start").val() == "" || $("#pick_end").val() == "") {
+				alert("날짜를 선택해주세요");
+				return;
+			}
+			//데이트피커 날짜 조건
+			if(dStart == dEnd) {
+				alert("시작날짜가 종료날짜와 같을 수 없습니다.");
+				$("#pick_start").val("");
+				return;
+			}
+			if(dStart > dEnd) {
+				alert("시작날짜가 종료날짜보다 이후일 수 없습니다.");
+				$("#pick_start").val("");
+				return;
+			}
 	    	
 	    	$("h2").hide();
+	    	
 	    	
 	    	$.ajax({
 	    		url: "availbleRoom.do",
 	    		type: "get",
-	    		data: {"rsvDate": $("input[name='rsvDate']").val()},
+	    		data: {"inDate": $("#pick_start").val(), "outDate": $("#pick_end").val()},
 	    		dataType: "json", 
 	    		success: function(res){
 	    			console.log(res);
@@ -233,6 +268,7 @@
 	    	//옵션 선택 유효성 검사
 	    	var btnView = $("input[type='submit']").closest("li.ar-op").find("select[name=viewType]").val();
 	    	var btnBed = $("input[type='submit']").closest("li.ar-op").find("select[name=bedType]").val();
+	    	
 	    	if(btnView == "전망 타입") {
 	    		alert("전망 타입을 선택해주세요.");
 	    		return false;

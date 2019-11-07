@@ -13,7 +13,10 @@
 		<div class="rsv-date-wrap">
 			<span>🎈체크인 날짜 기준으로 리스트 검색</span>
 			<input type="text" name="rsvDate" class="datepicker-here" data-position="bottom center" data-date-format="yyyy-mm-dd"
-					data-language="en" data-range="true" data-multiple-dates-separator="~" data-language="en" />
+					data-language="en" id="pick_start" placeholder="시작날짜"/>
+			<span id="anfruf">　∼　</span>
+			<input type="text" name="rsvDate" class="datepicker-here" data-position="bottom center" data-date-format="yyyy-mm-dd"
+					data-language="en" id="pick_end"  placeholder="종료날짜"/>
 			<button id="btnSearch">보기</button>
 		</div>	
 	

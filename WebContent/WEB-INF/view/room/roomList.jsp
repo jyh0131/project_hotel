@@ -192,8 +192,9 @@
 		
 	})
 </script>
+	<h2 style="margin-bottom:10px;">객실 리스트</h2>
+	
 <div id="roomListWrap">
-	<h1>객실 리스트</h1>
 	<div id="clickHeader">
 		<a href="${pageContext.request.contextPath }/room/insert.do">객실 등록하기</a>
 		<%-- <a href="${pageContext.request.contextPath }/picture/list.do">사진관리하기(사진 리스트로 이동)</a> --%>	

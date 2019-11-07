@@ -10,9 +10,9 @@
 			$("table").append($trDf);
 		}
 		
-		$("button").click(function(){
+		$(document).on("click", "button", function(){
 			alert("버튼 기능 고민중입니다.");
-		});
+		})
 		
 		
 		//객실 카테고리별 보기
@@ -68,7 +68,7 @@
 						$tdFile = $("<td>").append(obj.picFile);
 						$tdBtn = $("<td>").append("<button>버튼</button>");
 						
-						$tr = $("<tr>").append($tdImg).append($tdFile).append($tdCate).append($tdBtn);
+						$tr = $("<tr>").addClass("c-b").append($tdImg).append($tdFile).append($tdCate).append($tdBtn);
 						$("table").append($tr);
 					})
 					

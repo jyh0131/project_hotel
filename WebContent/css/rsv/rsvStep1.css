@@ -42,16 +42,28 @@ div.rsv-date {
 	float: left;
 	position: relative;
 }
-div.rsv-date > input.datepicker-here {
+div.rsv-date > input#pick_start {
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 200%;
+	width: 100%;
 	height: 82px;
 	border: none;
 	outline: none;
 	z-index: 1053529;
-	opacity: 0.0;
+ 	opacity: 0.0; 
+	cursor: pointer;
+}
+div.rsv-date > input#pick_end {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 82px;
+	border: none;
+	outline: none;
+	z-index: 1053529;
+ 	opacity: 0.0; 
 	cursor: pointer;
 }
 div.rsv-date > span.ck-title {

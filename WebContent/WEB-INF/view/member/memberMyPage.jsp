@@ -7,8 +7,8 @@
 <div class="myPage-wrap">
 	<ul>
 		<li>
-			<a href="${pageContext.request.contextPath }/member/update.do?id=${Auth }">
-				<span class='page-title'>프로필 수정</span>
+			<a href="${pageContext.request.contextPath }/member/update.do">
+				<span class='page-title'>정보 수정</span>
 				<span class='page-info'>가입시 입력한<br>개인정보를 수정합니다</span>
 			</a>
 		</li>
@@ -25,10 +25,15 @@
 			</a>
 		</li>
 		<li>
-			<a href="${pageContext.request.contextPath}/rsvMng/mem/list.do" style="color: white;">
-				<span class='page-title'>예약 확인</span>
-				<span class='page-info'>회원님의 예약을<br>확인합니다</span>
-			</a>
+			<c:if test="${Admin != null}">
+				<img src="${pageContext.request.contextPath}/images/bg-img/bluaLundoLogo-white.png">
+			</c:if>
+			<c:if test="${Auth != null}">
+				<a href="${pageContext.request.contextPath}/rsvMng/mem/list.do" style="color: white;">
+					<span class='page-title'>예약 확인</span>
+					<span class='page-info'>회원님의 예약을<br>확인합니다</span>
+				</a>
+			</c:if>
 		</li>
 	</ul>
 </div>

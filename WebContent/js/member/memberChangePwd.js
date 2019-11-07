@@ -34,11 +34,11 @@
 		});
 		
 		//submit 전 유효성 체크
-		pw = $("input[name='password']").val();
-		pw1 = $("input[name='confirmPassword']").val();
-		pw2 = $("input[name='confirmPassword2']").val();
-		
 		$("form").submit(function(){
+			pw = $("input[name='password']").val();
+			pw1 = $("input[name='confirmPassword']").val();
+			pw2 = $("input[name='confirmPassword2']").val();
+
 			if(pw == "" || pw1 == "" || pw2 == "") {
 				alert("비밀번호를 입력해주세요.");
 				return false;
