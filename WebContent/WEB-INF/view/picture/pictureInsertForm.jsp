@@ -92,8 +92,8 @@
 				<th>이미지 구분</th>
 				<td>
 					<input type="radio" name="pic_category" value="1" id="smallImg"><label for="smallImg">작은 이미지</label>
-					<input type="radio" name="pic_category" value="2" checked="checked" id="basicImg"><label for="basic">원본 이미지</label>
-					<input type="radio" name="pic_category" value="3" id="contentImg"><label for="contentImg">내용 이미지</label>
+					<input type="radio" name="pic_category" value="0" checked="checked" id="basicImg"><label for="basic">원본 이미지</label>
+					<input type="radio" name="pic_category" value="2" id="contentImg"><label for="contentImg">내용 이미지</label>
 				</td>
 			</tr>
 			<tr>

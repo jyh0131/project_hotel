@@ -59,6 +59,9 @@
 	.btnDelete{
 		color:red;
 		font-size: 13px;
+		background: none;
+		border: none;
+		cursor: pointer;
 	}
 </style>
 <script>

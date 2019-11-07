@@ -227,7 +227,15 @@
 			
 			<div id="rm_contentRight">
 				<div id="rm_btn">
-					<a href="${pageContext.request.contextPath}/qb/list.do" id="btn_ask">문의하기</a>
+					<c:if test="${Auth == null }">
+						<a href="${pageContext.request.contextPath}/member/login.do" id="btn_ask">문의하기</a>
+					</c:if>
+					<c:if test="${Auth != null }">
+						<a href="${pageContext.request.contextPath}/qb/list.do" id="btn_ask">문의하기</a>
+					</c:if>
+					<c:if test="${Admin != null }">
+						<a href="${pageContext.request.contextPath}/qr/list.do" id="btn_ask">문의하기</a>
+					</c:if>
 					<a href="${pageContext.request.contextPath}/rsv/rsvStep1.do" id="btn_rsv">예약하기</a>
 				</div><!-- #rm_btn -->
 				
