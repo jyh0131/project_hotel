@@ -26,7 +26,7 @@ select * from room r join view_type v on r.vt_no = v.vt_no;
 
             
 select * from room r, bed_type b, view_type v, room_category rc, room_size rs
-where r.bt_no = b.bt_no and r.vt_no = v.vt_no and r.rc_no = rc.rc_no and r.rs_no = rs.rs_no ;
+where r.bt_no = b.bt_no and r.vt_no = v.vt_no and r.rc_no = rc.rc_no and r.rs_no = rs.rs_no;
 
 select * from r_option;
 
@@ -51,6 +51,13 @@ select * from room r join bed_type b on r.bt_no = b.bt_no
                 join room_size rs on r.rs_no = rs.rs_no
             order by room_no;
 
+select *
+		from room r join bed_type b on r.bt_no = b.bt_no
+					 join view_type v on r.vt_no = v.vt_no 
+				 	 join room_category rc on r.rc_no = rc.rc_no 
+				 	 join room_size rs on r.rs_no = rs.rs_no
+		where rc.rc_name = "스탠다드";
+
 /* --------- picture -----------*/
 
 select * from g_type;
@@ -58,12 +65,11 @@ select * from g_type;
 select * from picture;
 
 
-
 select * from room r join picture p on r.rc_no = p.rc_no 
                 join room_category rc on r.rc_no = rc.rc_no;
             
             
-select * from g_type g join picture p on g.g_no = p.g_no;
+select * from g_type g join picture p on g.g_no = p.g_no where g.g_no = 1 and pic_category = 0 and rc_no is null;
             
             
             
@@ -76,7 +82,8 @@ select * from picture p join room_category rc on p.rc_no = rc.rc_no
                   join g_type g on p.g_no = g.g_no
             order by g.g_no, rc.rc_no; ******************************
                
-            
+select * from picture where pic_file = "terrace3.jpg";
+
 delete from picture where pic_file="poster11.jpg";
 
 select * from picture p join room_category rc on p.rc_no = rc.rc_no
@@ -85,8 +92,9 @@ select * from picture p join room_category rc on p.rc_no = rc.rc_no
         
 select * from picture p join room_category rc on p.rc_no = rc.rc_no
                   join g_type g on p.g_no = g.g_no
-                  where rc.rc_no = 6;
+                  where g.g_no = 6;
               
+                 
 update picture set g_no = 2, rc_no = 2 where pic_file="standard1.jpg";
 
 
@@ -142,11 +150,13 @@ alter table picture add column pic_category int(11) not null;
 select * from picture;
 
 
+# 게시글
+
 select * from question_board;
 select * from question_content;
+desc question_board;
 
-
-insert into question_board values(null, "객실문의합니다", "홍길동", "asd@naver.com", "객실 관련 문의", "010-1111-1111", "031-123-1234", now(), null, 1);
+insert into question_board values(null, "객실문의합니다", "홍길동", "asd@naver.com", "1", "010-1111-1111", "031-123-1234", now(), null, 1);
 
 insert into question_content values("ㅇㅇ", last_insert_id());
 
@@ -155,9 +165,13 @@ select * from member;
 
 
 
-
 # 게시글 list 조회
 select * from question_board qb join member m on qb.m_no = m.m_no order by qb.qb_no desc;
+
+# id별 조회
+select * from question_board qb 
+join member m on qb.m_no = m.m_no 
+where m.m_id = "asdf1234" order by qb.qb_no desc;
 
 # 내용join
 select * from question_board qb join question_content qc on qb.qb_no = qc.qb_no;
@@ -172,18 +186,50 @@ join question_content qc on qb.qb_no = qc.qb_no
 select * from question_board qb 
 join question_content qc on qb.qb_no = qc.qb_no 
 								join member m on qb.m_no = m.m_no 
-						where qb.qb_no = 24;
+						where qb.qb_no = 1;
 
 select * from member where m_no=1;
 
 # 삭제
-delete from question_board where qb_no = 1;
-delete from question_content where qb_no = 1;
+delete from question_board where qb_no = 48;
+delete from question_content where qb_no = 20;
+
 
 # 수정
 update question_board set qb_title = "수정한 제목", qb_category = 4, qb_path = "album_img.PNG" where qb_no = 23;
 update question_content set qc_content = "수정한 내용" where qb_no = 25;
 
+
+# 카테고리별
+select * from question_board qb 
+join member m on qb.m_no = m.m_no 
+where qb.qb_category = 1 
+order by qb.qb_no desc;
+
+/* reply */
+
+# 게시글, 답변 join
+select * from question_board qb 
+join question_content qc on qb.qb_no = qc.qb_no
+join question_reply qr on qb.qb_no = qr.qb_no
+where qr.qr_no = 1;
+
+select * from question_reply qr 
+join question_board qb on qr.qb_no = qb.qb_no
+where qr.qr_no = 97;
+
+select * from question_board qb join question_reply qr on qb.qb_no = qr.qb_no;
+
+
+
+select * from question_reply;
+delete from question_reply where qr_no=90;
+
+# 삭제
+delete from question_reply where qb_no = 20;
+
+# 수정
+update question_reply set qr_content = "답변입니다." where qr_no = 75;
 
 
 

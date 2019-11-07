@@ -11,6 +11,7 @@
 	} */
 	#rMain-wrap{
 		overflow: hidden;
+		width:90%;
 	}
 /* --------- 왼쪽 메뉴 --------- */
 	#rm_left_menu{
@@ -195,7 +196,7 @@
 				<li><a href="${pageContext.request.contextPath }/room/main.do?rcNo=${list.rcNo }">${list.rcName }</a></li>
 			</c:forEach>
 		</ul>		
-		<a href="#" class="btnAll">전체 객실 보기</a>
+		<!-- <a href="#" class="btnAll">전체 객실 보기</a> -->
 	</div> <!-- #left_menu -->
 	<div id="rm_roomContent">	
 		<div id="rm_roomTitle">

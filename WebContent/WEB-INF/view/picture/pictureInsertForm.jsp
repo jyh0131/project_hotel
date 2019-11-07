@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
 <%@ include file="/WEB-INF/view/include/intranet/intranetSideMenu.jsp"%>
-<link href="${pageContext.request.contextPath}/css/intanet/common.css" rel="stylesheet" type="text/css">
 <style>
 	#section-wrap{
 		padding:50px;
@@ -69,6 +68,15 @@
 				alert("사진을 넣어주세요");
 				return false;
 			}
+			
+			/* if($("#btnBox").children("p").text() == "파일명 중복"){
+				if(confirm("같은 파일명이 존재합니다. 이름을 변경하여 등록하시겠습니까?") == true){
+					return true;
+				}else{
+					return false;
+				}
+			}  */
+			
 		})
 	})
 </script>
@@ -118,6 +126,9 @@
 			</tr>
 		</table>
 		<div id="btnBox">
+			<%-- <c:if test="${duplicate != null}">
+				<p>파일명 중복</p>
+			</c:if> --%>
 			<input type="submit" value="등록" class="btn">
 			<input type="reset" value="처음부터" class="btn">
 		</div>

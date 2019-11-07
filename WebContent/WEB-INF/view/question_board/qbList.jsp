@@ -88,8 +88,9 @@
 		
 		// 내 문의글 보기 클릭 시
 		$(".btnMyList").click(function(){
-			$(this).css("background", "rgba(71, 163, 218, 0.8)");
-			$(".btnAllList").css("background", "rgba(250, 236, 197, 0.8)");
+			$(this).css("background", "rgba(71, 163, 218, 0.8)"); // 내 문의글 보기
+			$(".btnAllList").css("background", "rgba(250, 236, 197, 0.8)"); // 전체글 보기
+			
 			
 			var mId = $(this).attr("data-id");
 
@@ -144,8 +145,8 @@
 		
 		// 전체 보기 클릭 시
 		$(".btnAllList").click(function(){
-			$(this).css("background", "rgba(71, 163, 218, 0.8)");
-			$(".btnMyList").css("background", "rgba(250, 236, 197, 0.8)");
+			$(this).css("background", "rgba(71, 163, 218, 0.8)"); // 전체글 보기
+			$(".btnMyList").css("background", "rgba(250, 236, 197, 0.8)"); // 내 문의글 보기
 			
 			var mId = $(this).attr("data-id");
 			
@@ -199,6 +200,9 @@
 		
 		// select
 		$(document).on("change", "select[name='selectCategory']", function(){
+			$(".btnAllList").css("background", "rgba(71, 163, 218, 0.8)"); // 전체글 보기(선택된 것)
+			$(".btnMyList").css("background", "rgba(250, 236, 197, 0.8)"); // 내 문의글 보기
+			
 			var category = $(this).val();
 			//var mId = $(this).attr("data-id");
 
@@ -220,7 +224,7 @@
 						
 						if(category == "0"){//select가 '전체보기'일 때
 							var $td_no = $("<td>").append(obj.qbNo);
-							var $td_category = $("<td>").append(obj.qbCategory);
+							var $td_category = $("<td>").append(textArr[obj.qbCategory]);
 							
 							var href = "${pageContext.request.contextPath }/qb/detail.do?qbNo=" + obj.qbNo;
 							var $a = $("<a>").attr("href", href).append(obj.qbTitle);
@@ -254,6 +258,10 @@
 					console.log(e);
 				}
 			})//ajax
+			
+			$(".btnMyList").click(function(){
+				$("select>option").eq(0).prop("selected", true)
+			})
 			
 		})//.change
 		
@@ -320,7 +328,8 @@
 						<%-- <c:if test="${list.result == 1 }">
 								<p>답변</p>
 							</c:if> --%>
-					</c:if> <!-- 관리자일 경우 --> <c:if test="${Admin != null }">
+					</c:if> <!-- 관리자일 경우 --> 
+					<c:if test="${Admin != null }">
 						<a href="${pageContext.request.contextPath }/qr/detail.do?qbNo=${list.qbNo }">${list.qbTitle }</a>
 					</c:if>
 				</td>

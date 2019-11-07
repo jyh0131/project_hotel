@@ -122,7 +122,7 @@
 							var $td_gName = $("<td>").append(obj.gType.gName); // 갤러리 분류명(객실, 엑티비티, 다이닝 등)
 							var $td_rcName = $("<td>").append(obj.roomCategory.rcName); // 객실 이름(스탠다드, 디럭스 등))
 							
-							var textArr = ["작은 이미지", "원본 이미지", "내용 이미지"];
+							var textArr = ["원본 이미지", "작은 이미지", "내용 이미지"];
 							var $td_picCategory = $("<td>").append(textArr[obj.picCategory]); // obj.picCategory : 사진 구분(1, 2, 3);
 
 							var $btn = $("<button>").addClass("btnDelete btn").attr("data-picFile", obj.picFile).append("삭제");
@@ -142,8 +142,8 @@
 							var $td_gName = $("<td>").append(obj.gType.gName); // 갤러리 분류명(객실, 엑티비티, 다이닝 등)
 							var $td_rcName = $("<td>").append(obj.roomCategory.rcName); // 객실 이름(스탠다드, 디럭스 등))
 							
-							var textArr = ["작은 이미지", "원본 이미지", "내용 이미지"];
-							var $td_picCategory = $("<td>").append(textArr[obj.picCategory]); // obj.picCategory : 사진 구분(1, 2, 3);
+							var textArr = ["원본 이미지", "작은 이미지", "내용 이미지"];
+							var $td_picCategory = $("<td>").append(textArr[obj.picCategory]); // obj.picCategory : 사진 구분(1, 2, 3); -> 원본이미지 : 0, 작은이미지 : 1, 내용이미지 : 2
 
 							var $btn = $("<button>").addClass("btnDelete btn").attr("data-picFile", obj.picFile).append("삭제");
 							var $td_btn = $("<td>").append($btn);

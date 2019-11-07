@@ -26,6 +26,9 @@
 	tr:hover>td {
 		background: #EAEAEA;
 	}
+	select{
+		padding:5px;
+	}
 	/* ------------ 객실등록하기 버튼 ------------  */
 	#clickHeader a { 
 		float:right;
@@ -48,13 +51,13 @@
 		width:70px;
 		padding:10px 0;
 		display: inline-block;
-		text-align: center;
 		color:black;
 		background:rgba(250, 236, 197, 0.8);
 		border:1px solid #FFE5CA;
 		border:none;
 		font-size: 16px;
 		cursor: pointer;
+		margin-left:5px;
 	}
 	.btnUpdate{
 		background:rgba(250, 236, 197, 0.8);
@@ -72,34 +75,35 @@
 			  return num.toString().replace(regexp, ',');
 		}
 		
-		var price = addComma($(".price").text());
-		$(".price").text(price);
+		// 삭제하는 메소드
+		function deleteList(){
+			$(".btnDelete").click(function(){
+				var rNo = $(this).attr("data-rNo");
 		
-		
-		$(".btnDelete").click(function(){
-			var rNo = $(this).attr("data-rNo");
-	
-			$.ajax({
-				url:"${pageContext.request.contextPath }/room/delete.do", 
-				type:"get",
-				data:{"rNo":rNo},
-				dataType:"json",
-				success:function(res){
-					console.log(res);
-				},
-				error:function(e){
-					console.log(e);
+				$.ajax({
+					url:"${pageContext.request.contextPath }/room/delete.do", 
+					type:"get",
+					data:{"rNo":rNo},
+					dataType:"json",
+					success:function(res){
+						console.log(res);
+					},
+					error:function(e){
+						console.log(e);
+					}
+				})//ajax
+				
+				// 삭제버튼 클릭 시 한번 더 확인하기
+				if(confirm("정말 삭제하시겠습니까?") == true){
+					$(this).parent().parent().remove();
+				}else{
+					return false;
 				}
-			})//ajax
-			
-			// 삭제버튼 클릭 시 한번 더 확인하기
-			if(confirm("정말 삭제하시겠습니까?") == true){
-				$(this).parent().parent().remove();
-			}else{
-				return false;
-			}
-		})//.btnDelete
+			})//.btnDelete
+		}
 		
+		// 삭제하는 메소드 호출
+		deleteList();
 		
 		$(document).on("change", "select[name='rcName']", function(){
 			var rcName = $(this).val();
@@ -122,17 +126,17 @@
 							var $td_vtName = $("<td>").append(obj.viewType.vtName); // 객실 타입
 							var $td_btName = $("<td>").append(obj.bedType.btName); // 침대 타입
 							var $td_rsNo = $("<td>").append(obj.roomSize.rsNo); // 객실 사이즈
-							var $td_rPrice = $("<td>").append(obj.roomPrice); // 가격
-							
-							// 삭제버튼
-							var $btn_delete = $("<button>").addClass("btnDelete btn").attr("data-rNo", obj.roomNo).append("삭제");
+							var $td_rPrice = $("<td>").append(addComma(obj.roomPrice)+"원");  // 가격
 							
 							// 수정버튼
 							var href = "${pageContext.request.contextPath }/room/update.do?rNo=";
 							var $a_update = $("<a>").attr("href", href + obj.roomNo).addClass("btnUpdate btn").append("수정");
 
+							// 삭제버튼
+							var $btn_delete = $("<button>").addClass("btnDelete btn").attr("data-rNo", obj.roomNo).append("삭제");
+							
 							// 버튼 td에 연결하기
-							var $td_btn = $("<td>").addClass("btnBox").append($btn_delete).append($a_update);
+							var $td_btn = $("<td>").addClass("btnBox").append($a_update).append($btn_delete);
 							
 							// tr만들어서 td연결하기
 							var $tr = $("<tr>").addClass("selectedList");
@@ -140,14 +144,41 @@
 							
 							// 테이블에 연결하기
 							$("table").append($tr);
+							
+							// 삭제하는 메소드 호출
+							deleteList();
+							
 						}else{// select가 '전체보기'일 때
+							// td만들기
+							var $td_rNo = $("<td>").append(obj.roomNo); // 호수
+							var $td_rName = $("<td>").append(obj.roomCategory.rcName); // 객실 한글이름
+							var $td_rcEngName = $("<td>").append(obj.roomCategory.rcEngName); // 객실 영어이름
+							var $td_vtName = $("<td>").append(obj.viewType.vtName); // 객실 타입
+							var $td_btName = $("<td>").append(obj.bedType.btName); // 침대 타입
+							var $td_rsNo = $("<td>").append(obj.roomSize.rsNo); // 객실 사이즈
+							var $td_rPrice = $("<td>").append(addComma(obj.roomPrice)+"원"); // 가격
 							
+							// 수정버튼
+							var href = "${pageContext.request.contextPath }/room/update.do?rNo=";
+							var $a_update = $("<a>").attr("href", href + obj.roomNo).addClass("btnUpdate btn").append("수정");
+
+							// 삭제버튼
+							var $btn_delete = $("<button>").addClass("btnDelete btn").attr("data-rNo", obj.roomNo).append("삭제");
 							
+
+							// 버튼 td에 연결하기
+							var $td_btn = $("<td>").addClass("btnBox").append($a_update).append($btn_delete);
+							
+							// tr만들어서 td연결하기
+							var $tr = $("<tr>").addClass("selectedList");
+							$tr.append($td_rNo).append($td_rName).append($td_rcEngName).append($td_vtName).append($td_btName).append($td_rsNo).append($td_rPrice).append($td_btn);
+							
+							// 테이블에 연결하기
+							$("table").append($tr);
+										
+							// 삭제하는 메소드 호출
+							deleteList();
 						}
-						// 할일
-						// 전체보기
-						// select하고 삭제 안됨
-						// select하고 버튼 css적용
 						
 					})// each
 				},
@@ -157,7 +188,6 @@
 			})
 			
 		}) // ajax
-		
 		
 		
 	})

@@ -57,6 +57,12 @@
 	 	text-align: center;
 	 	width:60%;
 	 }
+	 #btnBox p{
+	 	padding:20px;
+	 	color:red;
+	 	font-weight: bold;
+	 	font-size: 18px;
+	 }
 	.btn{
 		width:100px;
 		line-height: 40px;
@@ -72,11 +78,6 @@
 </style>
 <script>
 	$(function(){
-		//콤마찍는 메소드
-		function addComma(num) {
-			  var regexp = /\B(?=(\d{3})+(?!\d))/g;
-			  return num.toString().replace(regexp, ',');
-		}
 		
 		$("form").submit(function(){
 			// 전망 타입
@@ -114,6 +115,8 @@
 				alert("숫자만 입력해주세요");
 				return false; // 전송을 막음
 			}
+			
+			
 		})
 		
 	})
@@ -185,6 +188,9 @@
 			</tr> -->
 		</table>
 		<div id="btnBox">
+			<c:if test="${error != null}">
+				<p>호수가 중복되어 등록할 수 없습니다.</p>
+			</c:if>
 			<input type="submit" value="등록" class="btn">
 			<input type="reset" value="처음부터" class="btn">
 		</div>

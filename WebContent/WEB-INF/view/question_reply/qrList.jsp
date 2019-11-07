@@ -77,16 +77,34 @@
 			return date.getFullYear() + "-" + (date.getMonth()+1) + "-" + d;
 		}
 		
-		// 삭제버튼 클릭 시 한번 더 확인하기
-		$(".btnDelete").click(function(){
-			var a = confirm("정말 삭제하시겠습니까?");
-			if(a == true){
-				return true;
-			}else{
-				return false;
-			}
-		})
+		// 삭제하는 메소드
+		function deleteList(){
+			$(".btnDelete").click(function(){
+				var qbNo = $(this).attr("data-qbNo");
+				
+				$.ajax({
+					url:"${pageContext.request.contextPath }/qr/deleteList.do?", 
+					type:"get",
+					data:{"qbNo":qbNo},
+					dataType:"json",
+					success:function(res){
+						console.log(res);
+					},
+					error:function(e){
+						console.log(e);
+					}
+				})//ajax
+				
+				// 삭제버튼 클릭 시 한번 더 확인하기
+				if(confirm("정말 삭제하시겠습니까?") == true){
+					$(this).parent().parent().remove();
+				}else{
+					return false;
+				}
+			})
+		}
 		
+		deleteList();
 		
 		// select
 		$(document).on("change", "select[name='selectCategory']", function(){
@@ -112,10 +130,11 @@
 						
 						if(category == "0"){//select가 '전체보기'일 때
 							var $td_no = $("<td>").append(obj.qbNo);
-							var $td_category = $("<td>").append(obj.qbCategory);
+							
+							var $td_category = $("<td>").append(textArr[obj.qbCategory]);
 							
 							// 타이틀
-							var hrefTitle = "${pageContext.request.contextPath }/qb/detail.do?qbNo=" + obj.qbNo;
+							var hrefTitle = "${pageContext.request.contextPath }/qr/detail.do?qbNo=" + obj.qbNo;
 							var $a = $("<a>").attr("href", hrefTitle).append(obj.qbTitle);
 							var $td_title = $("<td>").append($a);
 							
@@ -123,13 +142,18 @@
 							var $td_date = $("<td>").append(dateFormat(obj.qbDate));
 							
 							// 게시글 삭제 
-							var hrefBtn = "${pageContext.request.contextPath }/qr/deleteList.do?qbNo=" + obj.qbNo;
+							/* var hrefBtn = "${pageContext.request.contextPath }/qr/deleteList.do?qbNo=" + obj.qbNo;
 							var $a = $("<a>").attr("href", hrefBtn).addClass("btnDelete").text("게시글 삭제");
-							var $td_btn = $("<td>").append($a);
-
+							var $td_btn = $("<td>").append($a); */
+							var $btn_delete = $("<button>").addClass("btnDelete").attr("data-qbNo", obj.qbNo).append("게시글 삭제");
+							var $td_btn = $("<td>").append($btn_delete);
 							
 							var $tr = $("<tr>").addClass("selectedList").append($td_no).append($td_category).append($td_title).append($td_name).append($td_date).append($td_btn);
 							$("#qbListTable").append($tr);
+							
+							// 삭제하는 메소드 호출
+							deleteList();
+							
 						}else{
 							var $td_no = $("<td>").append(obj.qbNo);
 							
@@ -137,7 +161,7 @@
 							
 							
 							// 타이틀
-							var hrefTitle = "${pageContext.request.contextPath }/qb/detail.do?qbNo=" + obj.qbNo;
+							var hrefTitle = "${pageContext.request.contextPath }/qr/detail.do?qbNo=" + obj.qbNo;
 							var $a = $("<a>").attr("href", hrefTitle).append(obj.qbTitle);
 							var $td_title = $("<td>").append($a);
 							
@@ -145,21 +169,26 @@
 							var $td_date = $("<td>").append(dateFormat(obj.qbDate));
 							
 							// 게시글 삭제 
-							var hrefBtn = "${pageContext.request.contextPath }/qr/deleteList.do?qbNo=" + obj.qbNo;
+							/* var hrefBtn = "${pageContext.request.contextPath }/qr/deleteList.do?qbNo=" + obj.qbNo;
 							var $a = $("<a>").attr("href", hrefBtn).addClass("btnDelete").text("게시글 삭제");
-							var $td_btn = $("<td>").append($a);
-
+							var $td_btn = $("<td>").append($a); */
+							var $btn_delete = $("<button>").addClass("btnDelete").attr("data-qbNo", obj.qbNo).append("게시글 삭제");
+							var $td_btn = $("<td>").append($btn_delete);
 							
 							var $tr = $("<tr>").addClass("selectedList").append($td_no).append($td_category).append($td_title).append($td_name).append($td_date).append($td_btn);
 							$("#qbListTable").append($tr);
+							
+							// 삭제하는 메소드 호출
+							deleteList();
 						}//else
-						
+							
 					})//each  
 					
 				},
 				error:function(e){
 					console.log(e);
 				}
+				
 			})//ajax
 			
 		})//.change
@@ -216,7 +245,8 @@
 				<td>${list.qbName }</td>
 				<td><fmt:formatDate value="${list.qbDate}" pattern="yyyy-MM-dd" /></td>
 				<td>
-					<a href="${pageContext.request.contextPath }/qr/deleteList.do?qbNo=${list.qbNo}" class="btnDelete">게시글 삭제</a>
+					<button class="btnDelete" data-qbNo="${list.qbNo }">게시글 삭제</button>
+					<%-- <a href="${pageContext.request.contextPath }/qr/deleteList.do?qbNo=${list.qbNo}" class="btnDelete">게시글 삭제</a> --%>
 					<%-- <input type="button" onclick="btn_event(${list.qbNo })" class="btnDelete">게시글 삭제  --%>
 				</td>
 			</tr>

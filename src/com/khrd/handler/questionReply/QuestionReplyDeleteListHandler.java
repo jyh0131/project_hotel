@@ -1,9 +1,14 @@
 package com.khrd.handler.questionReply;
 
+import java.io.PrintWriter;
 import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.codehaus.jackson.map.ObjectMapper;
 
 import com.khrd.controller.CommandHandler;
 import com.khrd.dao.QuestionBoardDAO;
@@ -30,15 +35,29 @@ public class QuestionReplyDeleteListHandler implements CommandHandler {
 			int result2 = dao.deleteContent(conn, qbNo);
 			int result3 = dao.deleteArticle(conn, qbNo);
 
-			if(result1 > 0 && result2 > 0 && result3 > 0) {
+			if(result1 >= 0 && result2 > 0 && result3 > 0) {
 				conn.commit();
 			}else {
 				conn.rollback();
 			}
 		
-
-			response.sendRedirect(request.getContextPath() + "/qr/list.do");
-			return null;
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("result1", result1);
+			map.put("result2", result2);
+			map.put("result3", result3);
+			
+			ObjectMapper om = new ObjectMapper();
+			String json = om.writeValueAsString(map);
+			
+			conn.commit();
+			
+			response.setContentType("application/json;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.print(json);
+			out.flush();
+			
+//			response.sendRedirect(request.getContextPath() + "/qr/list.do");
+//			return null;
 
 		} catch (Exception e) {
 			e.printStackTrace();
