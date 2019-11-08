@@ -11,7 +11,7 @@ div.rsv-detail > h3 {
 	letter-spacing: 0.05em;
 	padding: 10px;
 	margin: 20px 0 15px 33px;
-	border-bottom: 4px solid #f5dbbd;
+	border-bottom: 4px solid #47a3da;
 	color: #353535;
 	font-size: 1.2em;
 }
@@ -29,8 +29,7 @@ th {
 }
 td {
 	padding: 15px 0 15px 15px;
-	border-top: 1px solid #47a3da;
-	border-bottom: 1px solid #47a3da;
+ 	border-bottom: 1px dotted #47a3da;
 }
 caption {
 	caption-side: bottom;
@@ -45,6 +44,9 @@ div.rsv-detail-btn-wrap {
 div.rsv-detail-btn-wrap > a:first-child {
 	float: left;
 	color: #47a3da;
+}
+td[colspan='2']{
+	border-bottom: none;
 }
 
 

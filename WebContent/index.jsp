@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>BLUA LUNDO - 어디에도 없지만 어디에선가 마주칠 것 같은, 우연의 휴식처</title>
 <link href="${pageContext.request.contextPath}/css/util/backgroundTransition.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet" type="text/css">
 

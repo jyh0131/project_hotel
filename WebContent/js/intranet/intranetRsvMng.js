@@ -16,7 +16,7 @@
 			if(mon < 10) {
 				mon = "0" + mon;
 			}
-			if(dt < 10) {
+			if(date < 10) {
 				dt = "0" + dt;
 			}
 			

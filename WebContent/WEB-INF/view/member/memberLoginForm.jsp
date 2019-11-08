@@ -57,6 +57,11 @@
 						<span class="error">존재하지 않는 아이디입니다.</span>
 					</td>
 				</c:if>
+				<c:if test="${quitMem != null}">
+					<td colspan="2"  class="centerAlign">
+						<span class="error">탈퇴한 회원입니다.</span>
+					</td>
+				</c:if>
 				<c:if test="${pwdNotMatch != null}">
 					<td colspan="2"  class="centerAlign">
 						<span class="error">비밀번호가 틀립니다.</span>

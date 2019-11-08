@@ -492,7 +492,7 @@ public class RsvDAO {
 		try {
 			String sql = "select * from vw_all_table " 
 						+"where r_in >= ? and r_in <= ? "
-						+"order by r_in";
+						+"order by r_in asc, r_no desc";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, inDate);
 			pstmt.setString(2, outDate);
@@ -527,7 +527,7 @@ public class RsvDAO {
 		try {
 			String sql = "select * from vw_all_table " 
 						+"where r_in >= ? and r_in <= ? and m_no = ? "
-						+"order by r_in";
+						+"order by r_in asc, r_no desc";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, inDate);
 			pstmt.setString(2, outDate);

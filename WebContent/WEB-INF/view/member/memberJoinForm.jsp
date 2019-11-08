@@ -11,8 +11,8 @@
 			<h3>필수사항</h3>
 			<p>
 				<label>아이디</label>
-				<input type="text" name="id" id="check">
-				<input type="button" id="btnIdCk" value="중복확인" maxlength="15">
+				<input type="text" name="id" id="check" maxlength="15">
+				<input type="button" id="btnIdCk" value="중복확인">
 				<span class="avCon">사용 가능한 아이디입니다.</span>
 				
 				<br>

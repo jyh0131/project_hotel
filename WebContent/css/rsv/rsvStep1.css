@@ -19,6 +19,7 @@ div.adminAlert > h1 {
 	font-weight: normal;
 	letter-spacing: 0.15em;
 	color: rgba(0,0,0,0.7);
+	z-index: 3000;
 }
 
 /*날짜설정 파트*/
@@ -50,7 +51,7 @@ div.rsv-date > input#pick_start {
 	height: 82px;
 	border: none;
 	outline: none;
-	z-index: 1053529;
+	z-index: 1000;
  	opacity: 0.0; 
 	cursor: pointer;
 }
@@ -62,7 +63,7 @@ div.rsv-date > input#pick_end {
 	height: 82px;
 	border: none;
 	outline: none;
-	z-index: 1053529;
+	z-index: 1000;
  	opacity: 0.0; 
 	cursor: pointer;
 }

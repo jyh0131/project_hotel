@@ -4,17 +4,17 @@
 		function dateFormat(time) {
 			var date = new Date(time);
 			var mon = date.getMonth()+1;
-			var date = date.getDate();
+			var dt = date.getDate();
 		
 			//10보다 작은 수들에 0붙이기
 			if(mon < 10) {
 				mon = "0" + mon;
 			}
 			if(date < 10) {
-				date = "0" + date;
+				dt = "0" + dt;
 			}
 			
-			return date.getFullYear() + "-" + mon + "-" + date.getDate();
+			return date.getFullYear() + "-" + mon + "-" + dt;
 		}
 		
 		//select 상태에 따라 리스트 뿌리기

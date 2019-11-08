@@ -83,6 +83,13 @@
 		// 삭제하는 메소드
 		function deleteList(){
 			$(".btnDelete").click(function(){
+				// 삭제버튼 클릭 시 한번 더 확인하기
+				if(confirm("정말 삭제하시겠습니까?") == true){
+					$(this).parent().parent().remove();
+				}else{
+					return false;
+				}
+				
 				var qbNo = $(this).attr("data-qbNo");
 				
 				$.ajax({
@@ -98,12 +105,6 @@
 					}
 				})//ajax
 				
-				// 삭제버튼 클릭 시 한번 더 확인하기
-				if(confirm("정말 삭제하시겠습니까?") == true){
-					$(this).parent().parent().remove();
-				}else{
-					return false;
-				}
 			})
 		}
 		
