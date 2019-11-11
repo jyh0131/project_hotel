@@ -5,7 +5,7 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="${pageContext.request.contextPath}/js/intranet/intranetSalesMng.js"></script>
 
-<h2>매출관리</h2>
+<h2>2019년 매출관리</h2>
 
 <div class="intra-sales-chart">
 	<div id="sales-chart"></div>

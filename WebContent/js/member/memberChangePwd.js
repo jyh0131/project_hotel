@@ -2,6 +2,11 @@
 	$(function(){		
 		
 		var pw, pw1, pw2;
+		//DB비밀번호 에러 리셋
+		$("input[name='password']").focus(function(){
+			$(this).nextAll(".error").css("display", "none");
+		});
+		
 		
 		//비밀번호 입력시
 		$("input[name='confirmPassword']").blur(function(){
@@ -43,6 +48,20 @@
 				alert("비밀번호를 입력해주세요.");
 				return false;
 			}
+			
+			//에러 존재시 submit 막기
+			var er = 0;
+			$(".error").each(function(i, obj){
+				if($(obj).css("display") != "none") {
+					er++;
+				}
+			})
+			
+			if(er > 0) {
+				alert("잘못된 입력이 존재합니다. 수정 바랍니다.");
+				return false;
+			}
+			
 		});
 		
 	})

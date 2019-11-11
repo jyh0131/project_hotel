@@ -9,7 +9,7 @@
 			
 		
 		//날짜선택창
-		var dStart, dEnd;
+		var dStart, dEnd, dfd, fdf;
 		var dStartArr = [];
 		var dEndArr = [];
 		
@@ -18,9 +18,10 @@
 			toggleSelected: false,
 			clear: 'Clear',
 			autoClose: true,
+			minDate: new Date(),
 			firstDay: 0,
 			onSelect: function(formattedDate, date, inst){
-				dStart = date;
+				dStart = date.getTime();
 				dStartArr = formattedDate.split("-");
 				
 				$("#pick_end").datepicker({
@@ -45,7 +46,7 @@
 				clear: 'Clear',
 				autoClose: true,
 				onSelect: function(formattedDate, date, inst){
-					dEnd = date;
+					dEnd = date.getTime();
 					dEndArr = formattedDate.split("-");
 
 					//디스플레이
@@ -114,6 +115,7 @@
 	    
 	    //검색 버튼 누르면 방 리스트 나오게
 	    $(".btn-Search").click(function(){
+	    	
 	    	//데이트피커 공란일 때
 			if($("#pick_start").val() == "" || $("#pick_end").val() == "") {
 				alert("날짜를 선택해주세요");

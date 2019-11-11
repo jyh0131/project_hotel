@@ -111,7 +111,7 @@
 		
 		<div class="agree-btn-wrap">
 			<input type="submit" value="다음"> 
-			<input type="reset" value="취소" onclick="goBack()">
+			<input type="reset" value="취소">
 		</div>
 	</form>			
 </div>	

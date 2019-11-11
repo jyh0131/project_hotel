@@ -15,7 +15,11 @@
 	}
 	h2{
 		text-align: left !important;
+<<<<<<< HEAD
 		padding-left:40px !important;
+=======
+		padding-left: 40px !important;
+>>>>>>> branch 'master' of https://github.com/jyh0131/project_hotel.git
 	}
 	#r_insertWrap{
 		margin:0 auto;
@@ -59,7 +63,11 @@
 	 	overflow: hidden;
 	 	text-align: center;
 	 	width:60%;
+<<<<<<< HEAD
 	 	margin:0 auto;
+=======
+	 	margin: 0 auto;
+>>>>>>> branch 'master' of https://github.com/jyh0131/project_hotel.git
 	 }
 	 #btnBox p{
 	 	padding:20px;

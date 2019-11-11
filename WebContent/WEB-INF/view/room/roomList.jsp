@@ -85,6 +85,10 @@
 					return false;
 				}
 				
+<<<<<<< HEAD
+=======
+				
+>>>>>>> branch 'master' of https://github.com/jyh0131/project_hotel.git
 				var rNo = $(this).attr("data-rNo");
 		
 				$.ajax({

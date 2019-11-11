@@ -10,7 +10,11 @@
 	}
 	h2{
 		text-align: left !important;
+<<<<<<< HEAD
 		padding-left:40px !important;
+=======
+		padding-left: 40px !important;
+>>>>>>> branch 'master' of https://github.com/jyh0131/project_hotel.git
 	}
 	#p_insertWrap {
 		width: 80%;

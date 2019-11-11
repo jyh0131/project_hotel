@@ -45,7 +45,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2">　</td>
+				<td colspan="2"></td>
 				<th>객실 요금</th>
 				<fmt:formatNumber var="rmPrice" value="${rsv.room.roomPrice}" pattern="###,###" />
 				<td>${rmPrice} 원(${rsv.rStay}박)</td>

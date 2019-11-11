@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>BLUA LUNDO</title>
+<title>BLUA LUNDO - 어디에도 없지만 어디에선가 마주칠 것 같은, 우연의 휴식처</title>
 <link href="${pageContext.request.contextPath}/css/common.css" rel="stylesheet" type="text/css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

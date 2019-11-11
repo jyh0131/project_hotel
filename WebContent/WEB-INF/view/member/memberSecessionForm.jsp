@@ -3,6 +3,26 @@
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
 <link href="${pageContext.request.contextPath}/css/member/memberSecessionForm.css" type="text/css" rel="stylesheet">
 
+<script>
+	$(function(){
+		//submit 전 유효성 체크
+		$("form").submit(function(){
+			id = $("input[name='id']").val();
+			pw = $("input[name='password']").val();
+
+			if(id == "") {
+				alert("아이디를 입력해주세요.");
+				return false;
+			}
+			if(pw == "") {
+				alert("비밀번호를 입력해주세요.");
+				return false;
+			}
+			
+		});
+	})
+</script>
+
 <div class="mem-secession-wrap">
 	<h2>회원 탈퇴</h2>
 	<p style="color:red;">회원 탈퇴가 완료되어도 확정된 예약은 취소되지 않습니다.<br>취소를 원하시는 회원님은 호텔 예약실로 문의 바랍니다.</p>

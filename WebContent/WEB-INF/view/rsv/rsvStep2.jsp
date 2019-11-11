@@ -237,7 +237,7 @@
 						<tr>
 							<td><span class="required_field">*</span>환불 계좌번호</td>
 							<td>
-								<input type="text" name="refundNum" placeholder="-없이 숫자만 입력해주세요" maxlength="16">
+								<input type="text" name="refundNum" placeholder="-없이 숫자만 입력해주세요(16자리)" maxlength="16">
 							</td>
 						</tr>
 						<tr>

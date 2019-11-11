@@ -37,7 +37,7 @@ public class MemberLoginHandler implements CommandHandler {
 					return "/WEB-INF/view/member/memberLoginForm.jsp";
 					
 				} else if (member.getmQuitdate() != null) { //탈퇴된 회원일 경우
-					request.setAttribute("idNotExist", true);
+					request.setAttribute("quitMem", true);
 
 					return "/WEB-INF/view/member/memberLoginForm.jsp";
 					
