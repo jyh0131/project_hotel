@@ -8,12 +8,16 @@
 		margin:0 auto;
 		width:100%;
 	}
+	h2{
+		text-align: left !important;
+		padding-left:40px !important;
+	}
 	#p_insertWrap {
 		width: 80%;
 		margin: 0 auto;
 	}
 	table{
-		margin:15px 0;
+		margin:15px auto;
 		width:100%;
 	}
 	table, th, td{
@@ -41,7 +45,8 @@
 	 #btnBox{
 	 	overflow: hidden;
 	 	text-align: center;
-	 	width:90%;
+	 	marign: 0 auto;
+	 	width:100%;
 	 }
 	.btn{
 		width:100px;
@@ -80,8 +85,8 @@
 		})
 	})
 </script>
+<h2>객실 사진 등록하기</h2>
 <div id="p_insertWrap">
-	<h1>객실 사진 등록하기</h1>
 	<form action="insert.do" method="post" enctype="multipart/form-data"><!--  -->
 		<table>
 			<tr>

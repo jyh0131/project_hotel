@@ -124,8 +124,10 @@ public class QuestionBoardDAO {
 		ResultSet rs = null;
 
 		try {
-			String sql = "select * from question_board qb \r\n" + "join member m on qb.m_no = m.m_no \r\n"
-					+ "where m.m_id = ? \r\n" + "order by qb.qb_no desc";
+			String sql = "select * from question_board qb \r\n" 
+							+ "join member m on qb.m_no = m.m_no \r\n"
+							+ "where m.m_id = ? \r\n" 
+							+ "order by qb.qb_no desc";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mId);
@@ -133,10 +135,16 @@ public class QuestionBoardDAO {
 			List<QuestionBoard> list = new ArrayList<>();
 
 			while (rs.next()) {
-				QuestionBoard qb = new QuestionBoard(rs.getInt("qb_no"), rs.getString("qb_title"),
-						rs.getString("qb_name"), rs.getString("qb_email"), rs.getInt("qb_category"),
-						rs.getString("qb_phone"), rs.getString("qb_tel"), rs.getTimestamp("qb_date"),
-						rs.getString("qb_path"), memConstructor(rs), null);
+				QuestionBoard qb = new QuestionBoard(rs.getInt("qb_no"), 
+													 rs.getString("qb_title"),
+													 rs.getString("qb_name"), 
+													 rs.getString("qb_email"), 
+													 rs.getInt("qb_category"),
+													 rs.getString("qb_phone"),
+													 rs.getString("qb_tel"), 
+													 rs.getTimestamp("qb_date"),
+													 rs.getString("qb_path"), 
+													 memConstructor(rs), null);
 				list.add(qb);
 			}
 
@@ -156,17 +164,26 @@ public class QuestionBoardDAO {
 		ResultSet rs = null;
 
 		try {
-			String sql = "select * from question_board qb \r\n" + "join question_content qc on qb.qb_no = qc.qb_no \r\n"
-					+ "join member m on qb.m_no = m.m_no \r\n" + "where qb.qb_no = ?";
+			String sql = "select * from question_board qb \r\n"
+							+ "join question_content qc on qb.qb_no = qc.qb_no \r\n"
+							+ "join member m on qb.m_no = m.m_no \r\n" 
+							+ "where qb.qb_no = ?";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, qbNo);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				QuestionBoard qb = new QuestionBoard(rs.getInt("qb_no"), rs.getString("qb_title"),
-						rs.getString("qb_name"), rs.getString("qb_email"), rs.getInt("qb_category"),
-						rs.getString("qb_phone"), rs.getString("qb_tel"), rs.getTimestamp("qb_date"),
-						rs.getString("qb_path"), memConstructor(rs), rs.getString("qc_content"));
+				QuestionBoard qb = new QuestionBoard(rs.getInt("qb_no"), 
+													 rs.getString("qb_title"),
+													 rs.getString("qb_name"), 
+													 rs.getString("qb_email"), 
+													 rs.getInt("qb_category"),
+													 rs.getString("qb_phone"), 
+													 rs.getString("qb_tel"), 
+													 rs.getTimestamp("qb_date"),
+													 rs.getString("qb_path"), 
+													 memConstructor(rs), 
+													 rs.getString("qc_content"));
 				return qb;
 			}
 
@@ -293,5 +310,5 @@ public class QuestionBoardDAO {
 		}
 		return null;
 	}// selectCategoryList
-
+	
 }

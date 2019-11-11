@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
 <%@ include file="/WEB-INF/view/include/intranet/intranetSideMenu.jsp"%>
-<link href="${pageContext.request.contextPath}/css/intanet/common.css" rel="stylesheet" type="text/css">
 <script>
 	$(function(){
 		//alert($("#garden").val());
@@ -14,12 +13,16 @@
 		margin:0 auto;
 		width:70%;
 	}
+	h2{
+		text-align: left !important;
+		padding-left:40px !important;
+	}
 	#r_insertWrap{
 		margin:0 auto;
 		width:70%;
 	}
 	table{
-		margin:15px 0;
+		margin:15px auto;
 		width:100%;
 	}
 	table, th, td{
@@ -56,6 +59,7 @@
 	 	overflow: hidden;
 	 	text-align: center;
 	 	width:60%;
+	 	margin:0 auto;
 	 }
 	 #btnBox p{
 	 	padding:20px;
@@ -121,8 +125,8 @@
 		
 	})
 </script>
+<h2>객실 등록하기</h2>
 <div id="r_insertWrap">
-	<h1>객실 등록하기</h1>
 	<form action="insert.do" method="post"><!-- enctype="mulitpart/form-data" -->
 		<table><!-- name 임시로 지정 -->
 			<tr>

@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
 <%@ include file="/WEB-INF/view/include/intranet/intranetSideMenu.jsp"%>
-<link href="${pageContext.request.contextPath}/css/intranet/intranetMain.css" rel="stylesheet" type="text/css">
 <style>
 	#pListWrap {
 		width: 100%;
@@ -74,6 +73,14 @@
 	$(function(){
 		// 삭제하기
 		$(".btnDelete").click(function(){
+					
+			// 삭제버튼 클릭 시 한번 더 확인하기
+			if(confirm("정말 삭제하시겠습니까?") == true){
+				$(this).parent().parent().remove();
+			}else{
+				return false;
+			}
+			
 			var picFile = $(this).attr("data-picFile"); 
 			
 			$.ajax({
@@ -88,13 +95,6 @@
 					console.log(e);
 				}
 			})//ajax
-			
-			// 삭제버튼 클릭 시 한번 더 확인하기
-			if(confirm("정말 삭제하시겠습니까?") == true){
-				$(this).parent().parent().remove();
-			}else{
-				return false;
-			}
 			
 		})//.btnDelete
 		

@@ -227,7 +227,7 @@
 			
 			<div id="rm_contentRight">
 				<div id="rm_btn">
-					<c:if test="${Auth == null }">
+					<c:if test="${Auth == null && Admin == null }">
 						<a href="${pageContext.request.contextPath}/member/login.do" id="btn_ask">문의하기</a>
 					</c:if>
 					<c:if test="${Auth != null }">

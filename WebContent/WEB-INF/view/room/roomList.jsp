@@ -78,6 +78,13 @@
 		// 삭제하는 메소드
 		function deleteList(){
 			$(".btnDelete").click(function(){
+				// 삭제버튼 클릭 시 한번 더 확인하기
+				if(confirm("정말 삭제하시겠습니까?") == true){
+					$(this).parent().parent().remove();
+				}else{
+					return false;
+				}
+				
 				var rNo = $(this).attr("data-rNo");
 		
 				$.ajax({
@@ -93,12 +100,6 @@
 					}
 				})//ajax
 				
-				// 삭제버튼 클릭 시 한번 더 확인하기
-				if(confirm("정말 삭제하시겠습니까?") == true){
-					$(this).parent().parent().remove();
-				}else{
-					return false;
-				}
 			})//.btnDelete
 		}
 		
@@ -125,7 +126,7 @@
 							var $td_rcEngName = $("<td>").append(obj.roomCategory.rcEngName); // 객실 영어이름
 							var $td_vtName = $("<td>").append(obj.viewType.vtName); // 객실 타입
 							var $td_btName = $("<td>").append(obj.bedType.btName); // 침대 타입
-							var $td_rsNo = $("<td>").append(obj.roomSize.rsNo); // 객실 사이즈
+							var $td_rsNo = $("<td>").append(obj.roomSize.rsName); // 객실 사이즈
 							var $td_rPrice = $("<td>").append(addComma(obj.roomPrice)+"원");  // 가격
 							
 							// 수정버튼
@@ -155,7 +156,7 @@
 							var $td_rcEngName = $("<td>").append(obj.roomCategory.rcEngName); // 객실 영어이름
 							var $td_vtName = $("<td>").append(obj.viewType.vtName); // 객실 타입
 							var $td_btName = $("<td>").append(obj.bedType.btName); // 침대 타입
-							var $td_rsNo = $("<td>").append(obj.roomSize.rsNo); // 객실 사이즈
+							var $td_rsNo = $("<td>").append(obj.roomSize.rsName); // 객실 사이즈
 							var $td_rPrice = $("<td>").append(addComma(obj.roomPrice)+"원"); // 가격
 							
 							// 수정버튼
