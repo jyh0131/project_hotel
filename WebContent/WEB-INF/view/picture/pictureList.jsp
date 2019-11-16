@@ -73,7 +73,11 @@
 	$(function(){
 		// 삭제하기
 		$(".btnDelete").click(function(){
+<<<<<<< HEAD
+					
+=======
 			
+>>>>>>> branch 'master' of https://github.com/jyh0131/project_hotel.git
 			// 삭제버튼 클릭 시 한번 더 확인하기
 			if(confirm("정말 삭제하시겠습니까?") == true){
 				$(this).parent().parent().remove();

@@ -147,8 +147,10 @@ public class QuestionBoardDAO {
 		ResultSet rs = null;
 
 		try {
-			String sql = "select * from question_board qb \r\n" + "join member m on qb.m_no = m.m_no \r\n"
-					+ "where m.m_id = ? \r\n" + "order by qb.qb_no desc";
+			String sql = "select * from question_board qb \r\n" 
+							+ "join member m on qb.m_no = m.m_no \r\n"
+							+ "where m.m_id = ? \r\n" 
+							+ "order by qb.qb_no desc";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mId);
@@ -161,12 +163,20 @@ public class QuestionBoardDAO {
 													 rs.getString("qb_name"), 
 													 rs.getString("qb_email"), 
 													 rs.getInt("qb_category"),
+<<<<<<< HEAD
 													 rs.getString("qb_phone"), 
 													 rs.getString("qb_tel"), 
 													 rs.getTimestamp("qb_date"),
 													 rs.getString("qb_path"), 
 													 memConstructor(rs), 
 													 null);
+=======
+													 rs.getString("qb_phone"),
+													 rs.getString("qb_tel"), 
+													 rs.getTimestamp("qb_date"),
+													 rs.getString("qb_path"), 
+													 memConstructor(rs), null);
+>>>>>>> branch 'master' of https://github.com/jyh0131/project_hotel.git
 				list.add(qb);
 			}
 
@@ -186,8 +196,10 @@ public class QuestionBoardDAO {
 		ResultSet rs = null;
 
 		try {
-			String sql = "select * from question_board qb \r\n" + "join question_content qc on qb.qb_no = qc.qb_no \r\n"
-					+ "join member m on qb.m_no = m.m_no \r\n" + "where qb.qb_no = ?";
+			String sql = "select * from question_board qb \r\n"
+							+ "join question_content qc on qb.qb_no = qc.qb_no \r\n"
+							+ "join member m on qb.m_no = m.m_no \r\n" 
+							+ "where qb.qb_no = ?";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, qbNo);
@@ -198,7 +210,11 @@ public class QuestionBoardDAO {
 													 rs.getString("qb_name"), 
 													 rs.getString("qb_email"), 
 													 rs.getInt("qb_category"),
+<<<<<<< HEAD
 													 rs.getString("qb_phone"),
+=======
+													 rs.getString("qb_phone"), 
+>>>>>>> branch 'master' of https://github.com/jyh0131/project_hotel.git
 													 rs.getString("qb_tel"), 
 													 rs.getTimestamp("qb_date"),
 													 rs.getString("qb_path"), 
@@ -330,6 +346,7 @@ public class QuestionBoardDAO {
 		}
 		return null;
 	}// selectCategoryList
+<<<<<<< HEAD
 
 	// 페이징 - 전체 row 검색(count)
 	public int qbNoTotalCount(Connection conn) {
@@ -390,4 +407,7 @@ public class QuestionBoardDAO {
 		}
 		return null;
 	} // selectByQbNoList
+=======
+	
+>>>>>>> branch 'master' of https://github.com/jyh0131/project_hotel.git
 }

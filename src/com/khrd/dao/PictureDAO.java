@@ -193,7 +193,7 @@ public class PictureDAO {
 		return null;
 	}// selectedByContent
 	
-	/*없어도 될거같음***************************************/
+	
 	public Picture selectedByRoom(Connection conn, int rcNo, RoomCategory roomCategory) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

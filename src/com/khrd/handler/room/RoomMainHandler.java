@@ -35,10 +35,8 @@ public class RoomMainHandler implements CommandHandler {
 			RoomCategory roomCategory = dao.selectedByNo(conn, rcNo);
 			request.setAttribute("rc", roomCategory);
 			
-			// 객실 내용 넣기 위해 
+			// 객실 사진 넣기 위해 
 			PictureDAO picDao = PictureDAO.getInstance();
-			Picture picture = picDao.selectedByContent(conn, rcNo);
-			request.setAttribute("picture", picture);
 			
 //			Picture pictureRoom = picDao.selectedByRoom(conn, rcNo, roomCategory);
 //			request.setAttribute("pictureRoom", pictureRoom);
