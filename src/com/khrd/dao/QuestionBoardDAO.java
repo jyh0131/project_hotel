@@ -31,15 +31,38 @@ public class QuestionBoardDAO {
 
 	// Member 객체 생성 메소드
 	private Member memConstructor(ResultSet rs) throws SQLException {
-		Member m = new Member(rs.getInt("m_no"), rs.getString("m_name"), rs.getTimestamp("m_birth"),
-				rs.getString("m_mail"), rs.getString("m_phone"), rs.getString("m_tel"), rs.getString("m_zipcode"),
-				rs.getString("m_addr1"), rs.getString("m_addr2"), rs.getString("m_id"), rs.getString("m_pwd"),
-				rs.getTimestamp("m_regdate"), rs.getTimestamp("m_quitdate"), rs.getInt("m_isAdmin"));
+		Member m = new Member(rs.getInt("m_no"), 
+							  rs.getString("m_name"), 
+							  rs.getTimestamp("m_birth"),
+							  rs.getString("m_mail"), 
+							  rs.getString("m_phone"), 
+							  rs.getString("m_tel"), 
+							  rs.getString("m_zipcode"),
+							  rs.getString("m_addr1"), 
+							  rs.getString("m_addr2"), 
+							  rs.getString("m_id"), 
+							  rs.getString("m_pwd"),
+							  rs.getTimestamp("m_regdate"), 
+							  rs.getTimestamp("m_quitdate"), 
+							  rs.getInt("m_isAdmin"));
 		return m;
 	}
 
-
-
+	// QuestionBoard 객체 생성 메소드
+	private QuestionBoard qbConstructor(ResultSet rs) throws SQLException {
+		QuestionBoard qb = new QuestionBoard(rs.getInt("qb_no"), // 문의번호
+											 rs.getString("qb_title"), // 제목
+											 rs.getString("qb_name"), // 성명
+											 rs.getString("qb_email"), // 이메일
+											 rs.getInt("qb_category"), // 문의분류
+											 rs.getString("qb_phone"), // 휴대전화
+											 rs.getString("qb_tel"), // 자택전화
+											 rs.getTimestamp("qb_date"), // 문의날짜
+											 rs.getString("qb_path"), // 첨부파일경로
+											 memConstructor(rs), // 회원번호
+											 null);// 문의내용
+		return qb;
+	}
 
 	/*-------------------------------------*/
 	public int insertArticle(Connection conn, QuestionBoard qb) {
@@ -96,16 +119,16 @@ public class QuestionBoardDAO {
 			List<QuestionBoard> list = new ArrayList<>();
 			while (rs.next()) {
 				QuestionBoard qb = new QuestionBoard(rs.getInt("qb_no"), // 문의번호
-						rs.getString("qb_title"), // 제목
-						rs.getString("qb_name"), // 성명
-						rs.getString("qb_email"), // 이메일
-						rs.getInt("qb_category"), // 문의분류
-						rs.getString("qb_phone"), // 휴대전화
-						rs.getString("qb_tel"), // 자택전화
-						rs.getTimestamp("qb_date"), // 문의날짜
-						rs.getString("qb_path"), // 첨부파일경로
-						memConstructor(rs), // 회원번호
-						null);// 문의내용
+												 	 rs.getString("qb_title"), // 제목
+													 rs.getString("qb_name"), // 성명
+													 rs.getString("qb_email"), // 이메일
+													 rs.getInt("qb_category"), // 문의분류
+													 rs.getString("qb_phone"), // 휴대전화
+													 rs.getString("qb_tel"), // 자택전화
+													 rs.getTimestamp("qb_date"), // 문의날짜
+													 rs.getString("qb_path"), // 첨부파일경로
+													 memConstructor(rs), // 회원번호
+													 null);// 문의내용
 				list.add(qb);
 			} // while
 			return list;
@@ -133,10 +156,17 @@ public class QuestionBoardDAO {
 			List<QuestionBoard> list = new ArrayList<>();
 
 			while (rs.next()) {
-				QuestionBoard qb = new QuestionBoard(rs.getInt("qb_no"), rs.getString("qb_title"),
-						rs.getString("qb_name"), rs.getString("qb_email"), rs.getInt("qb_category"),
-						rs.getString("qb_phone"), rs.getString("qb_tel"), rs.getTimestamp("qb_date"),
-						rs.getString("qb_path"), memConstructor(rs), null);
+				QuestionBoard qb = new QuestionBoard(rs.getInt("qb_no"), 
+													 rs.getString("qb_title"),
+													 rs.getString("qb_name"), 
+													 rs.getString("qb_email"), 
+													 rs.getInt("qb_category"),
+													 rs.getString("qb_phone"), 
+													 rs.getString("qb_tel"), 
+													 rs.getTimestamp("qb_date"),
+													 rs.getString("qb_path"), 
+													 memConstructor(rs), 
+													 null);
 				list.add(qb);
 			}
 
@@ -163,10 +193,17 @@ public class QuestionBoardDAO {
 			pstmt.setInt(1, qbNo);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				QuestionBoard qb = new QuestionBoard(rs.getInt("qb_no"), rs.getString("qb_title"),
-						rs.getString("qb_name"), rs.getString("qb_email"), rs.getInt("qb_category"),
-						rs.getString("qb_phone"), rs.getString("qb_tel"), rs.getTimestamp("qb_date"),
-						rs.getString("qb_path"), memConstructor(rs), rs.getString("qc_content"));
+				QuestionBoard qb = new QuestionBoard(rs.getInt("qb_no"), 
+													 rs.getString("qb_title"),
+													 rs.getString("qb_name"), 
+													 rs.getString("qb_email"), 
+													 rs.getInt("qb_category"),
+													 rs.getString("qb_phone"),
+													 rs.getString("qb_tel"), 
+													 rs.getTimestamp("qb_date"),
+													 rs.getString("qb_path"), 
+													 memConstructor(rs), 
+													 rs.getString("qc_content"));
 				return qb;
 			}
 
@@ -272,16 +309,16 @@ public class QuestionBoardDAO {
 			
 			while (rs.next()) {
 				QuestionBoard qb = new QuestionBoard(rs.getInt("qb_no"), // 문의번호
-						rs.getString("qb_title"), // 제목
-						rs.getString("qb_name"), // 성명
-						rs.getString("qb_email"), // 이메일
-						rs.getInt("qb_category"), // 문의분류
-						rs.getString("qb_phone"), // 휴대전화
-						rs.getString("qb_tel"), // 자택전화
-						rs.getTimestamp("qb_date"), // 문의날짜
-						rs.getString("qb_path"), // 첨부파일경로
-						memConstructor(rs), // 회원번호
-						null);// 문의내용
+													 rs.getString("qb_title"), // 제목
+												 	 rs.getString("qb_name"), // 성명
+													 rs.getString("qb_email"), // 이메일
+													 rs.getInt("qb_category"), // 문의분류
+													 rs.getString("qb_phone"), // 휴대전화
+													 rs.getString("qb_tel"), // 자택전화
+													 rs.getTimestamp("qb_date"), // 문의날짜
+													 rs.getString("qb_path"), // 첨부파일경로
+													 memConstructor(rs), // 회원번호
+													 null);// 문의내용
 				list.add(qb);
 			} // while
 			return list;
@@ -294,4 +331,63 @@ public class QuestionBoardDAO {
 		return null;
 	}// selectCategoryList
 
+	// 페이징 - 전체 row 검색(count)
+	public int qbNoTotalCount(Connection conn) {
+		int cnt = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select count(*) from question_board order by qb_no desc";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+		return -1;
+	} // qbNoTotalCount
+	
+	// 페이징 - 원하는 row에서 몇개의 row를 select할 것인지 정함
+	public List<QuestionBoard> selectByQbNoList(Connection conn, int startRow, int size){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select * from question_board order by qb_no desc limit  ?, ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, size);
+			rs = pstmt.executeQuery();
+			List<QuestionBoard> list = new ArrayList<QuestionBoard>();
+			while(rs.next()) {
+				QuestionBoard qb = new QuestionBoard(rs.getInt("qb_no"), 
+													 rs.getString("qb_title"),
+													 rs.getString("qb_name"), 
+													 rs.getString("qb_email"), 
+													 rs.getInt("qb_category"),
+													 rs.getString("qb_phone"), 
+													 rs.getString("qb_tel"), 
+													 rs.getTimestamp("qb_date"),
+													 rs.getString("qb_path"), 
+													 null, 
+													 null);
+				
+				list.add(qb);             
+			}
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+		return null;
+	} // selectByQbNoList
 }

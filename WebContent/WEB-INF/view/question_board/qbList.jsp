@@ -1,3 +1,4 @@
+<%@page import="com.khrd.dao.QuestionBoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/view/include/header.jsp"%>
@@ -298,7 +299,11 @@
 				<th>관리</th>
 			</c:if>
 		</tr>
-
+		<c:if test="${page.total == 0 }"><!-- 게시글이 0이면 -->
+			<tr>
+				<td>게시글이 없습니다.</td>
+			</tr>
+		</c:if>
 		<c:forEach var="list" items="${list }">
 			<input type="hidden" value="${list.member.mId }" name="mId">
 			<tr class="qbListTr">
@@ -338,6 +343,25 @@
 				</td>
 			</tr>
 		</c:forEach>
+		
+	</table>
+	<table>
+		<c:if test="${total != 0 }">
+			<tr>
+				<td>
+					<c:if test="${page.startPage > 5 }">
+						<a href="${pageContext.request.contextPath }/qb/list.do?pageNo=${page.startPage-5}" id="btnPrev">이전</a>
+					</c:if>
+					<c:forEach var="pNo" begin="${page.startPage}" end="${page.endPage}">
+						<a  href="${pageContext.request.contextPath}/qb/list.do?pageNo=${pNo}" class="btnNum" data-pNo="${pNo}">${pNo}</a>
+					</c:forEach>
+					
+					<c:if test="${page.endPage < page.totalPages && page.totalPages > 5}">
+						<a href="${pageContext.request.contextPath}/qb/list.do?pageNo=${page.startPage+5}" id="btnNext">다음</a>
+					</c:if>
+				</td>
+			</tr>
+		</c:if>
 	</table>
 
 </div>

@@ -16,11 +16,16 @@ import com.khrd.dao.QuestionBoardDAO;
 import com.khrd.dto.QuestionBoard;
 import com.khrd.jdbc.ConnectionProvider;
 import com.khrd.jdbc.JDBCUtil;
+import com.khrd.util.PageMaker;
 
 public class QuestionListHandler implements CommandHandler {
-
+	
+	private int size = 10; // 한 페이지에 보일 게시글 수
+	
+	
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
 		// 처음 전체 list
 		if(request.getMethod().equalsIgnoreCase("get")) { 
 			String mId = request.getParameter("id");
@@ -30,9 +35,22 @@ public class QuestionListHandler implements CommandHandler {
 			try {
 				conn = ConnectionProvider.getConnection();
 				QuestionBoardDAO dao = QuestionBoardDAO.getInstance();
-				List<QuestionBoard> list = dao.selectBoardList(conn);
-				request.setAttribute("list", list);
+//				List<QuestionBoard> list = dao.selectBoardList(conn);
+//				request.setAttribute("list", list);
 
+				
+				// 페이징
+				String pageNoVal = request.getParameter("pageNo");
+				int pageNo = 1;
+				if(pageNoVal != null) {
+					pageNo = Integer.parseInt(pageNoVal);
+				}
+				int total = dao.qbNoTotalCount(conn);
+				List<QuestionBoard> list = dao.selectByQbNoList(conn, (pageNo - 1)*size, size);
+				PageMaker page = new PageMaker(total, pageNo, size);
+				request.setAttribute("list", list);
+				request.setAttribute("page", page);
+				
 				return "/WEB-INF/view/question_board/qbList.jsp";
 				
 			}catch (Exception e) {
