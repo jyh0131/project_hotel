@@ -10,9 +10,31 @@
 			$("table").append($trDf);
 		}
 		
-		$(document).on("click", "button", function(){
-			alert("버튼 기능 고민중입니다.");
-		})
+		// 삭제
+		$(document).on("click", ".btnDelete", function(){
+			// 삭제버튼 클릭 시 한번 더 확인하기
+			if(confirm("정말 삭제하시겠습니까?") == true){
+				$(this).parent().parent().remove();
+			}else{
+				return false;
+			}
+			
+			var picFile = $(this).attr("data-picFile");
+	
+			$.ajax({
+				url:"delete.do", 
+				type:"get",
+				data:{"picFile":picFile},
+				dataType:"json",
+				success:function(res){
+					console.log(res);
+				},
+				error:function(e){
+					console.log(e);
+				}
+			})//ajax
+			
+		})//.btnDelete
 		
 		
 		//객실 카테고리별 보기
@@ -20,7 +42,7 @@
 			var state = $(this).val();
 			var conPath = $("#conPath").val();
 			
-			//테이블 리셋
+			//테이블 select
 			tableReset()
 			
 			$.ajax({
@@ -36,47 +58,21 @@
 					}
 					
 					$(res.list).each(function(i, obj){
-						
-						switch(obj.gType.gNo) {
-						case 1:
-							$tdImg = $("<td>").append("<img src='"+conPath+"/upload/gallery/room/"+obj.picFile+"'>");
-							$tdCate = $("<td>").append("객실");
-
-							break;
-						case 2:
-							$tdImg = $("<td>").append("<img src='"+conPath+"/upload/gallery/dining/"+obj.picFile+"'>");
-							$tdCate = $("<td>").append("다이닝");
-							
-							break;
-						case 3:
-							$tdImg = $("<td>").append("<img src='"+conPath+"/upload/gallery/activity/"+obj.picFile+"'>");
-							$tdCate = $("<td>").append("액티비티");
-							
-							break;
-						case 4:
-							$tdImg = $("<td>").append("<img src='"+conPath+"/upload/gallery/sub_facilities/"+obj.picFile+"'>");
-							$tdCate = $("<td>").append("부대시설");
-							
-							break;
-						case 5:
-							$tdImg = $("<td>").append("<img src='"+conPath+"/upload/gallery/etc/"+obj.picFile+"'>");
-							$tdCate = $("<td>").append("기타");
-							
-							break;
-						}
+						$tdImg = $("<td>").append("<img src='"+conPath+"/upload/gallery/"+obj.gType.gPath+"/"+obj.picFile+"'>");
+						$tdCate = $("<td>").append(obj.gType.gName);
 						
 						$tdFile = $("<td>").append(obj.picFile);
-						$tdBtn = $("<td>").append("<button>버튼</button>");
-						
+						$btn = $("<button>").addClass("btnDelete btn").attr("data-picFile", obj.picFile).append("삭제");
+						$tdBtn = $("<td>").append($btn);
 						$tr = $("<tr>").addClass("c-b").append($tdImg).append($tdFile).append($tdCate).append($tdBtn);
 						$("table").append($tr);
 					})
 					
 				}//success
-			});
+				
+			});//ajax
 			
-			
-		});
+		});//select.gal-state change
 		
 	})
 })(window, jQuery);

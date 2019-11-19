@@ -39,10 +39,25 @@
 	.c-b {border-bottom: 1px solid #47a3da;}
 	button {padding: 10px;}
 	.centerAlign {text-align: center;}
+	/* 삭제하기 버튼 */
+	.btn{
+		width:70px;
+		padding:10px 0;
+		display: inline-block;
+		text-align: center;
+		color:black;
+		background:rgba(250, 236, 197, 0.8);
+		border:1px solid #FFE5CA;
+		border:none;
+		font-size: 16px;
+	}
+	.btn:hover{
+		color:rgba(71, 163, 218, 0.8);;
+	}
 </style>
 <script src="${pageContext.request.contextPath}/js/intranet/intranetGalleryPicMng.js"></script>
 
-<h2>사진관리(갤러리 사진)</h2>
+<h2>갤러리 사진 리스트</h2>
 
 <div class="gal-list-wrap">
 	<div class="gal-state-wrap">
@@ -68,50 +83,12 @@
 			
 			<c:forEach var="pic" items="${list}">
 				<tr class='c-b'>
-					<c:if test="${pic.gType.gNo == 1}">
-						<td><img src="${pageContext.request.contextPath}/upload/gallery/room/${pic.picFile}"></td>
-						<td>${pic.picFile}</td>
-						<td>객실</td>
-						<td>
-							<button>버튼</button>
-						</td>
-					</c:if>
-					
-					<c:if test="${pic.gType.gNo == 2}">
-						<td><img src="${pageContext.request.contextPath}/upload/gallery/dining/${pic.picFile}"></td>
-						<td>${pic.picFile}</td>
-						<td>다이닝</td>
-						<td>
-							<button>버튼</button>
-						</td>
-					</c:if>
-					
-					<c:if test="${pic.gType.gNo == 3}">
-						<td><img src="${pageContext.request.contextPath}/upload/gallery/activity/${pic.picFile}"></td>
-						<td>${pic.picFile}</td>
-						<td>액티비티</td>
-						<td>
-							<button>버튼</button>
-						</td>
-					</c:if>
-				
-					<c:if test="${pic.gType.gNo == 4}">
-						<td><img src="${pageContext.request.contextPath}/upload/gallery/sub_facilities/${pic.picFile}"></td>
-						<td>${pic.picFile}</td>
-						<td>부대시설</td>
-						<td>
-							<button>버튼</button>
-						</td>
-					</c:if>
-					
-					<c:if test="${pic.gType.gNo == 5} ">
-						<td><img src="${pageContext.request.contextPath}/upload/gallery/etc/${pic.picFile}"></td>
-						<td>${pic.picFile}</td>
-						<td>기타</td>
-						<td>
-							<button>버튼</button>
-						</td>
-					</c:if>
+					<td><img src="${pageContext.request.contextPath}/upload/gallery/${pic.gType.gPath }/${pic.picFile}"></td>
+					<td>${pic.picFile}</td>
+					<td>${pic.gType.gName}</td>
+					<td>
+						<button class="btnDelete btn" data-picFile="${pic.picFile }">삭제</button> 
+					</td>
 				</tr>
 			</c:forEach>	
 		</table>

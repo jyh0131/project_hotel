@@ -72,12 +72,7 @@
 <script>
 	$(function(){
 		// 삭제하기
-		$(".btnDelete").click(function(){
-<<<<<<< HEAD
-					
-=======
-			
->>>>>>> branch 'master' of https://github.com/jyh0131/project_hotel.git
+		$(document).on("click", ".btnDelete", function(){
 			// 삭제버튼 클릭 시 한번 더 확인하기
 			if(confirm("정말 삭제하시겠습니까?") == true){
 				$(this).parent().parent().remove();
@@ -100,7 +95,7 @@
 				}
 			})//ajax
 			
-		})//.btnDelete
+		})
 		
 		// 객실 분류 선택 시 해당 객실 리스트 나오게 하기
 		$(document).on("change", "select[name='rcName']", function(){
@@ -116,50 +111,27 @@
 					$(".allList").empty();
 					$(".selectedList").remove();
 					$(res.postList).each(function(i, obj){
+						var $td_img = $("<td>");
+						var $img = $("<img>").attr("src", "${pageContext.request.contextPath }/upload/" + obj.picFile); // 사진 
+						$td_img.append($img); 
 						
-						if(rcNo != 0){// select가 '전체보기'가 아닐 때
-							var $td_img = $("<td>");
-							var $img = $("<img>").attr("src", "${pageContext.request.contextPath }/upload/" + obj.picFile); // 사진 
-							$td_img.append($img); 
-							
-							var $td_file = $("<td>").append(obj.picFile); // 파일명	
-							var $td_gName = $("<td>").append(obj.gType.gName); // 갤러리 분류명(객실, 엑티비티, 다이닝 등)
-							var $td_rcName = $("<td>").append(obj.roomCategory.rcName); // 객실 이름(스탠다드, 디럭스 등))
-							
-							var textArr = ["원본 이미지", "작은 이미지", "내용 이미지"];
-							var $td_picCategory = $("<td>").append(textArr[obj.picCategory]); // obj.picCategory : 사진 구분(1, 2, 3);
+						var $td_file = $("<td>").append(obj.picFile); // 파일명	
+						var $td_gName = $("<td>").append(obj.gType.gName); // 갤러리 분류명(객실, 엑티비티, 다이닝 등)
+						var $td_rcName = $("<td>").append(obj.roomCategory.rcName); // 객실 이름(스탠다드, 디럭스 등))
+						
+						var textArr = ["원본 이미지", "작은 이미지", "내용 이미지"];
+						var $td_picCategory = $("<td>").append(textArr[obj.picCategory]); // obj.picCategory : 사진 구분(1, 2, 3); -> 원본이미지 : 0, 작은이미지 : 1, 내용이미지 : 2
 
-							var $btn = $("<button>").addClass("btnDelete btn").attr("data-picFile", obj.picFile).append("삭제");
-							var $td_btn = $("<td>").append($btn);
+						var $btn = $("<button>").addClass("btnDelete btn").attr("data-picFile", obj.picFile).append("삭제");
+						var $td_btn = $("<td>").append($btn);
 							
-							var $tr = $("<tr>").addClass("selectedList");
-							$tr.append($td_img).append($td_file).append($td_gName).append($td_rcName).append($td_picCategory).append($td_btn);
-							
-							$("#p_table").append($tr);
-						}else{// select가 '전체보기'일 때
-							
-							var $td_img = $("<td>");
-							var $img = $("<img>").attr("src", "${pageContext.request.contextPath }/upload/" + obj.picFile); // 사진 
-							$td_img.append($img); 
-							
-							var $td_file = $("<td>").append(obj.picFile); // 파일명	
-							var $td_gName = $("<td>").append(obj.gType.gName); // 갤러리 분류명(객실, 엑티비티, 다이닝 등)
-							var $td_rcName = $("<td>").append(obj.roomCategory.rcName); // 객실 이름(스탠다드, 디럭스 등))
-							
-							var textArr = ["원본 이미지", "작은 이미지", "내용 이미지"];
-							var $td_picCategory = $("<td>").append(textArr[obj.picCategory]); // obj.picCategory : 사진 구분(1, 2, 3); -> 원본이미지 : 0, 작은이미지 : 1, 내용이미지 : 2
-
-							var $btn = $("<button>").addClass("btnDelete btn").attr("data-picFile", obj.picFile).append("삭제");
-							var $td_btn = $("<td>").append($btn);
-							
-							var $tr = $("<tr>").addClass("selectedList");
-							$tr.append($td_img).append($td_file).append($td_gName).append($td_rcName).append($td_picCategory).append($td_btn);
-							
-							$("#p_table").append($tr);
-						}
+						var $tr = $("<tr>").addClass("selectedList");
+						$tr.append($td_img).append($td_file).append($td_gName).append($td_rcName).append($td_picCategory).append($td_btn);
+						
+						$("#p_table").append($tr);
 						//$(".allList").css("display", "none"); // select 선택 시 기본 리스트 지워지기
-						
-						
+					
+					
 					})// each
 				},
 				error:function(e){
